@@ -162,6 +162,9 @@ p {
   padding-left: var(--container-pad);
   padding-right: var(--container-pad);
 }
+.container--wide {
+  max-width: 1560px;
+}
 
 .section {
   padding: clamp(3rem, 6vw, 6rem) 0;
@@ -324,23 +327,30 @@ p {
   border-bottom: 1px solid #1a1a1a;
 }
 
+/* Utility bar — phone + CTA. Desktop only; mobile already has the phone
+   in the nav drawer and the sticky bottom call bar. Sitting above the
+   main row instead of crammed into it gives the nav room to breathe. */
+.header-utility {
+  display: none;
+}
+
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding-top: 0.85rem;
-  padding-bottom: 0.85rem;
+  gap: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.85rem;
   color: var(--color-white);
 }
 .logo-mark {
-  width: 46px;
+  width: 64px;
   flex-shrink: 0;
   color: var(--color-white);
 }
@@ -356,17 +366,17 @@ p {
 }
 .logo-text .word {
   font-family: var(--font-heading);
-  font-size: 1.15rem;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.02em;
 }
 .logo-text .sub {
   font-family: var(--font-body);
-  font-size: 0.5rem;
+  font-size: 0.625rem;
   font-weight: 700;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.26em;
   color: var(--color-tan);
-  margin-top: 0.2rem;
+  margin-top: 0.3rem;
 }
 
 .nav-toggle {
@@ -422,6 +432,20 @@ p {
 
 @media (min-width: 960px) {
   .nav-toggle { display: none; }
+
+  .header-utility {
+    display: block;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .header-utility-inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1.75rem;
+    padding-top: 0.55rem;
+    padding-bottom: 0.55rem;
+  }
+
   .nav-primary {
     position: static;
     width: auto;
@@ -429,18 +453,24 @@ p {
     background: transparent;
     padding: 0;
     overflow: visible;
+    flex: 1;
+    display: flex;
+    justify-content: center;
   }
   .nav-primary ul {
     flex-direction: row;
-    gap: 1.75rem;
+    flex-wrap: nowrap;
+    gap: 2.75rem;
   }
   .nav-primary a {
+    display: block;
     padding: 0.25rem 0;
     border-bottom: 0;
     font-size: 0.85rem;
     letter-spacing: 0.03em;
     text-transform: uppercase;
     font-weight: 700;
+    white-space: nowrap;
   }
   .nav-primary a:hover,
   .nav-primary a:focus-visible {
@@ -448,9 +478,7 @@ p {
   }
   .nav-primary .nav-phone { display: none; }
   .header-cta {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
+    display: none;
   }
   .header-phone {
     display: flex;
