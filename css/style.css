@@ -14,14 +14,17 @@
 
 /* --------------------------------------------------------------------------
    FONTS
-   Headings: Monument Extended (licensed — not loaded from a CDN).
-     1. Purchase/download the license and font files from the foundry.
-     2. Place the files in /assets/fonts/ using these exact names:
+   Headings run on Archivo (Google Fonts variable font, weights 700/800,
+   width axis set to expanded via font-stretch) until licensed Monument
+   Extended files exist. To swap Monument Extended in:
+     1. Get the license and .woff2 files from the foundry.
+     2. Place them in /assets/fonts/ using these exact names:
           monument-extended-regular.woff2
           monument-extended-bold.woff2
      3. Uncomment the two @font-face blocks below.
-   Until then, headings render in the fallback stack — a heavy, wide,
-   geometric sans chosen to approximate Monument Extended's proportions.
+     4. Change ONE line: add "Monument Extended", to the front of
+        --font-heading in the :root block just below. That's the whole
+        swap — every heading on every page reads that one variable.
    -------------------------------------------------------------------------- */
 
 /*
@@ -56,7 +59,7 @@
   --color-text-on-black-muted: #c9c9c9;
 
   /* ---- Type ---- */
-  --font-heading: "Monument Extended", "Archivo Expanded", "Arial Black", "Helvetica Neue", sans-serif;
+  --font-heading: "Archivo", "Arial Black", "Helvetica Neue", sans-serif;
   --font-body: "Montserrat", "Helvetica Neue", Arial, sans-serif;
 
   /* ---- Layout ---- */
@@ -115,7 +118,8 @@ h2,
 h3,
 h4 {
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 800;
+  font-stretch: expanded;
   text-transform: uppercase;
   letter-spacing: 0.01em;
   line-height: 1.08;
@@ -327,67 +331,23 @@ p {
   border-bottom: 1px solid #1a1a1a;
 }
 
-/* Utility bar — phone + CTA. Desktop only; mobile already has the phone
-   in the nav drawer and the sticky bottom call bar. Sitting above the
-   main row instead of crammed into it gives the nav room to breathe. */
-.header-utility {
-  display: none;
-}
-
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  gap: 1.25rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  color: var(--color-white);
-}
-.logo-mark {
-  width: 64px;
+.logo-link {
+  display: block;
   flex-shrink: 0;
-  position: relative;
-  color: var(--color-white);
 }
-.logo-mark img {
-  width: 100%;
+.logo {
+  width: 220px;
   height: auto;
   display: block;
-}
-.logo-mark img.tan {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity var(--transition);
-}
-.logo:hover .logo-mark img.tan,
-.logo:focus-visible .logo-mark img.tan {
-  opacity: 1;
-}
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-.logo-text .word {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-.logo-text .sub {
-  font-family: var(--font-body);
-  font-size: 0.625rem;
-  font-weight: 700;
-  letter-spacing: 0.26em;
-  color: var(--color-tan);
-  margin-top: 0.3rem;
 }
 
 .nav-toggle {
@@ -444,19 +404,6 @@ p {
 @media (min-width: 960px) {
   .nav-toggle { display: none; }
 
-  .header-utility {
-    display: block;
-    border-bottom: 1px solid #1a1a1a;
-  }
-  .header-utility-inner {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 1.75rem;
-    padding-top: 0.55rem;
-    padding-bottom: 0.55rem;
-  }
-
   .nav-primary {
     position: static;
     width: auto;
@@ -471,7 +418,7 @@ p {
   .nav-primary ul {
     flex-direction: row;
     flex-wrap: nowrap;
-    gap: 2.75rem;
+    gap: 1.5rem;
   }
   .nav-primary a {
     display: block;
@@ -489,7 +436,10 @@ p {
   }
   .nav-primary .nav-phone { display: none; }
   .header-cta {
-    display: none;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-shrink: 0;
   }
   .header-phone {
     display: flex;
@@ -505,6 +455,7 @@ p {
   }
   .header-phone .number {
     font-family: var(--font-heading);
+    font-stretch: expanded;
     font-size: 1.15rem;
     color: var(--color-white);
     white-space: nowrap;
@@ -852,6 +803,7 @@ body {
   align-items: center;
   justify-content: center;
   font-family: var(--font-heading);
+  font-stretch: expanded;
   font-size: 1rem;
   border: 1.5px solid var(--color-tan);
   color: var(--color-tan-dim);
@@ -873,6 +825,7 @@ body {
 .worked-example caption {
   text-align: left;
   font-family: var(--font-heading);
+  font-stretch: expanded;
   font-size: 0.9375rem;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -922,6 +875,7 @@ body {
 }
 .glossary dt {
   font-family: var(--font-heading);
+  font-stretch: expanded;
   font-size: 1rem;
   margin-bottom: 0.5rem;
 }
@@ -1196,7 +1150,6 @@ body {
 @media (min-width: 720px) {
   .footer-grid { grid-template-columns: 1.3fr 1fr 1fr; }
 }
-.footer-brand .logo-text .word { color: var(--color-white); }
 .footer-brand p {
   max-width: 40ch;
   margin-top: 1rem;
