@@ -352,12 +352,23 @@ p {
 .logo-mark {
   width: 64px;
   flex-shrink: 0;
+  position: relative;
   color: var(--color-white);
 }
 .logo-mark img {
   width: 100%;
   height: auto;
   display: block;
+}
+.logo-mark img.tan {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.logo:hover .logo-mark img.tan,
+.logo:focus-visible .logo-mark img.tan {
+  opacity: 1;
 }
 .logo-text {
   display: flex;
