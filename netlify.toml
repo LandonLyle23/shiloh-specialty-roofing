@@ -1,0 +1,15 @@
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Netlify Forms: no build step is required for the forms on this site to
+# work. Netlify scans the deployed HTML for <form data-netlify="true"> at
+# deploy time and wires up submissions automatically. All five lead forms
+# share name="lead" so submissions land in one place in the Netlify UI,
+# with a hidden "source-page" field identifying which page they came from.

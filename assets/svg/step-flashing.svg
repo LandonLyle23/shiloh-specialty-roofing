@@ -1,0 +1,71 @@
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sf-title sf-desc">
+<title id="sf-title">Step flashing detail at a roof-to-wall intersection</title>
+<desc id="sf-desc">Roof-to-wall corner showing individual L-shaped step flashing pieces, one per shingle course, each with a leg running up the wall behind the siding, which laps down over the top of each piece to shed water.</desc>
+
+<text x="20" y="38" class="d-label" font-size="13">STEP FLASHING</text>
+<text x="20" y="54" class="d-label-sm">Roof-to-wall — one piece per course</text>
+
+<!-- roof courses -->
+<rect x="60" y="300" width="230" height="40" class="d-fill"/>
+<rect x="60" y="260" width="230" height="40" class="d-fill"/>
+<rect x="60" y="220" width="230" height="40" class="d-fill"/>
+<rect x="60" y="182" width="230" height="38" class="d-fill" opacity="0.5"/>
+
+<!-- deck -->
+<rect x="60" y="340" width="230" height="16" class="d-fill"/>
+<line x1="72" y1="343" x2="60" y2="353" class="d-hatch"/>
+<line x1="92" y1="343" x2="66" y2="356" class="d-hatch"/>
+<line x1="122" y1="343" x2="96" y2="356" class="d-hatch"/>
+<line x1="152" y1="343" x2="126" y2="356" class="d-hatch"/>
+<line x1="182" y1="343" x2="156" y2="356" class="d-hatch"/>
+<line x1="212" y1="343" x2="186" y2="356" class="d-hatch"/>
+<line x1="242" y1="343" x2="216" y2="356" class="d-hatch"/>
+<line x1="272" y1="343" x2="246" y2="356" class="d-hatch"/>
+
+<!-- wall -->
+<rect x="340" y="60" width="90" height="296" class="d-fill"/>
+<line x1="340" y1="90" x2="430" y2="90" class="d-line-thin"/>
+<line x1="340" y1="120" x2="430" y2="120" class="d-line-thin"/>
+<line x1="340" y1="150" x2="430" y2="150" class="d-line-thin"/>
+<line x1="340" y1="180" x2="430" y2="180" class="d-line-thin"/>
+<line x1="340" y1="210" x2="430" y2="210" class="d-line-thin"/>
+<line x1="340" y1="240" x2="430" y2="240" class="d-line-thin"/>
+<line x1="340" y1="270" x2="430" y2="270" class="d-line-thin"/>
+<line x1="340" y1="300" x2="430" y2="300" class="d-line-thin"/>
+<line x1="340" y1="330" x2="430" y2="330" class="d-line-thin"/>
+<line x1="345" y1="64" x2="345" y2="356" class="d-line-accent" stroke-dasharray="5 3"/>
+
+<!-- step flashing pieces: L-shaped, one per course, independent -->
+<path d="M290 304 L340 304 L340 259 L332 259 L332 296 L290 296 Z" class="d-fill-accent"/>
+<path d="M290 264 L340 264 L340 219 L332 219 L332 256 L290 256 Z" class="d-fill-accent"/>
+<path d="M290 224 L340 224 L340 179 L332 179 L332 216 L290 216 Z" class="d-fill-accent"/>
+
+<!-- siding lapping over each flashing's up-wall leg -->
+<line x1="329" y1="259" x2="348" y2="252" stroke="var(--color-black)" stroke-width="3"/>
+<line x1="329" y1="219" x2="348" y2="212" stroke="var(--color-black)" stroke-width="3"/>
+<line x1="329" y1="179" x2="348" y2="172" stroke="var(--color-black)" stroke-width="3"/>
+
+<!-- up-wall leg dimension -->
+<line x1="357" y1="219" x2="357" y2="256" class="d-dim"/>
+<line x1="351" y1="219" x2="363" y2="219" class="d-dim"/>
+<line x1="351" y1="256" x2="363" y2="256" class="d-dim"/>
+<text x="366" y="242" class="d-label-dim">4" min</text>
+
+<!-- labels -->
+<line x1="336" y1="240" x2="470" y2="300" class="d-leader"/>
+<text x="474" y="298" class="d-label">Independent step</text>
+<text x="474" y="311" class="d-label-sm">one piece per course —</text>
+<text x="474" y="323" class="d-label-sm">never a continuous strip</text>
+
+<line x1="345" y1="150" x2="470" y2="150" class="d-leader"/>
+<text x="474" y="146" class="d-label">Siding laps over</text>
+<text x="474" y="159" class="d-label-sm">sheds water down and out —</text>
+<text x="474" y="171" class="d-label-sm">never caulk alone as the seal</text>
+
+<line x1="345" y1="90" x2="470" y2="70" class="d-leader"/>
+<text x="474" y="66" class="d-label">Weather-resistive barrier</text>
+<text x="474" y="79" class="d-label-sm">behind siding, laps over flashing</text>
+
+<text x="60" y="376" class="d-label-sm">Shingle / shake course, uphill piece always overlaps the one below</text>
+
+</svg>

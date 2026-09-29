@@ -1,0 +1,80 @@
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cs-title cs-desc">
+<title id="cs-title">Cedar shake course detail showing exposure and overlap</title>
+<desc id="cs-desc">Side profile of stacked cedar shake courses showing the exposed butt portion of each course, the concealed portion covered by the next two courses, felt interlayment, and staggered joints between adjacent shakes.</desc>
+
+<text x="20" y="38" class="d-label" font-size="13">CEDAR SHAKE COURSING</text>
+<text x="20" y="54" class="d-label-sm">Exposure &amp; headlap — triple-layer coverage</text>
+
+<!-- ============ LEFT: assembled coursing ============ -->
+<rect x="50" y="300" width="210" height="40" class="d-fill"/>
+<rect x="50" y="260" width="210" height="40" class="d-fill"/>
+<rect x="50" y="220" width="210" height="40" class="d-fill"/>
+<rect x="50" y="180" width="210" height="40" class="d-fill"/>
+
+<!-- staggered joint gaps, alternating per course -->
+<line x1="120" y1="300" x2="120" y2="340" stroke="var(--color-offwhite)" stroke-width="3"/>
+<line x1="200" y1="300" x2="200" y2="340" stroke="var(--color-offwhite)" stroke-width="3"/>
+<line x1="90" y1="260" x2="90" y2="300" stroke="var(--color-offwhite)" stroke-width="3"/>
+<line x1="165" y1="260" x2="165" y2="300" stroke="var(--color-offwhite)" stroke-width="3"/>
+<line x1="235" y1="260" x2="235" y2="300" stroke="var(--color-offwhite)" stroke-width="3"/>
+<line x1="120" y1="220" x2="120" y2="260" stroke="var(--color-offwhite)" stroke-width="3"/>
+<line x1="200" y1="220" x2="200" y2="260" stroke="var(--color-offwhite)" stroke-width="3"/>
+<line x1="90" y1="180" x2="90" y2="220" stroke="var(--color-offwhite)" stroke-width="3"/>
+<line x1="165" y1="180" x2="165" y2="220" stroke="var(--color-offwhite)" stroke-width="3"/>
+<line x1="235" y1="180" x2="235" y2="220" stroke="var(--color-offwhite)" stroke-width="3"/>
+
+<!-- felt interlayment peeking at each course line -->
+<line x1="260" y1="298" x2="272" y2="298" class="d-line-accent"/>
+<line x1="260" y1="258" x2="272" y2="258" class="d-line-accent"/>
+<line x1="260" y1="218" x2="272" y2="218" class="d-line-accent"/>
+<text x="276" y="262" class="d-label-sm">felt interlayment</text>
+<line x1="272" y1="258" x2="330" y2="258" class="d-leader"/>
+
+<!-- deck below -->
+<rect x="50" y="340" width="210" height="16" class="d-fill"/>
+<line x1="62" y1="343" x2="50" y2="353" class="d-hatch"/>
+<line x1="82" y1="343" x2="56" y2="356" class="d-hatch"/>
+<line x1="112" y1="343" x2="86" y2="356" class="d-hatch"/>
+<line x1="142" y1="343" x2="116" y2="356" class="d-hatch"/>
+<line x1="172" y1="343" x2="146" y2="356" class="d-hatch"/>
+<line x1="202" y1="343" x2="176" y2="356" class="d-hatch"/>
+<line x1="232" y1="343" x2="206" y2="356" class="d-hatch"/>
+
+<text x="50" y="374" class="d-label-sm">Skip sheathing / solid deck</text>
+
+<!-- ============ RIGHT: one shake pulled out ============ -->
+<line x1="260" y1="280" x2="373" y2="280" class="d-leader"/>
+
+<path d="M373 300 L376 110 L384 110 L387 300 Z" class="d-fill"/>
+<rect x="373" y="260" width="14" height="40" class="d-fill-accent"/>
+
+<!-- exposure bracket -->
+<line x1="405" y1="260" x2="405" y2="300" class="d-dim"/>
+<line x1="399" y1="260" x2="411" y2="260" class="d-dim"/>
+<line x1="399" y1="300" x2="411" y2="300" class="d-dim"/>
+<text x="415" y="284" class="d-label">Exposure</text>
+<text x="415" y="297" class="d-label-sm">7"–10" typical</text>
+
+<!-- concealed bracket -->
+<line x1="405" y1="110" x2="405" y2="258" class="d-dim"/>
+<line x1="399" y1="110" x2="411" y2="110" class="d-dim"/>
+<line x1="399" y1="258" x2="411" y2="258" class="d-dim"/>
+<text x="415" y="150" class="d-label">Concealed</text>
+<text x="415" y="163" class="d-label-sm">covered by the</text>
+<text x="415" y="176" class="d-label-sm">next 2 courses</text>
+
+<!-- overall length bracket -->
+<line x1="500" y1="110" x2="500" y2="300" class="d-line-thin"/>
+<line x1="494" y1="110" x2="506" y2="110" class="d-line-thin"/>
+<line x1="494" y1="300" x2="506" y2="300" class="d-line-thin"/>
+<text x="512" y="200" class="d-label" transform="rotate(90 512 200)" text-anchor="middle">Shake length 18"–24"</text>
+
+<!-- 3-layer coverage icon -->
+<rect x="70" y="90" width="46" height="14" class="d-fill" opacity="0.35"/>
+<rect x="78" y="98" width="46" height="14" class="d-fill" opacity="0.65"/>
+<rect x="86" y="106" width="46" height="14" class="d-fill"/>
+<line x1="140" y1="106" x2="180" y2="90" class="d-leader"/>
+<text x="184" y="88" class="d-label-sm">3 layers thick at any</text>
+<text x="184" y="100" class="d-label-sm">point on the roof</text>
+
+</svg>

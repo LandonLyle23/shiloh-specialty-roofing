@@ -1,0 +1,55 @@
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="v-title v-desc">
+<title id="v-title">Open valley cross-section with center diverter rib</title>
+<desc id="v-desc">Cross-section where two roof planes meet at a valley, showing an open metal valley pan with a raised center rib, ice and water shield underlayment wider than the metal, and roofing held back from the centerline with a consistent reveal.</desc>
+
+<text x="20" y="38" class="d-label" font-size="13">OPEN VALLEY</text>
+<text x="20" y="54" class="d-label-sm">Metal pan with center diverter rib</text>
+
+<!-- ice &amp; water shield, wider than metal -->
+<path d="M55 122 L320 262 L585 122" class="d-line-accent" stroke-dasharray="6 4"/>
+
+<!-- deck lines -->
+<path d="M70 130 L320 270" class="d-line-thin"/>
+<path d="M320 270 L570 130" class="d-line-thin"/>
+<path d="M70 144 L320 284" class="d-line-thin"/>
+<path d="M320 284 L570 144" class="d-line-thin"/>
+<line x1="76" y1="133" x2="70" y2="144" class="d-hatch"/>
+<line x1="92" y1="141" x2="80" y2="144" class="d-hatch"/>
+<line x1="548" y1="141" x2="560" y2="144" class="d-hatch"/>
+<line x1="564" y1="133" x2="570" y2="144" class="d-hatch"/>
+
+<!-- metal valley pan ribbon -->
+<path d="M85 140 L300 268 L312 254 L328 254 L340 268 L555 140 L555 149 L340 277 L328 263 L312 263 L300 277 L85 149 Z" class="d-fill-accent"/>
+
+<!-- shingle cut lines each side -->
+<line x1="218" y1="227" x2="230" y2="206" stroke="var(--color-black)" stroke-width="3"/>
+<line x1="410" y1="206" x2="422" y2="227" stroke="var(--color-black)" stroke-width="3"/>
+
+<!-- reveal dimensions from rib center to each cut line -->
+<line x1="320" y1="270" x2="224" y2="216" class="d-dim"/>
+<line x1="320" y1="270" x2="416" y2="216" class="d-dim"/>
+<text x="242" y="252" class="d-label-dim" transform="rotate(-30 242 252)">4"–6"</text>
+<text x="368" y="252" class="d-label-dim" transform="rotate(30 368 252)">4"–6"</text>
+
+<!-- labels -->
+<line x1="320" y1="262" x2="320" y2="90" class="d-leader"/>
+<line x1="320" y1="90" x2="360" y2="90" class="d-leader"/>
+<text x="364" y="94" class="d-label">Open metal valley</text>
+
+<line x1="325" y1="257" x2="470" y2="180" class="d-leader"/>
+<text x="474" y="176" class="d-label">Center rib</text>
+<text x="474" y="189" class="d-label-sm">prevents cross-wash</text>
+<text x="474" y="201" class="d-label-sm">between the two planes</text>
+
+<line x1="150" y1="180" x2="90" y2="230" class="d-leader"/>
+<text x="40" y="246" class="d-label" text-anchor="start">Ice &amp; water shield</text>
+<text x="40" y="259" class="d-label-sm">full valley width, min 36" total</text>
+
+<line x1="418" y1="216" x2="470" y2="230" class="d-leader"/>
+<text x="474" y="226" class="d-label">Shingle / shake cut line</text>
+<text x="474" y="239" class="d-label-sm">held back off centerline —</text>
+<text x="474" y="251" class="d-label-sm">never woven through the valley</text>
+
+<text x="70" y="330" class="d-label-sm">Roof deck</text>
+
+</svg>
