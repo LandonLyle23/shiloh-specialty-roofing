@@ -93,6 +93,7 @@
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
+      <span class="nav-trust">Family Owned &middot; North Georgia &middot; 30 Years</span>
       <div class="nav-phone">
         <a class="btn btn--on-dark btn--block" data-phone-link data-phone-text href="tel:">[PHONE]</a>
       </div>
@@ -119,41 +120,55 @@
   </a>
 </div>
 
-<div class="trust-strip">
-  <div class="container">
-    <span class="eyebrow">Family Owned &middot; North Georgia &middot; 30 Years</span>
-  </div>
-</div>
-
 <main id="main">
 
-  <!-- HERO — asymmetric ~75/25 split. Specialty (large) / Storm & Insurance (small).
-       Each side is its own <a> so the full panel is one clickable, keyboard-
-       focusable target. Source order puts Specialty first, so it also leads
-       on mobile when the grid stacks to a single column. -->
-  <section aria-label="Choose your path">
-    <div class="hero-split">
-      <a class="hero-panel hero-panel--specialty" href="specialty-materials.html">
-        <span class="eyebrow">Specialty Replacement</span>
-        <h1>Cedar. Slate. Metal. Tile.</h1>
-        <p>Roofing systems built for homes where the roof is part of the architecture, not an afterthought. From cedar and slate to asphalt, every roof is installed by a crew that treats flashing and fastening like it's structural, because it is.</p>
-        <span class="btn-fake">Talk Materials With Us</span>
-      </a>
-      <a class="hero-panel hero-panel--storm" href="storm-insurance.html">
-        <span class="eyebrow">Storm &amp; Insurance</span>
-        <h2>Storm damage claim?</h2>
-        <p>A straight walkthrough of the insurance process, before you talk to anyone else.</p>
-        <span class="btn-fake">Start Here</span>
-      </a>
+  <!-- HERO — full-width. See css/style.css .hero-full for the background
+       treatment notes (gradient + diagonal line pattern, swappable for a
+       video/image later without touching this markup). -->
+  <section class="hero-full">
+    <div class="container">
+      <span class="eyebrow">Specialty Roofing &middot; North Georgia</span>
+      <h1>The roof should be as good as the house.</h1>
+      <p>Cedar, slate, standing seam metal, and tile. Installed by a family that has been doing this for thirty years.</p>
+      <a href="#contact" class="btn btn--tan">Get My Free Roof Inspection</a>
     </div>
   </section>
 
-  <!-- IMAGE SLOT: once photography exists, each .hero-panel can take a
-       background photo (object-fit: cover) behind the existing dark
-       gradient overlay defined in .hero-panel::before — no markup change
-       needed, just add a background-image rule per panel.
-       Specialty panel target ratio: roughly 3:2 landscape at full bleed.
-       Storm panel target ratio: roughly 4:5 portrait at full bleed. -->
+  <!-- TWO-CARD ROUTING -->
+  <section class="section" aria-label="Choose your path">
+    <div class="container">
+      <div class="route-grid">
+        <a class="route-card" href="specialty-materials.html">
+          <span class="eyebrow">Specialty Replacement</span>
+          <h2>Cedar. Slate. Metal. Tile.</h2>
+          <p>Roofing systems built for homes where the roof is part of the architecture, not an afterthought.</p>
+          <span class="route-card-link">Talk Materials With Us
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+        <a class="route-card" href="storm-insurance.html">
+          <span class="eyebrow">Storm &amp; Insurance</span>
+          <h2>Storm damage claim?</h2>
+          <p>A straight walkthrough of the insurance process, before you talk to anyone else.</p>
+          <span class="route-card-link">Get My Damage Documented
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAMILY OWNED -->
+  <section class="section section--offwhite">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Family Owned</span>
+        <h2>Thirty years of this family on north Georgia roofs.</h2>
+        <p>We are a small family company by choice. The same people who quote your roof are the people who inspect it, run the job, and answer the phone when you have a question two years later. There is no call center, no rotating crew of strangers, and no salesman who disappears the day the contract is signed.</p>
+        <p>Thirty years in cedar, slate, standing seam metal, copper, and tile. These are not materials you learn on the job. They are materials you grow up in.</p>
+      </div>
+    </div>
+  </section>
 
   <!-- THE FREE INSPECTION -->
   <section class="section">
@@ -167,7 +182,7 @@
     </div>
   </section>
 
-  <!-- WHO IS SHILOH / FAMILY OWNED -->
+  <!-- WHO WE ARE -->
   <section class="section section--offwhite">
     <div class="container">
       <div class="grid grid--2" style="align-items: start;">
@@ -176,7 +191,7 @@
           <h2>A family roofing business, not a storm-chasing volume crew.</h2>
         </div>
         <div>
-          <p>Shiloh Specialty Roofing is family owned and family run. Our family has been roofing in north Georgia for more than thirty years, and that is not a line on a website. It is why we know what cedar does in this humidity, why we flash a chimney the slow way, and why we will not put something on your house we would not put on our own. We are a small company by choice: the same people who quote your roof inspect it, run the job, and answer the phone when you have a question two years later.</p>
+          <p>Shiloh Specialty Roofing is family owned and family run. Our family has been roofing in north Georgia for more than thirty years, and that is not a line on a website. It is why we know what cedar does in this humidity, why we flash a chimney the slow way, and why we will not put something on your house we would not put on our own.</p>
           <p>The roof on an expensive home should be installed with the same precision as the rest of the house. Cedar shake with correct exposure and weather-checking gaps. Standing seam metal with real hemmed seams instead of exposed screws. Slate and tile set the way the material wants to be set, not the way that is fastest.</p>
           <a href="contact.html" class="btn btn--ghost">Get My Free Roof Inspection</a>
         </div>

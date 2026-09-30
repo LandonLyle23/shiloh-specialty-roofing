@@ -345,8 +345,8 @@ p {
   flex-shrink: 0;
 }
 .logo {
-  width: 220px;
-  height: auto;
+  height: 60px;
+  width: auto;
   display: block;
 }
 
@@ -397,6 +397,10 @@ p {
   margin-top: 1.5rem;
 }
 
+.nav-trust {
+  display: none;
+}
+
 .header-cta {
   display: none;
 }
@@ -413,6 +417,8 @@ p {
     overflow: visible;
     flex: 1;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
   }
   .nav-primary ul {
@@ -435,6 +441,16 @@ p {
     color: var(--color-tan);
   }
   .nav-primary .nav-phone { display: none; }
+  .nav-trust {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--color-tan-dim);
+    white-space: nowrap;
+  }
   .header-cta {
     display: flex;
     align-items: center;
@@ -465,22 +481,6 @@ p {
     color: var(--color-white);
     white-space: nowrap;
   }
-}
-
-/* --------------------------------------------------------------------------
-   TRUST STRIP
-   Slim credential line under the header. Small and quiet on purpose, it's
-   a footnote-weight fact, not a second headline.
-   -------------------------------------------------------------------------- */
-.trust-strip {
-  background: var(--color-black);
-  text-align: center;
-  padding: 0.6rem 0;
-  border-bottom: 1px solid #1a1a1a;
-}
-.trust-strip .eyebrow {
-  margin: 0;
-  color: var(--color-tan);
 }
 
 /* --------------------------------------------------------------------------
@@ -526,58 +526,20 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   HOME HERO — asymmetric split, ~75/25. Stacks on mobile, Specialty first.
+   HOME HERO — full-width. Background treatment (gradient + diagonal line
+   pattern) is the same one previously used on the split hero panels, kept
+   exactly as-is. IMAGE/VIDEO SLOT: once footage exists, this is where a
+   background video or image goes, behind the same gradient overlay, full
+   bleed, roughly 16:9 to 21:9 depending on final footage.
    -------------------------------------------------------------------------- */
-.hero-split {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-@media (min-width: 800px) {
-  .hero-split {
-    grid-template-columns: 3fr 1fr;
-    min-height: 640px;
-  }
-}
-
-.hero-panel {
+.hero-full {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 4vw, 4rem);
-  min-height: 60vh;
-  background: var(--color-black);
-  color: var(--color-white);
   overflow: hidden;
   isolation: isolate;
-  cursor: pointer;
-}
-@media (min-width: 800px) {
-  .hero-panel { min-height: 640px; }
-}
-
-.hero-panel--specialty {
   background: var(--color-black);
+  padding: clamp(5rem, 9vw, 7.5rem) 0;
 }
-.hero-panel--storm {
-  background: #0c0c0c;
-  border-top: 1px solid #1c1c1c;
-}
-@media (min-width: 800px) {
-  .hero-panel--storm {
-    border-top: 0;
-    border-left: 1px solid #1c1c1c;
-    min-height: 640px;
-    justify-content: center;
-  }
-}
-
-/* IMAGE SLOT: hero-panel background image, when photography is available.
-   Specialty panel target: 1600x1400 (landscape-tall), dark-graded exterior
-   shot of a cedar/slate/metal roof at dusk, object-fit: cover, with this
-   same black gradient overlay kept on top for text contrast:
-   .hero-panel::before { background: linear-gradient(...); } */
-.hero-panel::before {
+.hero-full::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -586,47 +548,75 @@ body {
     linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.85) 100%),
     repeating-linear-gradient(115deg, rgba(196,169,139,0.05) 0px, rgba(196,169,139,0.05) 1px, transparent 1px, transparent 64px);
 }
-
-.hero-panel .eyebrow { color: var(--color-tan); }
-.hero-panel h1 {
-  font-size: clamp(2rem, 4.5vw + 1rem, 3.75rem);
-  margin-bottom: 1rem;
+.hero-full .eyebrow { color: var(--color-tan); }
+.hero-full h1 {
+  color: var(--color-white);
+  font-size: clamp(2.5rem, 6vw + 1rem, 5.25rem);
+  max-width: 17ch;
+  margin-bottom: 1.25rem;
 }
-.hero-panel--storm h2 {
-  font-size: clamp(1.5rem, 2.5vw + 1rem, 2.25rem);
-  margin-bottom: 0.75rem;
-}
-.hero-panel p {
-  max-width: 46ch;
+.hero-full p {
+  max-width: 60ch;
   color: var(--color-text-on-black-muted);
-  font-size: 1.0625rem;
+  font-size: 1.1875rem;
+  margin-bottom: 2rem;
 }
-.hero-panel .btn-fake {
-  align-self: flex-start;
+
+/* --------------------------------------------------------------------------
+   ROUTE CARDS — two equal-weight paths directly below the hero.
+   -------------------------------------------------------------------------- */
+.route-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+@media (min-width: 720px) {
+  .route-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+.route-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background: var(--color-white);
+  border: 1px solid #e7e2da;
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  transition: border-color var(--transition), transform var(--transition);
+}
+.route-card:hover,
+.route-card:focus-visible {
+  border-color: var(--color-tan);
+  transform: translateY(-2px);
+}
+.route-card h2 {
+  font-size: clamp(1.5rem, 2vw + 1rem, 2rem);
+  margin-bottom: 0;
+}
+.route-card p {
+  color: var(--color-text-on-white-muted);
+  margin-bottom: 0;
+}
+.route-card-link {
+  margin-top: 0.5rem;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 0.5rem;
   font-weight: 700;
   font-size: 0.8125rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 0.95rem 1.75rem;
-  border: 1.5px solid var(--color-white);
-  border-radius: var(--radius);
-  transition: background var(--transition), color var(--transition), border-color var(--transition);
-}
-.hero-panel:hover .btn-fake,
-.hero-panel:focus-visible .btn-fake {
-  background: var(--color-tan);
-  border-color: var(--color-tan);
   color: var(--color-black);
 }
-.hero-panel:hover::before,
-.hero-panel:focus-visible::before {
-  background:
-    linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.75) 100%),
-    repeating-linear-gradient(115deg, rgba(196,169,139,0.09) 0px, rgba(196,169,139,0.09) 1px, transparent 1px, transparent 64px);
+.route-card-link svg {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--transition);
+}
+.route-card:hover .route-card-link svg,
+.route-card:focus-visible .route-card-link svg {
+  transform: translateX(4px);
 }
 
 /* --------------------------------------------------------------------------
