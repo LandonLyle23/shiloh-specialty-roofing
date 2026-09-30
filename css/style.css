@@ -418,7 +418,7 @@ p {
   .nav-primary ul {
     flex-direction: row;
     flex-wrap: nowrap;
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
   .nav-primary a {
     display: block;
@@ -438,8 +438,13 @@ p {
   .header-cta {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: 1rem;
     flex-shrink: 0;
+  }
+  .header-cta .btn {
+    padding: 0.85rem 1.15rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
   }
   .header-phone {
     display: flex;
@@ -906,13 +911,16 @@ body {
   background: var(--color-offwhite);
   font-size: 0.9375rem;
 }
-.section--dark .callout {
+.section--dark .callout,
+.page-hero .callout {
   background: #111111;
   color: var(--color-text-on-black-muted);
 }
 .callout p:last-child { margin-bottom: 0; }
 .callout strong { color: var(--color-black); }
-.section--dark .callout strong { color: var(--color-white); }
+.section--dark .callout strong,
+.page-hero .callout strong { color: var(--color-white); }
+.page-hero .callout { margin: 1.5rem 0; max-width: 62ch; }
 
 /* --------------------------------------------------------------------------
    FAQ / ACCORDION-FREE Q&A (kept plain for accessibility + simplicity)
@@ -945,6 +953,20 @@ body {
   padding: clamp(2rem, 4vw, 3rem);
 }
 .form-panel .eyebrow { color: var(--color-tan); }
+
+.risk-reversal {
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--color-tan);
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #2a2a2a;
+}
+.risk-reversal p { margin: 0 0 0.4rem; }
+.risk-reversal p:last-child { margin-bottom: 0; font-weight: 700; }
+.form-panel--light .risk-reversal {
+  border-bottom-color: #e7e2da;
+}
 
 .lead-form {
   display: grid;
@@ -1077,59 +1099,6 @@ body {
 }
 .thanks .container { max-width: 720px; text-align: center; }
 .thanks .rule--center { margin-top: 1.5rem; margin-bottom: 1.5rem; }
-
-/* --------------------------------------------------------------------------
-   TEAM CARDS (Meet Our Team page)
-   No photography exists yet (available spring). Each card's "photo" slot
-   is a geometric placeholder built from the logo mark on black — on-brand
-   and deliberate, not a gray box. Swap .team-card-photo's contents for a
-   real <img> at a 4:5 aspect ratio once headshots exist.
-   -------------------------------------------------------------------------- */
-.team-grid {
-  display: grid;
-  gap: 2rem;
-}
-@media (min-width: 640px) {
-  .team-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (min-width: 960px) {
-  .team-grid { grid-template-columns: repeat(3, 1fr); }
-}
-.team-card {
-  background: var(--color-white);
-  border: 1px solid #e7e2da;
-}
-.team-card-photo {
-  aspect-ratio: 4 / 5;
-  background: var(--color-black);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-tan);
-}
-.team-card-photo img {
-  width: 96px;
-  height: auto;
-}
-.team-card-body {
-  padding: 1.5rem;
-}
-.team-card-body .role {
-  display: block;
-  font-size: 0.6875rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-tan-dim);
-  font-weight: 700;
-  margin-bottom: 0.9rem;
-}
-.team-card-body h3 {
-  margin-bottom: 0.2rem;
-}
-.team-card-body p {
-  font-size: 0.9375rem;
-  margin-bottom: 0;
-}
 
 /* --------------------------------------------------------------------------
    FOOTER
