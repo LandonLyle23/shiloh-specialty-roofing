@@ -464,10 +464,10 @@ p {
   .nav-primary .nav-phone { display: none; }
   .nav-trust {
     display: block;
-    margin-top: 0.3rem;
-    font-size: 0.625rem;
+    margin-top: 0.45rem;
+    font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 0.13em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--color-tan-dim);
     white-space: nowrap;
@@ -560,7 +560,8 @@ body {
   overflow: hidden;
   isolation: isolate;
   background: var(--color-black);
-  padding: clamp(5rem, 9vw, 7.5rem) 0;
+  padding-top: clamp(5rem, 9vw, 7.5rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
 }
 .hero-full::before {
   content: "";

@@ -59,18 +59,19 @@ Brand colors are defined once, at the top of `css/style.css`, as CSS custom prop
 
 ## Mobile texture images
 
-`css/style.css` (`.texture-band`, `.route-card--specialty`, `.route-card--storm`) and `index.html` reference material close-up photos that don't exist yet — macro shots of cedar shake, slate, copper, standing seam metal, and clay tile, used as a photography stand-in to break up page rhythm on mobile. Until real files are dropped in, every reference fails gracefully (empty `alt`, an `onerror` hide on the `<img>` bands, and a black/roofline-vector fallback on the card backgrounds) — nothing broken shows on screen.
+`css/style.css` has a `.texture-band` component (full-bleed material close-up dividers) and a dark photo treatment for the homepage routing cards (`.route-card--specialty`, `.route-card--storm`) — both designed for macro shots of cedar shake, slate, copper, standing seam metal, and clay tile, once real photography exists. A plain black band with no photo behind it read as a bug rather than a design choice, so the texture-band `<div>`s are currently **removed from `index.html`**, not just hidden — the CSS component is still there, ready to drop back in.
 
-To add the real photos, save them into `assets/textures/` using these exact filenames (referenced directly in `index.html` and `css/style.css`, no other markup changes needed):
+The mobile routing-card photo backgrounds (`.route-card--specialty` / `.route-card--storm`) are still active, since those sit inside a real card with text on top rather than as a bare divider.
 
-| Filename | Used by | Target size | Target weight |
+To bring the texture bands back once you have real photos, save them into `assets/textures/` using these filenames and re-add a `<div class="texture-band"><img src="assets/textures/[filename]" alt="" loading="lazy" decoding="async"></div>` wherever you want a divider in `index.html`:
+
+| Filename | Suggested placement | Target size | Target weight |
 |---|---|---|---|
-| `cedar-shake-01.jpg` | Texture band after hero | 1200×400px (crops to ~800×200 on mobile, ~1200×120 on desktop) | ≤150KB |
-| `standing-seam-01.jpg` | Texture band between routing cards (mobile only) | 900×400px | ≤120KB |
-| `slate-copper-01.jpg` | Texture band before Family Owned | 1200×400px | ≤150KB |
-| `clay-tile-01.jpg` | Texture band before contact form | 1200×400px | ≤150KB |
-| `cedar-shake-02.jpg` | Specialty Replacement card background (mobile) | 800×600px | ≤120KB |
-| `metal-sky-01.jpg` | Storm & Insurance card background (mobile) | 800×600px | ≤120KB |
+| `cedar-shake-01.jpg` | After the hero | 1200×400px (crops to ~800×200 on mobile, ~1200×120 on desktop) | ≤150KB |
+| `slate-copper-01.jpg` | Before Family Owned | 1200×400px | ≤150KB |
+| `clay-tile-01.jpg` | Before the contact form | 1200×400px | ≤150KB |
+| `cedar-shake-02.jpg` | Specialty Replacement card background (mobile, already wired up) | 800×600px | ≤120KB |
+| `metal-sky-01.jpg` | Storm & Insurance card background (mobile, already wired up) | 800×600px | ≤120KB |
 
 Export as JPG at ~75% quality (these sit under a 40-55% black overlay, so fine detail is wasted bytes). All are decorative texture, not content photos, so no alt text is needed.
 
