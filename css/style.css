@@ -919,6 +919,36 @@ body {
 .section--dark .glossary dd { color: var(--color-text-on-black-muted); }
 
 /* --------------------------------------------------------------------------
+   ROOFLINE BACKGROUND TEXTURE
+   Standing in for photography until real job photos exist. A faint,
+   layered roofline/ridgeline silhouette sitting at the bottom of dark
+   sections, black and tan only. Swap or remove per section once real
+   photography is available, no layout change needed elsewhere.
+   -------------------------------------------------------------------------- */
+.bg-roofline {
+  position: relative;
+  overflow: hidden;
+}
+.bg-roofline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 200px;
+  background-image: url("../assets/svg/roofline-texture.svg");
+  background-repeat: repeat-x;
+  background-position: bottom left;
+  background-size: auto 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.bg-roofline > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* --------------------------------------------------------------------------
    CALLOUT / LEGAL NOTE
    -------------------------------------------------------------------------- */
 .callout {

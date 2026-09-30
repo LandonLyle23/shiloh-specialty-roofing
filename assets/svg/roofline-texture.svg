@@ -1,0 +1,8 @@
+<svg viewBox="0 0 1600 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+  <path d="M0,350 L120,200 L220,280 L340,150 L460,260 L600,190 L720,300 L860,170 L1000,270 L1140,210 L1280,300 L1400,180 L1600,350"
+        fill="none" stroke="#C4A98B" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" opacity="0.08"/>
+  <path d="M0,380 L100,280 L180,340 L280,240 L380,330 L500,260 L600,350 L720,270 L820,340 L950,250 L1060,330 L1180,270 L1300,340 L1450,260 L1600,380"
+        fill="none" stroke="#C4A98B" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" opacity="0.12"/>
+  <path d="M0,400 L80,320 L140,380 L220,300 L280,390 L380,310 L440,395 L540,315 L600,400 L700,320 L760,390 L860,310 L920,400 L1020,325 L1080,395 L1180,315 L1240,400 L1360,320 L1420,395 L1520,330 L1600,400"
+        fill="none" stroke="#C4A98B" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" opacity="0.16"/>
+</svg>
