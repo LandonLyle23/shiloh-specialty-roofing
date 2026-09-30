@@ -1098,6 +1098,7 @@ body {
   background: rgba(0, 0, 0, 0.4);
 }
 .texture-band-label {
+  display: none; /* revealed by the img's onload once a real photo exists behind it */
   position: absolute;
   z-index: 1;
   left: 50%;
