@@ -468,6 +468,22 @@ p {
 }
 
 /* --------------------------------------------------------------------------
+   TRUST STRIP
+   Slim credential line under the header. Small and quiet on purpose, it's
+   a footnote-weight fact, not a second headline.
+   -------------------------------------------------------------------------- */
+.trust-strip {
+  background: var(--color-black);
+  text-align: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #1a1a1a;
+}
+.trust-strip .eyebrow {
+  margin: 0;
+  color: var(--color-tan);
+}
+
+/* --------------------------------------------------------------------------
    MOBILE STICKY CALL BAR
    Roofing leads call more than they submit — always-visible on mobile.
    -------------------------------------------------------------------------- */
