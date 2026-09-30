@@ -398,11 +398,32 @@ p {
 }
 
 .nav-trust {
-  display: none;
+  display: block;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #1f1f1f;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--color-tan-dim);
 }
 
 .header-cta {
   display: none;
+}
+
+/* Mobile header: logo left, hamburger right, nothing else — keeps the
+   whole bar under 64px tall. The trust line lives in the drawer above,
+   not in this row. */
+@media (max-width: 959px) {
+  .header-inner {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .logo {
+    height: 44px;
+  }
 }
 
 @media (min-width: 960px) {
@@ -493,9 +514,10 @@ p {
   right: 0;
   bottom: 0;
   z-index: 99;
+  height: 60px;
   display: flex;
   background: var(--color-tan);
-  border-top: 1px solid var(--color-black);
+  border-top: 1px solid rgba(196, 169, 139, 0.2);
 }
 .sticky-call-bar a {
   flex: 1;
@@ -503,12 +525,13 @@ p {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.95rem 0.5rem;
+  padding: 0.5rem;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--color-black);
+  border-radius: 0;
 }
 .sticky-call-bar a + a {
   border-left: 1px solid rgba(0, 0, 0, 0.25);
@@ -518,7 +541,7 @@ p {
   height: 16px;
 }
 body {
-  padding-bottom: 58px; /* clears the sticky call bar on mobile */
+  padding-bottom: 60px; /* clears the sticky call bar on mobile */
 }
 @media (min-width: 960px) {
   .sticky-call-bar { display: none; }
@@ -619,6 +642,55 @@ body {
   transform: translateX(4px);
 }
 
+/* On mobile the cards carry a material photo instead of sitting on white,
+   so they read as substantial, not like a list item. Desktop keeps the
+   light bordered-card treatment above. Photo falls back to solid black
+   plus the roofline vector (same graceful-degradation pattern as
+   .texture-band) until a real file lands in assets/textures/. */
+@media (max-width: 719px) {
+  .route-card {
+    position: relative;
+    min-height: 280px;
+    justify-content: center;
+    border: none;
+    overflow: hidden;
+    color: var(--color-white);
+    background-color: var(--color-black);
+    background-image: url("../assets/svg/roofline-texture.svg");
+    background-repeat: repeat-x;
+    background-position: bottom;
+    background-size: auto 160%;
+  }
+  .route-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), var(--route-card-img);
+    background-size: cover;
+    background-position: center;
+  }
+  .route-card > * {
+    position: relative;
+    z-index: 1;
+  }
+  .route-card .eyebrow {
+    color: var(--color-tan);
+  }
+  .route-card h2,
+  .route-card p {
+    color: var(--color-white);
+  }
+  .route-card-link {
+    color: var(--color-white);
+  }
+  .route-card--specialty {
+    --route-card-img: url("../assets/textures/cedar-shake-02.jpg");
+  }
+  .route-card--storm {
+    --route-card-img: url("../assets/textures/metal-sky-01.jpg");
+  }
+}
+
 /* --------------------------------------------------------------------------
    PAGE HERO (interior pages) — simple black band with title.
    -------------------------------------------------------------------------- */
@@ -707,6 +779,53 @@ body {
   width: 100%;
   height: auto;
 }
+/* Below 720px the diagrams have enough label detail that shrinking to fit
+   the screen makes the text illegible, so they scroll horizontally at
+   native size instead. Desktop is untouched: svg stays 100% width. */
+.diagram-scroll {
+  position: relative;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.diagram-scroll svg {
+  width: 640px;
+  min-width: 640px;
+  height: auto;
+  display: block;
+}
+.diagram-scroll::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 28px;
+  background: linear-gradient(to right, transparent, var(--color-white) 90%);
+  pointer-events: none;
+}
+.diagram-scroll-hint {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-tan-dim);
+  text-align: right;
+}
+@media (min-width: 720px) {
+  .diagram-scroll {
+    overflow-x: visible;
+  }
+  .diagram-scroll svg {
+    width: 100%;
+    min-width: 0;
+  }
+  .diagram-scroll::after,
+  .diagram-scroll-hint {
+    display: none;
+  }
+}
 .diagram figcaption {
   margin-top: 1rem;
   padding-top: 1rem;
@@ -757,6 +876,9 @@ body {
 .material-grid {
   display: grid;
   gap: 2.5rem;
+}
+.material-grid > * {
+  min-width: 0; /* lets the fixed-width diagram scroll instead of blowing out the grid track */
 }
 @media (min-width: 900px) {
   .material-grid {
@@ -936,6 +1058,70 @@ body {
 .bg-roofline > .container {
   position: relative;
   z-index: 1;
+}
+
+/* --------------------------------------------------------------------------
+   FULL-BLEED TEXTURE BAND
+   Material close-up (cedar, slate, copper, standing seam, tile) used to
+   break up page rhythm between sections on mobile. Real photos drop into
+   assets/textures/ (see README for target dimensions/weight). Until a
+   real file exists at that path, the <img> has nothing to paint (empty
+   alt, so no broken-icon), and the band falls back to solid black plus
+   the same roofline vector used elsewhere, so there is never a blank gap.
+   -------------------------------------------------------------------------- */
+.texture-band {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  height: 200px;
+  overflow: hidden;
+  background-color: var(--color-black);
+  background-image: url("../assets/svg/roofline-texture.svg");
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: auto 140%;
+}
+.texture-band img {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.texture-band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+.texture-band-label {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: 1.1rem;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-tan);
+  white-space: nowrap;
+}
+.texture-band--card-gap {
+  display: block;
+}
+@media (min-width: 720px) {
+  .texture-band--card-gap {
+    display: none;
+  }
+}
+@media (min-width: 960px) {
+  .texture-band {
+    height: 120px;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1190,6 +1376,68 @@ body {
   max-width: 70ch;
   font-size: 0.75rem;
   line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   MOBILE TYPOGRAPHY
+   Reading content gets a 17px base and a 15px floor on mobile so the site
+   doesn't feel like a shrunk-down desktop layout. True micro-labels
+   (eyebrows, table headers, dt terms, footer headings) keep the ~12px
+   floor already used for .eyebrow, since that's an intentional small-caps
+   treatment, not a legibility compromise.
+   -------------------------------------------------------------------------- */
+@media (max-width: 959px) {
+  body {
+    font-size: 17px;
+  }
+  .hero-full h1 {
+    font-size: 2.75rem; /* 44px, dominant but within the 40-46px mobile range */
+  }
+  .btn {
+    font-size: 0.9375rem;
+  }
+  .sticky-call-bar a {
+    font-size: 0.9375rem;
+  }
+  .route-card-link {
+    font-size: 0.9375rem;
+  }
+  .diagram figcaption {
+    font-size: 0.9375rem;
+  }
+  .diagram figcaption strong {
+    font-size: 0.75rem;
+  }
+  .risk-reversal {
+    font-size: 0.9375rem;
+  }
+  .field label {
+    font-size: 0.9375rem;
+  }
+  .field-note {
+    font-size: 0.9375rem;
+  }
+  .form-legal {
+    font-size: 0.9375rem;
+  }
+  .footer-brand p {
+    font-size: 0.9375rem;
+  }
+  .footer-col a {
+    font-size: 0.9375rem;
+  }
+  .footer-bottom {
+    font-size: 0.9375rem;
+  }
+  .footer-legal-note {
+    font-size: 0.9375rem;
+  }
+  .worked-example thead th {
+    font-size: 0.75rem;
+  }
+  .contact-info dt {
+    font-size: 0.75rem;
+  }
 }
 
 /* --------------------------------------------------------------------------

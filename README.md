@@ -57,6 +57,23 @@ To swap in the real logo:
 
 Brand colors are defined once, at the top of `css/style.css`, as CSS custom properties (`--color-black`, `--color-white`, `--color-tan`) — do not add new colors elsewhere.
 
+## Mobile texture images
+
+`css/style.css` (`.texture-band`, `.route-card--specialty`, `.route-card--storm`) and `index.html` reference material close-up photos that don't exist yet — macro shots of cedar shake, slate, copper, standing seam metal, and clay tile, used as a photography stand-in to break up page rhythm on mobile. Until real files are dropped in, every reference fails gracefully (empty `alt`, an `onerror` hide on the `<img>` bands, and a black/roofline-vector fallback on the card backgrounds) — nothing broken shows on screen.
+
+To add the real photos, save them into `assets/textures/` using these exact filenames (referenced directly in `index.html` and `css/style.css`, no other markup changes needed):
+
+| Filename | Used by | Target size | Target weight |
+|---|---|---|---|
+| `cedar-shake-01.jpg` | Texture band after hero | 1200×400px (crops to ~800×200 on mobile, ~1200×120 on desktop) | ≤150KB |
+| `standing-seam-01.jpg` | Texture band between routing cards (mobile only) | 900×400px | ≤120KB |
+| `slate-copper-01.jpg` | Texture band before Family Owned | 1200×400px | ≤150KB |
+| `clay-tile-01.jpg` | Texture band before contact form | 1200×400px | ≤150KB |
+| `cedar-shake-02.jpg` | Specialty Replacement card background (mobile) | 800×600px | ≤120KB |
+| `metal-sky-01.jpg` | Storm & Insurance card background (mobile) | 800×600px | ≤120KB |
+
+Export as JPG at ~75% quality (these sit under a 40-55% black overlay, so fine detail is wasted bytes). All are decorative texture, not content photos, so no alt text is needed.
+
 ## Forms
 
 All five lead forms (Home, Specialty, Storm, Replacement, Contact) share `name="lead"` and post to **Netlify Forms** via `data-netlify="true"` — no backend or JS required once deployed on Netlify. Netlify detects the form automatically at deploy time from the static HTML. Submissions land in one place in the Netlify dashboard (Site → Forms), with a hidden `source-page` field so you can tell which page each lead came from. A honeypot field (`bot-field`) filters basic spam bots.

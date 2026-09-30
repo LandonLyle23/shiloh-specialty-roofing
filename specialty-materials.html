@@ -67,11 +67,13 @@
   </div>
 </header>
 
+<!-- Single full-width CTA until a real phone number exists.
+     Once [PHONE] is replaced with a real number, split this back into two
+     equal-width buttons (phone left, CTA right) using the .sticky-call-bar
+     a + a border-left rule already defined in css/style.css, e.g.:
+     <a data-phone-link href="tel:"><svg>...</svg><span data-phone-text>[PHONE]</span></a>
+     <a href="#contact"><svg>...</svg><span>Talk Materials With Us</span></a> -->
 <div class="sticky-call-bar">
-  <a data-phone-link href="tel:">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-    <span data-phone-text>[PHONE]</span>
-  </a>
   <a href="#contact">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg>
     <span>Talk Materials With Us</span>
@@ -116,6 +118,7 @@
             <div><span class="label">Common failure</span><span class="value">Rot from below</span></div>
           </div>
           <figure class="diagram">
+            <div class="diagram-scroll">
             <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cs-title cs-desc">
               <title id="cs-title">Cedar shake course detail showing exposure and overlap</title>
               <desc id="cs-desc">Side profile of stacked cedar shake courses showing the exposed butt portion of each course, the concealed portion covered by the next two courses, felt interlayment, and staggered joints between adjacent shakes.</desc>
@@ -174,6 +177,8 @@
               <text x="184" y="88" class="d-label-sm">3 layers thick at any</text>
               <text x="184" y="100" class="d-label-sm">point on the roof</text>
             </svg>
+            </div>
+            <span class="diagram-scroll-hint">Scroll to see full diagram &rarr;</span>
             <figcaption><strong>Figure 01: Cedar shake coursing</strong>Each shake is far longer than its visible exposure. Because exposure is roughly a third of shake length, any point on the roof sits under three overlapping layers, the actual source of a shake roof's water resistance.</figcaption>
           </figure>
         </div>
@@ -201,6 +206,7 @@
             <div><span class="label">Common failure</span><span class="value">Washer failure (exposed-fastener)</span></div>
           </div>
           <figure class="diagram">
+            <div class="diagram-scroll">
             <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ss-title ss-desc">
               <title id="ss-title">Standing seam panel profile compared to exposed fastener panel</title>
               <desc id="ss-desc">Cross-section drawing comparing a mechanically double-locked standing seam metal roof panel with a concealed clip to a lower-cost exposed fastener panel with screws driven through the panel face.</desc>
@@ -273,6 +279,8 @@
               <text x="418" y="180" class="d-label-sm" text-anchor="end">cracks over time,</text>
               <text x="418" y="193" class="d-label-sm" text-anchor="end">primary leak point</text>
             </svg>
+            </div>
+            <span class="diagram-scroll-hint">Scroll to see full diagram &rarr;</span>
             <figcaption><strong>Figure 02: Standing seam vs. exposed fastener</strong>Concealed clips let the panel move independently of the deck. Exposed screws pin the panel rigidly and rely on a rubber washer that is, by design, a wear item.</figcaption>
           </figure>
         </div>
@@ -363,7 +371,8 @@
       </div>
       <div class="grid grid--2">
         <figure class="diagram">
-          <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="v-title v-desc">
+          <div class="diagram-scroll">
+            <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="v-title v-desc">
             <title id="v-title">Open valley cross-section with center diverter rib</title>
             <desc id="v-desc">Cross-section where two roof planes meet at a valley, showing an open metal valley pan with a raised center rib, ice and water shield underlayment wider than the metal, and roofing held back from the centerline with a consistent reveal.</desc>
             <text x="20" y="38" class="d-label" font-size="13">OPEN VALLEY</text>
@@ -400,11 +409,14 @@
             <text x="474" y="251" class="d-label-sm">never woven through the valley</text>
             <text x="70" y="330" class="d-label-sm">Roof deck</text>
           </svg>
+            </div>
+            <span class="diagram-scroll-hint">Scroll to see full diagram &rarr;</span>
           <figcaption><strong>Figure 03: Open valley</strong>An open metal valley with a center rib keeps water on its own roof plane instead of washing across and under the opposite side's roofing.</figcaption>
         </figure>
 
         <figure class="diagram">
-          <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sf-title sf-desc">
+          <div class="diagram-scroll">
+            <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="sf-title sf-desc">
             <title id="sf-title">Step flashing detail at a roof-to-wall intersection</title>
             <desc id="sf-desc">Roof-to-wall corner showing individual L-shaped step flashing pieces, one per shingle course, each with a leg running up the wall behind the siding, which laps down over the top of each piece to shed water.</desc>
             <text x="20" y="38" class="d-label" font-size="13">STEP FLASHING</text>
@@ -456,6 +468,8 @@
             <text x="474" y="79" class="d-label-sm">behind siding, laps over flashing</text>
             <text x="60" y="376" class="d-label-sm">Shingle / shake course, uphill piece always overlaps the one below</text>
           </svg>
+            </div>
+            <span class="diagram-scroll-hint">Scroll to see full diagram &rarr;</span>
           <figcaption><strong>Figure 04: Step flashing</strong>Every course against a wall gets its own flashing piece, woven in one at a time as the courses go up. A continuous strip of flashing, or flashing sealed to the wall with caulk instead of lapped siding, is a shortcut that fails.</figcaption>
         </figure>
       </div>
