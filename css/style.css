@@ -126,7 +126,7 @@ h4 {
   margin: 0 0 1rem;
 }
 
-h1 { font-size: clamp(2.25rem, 5vw + 1rem, 4.25rem); }
+h1 { font-size: clamp(2.5rem, 5.5vw + 1rem, 5.25rem); }
 h2 { font-size: clamp(1.75rem, 3vw + 1rem, 2.75rem); }
 h3 { font-size: clamp(1.25rem, 1.5vw + 1rem, 1.75rem); }
 h4 { font-size: 1.125rem; letter-spacing: 0.06em; }
@@ -329,6 +329,19 @@ p {
   z-index: 100;
   background: var(--color-black);
   border-bottom: 1px solid #1a1a1a;
+  transition: background-color 300ms ease, border-color 300ms ease;
+}
+
+/* Homepage only: header starts fully transparent over the hero background
+   and fades to solid once scrolled past it. Inner pages (no video hero)
+   keep the always-solid header above. */
+body[data-page="home"] .site-header {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+body[data-page="home"] .site-header.is-scrolled {
+  background: var(--color-black);
+  border-bottom-color: rgba(196, 169, 139, 0.2);
 }
 
 .header-inner {
@@ -345,7 +358,7 @@ p {
   flex-shrink: 0;
 }
 .logo {
-  height: 60px;
+  height: 72px;
   width: auto;
   display: block;
 }
@@ -397,26 +410,24 @@ p {
   margin-top: 1.5rem;
 }
 
-.nav-trust {
-  display: block;
-  margin-top: 1.25rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid #1f1f1f;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: var(--color-tan-dim);
+.header-cta {
+  display: none;
 }
 
-.header-cta {
+.header-divider {
   display: none;
 }
 
 /* Mobile header: logo left, hamburger right, nothing else — keeps the
    whole bar under 64px tall. The trust line lives in the drawer above,
    not in this row. */
-@media (max-width: 959px) {
+/* This threshold is wider than the typography/mobile breakpoints elsewhere
+   on purpose: measured bounding-rect checks (not just container overflow)
+   showed the 6 nav links alone start colliding with the logo and the
+   header-cta block below ~1350px, since nav-primary centers nowrap text
+   that doesn't clip when it's wider than the box. Below 1350px the
+   hamburger drawer is the only layout that's actually collision-free. */
+@media (max-width: 1349px) {
   .header-inner {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -426,33 +437,64 @@ p {
   }
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1350px) {
   .nav-toggle { display: none; }
+
+  /* Fixed three-column grid instead of flex: the outer columns are a
+     constant 280px regardless of CTA/button text length, so the center
+     nav column is always the same width and never shifts between pages.
+     This overrides .container/.container--wide's own max-width/padding
+     for this element specifically (same specificity, declared later). */
+  .header-inner {
+    display: grid;
+    grid-template-columns: 280px 1fr 40px 280px;
+    align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 4px 40px;
+  }
+  .header-divider {
+    display: block;
+    grid-column: 3;
+    justify-self: center;
+    width: 1px;
+    height: 48px;
+    background: rgba(196, 169, 139, 0.3);
+  }
+
+  .logo-link {
+    grid-column: 1;
+    justify-self: start;
+  }
 
   .nav-primary {
     position: static;
+    grid-column: 2;
     width: auto;
     transform: none;
     background: transparent;
     padding: 0;
     overflow: visible;
-    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
+    gap: 0.4rem;
   }
+  /* Links spread evenly across the full column width (equal gaps, not a
+     centered cluster) rather than a fixed inter-item gap. */
   .nav-primary ul {
+    width: 100%;
     flex-direction: row;
     flex-wrap: nowrap;
-    gap: 1.25rem;
+    justify-content: space-between;
+    gap: 0;
   }
   .nav-primary a {
     display: block;
     padding: 0.25rem 0;
     border-bottom: 0;
-    font-size: 0.85rem;
-    letter-spacing: 0.03em;
+    font-size: 0.6875rem;
+    letter-spacing: 0;
     text-transform: uppercase;
     font-weight: 700;
     white-space: nowrap;
@@ -462,31 +504,25 @@ p {
     color: var(--color-tan);
   }
   .nav-primary .nav-phone { display: none; }
-  .nav-trust {
-    display: block;
-    margin-top: 0.45rem;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--color-tan-dim);
-    white-space: nowrap;
-  }
+  /* Right column: CTA button on top, phone number centered beneath it,
+     both centered within the fixed 280px column. */
   .header-cta {
+    grid-column: 4;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    flex-shrink: 0;
+    justify-content: center;
+    gap: 0.35rem;
   }
   .header-cta .btn {
-    padding: 0.85rem 1.15rem;
-    font-size: 0.75rem;
+    padding: 0.8rem 1rem;
+    font-size: 0.7rem;
     white-space: nowrap;
   }
   .header-phone {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     line-height: 1.2;
   }
   .header-phone .label {
@@ -543,7 +579,7 @@ p {
 body {
   padding-bottom: 60px; /* clears the sticky call bar on mobile */
 }
-@media (min-width: 960px) {
+@media (min-width: 1350px) {
   .sticky-call-bar { display: none; }
   body { padding-bottom: 0; }
 }
@@ -559,18 +595,42 @@ body {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  background: var(--color-black);
-  padding-top: clamp(5rem, 9vw, 7.5rem);
-  padding-bottom: clamp(3rem, 6vw, 5rem);
+  background: var(--color-black) url("../assets/images/hero-cedar-shake.jpg") center / cover no-repeat;
+  /* Pulled up by exactly the sticky header's height so the hero's own
+     background sits behind the transparent header instead of there being
+     a gap above it. Padding-top adds that same amount back so the actual
+     content (eyebrow/h1/etc) lands in the same visual position as before.
+     61px = mobile header height, 96px = desktop grid header height. */
+  margin-top: -61px;
+  padding-top: calc(61px + clamp(5rem, 9vw, 7.5rem));
+  padding-bottom: clamp(5rem, 6vw, 6rem);
+}
+@media (min-width: 1350px) {
+  .hero-full {
+    margin-top: -96px;
+    padding-top: calc(96px + clamp(5rem, 9vw, 7.5rem));
+  }
 }
 .hero-full::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
-  background:
-    linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.85) 100%),
-    repeating-linear-gradient(115deg, rgba(196,169,139,0.05) 0px, rgba(196,169,139,0.05) 1px, transparent 1px, transparent 64px);
+  background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.88) 100%);
+}
+.hero-trust {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  padding: 0.4rem 0.85rem;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(196, 169, 139, 0.3);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-tan);
 }
 .hero-full .eyebrow { color: var(--color-tan); }
 .hero-full h1 {
@@ -584,6 +644,32 @@ body {
   color: var(--color-text-on-black-muted);
   font-size: 1.1875rem;
   margin-bottom: 2rem;
+}
+
+.hero-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.hero-btn-group .btn {
+  flex: 1 1 240px;
+  justify-content: center;
+}
+
+/* Translucent glass buttons for the hero: a visibly lighter-weight action
+   than the solid-tan header CTA, so the two never compete for the same
+   visual priority. */
+.btn--glass {
+  background: rgba(196, 169, 139, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(196, 169, 139, 0.5);
+  color: var(--color-white);
+}
+.btn--glass:hover,
+.btn--glass:focus-visible {
+  background: rgba(196, 169, 139, 0.35);
+  color: var(--color-white);
 }
 
 /* --------------------------------------------------------------------------
@@ -700,11 +786,16 @@ body {
   color: var(--color-white);
   padding: clamp(3rem, 8vw, 6rem) 0 clamp(2.5rem, 5vw, 4rem);
 }
+/* Wider than the default .container so the hero content has more room to
+   breathe at wide viewports instead of sitting in a narrow left column. */
+.page-hero > .container {
+  max-width: 1560px;
+}
 .page-hero .eyebrow { color: var(--color-tan); }
 .page-hero p {
-  max-width: 62ch;
+  max-width: 75ch;
   color: var(--color-text-on-black-muted);
-  font-size: 1.125rem;
+  font-size: 1.25rem;
 }
 .page-hero .btn { margin-top: 0.5rem; }
 
@@ -1141,10 +1232,18 @@ body {
   color: var(--color-text-on-black-muted);
 }
 .callout p:last-child { margin-bottom: 0; }
+.callout a {
+  color: var(--color-tan-dim);
+  text-decoration: underline;
+}
+.section--dark .callout a,
+.page-hero .callout a {
+  color: var(--color-tan);
+}
 .callout strong { color: var(--color-black); }
 .section--dark .callout strong,
 .page-hero .callout strong { color: var(--color-white); }
-.page-hero .callout { margin: 1.5rem 0; max-width: 62ch; }
+.page-hero .callout { margin: 1.5rem 0; max-width: 75ch; }
 
 /* --------------------------------------------------------------------------
    FAQ / ACCORDION-FREE Q&A (kept plain for accessibility + simplicity)
@@ -1332,7 +1431,7 @@ body {
   color: var(--color-text-on-black-muted);
   padding: 3rem 0 6.5rem; /* extra bottom padding clears mobile call bar */
 }
-@media (min-width: 960px) {
+@media (min-width: 1350px) {
   .site-footer { padding-bottom: 3rem; }
 }
 .footer-grid {

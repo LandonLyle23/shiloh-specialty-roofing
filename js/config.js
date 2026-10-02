@@ -45,8 +45,8 @@ window.SHILOH_CONFIG = {
     }
   },
 
-  /* [PLACEHOLDER] Business email for on-page mailto links. */
-  email: "[EMAIL]",
+  /* Business email for on-page mailto links. */
+  email: "info@shilohspecialtyroofing.com",
 
   /* Where forms submit. Netlify Forms works with no backend once the site
      is deployed on Netlify (see netlify.toml and the form's data-netlify

@@ -57,9 +57,29 @@
     if (el) el.textContent = new Date().getFullYear();
   }
 
+  /* Homepage header starts transparent over the hero; this just flips a
+     class once scrolled past it so the CSS transition can fade it solid.
+     Harmless on inner pages, where the header is solid regardless. */
+  function initHeaderScroll() {
+    var header = document.querySelector(".site-header");
+    if (!header) return;
+
+    function onScroll() {
+      if (window.scrollY > 100) {
+        header.classList.add("is-scrolled");
+      } else {
+        header.classList.remove("is-scrolled");
+      }
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     populatePhones();
     initMobileNav();
     setFooterYear();
+    initHeaderScroll();
   });
 })();

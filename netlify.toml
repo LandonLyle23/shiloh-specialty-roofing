@@ -1,6 +1,34 @@
 [build]
   publish = "."
 
+# Canonical host is the non-www apex. Force any www request to redirect
+# there so search engines and visitors never see both resolving.
+[[redirects]]
+  from = "https://www.shilohspecialtyroofing.com/*"
+  to = "https://shilohspecialtyroofing.com/:splat"
+  status = 301
+  force = true
+
+# Specialty Materials -> Specialty Roofing, and Roof Replacement -> Asphalt
+# Roofing (page rename). Cover both the clean slug and the .html path in
+# case anything bookmarked or linked the old URL either way.
+[[redirects]]
+  from = "/specialty-materials"
+  to = "/specialty-roofing"
+  status = 301
+[[redirects]]
+  from = "/specialty-materials.html"
+  to = "/specialty-roofing"
+  status = 301
+[[redirects]]
+  from = "/roof-replacement"
+  to = "/asphalt-roofing"
+  status = 301
+[[redirects]]
+  from = "/roof-replacement.html"
+  to = "/asphalt-roofing"
+  status = 301
+
 [[headers]]
   for = "/*"
   [headers.values]
