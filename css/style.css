@@ -595,7 +595,10 @@ body {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  background: var(--color-black) url("../assets/images/hero-cedar-shake.jpg") center / cover no-repeat;
+  /* This is the loading-state poster AND the permanent mobile background
+     (.hero-video is display:none below 768px, so this shows through
+     directly — no separate mobile-specific markup needed). */
+  background: var(--color-black) url("../assets/hero-poster.jpg") center / cover no-repeat;
   /* Pulled up by exactly the sticky header's height so the hero's own
      background sits behind the transparent header instead of there being
      a gap above it. Padding-top adds that same amount back so the actual
@@ -611,12 +614,37 @@ body {
     padding-top: calc(96px + clamp(5rem, 9vw, 7.5rem));
   }
 }
+/* Sits on top of .hero-full's own poster background but behind the ::before
+   gradient (z-index:-1 below still paints over it, since a parent's own
+   background always paints under any child regardless of negative
+   z-index). Hidden entirely below 768px so mobile never requests the file
+   and the section's poster background shows through directly instead. */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 767px) {
+  .hero-video {
+    display: none;
+  }
+}
 .hero-full::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.88) 100%);
+  /* Flat, not a gradient: pixel-sampled contrast against actual video
+     frames (not assumed) showed the brightest moments in the footage
+     (overexposed sky/highlights around the 7.5-9s mark) only clear WCAG
+     AA (4.5:1) for the tan eyebrow/trust text at the very top of the
+     60-75% range requested, with very little margin. A top-lighter
+     gradient would have put the weakest darkening right where the
+     headline sits, so this holds the max of that range uniformly. */
+  background: rgba(0, 0, 0, 0.75);
 }
 .hero-trust {
   display: inline-block;

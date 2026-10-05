@@ -119,10 +119,15 @@
 
 <main id="main">
 
-  <!-- HERO — full-width. See css/style.css .hero-full for the background
-       treatment notes (gradient + diagonal line pattern, swappable for a
-       video/image later without touching this markup). -->
+  <!-- HERO — full-width. Background video with assets/hero-poster.jpg as
+       both the loading-state poster and the permanent CSS background on
+       .hero-full (shows through automatically below 768px, where
+       .hero-video is display:none and never requested). See css/style.css
+       .hero-full / .hero-video for the overlay + layering notes. -->
   <section class="hero-full">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/hero-poster.jpg">
+      <source src="assets/hero-roof.mp4" type="video/mp4">
+    </video>
     <div class="container">
       <span class="hero-trust">Family Owned &middot; North Georgia &middot; 30 Years</span>
       <span class="eyebrow">Specialty Roofing &middot; North Georgia</span>
