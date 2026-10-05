@@ -637,14 +637,13 @@ body {
   position: absolute;
   inset: 0;
   z-index: -1;
-  /* Flat, not a gradient: pixel-sampled contrast against actual video
-     frames (not assumed) showed the brightest moments in the footage
-     (overexposed sky/highlights around the 7.5-9s mark) only clear WCAG
-     AA (4.5:1) for the tan eyebrow/trust text at the very top of the
-     60-75% range requested, with very little margin. A top-lighter
-     gradient would have put the weakest darkening right where the
-     headline sits, so this holds the max of that range uniformly. */
-  background: rgba(0, 0, 0, 0.75);
+  /* Lighter than the first pass (0.75): that only worked because nothing
+     but raw alpha-blend contrast was protecting the tan eyebrow and gray
+     paragraph text. Both now carry their own text-shadow (see .hero-full
+     .eyebrow / p), so the overlay no longer has to do all the work alone
+     and can sit lighter while those two stay legible through the shadow
+     instead of through overlay darkness. */
+  background: rgba(0, 0, 0, 0.62);
 }
 .hero-trust {
   display: inline-block;
@@ -660,7 +659,15 @@ body {
   text-transform: uppercase;
   color: var(--color-tan);
 }
-.hero-full .eyebrow { color: var(--color-tan); }
+/* text-shadow is independent insurance, not decorative: pixel-sampled
+   contrast against the brightest moment in the footage showed the tan
+   eyebrow needs the overlay at ~74%+ and this gray paragraph at ~67%+ to
+   clear WCAG AA on alpha-blend contrast alone. Adding a shadow lets the
+   overlay itself go lighter without either element losing legibility. */
+.hero-full .eyebrow {
+  color: var(--color-tan);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+}
 .hero-full h1 {
   color: var(--color-white);
   font-size: clamp(2.5rem, 6vw + 1rem, 5.25rem);
@@ -672,6 +679,7 @@ body {
   color: var(--color-text-on-black-muted);
   font-size: 1.1875rem;
   margin-bottom: 2rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
 }
 
 .hero-btn-group {
