@@ -109,14 +109,14 @@
        See css/style.css "SCROLL-SCRUBBED DIAGRAMS" for the engine's CSS
        half (sticky pin, reduced-motion fallback, mobile label list). -->
   <section class="section section--dark" aria-labelledby="assembly-heading">
-    <div class="container">
+    <div class="container reveal-exempt">
       <div class="section-head section-head--center">
         <span class="eyebrow">Layer By Layer</span>
         <h2 id="assembly-heading">How a roof is actually built.</h2>
       </div>
     </div>
 
-    <div class="scroll-diagram" data-diagram="assembly">
+    <div class="scroll-diagram reveal-exempt" data-diagram="assembly">
       <div class="scroll-diagram-sticky">
         <div class="scroll-diagram-stage">
           <svg class="sd-svg" viewBox="0 0 760 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Asphalt roof assembly, built layer by layer: animated cutaway cross-section through a full roof slope, pitched at roughly 22 degrees from a low eave on the left to a ridge on the right, showing in order the roof deck, ice and water shield, synthetic underlayment, drip edge, starter strip, first shingle course, second and third shingle courses with overlap, and a ridge cap straddling the peak.">
@@ -210,7 +210,7 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container reveal-exempt">
       <p class="scroll-diagram-caption">Eight layers, in order. Most of what keeps water out is underneath the part you can see.</p>
     </div>
   </section>
@@ -247,12 +247,12 @@
            through the slope (same pitch/visual language as Diagram 1),
            not a face-on view, so the three-layer overlap is actually
            visible rather than asserted. -->
-      <div class="section-head section-head--center">
+      <div class="section-head section-head--center reveal-exempt">
         <span class="eyebrow">Three Layers Thick</span>
         <h3 id="cedar-diagram-heading">Why a cedar roof is three layers thick.</h3>
       </div>
 
-      <div class="scroll-diagram" data-diagram="cedar" aria-label="Why a cedar roof is three layers thick, scroll-driven diagram">
+      <div class="scroll-diagram reveal-exempt" data-diagram="cedar" aria-label="Why a cedar roof is three layers thick, scroll-driven diagram">
             <div class="scroll-diagram-sticky">
               <div class="scroll-diagram-stage">
                 <svg class="sd-svg" viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cedar shake coursing shown in cutaway cross-section: three shake courses laid in profile through a roof slope at roughly 20 degrees, each overlapping the one before it, with a vertical cut line through one point on the slope revealing three distinct shake bodies stacked there.">
@@ -311,7 +311,7 @@
               </div>
             </div>
           </div>
-      <p class="scroll-diagram-caption">Exposure is about a third of shake length, so any point on the slope sits under three overlapping courses.</p>
+      <p class="scroll-diagram-caption reveal-exempt">Exposure is about a third of shake length, so any point on the slope sits under three overlapping courses.</p>
     </section>
 
     <div class="texture-band texture-band--cedar"><div class="texture-band-inner"></div></div>
@@ -344,12 +344,12 @@
            reasoning as Diagram 2. Geometry unchanged from the prior pass;
            only label positions, the column headings, and the accessible
            name changed here. -->
-      <div class="section-head section-head--center">
-        <span class="eyebrow">Concealed vs. Exposed</span>
+      <div class="section-head section-head--center reveal-exempt">
+        <span class="eyebrow">The Seam</span>
         <h3 id="seam-diagram-heading">Concealed clip versus exposed screw.</h3>
       </div>
 
-      <div class="scroll-diagram" data-diagram="seam" aria-label="Concealed clip versus exposed screw, scroll-driven diagram">
+      <div class="scroll-diagram reveal-exempt" data-diagram="seam" aria-label="Concealed clip versus exposed screw, scroll-driven diagram">
             <div class="scroll-diagram-sticky">
               <div class="scroll-diagram-stage">
                 <svg class="sd-svg" viewBox="0 0 740 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Standing seam lock forming, compared to an exposed fastener panel: two metal panel edges slide toward each other and lock into a raised standing seam with a concealed clip beneath, then an exposed-fastener panel is shown alongside it with a screw and rubber washer that visibly cracks over time.">
@@ -373,34 +373,36 @@
                     <line class="sd-draw-thin" x1="264" y1="352" x2="235" y2="374"/>
                     <line class="sd-draw-thin" x1="324" y1="352" x2="295" y2="374"/>
                     <path class="sd-fill sd-fade" d="M20,337 L370,337 L370,345 L20,345 Z"/>
-                    <text class="sd-label-sm sd-fade" x="150" y="308">Underlayment over solid deck</text>
                   </g>
 
-                  <!-- 2: Two panel edges slide together. Label anchored at
-                       seam mid-height since that's the span of the rising
-                       motion, well clear of the fold label below. -->
+                  <!-- 2: Two panel edges slide together. Numbered 2 (not 1)
+                       because its label sits below the fold label on the
+                       Y axis — see note on step 3. Anchored at seam
+                       mid-height, the span of the rising motion. -->
                   <g class="sd-step">
                     <path class="sd-fill sd-fade" data-from-x="-70" d="M98,337 L98,224 L104,212 L110,212 L110,337 Z"/>
                     <path class="sd-fill sd-fade" data-from-x="70" d="M110,337 L110,212 L116,212 L122,224 L122,337 Z"/>
                     <line class="sd-leader sd-fade" x1="122" y1="275" x2="150" y2="275"/>
-                    <text class="sd-label sd-fade" x="154" y="271">1. TWO PANEL EDGES</text>
+                    <text class="sd-label sd-fade" x="154" y="271">2. TWO PANEL EDGES</text>
                     <text class="sd-label-sm sd-fade" x="154" y="285">No fastener penetrates</text>
                   </g>
 
                   <!-- 3: Seam folds (label anchored at the fold, near the
-                       top of the seam) + concealed clip appears (label
-                       anchored at the clip, near the base), the two
-                       features are close together but their labels are
-                       spaced well apart on the Y axis so they don't
-                       collide the way they used to. -->
+                       top of the seam, numbered 1 since it reads above
+                       "two panel edges" on screen — the geometry runs top
+                       to bottom as fold / rising span / clip, so the
+                       labels are numbered to match that reading order
+                       rather than the step sequence) + concealed clip
+                       appears (label anchored at the clip, kept just
+                       above the deck line instead of overlapping it). -->
                   <g class="sd-step">
                     <line class="sd-draw" x1="103" y1="222" x2="117" y2="222"/>
                     <path class="sd-fill-accent sd-fade" data-from-y="24" d="M106,330 L114,330 L114,339 L106,339 Z"/>
                     <line class="sd-leader sd-fade" x1="117" y1="217" x2="150" y2="217"/>
-                    <text class="sd-label sd-fade" x="154" y="213">2. DOUBLE-LOCK SEAM</text>
+                    <text class="sd-label sd-fade" x="154" y="213">1. DOUBLE-LOCK SEAM</text>
                     <text class="sd-label-sm sd-fade" x="154" y="227">Mechanically folded over</text>
-                    <line class="sd-leader sd-fade" x1="114" y1="334" x2="150" y2="334"/>
-                    <text class="sd-label sd-fade" x="154" y="338">3. CONCEALED CLIP</text>
+                    <line class="sd-leader sd-fade" x1="114" y1="332" x2="150" y2="324"/>
+                    <text class="sd-label sd-fade" x="154" y="328">3. CONCEALED CLIP</text>
                   </g>
 
                   <!-- 4: Exposed fastener comparison. Washer label moved
@@ -438,7 +440,7 @@
               </div>
             </div>
           </div>
-      <p class="scroll-diagram-caption">One of these has no fastener through the panel. The other relies on a rubber washer that is, by design, a wear item.</p>
+      <p class="scroll-diagram-caption reveal-exempt">One of these has no fastener through the panel. The other relies on a rubber washer that is, by design, a wear item.</p>
     </section>
 
     <div class="texture-band texture-band--metal"><div class="texture-band-inner"></div></div>

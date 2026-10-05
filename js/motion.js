@@ -47,16 +47,28 @@
      children (one level past a bare .container wrapper, if present) get
      .reveal-child with a staggered transition-delay. Reveals once, never
      re-hides on scroll back up.
+
+     Elements matching .reveal-exempt (or SCRIPT tags) are left out of the
+     stagger entirely, staying at their CSS-default visible state. This
+     matters for the scroll-scrubbed diagram sections: a .scroll-diagram
+     is 140-200vh tall, which can make its own .material-block/.section
+     several times the viewport height. The reveal observer fires once
+     15% of that *whole* tall ancestor is visible — for a diagram sitting
+     deep inside a tall section, that threshold can be reached before the
+     diagram (or its heading/caption, right next to it in the DOM) has
+     actually scrolled into view, leaving it stuck at opacity:0 the whole
+     time it's on screen. Exempting these elements sidesteps the mismatch
+     instead of trying to retune the threshold for every section shape.
      ------------------------------------------------------------------------ */
   function getStaggerChildren(section) {
     var el = section;
     var kids = Array.prototype.filter.call(el.children, function (c) {
-      return c.tagName !== "SCRIPT";
+      return c.tagName !== "SCRIPT" && !c.classList.contains("reveal-exempt");
     });
     if (kids.length === 1 && kids[0].classList.contains("container")) {
       el = kids[0];
       kids = Array.prototype.filter.call(el.children, function (c) {
-        return c.tagName !== "SCRIPT";
+        return c.tagName !== "SCRIPT" && !c.classList.contains("reveal-exempt");
       });
     }
     return kids;
