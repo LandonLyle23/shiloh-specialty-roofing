@@ -22,9 +22,15 @@
 
   /* ------------------------------------------------------------------------
      1. LENIS SMOOTH SCROLL
+     Desktop only. On touch devices Lenis's own rAF-driven scroll fights
+     the phone's native momentum scrolling instead of complementing it,
+     which is what reads as "choppy" — phones already scroll smoothly on
+     their own, so below the tablet breakpoint this just gets out of the
+     way entirely rather than trying to tune it down.
      ------------------------------------------------------------------------ */
   function initLenis() {
     if (reducedMotion || typeof window.Lenis === "undefined") return null;
+    if (window.innerWidth < 768) return null;
 
     var lenis = new window.Lenis({
       duration: 1.0,
