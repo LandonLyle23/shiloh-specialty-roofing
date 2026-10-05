@@ -74,7 +74,14 @@
 
   Diagram.prototype.getProgress = function () {
     var rect = this.container.getBoundingClientRect();
-    var total = rect.height - window.innerHeight;
+    // this.sticky's own height (100svh in CSS) is used here instead of
+    // window.innerHeight, which fluctuates as the mobile browser's
+    // address bar hides and shows during scroll. Mixing a stable
+    // svh-based container height with a fluctuating innerHeight would
+    // make this progress value jitter independently of the page-level
+    // layout-height fix in style.css.
+    var stickyHeight = this.sticky.getBoundingClientRect().height;
+    var total = rect.height - stickyHeight;
     if (total <= 0) return 1;
     return clamp01(-rect.top / total);
   };

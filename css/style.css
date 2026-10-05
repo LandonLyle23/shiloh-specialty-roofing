@@ -1103,13 +1103,26 @@ body {
    -------------------------------------------------------------------------- */
 .scroll-diagram {
   position: relative;
+  /* svh second: vh is a fallback for browsers that don't parse svh (the
+     whole declaration is skipped if a unit isn't recognized, so this
+     isn't redundant). Mobile Safari's plain "vh" tracks the *current*
+     toolbar state, so every "vh"-sized element on the page quietly
+     changes height as the address bar hides and shows while scrolling,
+     and the scroll position stops matching the content under it, which
+     is what caused the jump-to-the-middle bug on scroll-up. svh is
+     pinned to the smallest possible viewport (toolbar fully shown) and
+     never recalculates, so the page height actually stays put. (dvh
+     would be the wrong fix here: it's defined to keep tracking the
+     toolbar live, the same instability this is trying to remove.) */
   height: 200vh;
+  height: 200svh;
   background: var(--color-black);
 }
 .scroll-diagram-sticky {
   position: sticky;
   top: 0;
   height: 100vh;
+  height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1197,6 +1210,7 @@ body {
 @media (max-width: 767px) {
   .scroll-diagram {
     height: 140vh;
+    height: 140svh;
   }
   .scroll-diagram-stage {
     padding: 1.5rem 1rem;
@@ -1675,6 +1689,7 @@ body[data-page="home"] .texture-band {
    -------------------------------------------------------------------------- */
 .thanks {
   min-height: 70vh;
+  min-height: 70svh;
   display: flex;
   align-items: center;
   background: var(--color-black);
