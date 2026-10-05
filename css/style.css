@@ -1079,6 +1079,151 @@ body {
 .d-leader { fill: none; stroke: #8a8a8a; stroke-width: 1; stroke-dasharray: 2 2; }
 
 /* --------------------------------------------------------------------------
+   SCROLL-SCRUBBED DIAGRAMS (Specialty Roofing page)
+   Driven by js/diagrams.js. Tan + white on black, technical-drawing line
+   weights, per the Pass 2 spec — a separate visual language from the
+   white-card .diagram figures above, so classes use an "sd-" prefix to
+   avoid any collision with those.
+
+   Default state (no JS, or prefers-reduced-motion) renders every path
+   already fully drawn and every label already visible: .sd-draw paths
+   have no stroke-dasharray until JS sets one, so they paint as complete
+   strokes by default, and .sd-label/.sd-fill default to opacity 1. JS is
+   what hides things right before scrubbing starts, never CSS — same
+   fail-safe pattern as the .reveal system in the SCROLL REVEAL block.
+   -------------------------------------------------------------------------- */
+.scroll-diagram {
+  position: relative;
+  height: 200vh;
+  background: var(--color-black);
+}
+.scroll-diagram-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.scroll-diagram-stage {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem clamp(1rem, 4vw, 2rem);
+}
+.sd-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.sd-svg text {
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  fill: var(--color-tan);
+}
+.sd-draw { fill: none; stroke: var(--color-white); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.sd-draw-thin { fill: none; stroke: var(--color-tan); stroke-width: 1; }
+.sd-draw-accent { fill: none; stroke: var(--color-tan); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.sd-fill { fill: var(--color-black); stroke: var(--color-white); stroke-width: 2; stroke-linejoin: round; }
+.sd-fill-accent { fill: var(--color-tan); stroke: var(--color-tan); stroke-width: 1; stroke-linejoin: round; }
+.sd-dim { fill: none; stroke: var(--color-tan); stroke-width: 1; opacity: 0.7; }
+.sd-leader { fill: none; stroke: var(--color-tan); stroke-width: 1; stroke-dasharray: 2 3; opacity: 0.8; }
+.sd-label { font-size: 11px; font-weight: 700; }
+.sd-label-sm { font-size: 9.5px; font-weight: 500; letter-spacing: 0.04em; fill: var(--color-text-on-black-muted); }
+.sd-num {
+  font-family: var(--font-heading);
+  font-stretch: expanded;
+  font-size: 13px;
+  fill: var(--color-tan);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.scroll-diagram-caption {
+  max-width: 640px;
+  margin: 2rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(196, 169, 139, 0.25);
+  text-align: center;
+  color: var(--color-text-on-black-muted);
+  font-size: 0.9375rem;
+}
+
+/* Mobile label list — replaces in-SVG labels under 768px, where the
+   diagram itself is scaled down and inline SVG text would be illegible.
+   JS toggles .is-active per item in lockstep with the same step that
+   drives that layer's draw-in, so the reading order still matches the
+   diagram's build order. */
+.scroll-diagram-labels-mobile {
+  display: none;
+}
+.scroll-diagram-labels-mobile li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(196, 169, 139, 0.15);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(201, 201, 201, 0.35);
+  transition: color 300ms ease;
+}
+.scroll-diagram-labels-mobile li.is-active {
+  color: var(--color-white);
+}
+.scroll-diagram-labels-mobile li span.sd-li-num {
+  color: var(--color-tan);
+  font-family: var(--font-heading);
+  font-stretch: expanded;
+  font-size: 0.875rem;
+  text-transform: none;
+  letter-spacing: 0;
+  min-width: 1.4em;
+}
+
+@media (max-width: 767px) {
+  .scroll-diagram {
+    height: 140vh;
+  }
+  .scroll-diagram-stage {
+    padding: 1.5rem 1rem;
+  }
+  .sd-svg .sd-label,
+  .sd-svg .sd-label-sm {
+    display: none;
+  }
+  .scroll-diagram-labels-mobile {
+    display: block;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+  }
+}
+
+/* Reduced motion: static document flow, no sticky pin, no scrub. JS also
+   skips initializing the scrub engine entirely in this case, but the CSS
+   here is what actually guarantees the layout, independent of JS. */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-diagram {
+    height: auto;
+  }
+  .scroll-diagram-sticky {
+    position: static;
+    height: auto;
+    padding: 3rem 0;
+  }
+  .scroll-diagram-labels-mobile li {
+    color: var(--color-white);
+  }
+}
+
+/* --------------------------------------------------------------------------
    MATERIAL SECTION (Specialty Materials page repeating pattern)
    -------------------------------------------------------------------------- */
 .material-block {

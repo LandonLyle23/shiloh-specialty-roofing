@@ -105,6 +105,118 @@
        here below the page-hero, target ratio ~21:9, a close, dark-graded
        detail shot of a finished cedar or standing seam roof edge. -->
 
+  <!-- DIAGRAM 1: ASPHALT ASSEMBLY — scroll-scrubbed, driven by js/diagrams.js.
+       See css/style.css "SCROLL-SCRUBBED DIAGRAMS" for the engine's CSS
+       half (sticky pin, reduced-motion fallback, mobile label list). -->
+  <section class="section section--dark" aria-labelledby="assembly-heading">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Layer By Layer</span>
+        <h2 id="assembly-heading">How a roof is actually built.</h2>
+      </div>
+    </div>
+
+    <div class="scroll-diagram" data-diagram="assembly">
+      <div class="scroll-diagram-sticky">
+        <div class="scroll-diagram-stage">
+          <svg class="sd-svg" viewBox="0 0 640 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="assembly-title assembly-desc">
+            <title id="assembly-title">Asphalt roof assembly, built layer by layer</title>
+            <desc id="assembly-desc">Animated cutaway cross-section through a roof eave showing, in order, the roof deck, ice and water shield, synthetic underlayment, drip edge, starter strip, first shingle course, second and third shingle courses with overlap, and ridge cap.</desc>
+
+            <!-- 1: Roof deck -->
+            <g class="sd-step">
+              <path class="sd-fill sd-fade" d="M50,416 L600,350 L600,324 L50,390 Z"/>
+              <line class="sd-draw-thin" x1="90" y1="403" x2="75" y2="412"/>
+              <line class="sd-draw-thin" x1="140" y1="397" x2="120" y2="409"/>
+              <line class="sd-draw-thin" x1="190" y1="391" x2="165" y2="406"/>
+              <line class="sd-draw-thin" x1="240" y1="385" x2="210" y2="403"/>
+              <line class="sd-draw-thin" x1="290" y1="379" x2="255" y2="400"/>
+              <line class="sd-draw-thin" x1="340" y1="373" x2="300" y2="397"/>
+              <line class="sd-leader sd-fade" x1="150" y1="378" x2="455" y2="100"/>
+              <text class="sd-label sd-fade" x="462" y="98">1. ROOF DECK</text>
+              <text class="sd-label-sm sd-fade" x="462" y="112">Plywood or OSB</text>
+            </g>
+
+            <!-- 2: Ice & water shield at the eave -->
+            <g class="sd-step">
+              <path class="sd-fill-accent sd-fade" d="M50,390 L260,365 L260,357 L50,382 Z"/>
+              <line class="sd-leader sd-fade" x1="150" y1="370" x2="455" y2="124"/>
+              <text class="sd-label sd-fade" x="462" y="122">2. ICE &amp; WATER SHIELD</text>
+              <text class="sd-label-sm sd-fade" x="462" y="136">At the eave</text>
+            </g>
+
+            <!-- 3: Synthetic underlayment over the field -->
+            <g class="sd-step">
+              <path class="sd-fill sd-fade" d="M50,382 L260,357 L260,349 L50,374 Z"/>
+              <path class="sd-fill sd-fade" d="M260,365 L600,324 L600,316 L260,357 Z"/>
+              <line class="sd-leader sd-fade" x1="300" y1="340" x2="455" y2="148"/>
+              <text class="sd-label sd-fade" x="462" y="146">3. UNDERLAYMENT</text>
+              <text class="sd-label-sm sd-fade" x="462" y="160">Synthetic, over the field</text>
+            </g>
+
+            <!-- 4: Drip edge at the eave -->
+            <g class="sd-step">
+              <path class="sd-fill-accent sd-fade" d="M42,416 L42,398 L58,392 L58,400 L50,404 L50,416 Z"/>
+              <line class="sd-leader sd-fade" x1="50" y1="405" x2="455" y2="172"/>
+              <text class="sd-label sd-fade" x="462" y="170">4. DRIP EDGE</text>
+              <text class="sd-label-sm sd-fade" x="462" y="184">At the eave</text>
+            </g>
+
+            <!-- 5: Starter strip -->
+            <g class="sd-step">
+              <path class="sd-fill sd-fade" d="M50,374 L160,361 L160,353 L50,366 Z"/>
+              <line class="sd-leader sd-fade" x1="100" y1="360" x2="455" y2="196"/>
+              <text class="sd-label sd-fade" x="462" y="194">5. STARTER STRIP</text>
+            </g>
+
+            <!-- 6: Shingle course one -->
+            <g class="sd-step">
+              <path class="sd-fill sd-fade" d="M50,366 L260,341 L260,327 L50,352 Z"/>
+              <line class="sd-draw-thin" x1="90" y1="358" x2="90" y2="347"/>
+              <line class="sd-draw-thin" x1="150" y1="350" x2="150" y2="339"/>
+              <line class="sd-draw-thin" x1="210" y1="343" x2="210" y2="332"/>
+              <line class="sd-leader sd-fade" x1="150" y1="340" x2="455" y2="220"/>
+              <text class="sd-label sd-fade" x="462" y="218">6. SHINGLE COURSE ONE</text>
+            </g>
+
+            <!-- 7: Shingle courses two & three, overlap -->
+            <g class="sd-step">
+              <path class="sd-fill sd-fade" d="M130,346 L360,319 L360,305 L130,332 Z"/>
+              <path class="sd-fill sd-fade" d="M210,327 L440,299 L440,285 L210,313 Z"/>
+              <line class="sd-dim sd-fade" x1="210" y1="313" x2="210" y2="332"/>
+              <line class="sd-leader sd-fade" x1="300" y1="310" x2="455" y2="244"/>
+              <text class="sd-label sd-fade" x="462" y="242">7. COURSES TWO &amp; THREE</text>
+              <text class="sd-label-sm sd-fade" x="462" y="256">Overlap staggers the joints</text>
+            </g>
+
+            <!-- 8: Ridge cap at the peak -->
+            <g class="sd-step">
+              <path class="sd-fill-accent sd-fade" d="M555,355 L615,347 L615,331 L555,339 Z"/>
+              <line class="sd-draw-thin" x1="555" y1="342" x2="615" y2="334"/>
+              <line class="sd-leader sd-fade" x1="585" y1="339" x2="462" y2="300"/>
+              <text class="sd-label sd-fade" x="462" y="300">8. RIDGE CAP</text>
+              <text class="sd-label-sm sd-fade" x="462" y="314">At the peak</text>
+            </g>
+          </svg>
+          <ol class="scroll-diagram-labels-mobile">
+            <li data-at="0.02"><span class="sd-li-num">1</span> Roof deck</li>
+            <li data-at="0.14"><span class="sd-li-num">2</span> Ice &amp; water shield</li>
+            <li data-at="0.27"><span class="sd-li-num">3</span> Synthetic underlayment</li>
+            <li data-at="0.39"><span class="sd-li-num">4</span> Drip edge</li>
+            <li data-at="0.52"><span class="sd-li-num">5</span> Starter strip</li>
+            <li data-at="0.64"><span class="sd-li-num">6</span> Shingle course one</li>
+            <li data-at="0.77"><span class="sd-li-num">7</span> Courses two &amp; three, overlap</li>
+            <li data-at="0.89"><span class="sd-li-num">8</span> Ridge cap</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <p class="scroll-diagram-caption">Eight layers, in order. Most of what keeps water out is underneath the part you can see.</p>
+    </div>
+  </section>
+
   <div class="container">
 
     <!-- CEDAR SHAKE -->
@@ -127,72 +239,87 @@
             <div><span class="label">Biggest cost driver</span><span class="value">Grade + ventilation</span></div>
             <div><span class="label">Common failure</span><span class="value">Rot from below</span></div>
           </div>
-          <figure class="diagram">
-            <div class="diagram-scroll">
-            <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cs-title cs-desc">
-              <title id="cs-title">Cedar shake course detail showing exposure and overlap</title>
-              <desc id="cs-desc">Side profile of stacked cedar shake courses showing the exposed butt portion of each course, the concealed portion covered by the next two courses, felt interlayment, and staggered joints between adjacent shakes.</desc>
-              <text x="20" y="38" class="d-label" font-size="13">CEDAR SHAKE COURSING</text>
-              <text x="20" y="54" class="d-label-sm">Exposure &amp; headlap, triple-layer coverage</text>
-              <rect x="50" y="300" width="210" height="40" class="d-fill"/>
-              <rect x="50" y="260" width="210" height="40" class="d-fill"/>
-              <rect x="50" y="220" width="210" height="40" class="d-fill"/>
-              <rect x="50" y="180" width="210" height="40" class="d-fill"/>
-              <line x1="120" y1="300" x2="120" y2="340" stroke="var(--color-offwhite)" stroke-width="3"/>
-              <line x1="200" y1="300" x2="200" y2="340" stroke="var(--color-offwhite)" stroke-width="3"/>
-              <line x1="90" y1="260" x2="90" y2="300" stroke="var(--color-offwhite)" stroke-width="3"/>
-              <line x1="165" y1="260" x2="165" y2="300" stroke="var(--color-offwhite)" stroke-width="3"/>
-              <line x1="235" y1="260" x2="235" y2="300" stroke="var(--color-offwhite)" stroke-width="3"/>
-              <line x1="120" y1="220" x2="120" y2="260" stroke="var(--color-offwhite)" stroke-width="3"/>
-              <line x1="200" y1="220" x2="200" y2="260" stroke="var(--color-offwhite)" stroke-width="3"/>
-              <line x1="90" y1="180" x2="90" y2="220" stroke="var(--color-offwhite)" stroke-width="3"/>
-              <line x1="165" y1="180" x2="165" y2="220" stroke="var(--color-offwhite)" stroke-width="3"/>
-              <line x1="235" y1="180" x2="235" y2="220" stroke="var(--color-offwhite)" stroke-width="3"/>
-              <line x1="260" y1="298" x2="272" y2="298" class="d-line-accent"/>
-              <line x1="260" y1="258" x2="272" y2="258" class="d-line-accent"/>
-              <line x1="260" y1="218" x2="272" y2="218" class="d-line-accent"/>
-              <text x="276" y="262" class="d-label-sm">felt interlayment</text>
-              <line x1="272" y1="258" x2="330" y2="258" class="d-leader"/>
-              <rect x="50" y="340" width="210" height="16" class="d-fill"/>
-              <line x1="62" y1="343" x2="50" y2="353" class="d-hatch"/>
-              <line x1="82" y1="343" x2="56" y2="356" class="d-hatch"/>
-              <line x1="112" y1="343" x2="86" y2="356" class="d-hatch"/>
-              <line x1="142" y1="343" x2="116" y2="356" class="d-hatch"/>
-              <line x1="172" y1="343" x2="146" y2="356" class="d-hatch"/>
-              <line x1="202" y1="343" x2="176" y2="356" class="d-hatch"/>
-              <line x1="232" y1="343" x2="206" y2="356" class="d-hatch"/>
-              <text x="50" y="374" class="d-label-sm">Skip sheathing / solid deck</text>
-              <line x1="260" y1="280" x2="373" y2="280" class="d-leader"/>
-              <path d="M373 300 L376 110 L384 110 L387 300 Z" class="d-fill"/>
-              <rect x="373" y="260" width="14" height="40" class="d-fill-accent"/>
-              <line x1="405" y1="260" x2="405" y2="300" class="d-dim"/>
-              <line x1="399" y1="260" x2="411" y2="260" class="d-dim"/>
-              <line x1="399" y1="300" x2="411" y2="300" class="d-dim"/>
-              <text x="415" y="284" class="d-label">Exposure</text>
-              <text x="415" y="297" class="d-label-sm">7" to 10" typical</text>
-              <line x1="405" y1="110" x2="405" y2="258" class="d-dim"/>
-              <line x1="399" y1="110" x2="411" y2="110" class="d-dim"/>
-              <line x1="399" y1="258" x2="411" y2="258" class="d-dim"/>
-              <text x="415" y="150" class="d-label">Concealed</text>
-              <text x="415" y="163" class="d-label-sm">covered by the</text>
-              <text x="415" y="176" class="d-label-sm">next 2 courses</text>
-              <line x1="500" y1="110" x2="500" y2="300" class="d-line-thin"/>
-              <line x1="494" y1="110" x2="506" y2="110" class="d-line-thin"/>
-              <line x1="494" y1="300" x2="506" y2="300" class="d-line-thin"/>
-              <text x="512" y="200" class="d-label" transform="rotate(90 512 200)" text-anchor="middle">Shake length 18" to 24"</text>
-              <rect x="70" y="90" width="46" height="14" class="d-fill" opacity="0.35"/>
-              <rect x="78" y="98" width="46" height="14" class="d-fill" opacity="0.65"/>
-              <rect x="86" y="106" width="46" height="14" class="d-fill"/>
-              <line x1="140" y1="106" x2="180" y2="90" class="d-leader"/>
-              <text x="184" y="88" class="d-label-sm">3 layers thick at any</text>
-              <text x="184" y="100" class="d-label-sm">point on the roof</text>
-            </svg>
-            </div>
-            <span class="diagram-scroll-hint">Scroll to see full diagram &rarr;</span>
-            <figcaption><strong>Figure 01: Cedar shake coursing</strong>Each shake is far longer than its visible exposure. Because exposure is roughly a third of shake length, any point on the roof sits under three overlapping layers, the actual source of a shake roof's water resistance.</figcaption>
-          </figure>
         </div>
       </div>
+
+      <!-- DIAGRAM 2: CEDAR COURSING — scroll-scrubbed, see js/diagrams.js.
+           Full material-block width, below the two-column grid above, so
+           the 140-200vh sticky-scroll container isn't squeezed into the
+           narrow meta column next to body text. -->
+      <div class="scroll-diagram" data-diagram="cedar" aria-label="Why a cedar roof is three layers thick, scroll-driven diagram">
+            <div class="scroll-diagram-sticky">
+              <div class="scroll-diagram-stage">
+                <svg class="sd-svg" viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cs-title cs-desc">
+                  <title id="cs-title">Cedar shake course detail showing exposure and overlap</title>
+                  <desc id="cs-desc">Three cedar shake courses laid down one at a time, each offset to stagger the joints, followed by a measure line showing that any point on the slope sits under three overlapping layers.</desc>
+
+                  <!-- 1: Course one -->
+                  <g class="sd-step">
+                    <path class="sd-fill sd-fade" d="M50,300 L260,300 L260,340 L50,340 Z"/>
+                    <line class="sd-draw" x1="120" y1="300" x2="120" y2="340"/>
+                    <line class="sd-draw" x1="200" y1="300" x2="200" y2="340"/>
+                    <path class="sd-fill sd-fade" d="M50,340 L260,340 L260,356 L50,356 Z"/>
+                    <line class="sd-draw-thin" x1="62" y1="343" x2="50" y2="353"/>
+                    <line class="sd-draw-thin" x1="92" y1="343" x2="66" y2="356"/>
+                    <line class="sd-draw-thin" x1="122" y1="343" x2="96" y2="356"/>
+                    <line class="sd-draw-thin" x1="152" y1="343" x2="126" y2="356"/>
+                    <line class="sd-draw-thin" x1="182" y1="343" x2="156" y2="356"/>
+                    <line class="sd-draw-thin" x1="212" y1="343" x2="186" y2="356"/>
+                    <line class="sd-draw-thin" x1="242" y1="343" x2="216" y2="356"/>
+                    <line class="sd-leader sd-fade" x1="260" y1="320" x2="470" y2="90"/>
+                    <text class="sd-label sd-fade" x="476" y="88">1. COURSE ONE</text>
+                    <text class="sd-label-sm sd-fade" x="476" y="102">Nailed to skip sheathing</text>
+                  </g>
+
+                  <!-- 2: Course two, joints staggered -->
+                  <g class="sd-step">
+                    <path class="sd-fill sd-fade" d="M50,260 L260,260 L260,300 L50,300 Z"/>
+                    <line class="sd-draw" x1="90" y1="260" x2="90" y2="300"/>
+                    <line class="sd-draw" x1="165" y1="260" x2="165" y2="300"/>
+                    <line class="sd-draw" x1="235" y1="260" x2="235" y2="300"/>
+                    <line class="sd-leader sd-fade" x1="260" y1="280" x2="470" y2="140"/>
+                    <text class="sd-label sd-fade" x="476" y="138">2. COURSE TWO</text>
+                    <text class="sd-label-sm sd-fade" x="476" y="152">Joints staggered 1.5" min</text>
+                    <text class="sd-label-sm sd-fade" x="476" y="165">from the course below</text>
+                  </g>
+
+                  <!-- 3: Course three -->
+                  <g class="sd-step">
+                    <path class="sd-fill sd-fade" d="M50,220 L260,220 L260,260 L50,260 Z"/>
+                    <line class="sd-draw" x1="120" y1="220" x2="120" y2="260"/>
+                    <line class="sd-draw" x1="200" y1="220" x2="200" y2="260"/>
+                    <line class="sd-draw-thin sd-fade" x1="262" y1="258" x2="300" y2="258"/>
+                    <line class="sd-draw-thin sd-fade" x1="262" y1="298" x2="300" y2="298"/>
+                    <text class="sd-label-sm sd-fade" x="304" y="262">felt interlayment</text>
+                    <line class="sd-leader sd-fade" x1="260" y1="240" x2="470" y2="190"/>
+                    <text class="sd-label sd-fade" x="476" y="188">3. COURSE THREE</text>
+                  </g>
+
+                  <!-- 4: Measure line, three layers thick -->
+                  <g class="sd-step">
+                    <line class="sd-draw" x1="330" y1="220" x2="330" y2="340"/>
+                    <line class="sd-draw-thin" x1="324" y1="220" x2="336" y2="220"/>
+                    <line class="sd-draw-thin" x1="324" y1="340" x2="336" y2="340"/>
+                    <path class="sd-fill-accent sd-fade" d="M345,306 L345,296 L353,288 L361,296 L361,306 Z"/>
+                    <path class="sd-fill-accent sd-fade" d="M345,296 L345,286 L353,278 L361,286 L361,296 Z"/>
+                    <path class="sd-fill-accent sd-fade" d="M345,286 L345,276 L353,268 L361,276 L361,286 Z"/>
+                    <line class="sd-leader sd-fade" x1="361" y1="290" x2="470" y2="240"/>
+                    <text class="sd-label sd-fade" x="476" y="232">3 LAYERS THICK</text>
+                    <text class="sd-label-sm sd-fade" x="476" y="246">At any point on the slope,</text>
+                    <text class="sd-label-sm sd-fade" x="476" y="259">because exposure is about</text>
+                    <text class="sd-label-sm sd-fade" x="476" y="272">a third of shake length</text>
+                  </g>
+                </svg>
+                <ol class="scroll-diagram-labels-mobile">
+                  <li data-at="0.02"><span class="sd-li-num">1</span> Course one</li>
+                  <li data-at="0.27"><span class="sd-li-num">2</span> Course two, joints staggered</li>
+                  <li data-at="0.52"><span class="sd-li-num">3</span> Course three, felt interlayment</li>
+                  <li data-at="0.77"><span class="sd-li-num">4</span> Three layers thick at any point</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+      <p class="scroll-diagram-caption">Each shake is far longer than its visible exposure. Because exposure is roughly a third of shake length, any point on the roof sits under three overlapping layers, the actual source of a shake roof's water resistance.</p>
     </section>
 
     <div class="texture-band texture-band--cedar"><div class="texture-band-inner"></div></div>
@@ -217,86 +344,90 @@
             <div><span class="label">Biggest cost driver</span><span class="value">Seam type + gauge</span></div>
             <div><span class="label">Common failure</span><span class="value">Washer failure (exposed-fastener)</span></div>
           </div>
-          <figure class="diagram">
-            <div class="diagram-scroll">
-            <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ss-title ss-desc">
-              <title id="ss-title">Standing seam panel profile compared to exposed fastener panel</title>
-              <desc id="ss-desc">Cross-section drawing comparing a mechanically double-locked standing seam metal roof panel with a concealed clip to a lower-cost exposed fastener panel with screws driven through the panel face.</desc>
-              <line x1="392" y1="30" x2="392" y2="372" class="d-leader"/>
-              <text x="20" y="38" class="d-label" font-size="13">STANDING SEAM</text>
-              <text x="20" y="54" class="d-label-sm">Mechanically double-locked · concealed fastening</text>
-              <rect x="20" y="348" width="350" height="26" class="d-fill"/>
-              <line x1="34" y1="352" x2="20" y2="366" class="d-hatch"/>
-              <line x1="54" y1="352" x2="30" y2="374" class="d-hatch"/>
-              <line x1="84" y1="352" x2="55" y2="374" class="d-hatch"/>
-              <line x1="114" y1="352" x2="85" y2="374" class="d-hatch"/>
-              <line x1="144" y1="352" x2="115" y2="374" class="d-hatch"/>
-              <line x1="174" y1="352" x2="145" y2="374" class="d-hatch"/>
-              <line x1="204" y1="352" x2="175" y2="374" class="d-hatch"/>
-              <line x1="234" y1="352" x2="205" y2="374" class="d-hatch"/>
-              <line x1="264" y1="352" x2="235" y2="374" class="d-hatch"/>
-              <line x1="294" y1="352" x2="265" y2="374" class="d-hatch"/>
-              <line x1="324" y1="352" x2="295" y2="374" class="d-hatch"/>
-              <line x1="354" y1="352" x2="325" y2="374" class="d-hatch"/>
-              <line x1="20" y1="345" x2="370" y2="345" class="d-line-accent" stroke-dasharray="5 3"/>
-              <rect x="20" y="337" width="350" height="8" class="d-fill"/>
-              <path d="M98 337 L98 224 L104 212 L116 212 L122 224 L122 337 Z" class="d-fill"/>
-              <line x1="103" y1="222" x2="117" y2="222" class="d-line-thin"/>
-              <path d="M258 337 L258 224 L264 212 L276 212 L282 224 L282 337 Z" class="d-fill"/>
-              <line x1="263" y1="222" x2="277" y2="222" class="d-line-thin"/>
-              <rect x="106" y="330" width="8" height="9" class="d-fill-black"/>
-              <line x1="140" y1="337" x2="140" y2="212" class="d-dim"/>
-              <line x1="134" y1="337" x2="146" y2="337" class="d-dim"/>
-              <line x1="134" y1="212" x2="146" y2="212" class="d-dim"/>
-              <text x="148" y="278" class="d-label-dim">1.5" to 2"</text>
-              <text x="148" y="290" class="d-label-dim">seam</text>
-              <line x1="110" y1="212" x2="110" y2="90" class="d-leader"/>
-              <line x1="110" y1="90" x2="160" y2="90" class="d-leader"/>
-              <text x="164" y="94" class="d-label">Double-lock standing seam</text>
-              <line x1="110" y1="334" x2="70" y2="150" class="d-leader"/>
-              <line x1="40" y1="150" x2="70" y2="150" class="d-leader"/>
-              <text x="42" y="146" class="d-label" text-anchor="start">Concealed clip</text>
-              <text x="42" y="160" class="d-label-sm">fastens to deck,</text>
-              <text x="42" y="172" class="d-label-sm">panel floats free</text>
-              <line x1="200" y1="341" x2="200" y2="120" class="d-leader"/>
-              <line x1="200" y1="120" x2="230" y2="120" class="d-leader"/>
-              <text x="234" y="116" class="d-label">Panel pan</text>
-              <text x="234" y="130" class="d-label-sm">24-ga steel or .032" aluminum</text>
-              <line x1="300" y1="345" x2="330" y2="325" class="d-leader"/>
-              <text x="234" y="322" class="d-label">Underlayment</text>
-              <text x="234" y="335" class="d-label-sm">high-temp synthetic</text>
-              <text x="234" y="370" class="d-label-sm">Solid wood deck</text>
-              <text x="412" y="38" class="d-label" font-size="13">EXPOSED FASTENER</text>
-              <text x="412" y="54" class="d-label-sm">Through-screwed panel face</text>
-              <rect x="412" y="348" width="200" height="26" class="d-fill"/>
-              <line x1="424" y1="352" x2="412" y2="364" class="d-hatch"/>
-              <line x1="444" y1="352" x2="420" y2="374" class="d-hatch"/>
-              <line x1="474" y1="352" x2="445" y2="374" class="d-hatch"/>
-              <line x1="504" y1="352" x2="475" y2="374" class="d-hatch"/>
-              <line x1="534" y1="352" x2="505" y2="374" class="d-hatch"/>
-              <line x1="564" y1="352" x2="535" y2="374" class="d-hatch"/>
-              <line x1="594" y1="352" x2="565" y2="374" class="d-hatch"/>
-              <path d="M412 337 L436 337 L448 296 L468 296 L480 337 L520 337 L532 296 L552 296 L564 337 L612 337 L612 345 L412 345 Z" class="d-fill"/>
-              <circle cx="458" cy="296" r="6" class="d-fill-accent"/>
-              <line x1="454" y1="296" x2="462" y2="296" class="d-line-thin"/>
-              <line x1="458" y1="292" x2="458" y2="300" class="d-line-thin"/>
-              <circle cx="542" cy="296" r="6" class="d-fill-accent"/>
-              <line x1="538" y1="296" x2="546" y2="296" class="d-line-thin"/>
-              <line x1="542" y1="292" x2="542" y2="300" class="d-line-thin"/>
-              <line x1="458" y1="290" x2="458" y2="150" class="d-leader"/>
-              <line x1="458" y1="150" x2="420" y2="150" class="d-leader"/>
-              <text x="418" y="120" class="d-label" text-anchor="end">Exposed screw</text>
-              <text x="418" y="134" class="d-label-sm" text-anchor="end">+ rubber washer</text>
-              <text x="418" y="167" class="d-label-sm" text-anchor="end">Washer hardens and</text>
-              <text x="418" y="180" class="d-label-sm" text-anchor="end">cracks over time,</text>
-              <text x="418" y="193" class="d-label-sm" text-anchor="end">primary leak point</text>
-            </svg>
-            </div>
-            <span class="diagram-scroll-hint">Scroll to see full diagram &rarr;</span>
-            <figcaption><strong>Figure 02: Standing seam vs. exposed fastener</strong>Concealed clips let the panel move independently of the deck. Exposed screws pin the panel rigidly and rely on a rubber washer that is, by design, a wear item.</figcaption>
-          </figure>
         </div>
       </div>
+
+      <!-- DIAGRAM 3: STANDING SEAM LOCK — scroll-scrubbed, see js/diagrams.js.
+           Full material-block width, below the two-column grid above, same
+           reasoning as Diagram 2. -->
+      <div class="scroll-diagram" data-diagram="seam" aria-label="Concealed clip versus exposed screw, scroll-driven diagram">
+            <div class="scroll-diagram-sticky">
+              <div class="scroll-diagram-stage">
+                <svg class="sd-svg" viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ss-title ss-desc">
+                  <title id="ss-title">Standing seam lock forming, compared to an exposed fastener panel</title>
+                  <desc id="ss-desc">Two metal panel edges slide toward each other and lock into a raised standing seam with a concealed clip beneath, then an exposed-fastener panel is shown alongside it with a screw and rubber washer that visibly cracks over time.</desc>
+
+                  <!-- 1: Deck + underlayment base -->
+                  <g class="sd-step">
+                    <path class="sd-fill sd-fade" d="M20,348 L370,348 L370,374 L20,374 Z"/>
+                    <line class="sd-draw-thin" x1="34" y1="352" x2="20" y2="366"/>
+                    <line class="sd-draw-thin" x1="84" y1="352" x2="55" y2="374"/>
+                    <line class="sd-draw-thin" x1="144" y1="352" x2="115" y2="374"/>
+                    <line class="sd-draw-thin" x1="204" y1="352" x2="175" y2="374"/>
+                    <line class="sd-draw-thin" x1="264" y1="352" x2="235" y2="374"/>
+                    <line class="sd-draw-thin" x1="324" y1="352" x2="295" y2="374"/>
+                    <path class="sd-fill sd-fade" d="M20,337 L370,337 L370,345 L20,345 Z"/>
+                    <text class="sd-label-sm sd-fade" x="234" y="332">Underlayment over solid deck</text>
+                  </g>
+
+                  <!-- 2: Two panel edges slide together -->
+                  <g class="sd-step">
+                    <path class="sd-fill sd-fade" data-from-x="-70" d="M98,337 L98,224 L104,212 L110,212 L110,337 Z"/>
+                    <path class="sd-fill sd-fade" data-from-x="70" d="M110,337 L110,212 L116,212 L122,224 L122,337 Z"/>
+                    <text class="sd-label sd-fade" x="20" y="90">1. TWO PANEL EDGES</text>
+                    <text class="sd-label-sm sd-fade" x="20" y="104">Rise to meet at the seam</text>
+                  </g>
+
+                  <!-- 3: Seam folds + concealed clip appears -->
+                  <g class="sd-step">
+                    <line class="sd-draw" x1="103" y1="222" x2="117" y2="222"/>
+                    <path class="sd-fill-accent sd-fade" data-from-y="24" d="M106,330 L114,330 L114,339 L106,339 Z"/>
+                    <line class="sd-leader sd-fade" x1="110" y1="212" x2="160" y2="90"/>
+                    <text class="sd-label sd-fade" x="164" y="88">2. DOUBLE-LOCK SEAM</text>
+                    <text class="sd-label-sm sd-fade" x="164" y="102">Mechanically folded over</text>
+                    <line class="sd-leader sd-fade" x1="110" y1="334" x2="70" y2="150"/>
+                    <text class="sd-label sd-fade" x="42" y="146">3. CONCEALED CLIP</text>
+                    <text class="sd-label-sm sd-fade" x="42" y="160">Fastens to deck,</text>
+                    <text class="sd-label-sm sd-fade" x="42" y="173">panel floats free</text>
+                    <line class="sd-dim sd-fade" x1="140" y1="337" x2="140" y2="212"/>
+                    <text class="sd-label-sm sd-fade" x="148" y="278">No fastener ever</text>
+                    <text class="sd-label-sm sd-fade" x="148" y="291">penetrates the panel</text>
+                  </g>
+
+                  <!-- 4: Exposed fastener comparison -->
+                  <g class="sd-step">
+                    <g class="sd-fade" data-from-x="60">
+                      <line class="sd-dim" x1="392" y1="30" x2="392" y2="374"/>
+                      <text class="sd-label" x="412" y="38">EXPOSED FASTENER</text>
+                      <text class="sd-label-sm" x="412" y="52">Through-screwed panel face</text>
+                      <path class="sd-fill" d="M412,348 L612,348 L612,374 L412,374 Z"/>
+                      <line class="sd-draw-thin" x1="424" y1="352" x2="412" y2="364"/>
+                      <line class="sd-draw-thin" x1="474" y1="352" x2="445" y2="374"/>
+                      <line class="sd-draw-thin" x1="534" y1="352" x2="505" y2="374"/>
+                      <line class="sd-draw-thin" x1="594" y1="352" x2="565" y2="374"/>
+                      <path class="sd-fill" d="M412,337 L436,337 L448,296 L468,296 L480,337 L520,337 L532,296 L552,296 L564,337 L612,337 L612,345 L412,345 Z"/>
+                      <circle class="sd-fill-accent" cx="458" cy="296" r="6"/>
+                      <circle class="sd-fill-accent" cx="542" cy="296" r="6"/>
+                      <path class="sd-draw-thin" d="M453,300 L457,294 L461,300"/>
+                      <line class="sd-leader" x1="458" y1="290" x2="420" y2="150"/>
+                      <text class="sd-label" x="418" y="120" text-anchor="end">Exposed screw</text>
+                      <text class="sd-label-sm" x="418" y="134" text-anchor="end">+ rubber washer</text>
+                      <text class="sd-label-sm" x="418" y="167" text-anchor="end">Washer hardens and</text>
+                      <text class="sd-label-sm" x="418" y="180" text-anchor="end">cracks over time,</text>
+                      <text class="sd-label-sm" x="418" y="193" text-anchor="end">primary leak point</text>
+                    </g>
+                  </g>
+                </svg>
+                <ol class="scroll-diagram-labels-mobile">
+                  <li data-at="0.02"><span class="sd-li-num">1</span> Panel edges rise to meet</li>
+                  <li data-at="0.27"><span class="sd-li-num">2</span> Seam mechanically folds</li>
+                  <li data-at="0.52"><span class="sd-li-num">2</span> Concealed clip, no fastener</li>
+                  <li data-at="0.77"><span class="sd-li-num">3</span> Vs. exposed screw + washer</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+      <p class="scroll-diagram-caption">Concealed clips let the panel move independently of the deck. Exposed screws pin the panel rigidly and rely on a rubber washer that is, by design, a wear item.</p>
     </section>
 
     <div class="texture-band texture-band--metal"><div class="texture-band-inner"></div></div>
@@ -493,5 +624,6 @@
 <script src="js/config.js"></script>
 <script src="js/main.js"></script>
 <script src="js/motion.js"></script>
+<script src="js/diagrams.js"></script>
 </body>
 </html>
