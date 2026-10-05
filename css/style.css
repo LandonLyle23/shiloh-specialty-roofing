@@ -1471,6 +1471,18 @@ body {
 .texture-band--copper .texture-band-inner { background-image: url("../assets/textures/copper-patina.jpg"); }
 .texture-band--metal .texture-band-inner { background-image: url("../assets/textures/standing-seam-metal.jpg"); }
 
+/* Homepage only: thinner accent strip rather than a full band. The
+   Specialty Roofing page keeps the taller size, where the bands double
+   as explicit breaks between material sections. */
+body[data-page="home"] .texture-band {
+  height: 40px;
+}
+@media (min-width: 768px) {
+  body[data-page="home"] .texture-band {
+    height: 56px;
+  }
+}
+
 /* --------------------------------------------------------------------------
    CALLOUT / LEGAL NOTE
    -------------------------------------------------------------------------- */
