@@ -90,8 +90,8 @@ body {
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
-  color: var(--color-text-on-white);
-  background: var(--color-white);
+  color: var(--color-text-on-black);
+  background: var(--color-black);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -131,8 +131,20 @@ h2 { font-size: clamp(1.75rem, 3vw + 1rem, 2.75rem); }
 h3 { font-size: clamp(1.25rem, 1.5vw + 1rem, 1.75rem); }
 h4 { font-size: 1.125rem; letter-spacing: 0.06em; }
 
+/* Section headings (h2/h3) are fluid via clamp() above, but the vw
+   component can still push them past a comfortable size on narrow
+   phones with long heading copy. Hard cap at roughly 28px under 480px
+   so nothing runs six-plus lines. h1 is left alone — it's the one-per-
+   page hero display type, handled separately. */
+@media (max-width: 480px) {
+  h2, h3 {
+    font-size: 1.75rem;
+  }
+}
+
 p {
   margin: 0 0 1.25rem;
+  color: var(--color-text-on-black-muted);
 }
 
 .eyebrow {
@@ -141,11 +153,10 @@ p {
   font-size: 0.75rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-tan-dim);
+  color: var(--color-tan);
   margin: 0 0 0.75rem;
   display: block;
 }
-.section--dark .eyebrow { color: var(--color-tan); }
 
 .rule {
   width: 56px;
@@ -189,7 +200,7 @@ p {
 }
 
 .section--offwhite {
-  background: var(--color-offwhite);
+  background: var(--color-black);
 }
 
 .section-head {
@@ -346,16 +357,16 @@ p {
 }
 
 /* Secondary / outlined buttons: border starts at 30% tan, goes to full
-   tan on hover. Text color keeps its existing black/white-to-tan swap. */
+   tan on hover. White text throughout now that every section is dark. */
 .btn--ghost {
-  color: var(--color-black);
+  color: var(--color-white);
   border-color: rgba(196, 169, 139, 0.3);
   background: transparent;
 }
 .btn--ghost:hover,
 .btn--ghost:focus-visible {
   border-color: var(--color-tan);
-  color: var(--color-tan-dim);
+  color: var(--color-tan);
 }
 
 /* On black: white outline button */
@@ -636,29 +647,30 @@ body[data-page="home"] .site-header.is-scrolled {
   z-index: 99;
   height: 60px;
   display: flex;
-  background: var(--color-tan);
-  border-top: 1px solid rgba(196, 169, 139, 0.2);
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  background: var(--color-black);
+  border-top: 1px solid rgba(196, 169, 139, 0.4);
 }
 .sticky-call-bar a {
   flex: 1;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.5rem;
+  gap: 0.4rem;
   font-weight: 700;
-  font-size: 0.875rem;
-  letter-spacing: 0.04em;
+  font-size: 14px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-black);
-  border-radius: 0;
-}
-.sticky-call-bar a + a {
-  border-left: 1px solid rgba(0, 0, 0, 0.25);
+  background: var(--color-tan);
+  border-radius: var(--radius);
 }
 .sticky-call-bar svg {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
 }
 body {
   padding-bottom: 60px; /* clears the sticky call bar on mobile */
@@ -811,8 +823,8 @@ body {
   flex-direction: column;
   align-items: flex-start;
   gap: 0.75rem;
-  background: var(--color-white);
-  border: 1px solid #e7e2da;
+  background: var(--color-black);
+  border: 1px solid #232323;
   padding: clamp(1.75rem, 3vw, 2.5rem);
   transition: border-color var(--transition), transform var(--transition);
 }
@@ -824,9 +836,10 @@ body {
 .route-card h2 {
   font-size: clamp(1.5rem, 2vw + 1rem, 2rem);
   margin-bottom: 0;
+  color: var(--color-white);
 }
 .route-card p {
-  color: var(--color-text-on-white-muted);
+  color: var(--color-text-on-black-muted);
   margin-bottom: 0;
 }
 .route-card-link {
@@ -838,7 +851,7 @@ body {
   font-size: 0.8125rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--color-black);
+  color: var(--color-white);
 }
 .route-card-link svg {
   width: 16px;
@@ -924,13 +937,13 @@ body {
    CARDS
    -------------------------------------------------------------------------- */
 .card {
-  background: var(--color-white);
-  border: 1px solid #e7e2da;
+  background: var(--color-black);
+  color: var(--color-white);
+  border: 1px solid #232323;
   padding: 1.75rem;
 }
-.section--offwhite .card,
-.section .card {
-  background: var(--color-white);
+.card p {
+  color: var(--color-text-on-black-muted);
 }
 .card h3 {
   font-size: 1.0625rem;
@@ -961,23 +974,19 @@ body {
 }
 .area-list li {
   padding: 0.5rem 0;
-  border-bottom: 1px solid #e7e2da;
+  border-bottom: 1px solid #232323;
   font-size: 0.9375rem;
   font-weight: 600;
-}
-.section--dark .area-list li {
-  border-bottom-color: #232323;
 }
 .area-list .county {
   display: block;
   font-size: 0.6875rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-tan-dim);
+  color: var(--color-tan);
   font-weight: 700;
   margin-top: 0.15rem;
 }
-.section--dark .area-list .county { color: var(--color-tan); }
 
 /* --------------------------------------------------------------------------
    DIAGRAM FIGURES (Specialty Materials page)
@@ -1228,7 +1237,7 @@ body {
    -------------------------------------------------------------------------- */
 .material-block {
   padding: clamp(2.5rem, 5vw, 4rem) 0;
-  border-bottom: 1px solid #e7e2da;
+  border-bottom: 1px solid #232323;
 }
 .material-block:last-child { border-bottom: 0; }
 .material-grid {
@@ -1250,8 +1259,8 @@ body {
   gap: 0.5rem 1.5rem;
   margin: 1.5rem 0;
   padding: 1rem 0;
-  border-top: 1px solid #e7e2da;
-  border-bottom: 1px solid #e7e2da;
+  border-top: 1px solid #232323;
+  border-bottom: 1px solid #232323;
 }
 .material-meta div {
   min-width: 120px;
@@ -1261,7 +1270,7 @@ body {
   font-size: 0.625rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-tan-dim);
+  color: var(--color-tan);
   font-weight: 700;
   margin-bottom: 0.15rem;
 }
@@ -1297,16 +1306,15 @@ body {
   font-stretch: expanded;
   font-size: 1rem;
   border: 1.5px solid var(--color-tan);
-  color: var(--color-tan-dim);
+  color: var(--color-tan);
 }
-.section--dark .step::before { color: var(--color-tan); }
 .step h3 { margin-bottom: 0.4rem; font-size: 1.0625rem; }
 
 /* --------------------------------------------------------------------------
    WORKED EXAMPLE TABLE (Storm & Insurance — ACV/RCV example)
    -------------------------------------------------------------------------- */
 .worked-example {
-  border: 1px solid var(--color-black);
+  border: 1px solid #232323;
 }
 .worked-example table {
   width: 100%;
@@ -1328,14 +1336,14 @@ body {
 .worked-example td {
   text-align: left;
   padding: 0.75rem 1.25rem;
-  border-bottom: 1px solid #e7e2da;
+  border-bottom: 1px solid #232323;
 }
 .worked-example thead th {
   font-size: 0.6875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-text-on-white-muted);
-  border-bottom: 1px solid var(--color-black);
+  color: var(--color-text-on-black-muted);
+  border-bottom: 1px solid #232323;
 }
 .worked-example tbody tr:last-child td {
   border-bottom: 0;
@@ -1347,10 +1355,10 @@ body {
 }
 .worked-example tr.total td {
   font-weight: 700;
-  border-top: 2px solid var(--color-black);
+  border-top: 2px solid var(--color-tan);
 }
 .worked-example .tan-highlight td {
-  color: var(--color-tan-dim);
+  color: var(--color-tan);
   font-weight: 700;
 }
 
@@ -1377,16 +1385,14 @@ body {
   font-size: 0.75rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--color-tan-dim);
+  color: var(--color-tan);
   margin-top: 0.25rem;
 }
-.section--dark .glossary dt .term-full { color: var(--color-tan); }
 .glossary dd {
   margin: 0;
   font-size: 0.9375rem;
-  color: var(--color-text-on-white-muted);
+  color: var(--color-text-on-black-muted);
 }
-.section--dark .glossary dd { color: var(--color-text-on-black-muted); }
 
 /* --------------------------------------------------------------------------
    ROOFLINE BACKGROUND TEXTURE
@@ -1489,26 +1495,16 @@ body[data-page="home"] .texture-band {
 .callout {
   border-left: 3px solid var(--color-tan);
   padding: 1.25rem 1.5rem;
-  background: var(--color-offwhite);
-  font-size: 0.9375rem;
-}
-.section--dark .callout,
-.page-hero .callout {
   background: #111111;
   color: var(--color-text-on-black-muted);
+  font-size: 0.9375rem;
 }
 .callout p:last-child { margin-bottom: 0; }
 .callout a {
-  color: var(--color-tan-dim);
+  color: var(--color-tan);
   text-decoration: underline;
 }
-.section--dark .callout a,
-.page-hero .callout a {
-  color: var(--color-tan);
-}
-.callout strong { color: var(--color-black); }
-.section--dark .callout strong,
-.page-hero .callout strong { color: var(--color-white); }
+.callout strong { color: var(--color-white); }
 .page-hero .callout { margin: 1.5rem 0; max-width: 75ch; }
 
 /* --------------------------------------------------------------------------
@@ -1524,14 +1520,12 @@ body[data-page="home"] .texture-band {
   margin-bottom: 0.4rem;
 }
 .qa-list dt {
-  color: var(--color-black);
+  color: var(--color-white);
 }
 .qa-list dd {
   margin: 0;
-  color: var(--color-text-on-white-muted);
+  color: var(--color-text-on-black-muted);
 }
-.section--dark .qa-list dt { color: var(--color-white); }
-.section--dark .qa-list dd { color: var(--color-text-on-black-muted); }
 
 /* --------------------------------------------------------------------------
    FORMS
@@ -1651,7 +1645,7 @@ body[data-page="home"] .texture-band {
 }
 .contact-info {
   padding: clamp(2rem, 4vw, 3rem);
-  background: var(--color-offwhite);
+  background: var(--color-black);
 }
 .contact-info dl {
   display: grid;
@@ -1662,7 +1656,7 @@ body[data-page="home"] .texture-band {
   font-size: 0.6875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-tan-dim);
+  color: var(--color-tan);
   font-weight: 700;
   margin-bottom: 0.25rem;
 }
@@ -1763,9 +1757,6 @@ body[data-page="home"] .texture-band {
   .btn {
     font-size: 0.9375rem;
   }
-  .sticky-call-bar a {
-    font-size: 0.9375rem;
-  }
   .route-card-link {
     font-size: 0.9375rem;
   }
@@ -1810,7 +1801,6 @@ body[data-page="home"] .texture-band {
 /* --------------------------------------------------------------------------
    UTILITIES
    -------------------------------------------------------------------------- */
-.text-tan { color: var(--color-tan-dim); }
-.section--dark .text-tan { color: var(--color-tan); }
+.text-tan { color: var(--color-tan); }
 .mt-0 { margin-top: 0; }
 .mb-0 { margin-bottom: 0; }
