@@ -242,6 +242,51 @@ p {
 }
 
 /* --------------------------------------------------------------------------
+   SCROLL REVEAL
+   Driven by js/motion.js (IntersectionObserver). Only opacity + transform
+   are animated so nothing here ever triggers layout shift — elements stay
+   in normal flow at full size the whole time, just visually offset.
+   .reveal is added by JS to "major section" elements; .reveal-child is
+   added by JS to that section's direct content children for the stagger.
+   Both start in their *visible* state by default so content is never
+   hidden if JS fails to load — JS is what hides them right before
+   observing, not CSS, which is the safe default for a no-JS fallback.
+   -------------------------------------------------------------------------- */
+.reveal,
+.reveal-child {
+  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-pending,
+.reveal-child.is-pending {
+  opacity: 0;
+  transform: translateY(24px);
+}
+.reveal.is-visible,
+.reveal-child.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-child {
+    transition: none !important;
+  }
+  .reveal.is-pending,
+  .reveal-child.is-pending {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   COUNT-UP NUMBER
+   -------------------------------------------------------------------------- */
+.count-num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------------
    BUTTONS
    -------------------------------------------------------------------------- */
 .btn {
@@ -259,11 +304,20 @@ p {
   border-radius: var(--radius);
   background: transparent;
   cursor: pointer;
-  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  transition: background 200ms ease, color 200ms ease, border-color 200ms ease,
+              transform 200ms ease, filter 200ms ease;
   white-space: nowrap;
 }
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
+  }
+}
 
-/* On white/offwhite: black outline button */
+/* Primary (filled) buttons: background lightens and the button lifts
+   slightly on hover. filter:brightness lightens the existing fill color
+   itself rather than introducing a new shade, so the locked palette
+   (black/white/tan only) still holds. */
 .btn--primary {
   color: var(--color-black);
   border-color: var(--color-black);
@@ -275,29 +329,7 @@ p {
   background: var(--color-tan);
   border-color: var(--color-tan);
   color: var(--color-black);
-}
-
-.btn--ghost {
-  color: var(--color-black);
-  border-color: var(--color-black);
-  background: transparent;
-}
-.btn--ghost:hover,
-.btn--ghost:focus-visible {
-  border-color: var(--color-tan-dim);
-  color: var(--color-tan-dim);
-}
-
-/* On black: white outline button */
-.btn--on-dark {
-  color: var(--color-white);
-  border-color: var(--color-white);
-  background: transparent;
-}
-.btn--on-dark:hover,
-.btn--on-dark:focus-visible {
-  border-color: var(--color-tan);
-  color: var(--color-tan);
+  transform: translateY(-2px);
 }
 
 .btn--tan {
@@ -308,6 +340,33 @@ p {
 .btn--tan:hover,
 .btn--tan:focus-visible {
   background: transparent;
+  color: var(--color-tan);
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+}
+
+/* Secondary / outlined buttons: border starts at 30% tan, goes to full
+   tan on hover. Text color keeps its existing black/white-to-tan swap. */
+.btn--ghost {
+  color: var(--color-black);
+  border-color: rgba(196, 169, 139, 0.3);
+  background: transparent;
+}
+.btn--ghost:hover,
+.btn--ghost:focus-visible {
+  border-color: var(--color-tan);
+  color: var(--color-tan-dim);
+}
+
+/* On black: white outline button */
+.btn--on-dark {
+  color: var(--color-white);
+  border-color: rgba(196, 169, 139, 0.3);
+  background: transparent;
+}
+.btn--on-dark:hover,
+.btn--on-dark:focus-visible {
+  border-color: var(--color-tan);
   color: var(--color-tan);
 }
 
@@ -329,7 +388,8 @@ p {
   z-index: 100;
   background: var(--color-black);
   border-bottom: 1px solid #1a1a1a;
-  transition: background-color 300ms ease, border-color 300ms ease;
+  transition: background-color 300ms ease, border-color 300ms ease,
+              backdrop-filter 300ms ease;
 }
 
 /* Homepage only: header starts fully transparent over the hero background
@@ -342,6 +402,8 @@ body[data-page="home"] .site-header {
 body[data-page="home"] .site-header.is-scrolled {
   background: var(--color-black);
   border-bottom-color: rgba(196, 169, 139, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .header-inner {
@@ -490,6 +552,7 @@ body[data-page="home"] .site-header.is-scrolled {
     gap: 0;
   }
   .nav-primary a {
+    position: relative;
     display: block;
     padding: 0.25rem 0;
     border-bottom: 0;
@@ -499,9 +562,30 @@ body[data-page="home"] .site-header.is-scrolled {
     font-weight: 700;
     white-space: nowrap;
   }
+  .nav-primary a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    background: var(--color-tan);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 250ms ease;
+  }
   .nav-primary a:hover,
   .nav-primary a:focus-visible {
     color: var(--color-tan);
+  }
+  .nav-primary a:hover::after,
+  .nav-primary a:focus-visible::after {
+    transform: scaleX(1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-primary a::after {
+      transition: none;
+    }
   }
   .nav-primary .nav-phone { display: none; }
   /* Right column: CTA button on top, phone number centered beneath it,
@@ -706,6 +790,7 @@ body {
 .btn--glass:focus-visible {
   background: rgba(196, 169, 139, 0.35);
   color: var(--color-white);
+  transform: translateY(-2px);
 }
 
 /* --------------------------------------------------------------------------
@@ -734,7 +819,7 @@ body {
 .route-card:hover,
 .route-card:focus-visible {
   border-color: var(--color-tan);
-  transform: translateY(-2px);
+  transform: translateY(-4px);
 }
 .route-card h2 {
   font-size: clamp(1.5rem, 2vw + 1rem, 2rem);
@@ -1190,68 +1275,56 @@ body {
 
 /* --------------------------------------------------------------------------
    FULL-BLEED TEXTURE BAND
-   Material close-up (cedar, slate, copper, standing seam, tile) used to
-   break up page rhythm between sections on mobile. Real photos drop into
-   assets/textures/ (see README for target dimensions/weight). Until a
-   real file exists at that path, the <img> has nothing to paint (empty
-   alt, so no broken-icon), and the band falls back to solid black plus
-   the same roofline vector used elsewhere, so there is never a blank gap.
+   Material macro photo (cedar grain, slate, copper patina, standing seam
+   metal) used as a rhythm break between major sections. Solid black is
+   the placeholder until real files land in assets/textures/ — see the
+   filenames referenced by the .texture-band--* modifiers below. Once a
+   real file exists it's painted on .texture-band-inner, a layer taller
+   than its own container so js/motion.js can translateY it slightly
+   slower than scroll (parallax) without ever exposing an edge. Disabled
+   under 768px per spec: the inner layer sits static, image only.
    -------------------------------------------------------------------------- */
 .texture-band {
   position: relative;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  height: 200px;
+  height: 160px;
   overflow: hidden;
-  background-color: var(--color-black);
-  background-image: url("../assets/svg/roofline-texture.svg");
-  background-repeat: repeat-x;
-  background-position: bottom;
-  background-size: auto 140%;
+  background: var(--color-black);
 }
-.texture-band img {
-  display: block;
+@media (min-width: 768px) {
+  .texture-band {
+    height: 200px;
+  }
+}
+.texture-band-inner {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  left: 0;
+  right: 0;
+  top: -15%;
+  height: 130%;
+  background-color: var(--color-black);
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+@media (max-width: 767px) {
+  .texture-band-inner {
+    top: 0;
+    height: 100%;
+  }
 }
 .texture-band::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.55);
 }
-.texture-band-label {
-  display: none; /* revealed by the img's onload once a real photo exists behind it */
-  position: absolute;
-  z-index: 1;
-  left: 50%;
-  bottom: 1.1rem;
-  transform: translateX(-50%);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-tan);
-  white-space: nowrap;
-}
-.texture-band--card-gap {
-  display: block;
-}
-@media (min-width: 720px) {
-  .texture-band--card-gap {
-    display: none;
-  }
-}
-@media (min-width: 960px) {
-  .texture-band {
-    height: 120px;
-  }
-}
+.texture-band--cedar .texture-band-inner { background-image: url("../assets/textures/cedar-grain.jpg"); }
+.texture-band--slate .texture-band-inner { background-image: url("../assets/textures/slate.jpg"); }
+.texture-band--copper .texture-band-inner { background-image: url("../assets/textures/copper-patina.jpg"); }
+.texture-band--metal .texture-band-inner { background-image: url("../assets/textures/standing-seam-metal.jpg"); }
 
 /* --------------------------------------------------------------------------
    CALLOUT / LEGAL NOTE
