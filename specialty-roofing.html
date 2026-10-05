@@ -119,83 +119,81 @@
     <div class="scroll-diagram" data-diagram="assembly">
       <div class="scroll-diagram-sticky">
         <div class="scroll-diagram-stage">
-          <svg class="sd-svg" viewBox="0 0 640 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="assembly-title assembly-desc">
-            <title id="assembly-title">Asphalt roof assembly, built layer by layer</title>
-            <desc id="assembly-desc">Animated cutaway cross-section through a roof eave showing, in order, the roof deck, ice and water shield, synthetic underlayment, drip edge, starter strip, first shingle course, second and third shingle courses with overlap, and ridge cap.</desc>
+          <svg class="sd-svg" viewBox="0 0 760 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Asphalt roof assembly, built layer by layer: animated cutaway cross-section through a full roof slope, pitched at roughly 22 degrees from a low eave on the left to a ridge on the right, showing in order the roof deck, ice and water shield, synthetic underlayment, drip edge, starter strip, first shingle course, second and third shingle courses with overlap, and a ridge cap straddling the peak.">
+            <!-- No <title> element here on purpose: SVG <title> renders as a
+                 native hover tooltip in browsers. aria-label above carries
+                 the same accessible name without the tooltip side effect. -->
 
-            <!-- 1: Roof deck -->
+            <g transform="translate(-7,0)">
+
+            <!-- 1: Roof deck (base shape runs the full eave-to-ridge-to-backslope profile) -->
             <g class="sd-step">
-              <path class="sd-fill sd-fade" d="M50,416 L600,350 L600,324 L50,390 Z"/>
-              <line class="sd-draw-thin" x1="90" y1="403" x2="75" y2="412"/>
-              <line class="sd-draw-thin" x1="140" y1="397" x2="120" y2="409"/>
-              <line class="sd-draw-thin" x1="190" y1="391" x2="165" y2="406"/>
-              <line class="sd-draw-thin" x1="240" y1="385" x2="210" y2="403"/>
-              <line class="sd-draw-thin" x1="290" y1="379" x2="255" y2="400"/>
-              <line class="sd-draw-thin" x1="340" y1="373" x2="300" y2="397"/>
-              <line class="sd-leader sd-fade" x1="150" y1="378" x2="455" y2="100"/>
-              <text class="sd-label sd-fade" x="462" y="98">1. ROOF DECK</text>
-              <text class="sd-label-sm sd-fade" x="462" y="112">Plywood or OSB</text>
+              <path class="sd-fill sd-fade" d="M70,245 L490,75 L585,113 L585,83 L490,45 L70,215 Z"/>
+              <line class="sd-draw-thin" x1="100" y1="218" x2="88" y2="228"/>
+              <line class="sd-draw-thin" x1="180" y1="186" x2="168" y2="196"/>
+              <line class="sd-draw-thin" x1="260" y1="153" x2="248" y2="163"/>
+              <line class="sd-draw-thin" x1="340" y1="121" x2="328" y2="131"/>
+              <line class="sd-draw-thin" x1="420" y1="89" x2="408" y2="99"/>
+              <line class="sd-leader sd-fade" x1="545" y1="82" x2="580" y2="82"/>
+              <text class="sd-label sd-fade" x="584" y="86">1. ROOF DECK</text>
             </g>
 
             <!-- 2: Ice & water shield at the eave -->
             <g class="sd-step">
-              <path class="sd-fill-accent sd-fade" d="M50,390 L260,365 L260,357 L50,382 Z"/>
-              <line class="sd-leader sd-fade" x1="150" y1="370" x2="455" y2="124"/>
-              <text class="sd-label sd-fade" x="462" y="122">2. ICE &amp; WATER SHIELD</text>
-              <text class="sd-label-sm sd-fade" x="462" y="136">At the eave</text>
+              <path class="sd-fill-accent sd-fade" d="M70,215 L210,158 L210,150 L70,207 Z"/>
+              <line class="sd-leader sd-fade" x1="210" y1="154" x2="540" y2="163"/>
+              <text class="sd-label sd-fade" x="544" y="167">2. ICE &amp; WATER SHIELD</text>
             </g>
 
             <!-- 3: Synthetic underlayment over the field -->
             <g class="sd-step">
-              <path class="sd-fill sd-fade" d="M50,382 L260,357 L260,349 L50,374 Z"/>
-              <path class="sd-fill sd-fade" d="M260,365 L600,324 L600,316 L260,357 Z"/>
-              <line class="sd-leader sd-fade" x1="300" y1="340" x2="455" y2="148"/>
-              <text class="sd-label sd-fade" x="462" y="146">3. UNDERLAYMENT</text>
-              <text class="sd-label-sm sd-fade" x="462" y="160">Synthetic, over the field</text>
+              <path class="sd-fill sd-fade" d="M70,207 L210,150 L210,142 L70,199 Z"/>
+              <path class="sd-fill sd-fade" d="M210,158 L490,45 L490,37 L210,150 Z"/>
+              <line class="sd-leader sd-fade" x1="210" y1="146" x2="540" y2="139"/>
+              <text class="sd-label sd-fade" x="544" y="143">3. UNDERLAYMENT</text>
             </g>
 
             <!-- 4: Drip edge at the eave -->
             <g class="sd-step">
-              <path class="sd-fill-accent sd-fade" d="M42,416 L42,398 L58,392 L58,400 L50,404 L50,416 Z"/>
-              <line class="sd-leader sd-fade" x1="50" y1="405" x2="455" y2="172"/>
-              <text class="sd-label sd-fade" x="462" y="170">4. DRIP EDGE</text>
-              <text class="sd-label-sm sd-fade" x="462" y="184">At the eave</text>
+              <path class="sd-fill-accent sd-fade" d="M58,245 L58,227 L74,219 L74,229 L65,234 L65,245 Z"/>
+              <line class="sd-leader sd-fade" x1="66" y1="232" x2="540" y2="232"/>
+              <text class="sd-label sd-fade" x="544" y="236">4. DRIP EDGE</text>
             </g>
 
             <!-- 5: Starter strip -->
             <g class="sd-step">
-              <path class="sd-fill sd-fade" d="M50,374 L160,361 L160,353 L50,366 Z"/>
-              <line class="sd-leader sd-fade" x1="100" y1="360" x2="455" y2="196"/>
-              <text class="sd-label sd-fade" x="462" y="194">5. STARTER STRIP</text>
+              <path class="sd-fill sd-fade" d="M70,199 L140,171 L140,161 L70,189 Z"/>
+              <line class="sd-leader sd-fade" x1="140" y1="166" x2="540" y2="187"/>
+              <text class="sd-label sd-fade" x="544" y="191">5. STARTER STRIP</text>
             </g>
 
             <!-- 6: Shingle course one -->
             <g class="sd-step">
-              <path class="sd-fill sd-fade" d="M50,366 L260,341 L260,327 L50,352 Z"/>
-              <line class="sd-draw-thin" x1="90" y1="358" x2="90" y2="347"/>
-              <line class="sd-draw-thin" x1="150" y1="350" x2="150" y2="339"/>
-              <line class="sd-draw-thin" x1="210" y1="343" x2="210" y2="332"/>
-              <line class="sd-leader sd-fade" x1="150" y1="340" x2="455" y2="220"/>
-              <text class="sd-label sd-fade" x="462" y="218">6. SHINGLE COURSE ONE</text>
+              <path class="sd-fill sd-fade" d="M70,189 L210,132 L210,118 L70,175 Z"/>
+              <line class="sd-draw-thin" x1="105" y1="175" x2="105" y2="167"/>
+              <line class="sd-draw-thin" x1="140" y1="161" x2="140" y2="153"/>
+              <line class="sd-draw-thin" x1="175" y1="146" x2="175" y2="138"/>
+              <line class="sd-leader sd-fade" x1="210" y1="125" x2="540" y2="113"/>
+              <text class="sd-label sd-fade" x="544" y="117">6. SHINGLE COURSE ONE</text>
             </g>
 
             <!-- 7: Shingle courses two & three, overlap -->
             <g class="sd-step">
-              <path class="sd-fill sd-fade" d="M130,346 L360,319 L360,305 L130,332 Z"/>
-              <path class="sd-fill sd-fade" d="M210,327 L440,299 L440,285 L210,313 Z"/>
-              <line class="sd-dim sd-fade" x1="210" y1="313" x2="210" y2="332"/>
-              <line class="sd-leader sd-fade" x1="300" y1="310" x2="455" y2="244"/>
-              <text class="sd-label sd-fade" x="462" y="242">7. COURSES TWO &amp; THREE</text>
-              <text class="sd-label-sm sd-fade" x="462" y="256">Overlap staggers the joints</text>
+              <path class="sd-fill sd-fade" d="M135,155 L260,104 L260,90 L135,141 Z"/>
+              <path class="sd-fill sd-fade" d="M200,117 L325,66 L325,54 L200,105 Z"/>
+              <line class="sd-dim sd-fade" x1="200" y1="105" x2="200" y2="117"/>
+              <line class="sd-leader sd-fade" x1="325" y1="60" x2="540" y2="57"/>
+              <text class="sd-label sd-fade" x="544" y="61">7. COURSES TWO &amp; THREE</text>
             </g>
 
             <!-- 8: Ridge cap at the peak -->
             <g class="sd-step">
-              <path class="sd-fill-accent sd-fade" d="M555,355 L615,347 L615,331 L555,339 Z"/>
-              <line class="sd-draw-thin" x1="555" y1="342" x2="615" y2="334"/>
-              <line class="sd-leader sd-fade" x1="585" y1="339" x2="462" y2="300"/>
-              <text class="sd-label sd-fade" x="462" y="300">8. RIDGE CAP</text>
-              <text class="sd-label-sm sd-fade" x="462" y="314">At the peak</text>
+              <path class="sd-fill-accent sd-fade" d="M450,54 L490,37 L530,53 L530,39 L490,23 L450,40 Z"/>
+              <line class="sd-draw-thin" x1="450" y1="47" x2="530" y2="46"/>
+              <line class="sd-leader sd-fade" x1="490" y1="30" x2="540" y2="27"/>
+              <text class="sd-label sd-fade" x="544" y="31">8. RIDGE CAP</text>
+            </g>
+
             </g>
           </svg>
           <ol class="scroll-diagram-labels-mobile">
@@ -245,69 +243,63 @@
       <!-- DIAGRAM 2: CEDAR COURSING — scroll-scrubbed, see js/diagrams.js.
            Full material-block width, below the two-column grid above, so
            the 140-200vh sticky-scroll container isn't squeezed into the
-           narrow meta column next to body text. -->
+           narrow meta column next to body text. Cutaway cross-section
+           through the slope (same pitch/visual language as Diagram 1),
+           not a face-on view, so the three-layer overlap is actually
+           visible rather than asserted. -->
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Three Layers Thick</span>
+        <h3 id="cedar-diagram-heading">Why a cedar roof is three layers thick.</h3>
+      </div>
+
       <div class="scroll-diagram" data-diagram="cedar" aria-label="Why a cedar roof is three layers thick, scroll-driven diagram">
             <div class="scroll-diagram-sticky">
               <div class="scroll-diagram-stage">
-                <svg class="sd-svg" viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="cs-title cs-desc">
-                  <title id="cs-title">Cedar shake course detail showing exposure and overlap</title>
-                  <desc id="cs-desc">Three cedar shake courses laid down one at a time, each offset to stagger the joints, followed by a measure line showing that any point on the slope sits under three overlapping layers.</desc>
+                <svg class="sd-svg" viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cedar shake coursing shown in cutaway cross-section: three shake courses laid in profile through a roof slope at roughly 20 degrees, each overlapping the one before it, with a vertical cut line through one point on the slope revealing three distinct shake bodies stacked there.">
+                  <!-- No <title> element: it renders as a native hover
+                       tooltip in browsers. aria-label above is the
+                       accessible name instead. -->
+
+                  <g transform="translate(-37,0)">
 
                   <!-- 1: Course one -->
                   <g class="sd-step">
-                    <path class="sd-fill sd-fade" d="M50,300 L260,300 L260,340 L50,340 Z"/>
-                    <line class="sd-draw" x1="120" y1="300" x2="120" y2="340"/>
-                    <line class="sd-draw" x1="200" y1="300" x2="200" y2="340"/>
-                    <path class="sd-fill sd-fade" d="M50,340 L260,340 L260,356 L50,356 Z"/>
-                    <line class="sd-draw-thin" x1="62" y1="343" x2="50" y2="353"/>
-                    <line class="sd-draw-thin" x1="92" y1="343" x2="66" y2="356"/>
-                    <line class="sd-draw-thin" x1="122" y1="343" x2="96" y2="356"/>
-                    <line class="sd-draw-thin" x1="152" y1="343" x2="126" y2="356"/>
-                    <line class="sd-draw-thin" x1="182" y1="343" x2="156" y2="356"/>
-                    <line class="sd-draw-thin" x1="212" y1="343" x2="186" y2="356"/>
-                    <line class="sd-draw-thin" x1="242" y1="343" x2="216" y2="356"/>
-                    <line class="sd-leader sd-fade" x1="260" y1="320" x2="470" y2="90"/>
-                    <text class="sd-label sd-fade" x="476" y="88">1. COURSE ONE</text>
-                    <text class="sd-label-sm sd-fade" x="476" y="102">Nailed to skip sheathing</text>
+                    <path class="sd-fill sd-fade" d="M80,230 L300,141 L300,127 L80,216 Z"/>
+                    <line class="sd-leader sd-fade" x1="300" y1="134" x2="505" y2="145"/>
+                    <text class="sd-label sd-fade" x="509" y="149">1. COURSE ONE</text>
                   </g>
 
-                  <!-- 2: Course two, joints staggered -->
+                  <!-- 2: Course two, offset up-slope by one exposure -->
                   <g class="sd-step">
-                    <path class="sd-fill sd-fade" d="M50,260 L260,260 L260,300 L50,300 Z"/>
-                    <line class="sd-draw" x1="90" y1="260" x2="90" y2="300"/>
-                    <line class="sd-draw" x1="165" y1="260" x2="165" y2="300"/>
-                    <line class="sd-draw" x1="235" y1="260" x2="235" y2="300"/>
-                    <line class="sd-leader sd-fade" x1="260" y1="280" x2="470" y2="140"/>
-                    <text class="sd-label sd-fade" x="476" y="138">2. COURSE TWO</text>
-                    <text class="sd-label-sm sd-fade" x="476" y="152">Joints staggered 1.5" min</text>
-                    <text class="sd-label-sm sd-fade" x="476" y="165">from the course below</text>
+                    <path class="sd-fill sd-fade" d="M170,180 L390,91 L390,77 L170,166 Z"/>
+                    <line class="sd-leader sd-fade" x1="390" y1="84" x2="505" y2="65"/>
+                    <text class="sd-label sd-fade" x="509" y="69">2. COURSE TWO</text>
                   </g>
 
-                  <!-- 3: Course three -->
+                  <!-- 3: Course three, offset a second exposure up-slope. Felt
+                       interlayment called out here, directly in the section
+                       with its own short leader, clear of the measure line. -->
                   <g class="sd-step">
-                    <path class="sd-fill sd-fade" d="M50,220 L260,220 L260,260 L50,260 Z"/>
-                    <line class="sd-draw" x1="120" y1="220" x2="120" y2="260"/>
-                    <line class="sd-draw" x1="200" y1="220" x2="200" y2="260"/>
-                    <line class="sd-draw-thin sd-fade" x1="262" y1="258" x2="300" y2="258"/>
-                    <line class="sd-draw-thin sd-fade" x1="262" y1="298" x2="300" y2="298"/>
-                    <text class="sd-label-sm sd-fade" x="304" y="262">felt interlayment</text>
-                    <line class="sd-leader sd-fade" x1="260" y1="240" x2="470" y2="190"/>
-                    <text class="sd-label sd-fade" x="476" y="188">3. COURSE THREE</text>
+                    <path class="sd-fill sd-fade" d="M260,129 L480,40 L480,26 L260,115 Z"/>
+                    <line class="sd-draw-thin sd-fade" x1="276" y1="135" x2="284" y2="135"/>
+                    <line class="sd-leader sd-fade" x1="276" y1="135" x2="235" y2="105"/>
+                    <text class="sd-label-sm sd-fade" x="150" y="101">FELT INTERLAYMENT</text>
+                    <line class="sd-leader sd-fade" x1="480" y1="33" x2="505" y2="30"/>
+                    <text class="sd-label sd-fade" x="509" y="34">3. COURSE THREE</text>
                   </g>
 
-                  <!-- 4: Measure line, three layers thick -->
+                  <!-- 4: Vertical cut at one point on the slope, three shake
+                       bodies stacked there, the payoff of the animation. -->
                   <g class="sd-step">
-                    <line class="sd-draw" x1="330" y1="220" x2="330" y2="340"/>
-                    <line class="sd-draw-thin" x1="324" y1="220" x2="336" y2="220"/>
-                    <line class="sd-draw-thin" x1="324" y1="340" x2="336" y2="340"/>
-                    <path class="sd-fill-accent sd-fade" d="M345,306 L345,296 L353,288 L361,296 L361,306 Z"/>
-                    <path class="sd-fill-accent sd-fade" d="M345,296 L345,286 L353,278 L361,286 L361,296 Z"/>
-                    <path class="sd-fill-accent sd-fade" d="M345,286 L345,276 L353,268 L361,276 L361,286 Z"/>
-                    <line class="sd-leader sd-fade" x1="361" y1="290" x2="470" y2="240"/>
-                    <text class="sd-label sd-fade" x="476" y="232">3 LAYERS THICK</text>
-                    <text class="sd-label-sm sd-fade" x="476" y="246">At any point on the slope,</text>
-                    <text class="sd-label-sm sd-fade" x="476" y="259">because exposure is about</text>
-                    <text class="sd-label-sm sd-fade" x="476" y="272">a third of shake length</text>
+                    <line class="sd-draw" x1="280" y1="149" x2="280" y2="107"/>
+                    <line class="sd-draw-thin" x1="274" y1="149" x2="286" y2="149"/>
+                    <line class="sd-draw-thin" x1="274" y1="121" x2="286" y2="121"/>
+                    <line class="sd-draw-thin" x1="274" y1="107" x2="286" y2="107"/>
+                    <line class="sd-leader sd-fade" x1="280" y1="128" x2="505" y2="100"/>
+                    <text class="sd-label sd-fade" x="509" y="97">3 LAYERS THICK</text>
+                    <text class="sd-label-sm sd-fade" x="509" y="111">At this point on the slope</text>
+                  </g>
+
                   </g>
                 </svg>
                 <ol class="scroll-diagram-labels-mobile">
@@ -319,7 +311,7 @@
               </div>
             </div>
           </div>
-      <p class="scroll-diagram-caption">Each shake is far longer than its visible exposure. Because exposure is roughly a third of shake length, any point on the roof sits under three overlapping layers, the actual source of a shake roof's water resistance.</p>
+      <p class="scroll-diagram-caption">Exposure is about a third of shake length, so any point on the slope sits under three overlapping courses.</p>
     </section>
 
     <div class="texture-band texture-band--cedar"><div class="texture-band-inner"></div></div>
@@ -349,13 +341,27 @@
 
       <!-- DIAGRAM 3: STANDING SEAM LOCK — scroll-scrubbed, see js/diagrams.js.
            Full material-block width, below the two-column grid above, same
-           reasoning as Diagram 2. -->
+           reasoning as Diagram 2. Geometry unchanged from the prior pass;
+           only label positions, the column headings, and the accessible
+           name changed here. -->
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Concealed vs. Exposed</span>
+        <h3 id="seam-diagram-heading">Concealed clip versus exposed screw.</h3>
+      </div>
+
       <div class="scroll-diagram" data-diagram="seam" aria-label="Concealed clip versus exposed screw, scroll-driven diagram">
             <div class="scroll-diagram-sticky">
               <div class="scroll-diagram-stage">
-                <svg class="sd-svg" viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ss-title ss-desc">
-                  <title id="ss-title">Standing seam lock forming, compared to an exposed fastener panel</title>
-                  <desc id="ss-desc">Two metal panel edges slide toward each other and lock into a raised standing seam with a concealed clip beneath, then an exposed-fastener panel is shown alongside it with a screw and rubber washer that visibly cracks over time.</desc>
+                <svg class="sd-svg" viewBox="0 0 740 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Standing seam lock forming, compared to an exposed fastener panel: two metal panel edges slide toward each other and lock into a raised standing seam with a concealed clip beneath, then an exposed-fastener panel is shown alongside it with a screw and rubber washer that visibly cracks over time.">
+                  <!-- No <title> element: it renders as a native hover
+                       tooltip in browsers. aria-label above is the
+                       accessible name instead. -->
+
+                  <g transform="translate(4,0)">
+
+                  <!-- Column headings, always visible, not tied to a step -->
+                  <text class="sd-label" x="20" y="24">STANDING SEAM</text>
+                  <text class="sd-label" x="412" y="24">EXPOSED FASTENER</text>
 
                   <!-- 1: Deck + underlayment base -->
                   <g class="sd-step">
@@ -367,39 +373,43 @@
                     <line class="sd-draw-thin" x1="264" y1="352" x2="235" y2="374"/>
                     <line class="sd-draw-thin" x1="324" y1="352" x2="295" y2="374"/>
                     <path class="sd-fill sd-fade" d="M20,337 L370,337 L370,345 L20,345 Z"/>
-                    <text class="sd-label-sm sd-fade" x="234" y="332">Underlayment over solid deck</text>
+                    <text class="sd-label-sm sd-fade" x="150" y="308">Underlayment over solid deck</text>
                   </g>
 
-                  <!-- 2: Two panel edges slide together -->
+                  <!-- 2: Two panel edges slide together. Label anchored at
+                       seam mid-height since that's the span of the rising
+                       motion, well clear of the fold label below. -->
                   <g class="sd-step">
                     <path class="sd-fill sd-fade" data-from-x="-70" d="M98,337 L98,224 L104,212 L110,212 L110,337 Z"/>
                     <path class="sd-fill sd-fade" data-from-x="70" d="M110,337 L110,212 L116,212 L122,224 L122,337 Z"/>
-                    <text class="sd-label sd-fade" x="20" y="90">1. TWO PANEL EDGES</text>
-                    <text class="sd-label-sm sd-fade" x="20" y="104">Rise to meet at the seam</text>
+                    <line class="sd-leader sd-fade" x1="122" y1="275" x2="150" y2="275"/>
+                    <text class="sd-label sd-fade" x="154" y="271">1. TWO PANEL EDGES</text>
+                    <text class="sd-label-sm sd-fade" x="154" y="285">No fastener penetrates</text>
                   </g>
 
-                  <!-- 3: Seam folds + concealed clip appears -->
+                  <!-- 3: Seam folds (label anchored at the fold, near the
+                       top of the seam) + concealed clip appears (label
+                       anchored at the clip, near the base), the two
+                       features are close together but their labels are
+                       spaced well apart on the Y axis so they don't
+                       collide the way they used to. -->
                   <g class="sd-step">
                     <line class="sd-draw" x1="103" y1="222" x2="117" y2="222"/>
                     <path class="sd-fill-accent sd-fade" data-from-y="24" d="M106,330 L114,330 L114,339 L106,339 Z"/>
-                    <line class="sd-leader sd-fade" x1="110" y1="212" x2="160" y2="90"/>
-                    <text class="sd-label sd-fade" x="164" y="88">2. DOUBLE-LOCK SEAM</text>
-                    <text class="sd-label-sm sd-fade" x="164" y="102">Mechanically folded over</text>
-                    <line class="sd-leader sd-fade" x1="110" y1="334" x2="70" y2="150"/>
-                    <text class="sd-label sd-fade" x="42" y="146">3. CONCEALED CLIP</text>
-                    <text class="sd-label-sm sd-fade" x="42" y="160">Fastens to deck,</text>
-                    <text class="sd-label-sm sd-fade" x="42" y="173">panel floats free</text>
-                    <line class="sd-dim sd-fade" x1="140" y1="337" x2="140" y2="212"/>
-                    <text class="sd-label-sm sd-fade" x="148" y="278">No fastener ever</text>
-                    <text class="sd-label-sm sd-fade" x="148" y="291">penetrates the panel</text>
+                    <line class="sd-leader sd-fade" x1="117" y1="217" x2="150" y2="217"/>
+                    <text class="sd-label sd-fade" x="154" y="213">2. DOUBLE-LOCK SEAM</text>
+                    <text class="sd-label-sm sd-fade" x="154" y="227">Mechanically folded over</text>
+                    <line class="sd-leader sd-fade" x1="114" y1="334" x2="150" y2="334"/>
+                    <text class="sd-label sd-fade" x="154" y="338">3. CONCEALED CLIP</text>
                   </g>
 
-                  <!-- 4: Exposed fastener comparison -->
+                  <!-- 4: Exposed fastener comparison. Washer label moved
+                       down next to the washer itself instead of sitting
+                       far above it. -->
                   <g class="sd-step">
                     <g class="sd-fade" data-from-x="60">
                       <line class="sd-dim" x1="392" y1="30" x2="392" y2="374"/>
-                      <text class="sd-label" x="412" y="38">EXPOSED FASTENER</text>
-                      <text class="sd-label-sm" x="412" y="52">Through-screwed panel face</text>
+                      <text class="sd-label-sm" x="412" y="42">Through-screwed panel face</text>
                       <path class="sd-fill" d="M412,348 L612,348 L612,374 L412,374 Z"/>
                       <line class="sd-draw-thin" x1="424" y1="352" x2="412" y2="364"/>
                       <line class="sd-draw-thin" x1="474" y1="352" x2="445" y2="374"/>
@@ -409,25 +419,26 @@
                       <circle class="sd-fill-accent" cx="458" cy="296" r="6"/>
                       <circle class="sd-fill-accent" cx="542" cy="296" r="6"/>
                       <path class="sd-draw-thin" d="M453,300 L457,294 L461,300"/>
-                      <line class="sd-leader" x1="458" y1="290" x2="420" y2="150"/>
-                      <text class="sd-label" x="418" y="120" text-anchor="end">Exposed screw</text>
-                      <text class="sd-label-sm" x="418" y="134" text-anchor="end">+ rubber washer</text>
-                      <text class="sd-label-sm" x="418" y="167" text-anchor="end">Washer hardens and</text>
-                      <text class="sd-label-sm" x="418" y="180" text-anchor="end">cracks over time,</text>
-                      <text class="sd-label-sm" x="418" y="193" text-anchor="end">primary leak point</text>
+                      <line class="sd-leader" x1="548" y1="296" x2="575" y2="282"/>
+                      <text class="sd-label" x="579" y="278">EXPOSED SCREW</text>
+                      <text class="sd-label-sm" x="579" y="292">+ rubber washer</text>
+                      <text class="sd-label-sm" x="579" y="305">Hardens and cracks,</text>
+                      <text class="sd-label-sm" x="579" y="318">primary leak point</text>
                     </g>
+                  </g>
+
                   </g>
                 </svg>
                 <ol class="scroll-diagram-labels-mobile">
                   <li data-at="0.02"><span class="sd-li-num">1</span> Panel edges rise to meet</li>
                   <li data-at="0.27"><span class="sd-li-num">2</span> Seam mechanically folds</li>
-                  <li data-at="0.52"><span class="sd-li-num">2</span> Concealed clip, no fastener</li>
-                  <li data-at="0.77"><span class="sd-li-num">3</span> Vs. exposed screw + washer</li>
+                  <li data-at="0.52"><span class="sd-li-num">3</span> Concealed clip, no fastener</li>
+                  <li data-at="0.77"><span class="sd-li-num">4</span> Vs. exposed screw + washer</li>
                 </ol>
               </div>
             </div>
           </div>
-      <p class="scroll-diagram-caption">Concealed clips let the panel move independently of the deck. Exposed screws pin the panel rigidly and rely on a rubber washer that is, by design, a wear item.</p>
+      <p class="scroll-diagram-caption">One of these has no fastener through the panel. The other relies on a rubber washer that is, by design, a wear item.</p>
     </section>
 
     <div class="texture-band texture-band--metal"><div class="texture-band-inner"></div></div>
