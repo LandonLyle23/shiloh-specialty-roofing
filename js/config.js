@@ -10,38 +10,39 @@
    visible phone number on that page is populated from this object by
    js/main.js at load time.
 
-   [PLACEHOLDER] All numbers below are placeholders. Replace with real
-   direct or call-tracking numbers (e.g. CallRail) before launch.
+   All five campaign keys currently point to the same main line. Give any
+   one of them its own "display"/"href" later (e.g. a CallRail number) to
+   start tracking that campaign separately; nothing else needs to change.
    ========================================================================== */
 
 window.SHILOH_CONFIG = {
   phones: {
     /* display strings are kept short on purpose — real tracking numbers
        are ~14 characters and need to fit the header/sticky-bar layout
-       without wrapping. Swap the placeholder text and href per campaign. */
+       without wrapping. */
     home: {
-      display: "[PHONE]", /* campaign: Home */
-      href: "tel:+10000000000"
+      display: "(770) 235-1146", /* campaign: Home */
+      href: "tel:+17702351146"
     },
     specialty: {
-      display: "[PHONE]", /* campaign: Specialty Materials */
-      href: "tel:+10000000000"
+      display: "(770) 235-1146", /* campaign: Specialty Materials */
+      href: "tel:+17702351146"
     },
     storm: {
-      display: "[PHONE]", /* campaign: Storm & Insurance */
-      href: "tel:+10000000000"
+      display: "(770) 235-1146", /* campaign: Storm & Insurance */
+      href: "tel:+17702351146"
     },
     replacement: {
-      display: "[PHONE]", /* campaign: Roof Replacement */
-      href: "tel:+10000000000"
+      display: "(770) 235-1146", /* campaign: Roof Replacement */
+      href: "tel:+17702351146"
     },
     contact: {
-      display: "[PHONE]", /* campaign: Contact / main line */
-      href: "tel:+10000000000"
+      display: "(770) 235-1146", /* campaign: Contact / main line */
+      href: "tel:+17702351146"
     },
     default: {
-      display: "[PHONE]",
-      href: "tel:+10000000000"
+      display: "(770) 235-1146",
+      href: "tel:+17702351146"
     }
   },
 
