@@ -2,6 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>
+(function(){
+  try {
+    var stored = localStorage.getItem('theme');
+    var theme = (stored === 'light' || stored === 'dark') ? stored : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shiloh Specialty Roofing | Cedar, Slate, Metal &amp; Tile, Dawsonville, GA</title>
 <meta name="description" content="Family owned specialty roofing across North Georgia. Thirty years in cedar, slate, standing seam metal, tile, and asphalt. Free roof inspections, documented and yours to keep.">
@@ -81,6 +92,11 @@
         <img src="/assets/logo-white.png" alt="Shiloh Specialty Roofing" class="logo">
       </a>
 
+    <button class="theme-toggle theme-toggle--mobile" type="button" aria-label="Toggle light and dark mode" data-theme-toggle>
+      <svg class="theme-toggle-icon theme-toggle-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      <svg class="theme-toggle-icon theme-toggle-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
@@ -101,11 +117,11 @@
 
     <div class="header-divider" aria-hidden="true"></div>
     <div class="header-cta">
+      <button class="theme-toggle theme-toggle--desktop" type="button" aria-label="Toggle light and dark mode" data-theme-toggle>
+        <svg class="theme-toggle-icon theme-toggle-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="theme-toggle-icon theme-toggle-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
       <a href="#contact" class="btn btn--tan">Get My Free Roof Inspection</a>
-      <div class="header-phone">
-        <span class="label">Call now</span>
-        <a class="number" data-phone-link data-phone-text href="tel:">[PHONE]</a>
-      </div>
     </div>
   </div>
 </header>
@@ -135,13 +151,14 @@
       <source src="assets/hero-roof.mp4" type="video/mp4">
     </video>
     <div class="container">
-      <span class="hero-trust">Family Owned &middot; North Georgia &middot; 30 Years</span>
       <span class="eyebrow">Specialty Roofing</span>
       <h1>The roof should be as good as the house.</h1>
       <p>Cedar, slate, asphalt, standing seam metal, and tile. Installed by a family that has been taking care of North Georgia roofs for thirty years.</p>
       <div class="hero-btn-group">
-        <a href="#contact" class="btn btn--glass">Get My Free Roof Inspection</a>
-        <a href="specialty-roofing.html" class="btn btn--glass">Explore Specialty Roofing</a>
+        <a href="#contact" class="btn btn--outline-white">Get My Free Roof Inspection</a>
+        <a href="specialty-roofing.html" class="hero-link">Explore Specialty Roofing
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -174,23 +191,28 @@
   <!-- FAMILY OWNED -->
   <section class="section section--offwhite">
     <div class="container">
-      <div class="section-head section-head--center">
-        <span class="eyebrow">Family Owned</span>
-        <h2><span class="count-num" data-count-to="30">Thirty</span> years of this family on North Georgia roofs.</h2>
-        <p>We are a family company by choice. The same people who quote your roof are the people who inspect it, run the job, and answer the phone when you have a question two years later. No rotating crew of strangers, and no salesman who disappears the day the contract is signed.</p>
-        <p>Thirty years in cedar, slate, asphalt, standing seam metal, copper, and tile. We did not learn these materials on a job. We grew up in them.</p>
+      <div class="grid grid--2" style="align-items: center;">
+        <div class="section-head mb-0">
+          <span class="eyebrow">Family Owned</span>
+          <h2><span class="count-num" data-count-to="30">Thirty</span> years of this family on North Georgia roofs.</h2>
+        </div>
+        <div>
+          <p>We are a family company by choice. The same people who quote your roof are the people who inspect it, run the job, and answer the phone when you have a question two years later. No rotating crew of strangers, and no salesman who disappears the day the contract is signed.</p>
+          <p class="mb-0">Thirty years in cedar, slate, asphalt, standing seam metal, copper, and tile. We did not learn these materials on a job. We grew up in them.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- THE FREE INSPECTION -->
+  <!-- THE FREE INSPECTION — centered, narrow measure, CTA is the focal
+       element rather than one more line of body copy. -->
   <section class="section">
     <div class="container">
-      <div class="section-head section-head--center mb-0">
+      <div class="section-head section-head--center section-head--narrow mb-0">
         <span class="eyebrow">The Free Inspection</span>
         <h2>We'll document your roof whether you hire us or not.</h2>
         <p>A full inspection, slope by slope, with dated photographs of anything we find. You get the report to keep. Use it for an insurance claim or put it in a drawer. There is no charge and no obligation.</p>
-        <a href="#contact" class="btn btn--primary">Get My Free Roof Inspection</a>
+        <a href="#contact" class="btn btn--tan btn--lg">Get My Free Roof Inspection</a>
       </div>
     </div>
   </section>
@@ -208,7 +230,7 @@
         <div>
           <p>Shiloh Specialty Roofing is family owned and family run. Our family has been roofing in North Georgia for more than thirty years, and that is not a line on a website. It is why we know what cedar does in this humidity, why we flash a chimney the slow way, and why we will not put something on your house we would not put on our own.</p>
           <p>The roof on a home should be installed with the same precision as the rest of the house. Cedar shake with correct exposure and weather-checking gaps. Standing seam metal with real hemmed seams instead of exposed screws. Slate and tile set the way the material wants to be set, not the way that is fastest.</p>
-          <a href="contact.html" class="btn btn--ghost">Get My Free Roof Inspection</a>
+          <a href="contact.html" class="btn btn--tan">Get My Free Roof Inspection</a>
         </div>
       </div>
     </div>
@@ -221,6 +243,10 @@
         <span class="eyebrow">Service Area</span>
         <h2>Based in Dawsonville. We go where the roof is.</h2>
       </div>
+      <!-- Plain-text version, kept for an easy revert: delete the
+           .county-grid block below and remove this comment wrapper to
+           restore it. -->
+      <!--
       <ul class="area-list">
         <li>Dawson County</li>
         <li>Lumpkin County</li>
@@ -232,6 +258,46 @@
         <li>Gwinnett County</li>
         <li>Fulton County</li>
       </ul>
+      -->
+      <div class="county-grid">
+        <div class="county-card">
+          <img src="assets/counties/dawson.jpg" alt="Dawson County, GA" loading="lazy">
+          <span class="county-card-name">Dawson County</span>
+        </div>
+        <div class="county-card">
+          <img src="assets/counties/lumpkin.jpg" alt="Lumpkin County, GA" loading="lazy">
+          <span class="county-card-name">Lumpkin County</span>
+        </div>
+        <div class="county-card">
+          <img src="assets/counties/white.jpg" alt="White County, GA" loading="lazy">
+          <span class="county-card-name">White County</span>
+        </div>
+        <div class="county-card">
+          <img src="assets/counties/hall.jpg" alt="Hall County, GA" loading="lazy">
+          <span class="county-card-name">Hall County</span>
+        </div>
+        <div class="county-card">
+          <img src="assets/counties/forsyth.jpg" alt="Forsyth County, GA" loading="lazy">
+          <span class="county-card-name">Forsyth County</span>
+        </div>
+        <div class="county-card">
+          <img src="assets/counties/pickens.jpg" alt="Pickens County, GA" loading="lazy">
+          <span class="county-card-name">Pickens County</span>
+        </div>
+        <div class="county-card">
+          <img src="assets/counties/cherokee.jpg" alt="Cherokee County, GA" loading="lazy">
+          <span class="county-card-name">Cherokee County</span>
+        </div>
+        <div class="county-card">
+          <img src="assets/counties/gwinnett.jpg" alt="Gwinnett County, GA" loading="lazy">
+          <span class="county-card-name">Gwinnett County</span>
+        </div>
+        <div class="county-card">
+          <img src="assets/counties/fulton.jpg" alt="Fulton County, GA" loading="lazy">
+          <span class="county-card-name">Fulton County</span>
+        </div>
+      </div>
+      <p class="county-grid-credit">Location photos via Wikimedia Commons: Dahlonega (Gwringle, CC BY-SA 3.0), Gainesville (ATLJonJon, CC BY 4.0), Canton (Akhenaton06, CC BY-SA 3.0), Lawrenceville (DeKalb, CC BY-SA 3.0), Atlanta (AtlChampion, CC BY-SA 4.0). Remaining photos public domain (CC0).</p>
       <div class="section-head section-head--center mb-0" style="margin-top: 2.5rem;">
         <p>Cedar, slate, copper, and standing seam are not local work. Crews who install them correctly are rare enough that we go where the roof is, in Georgia or out of state. If your home is outside North Georgia and the material is right, reach out anyway.</p>
       </div>
@@ -250,17 +316,13 @@
           <p>Fill this out and we'll follow up to schedule a look at your home.</p>
         </div>
         <div class="form-panel">
-          <div class="risk-reversal">
-            <p>No pressure, no obligation, no salesman in your living room. We inspect, we document, we send you the report. What you do next is up to you.</p>
-            <p>We respond to every inspection request within one business day.</p>
-          </div>
           <!-- FORM ENDPOINT: this form posts to Netlify Forms (data-netlify,
-               name="lead", and the matching hidden form-name input below).
+               name="home", and the matching hidden form-name input below).
                To use a different provider instead, change the action="" URL
                and remove the netlify-specific attributes/hidden field. -->
-          <form class="lead-form" name="lead" method="POST" action="thank-you.html" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="lead">
-            <input type="hidden" name="source-page" value="Home">
+          <form class="lead-form" name="home" method="POST" action="thank-you.html" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="home">
+            <input type="hidden" name="source" value="home">
             <p class="hp-field">
               <label>Don't fill this out if you're human: <input name="bot-field"></label>
             </p>
@@ -294,6 +356,10 @@
             <button type="submit" class="btn btn--tan btn--block">Send It</button>
             <p class="form-legal">By submitting, you agree to be contacted about your project by phone, text, or email.</p>
           </form>
+          <div class="risk-reversal risk-reversal--after">
+            <p>No pressure, no obligation, no salesman in your living room. We inspect, we document, we send you the report. What you do next is up to you.</p>
+            <p>We respond to every inspection request within one business day.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -340,6 +406,7 @@
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
 <script src="js/config.js"></script>
 <script src="js/main.js"></script>
+<script src="js/theme.js"></script>
 <script src="js/motion.js"></script>
 </body>
 </html>

@@ -58,6 +58,28 @@
   --color-text-on-black: #ffffff;
   --color-text-on-black-muted: #c9c9c9;
 
+  /* ---- Theme-aware semantic colors. Dark is the base/default (these
+     match the current site exactly); the [data-theme="light"] block
+     below is the only place that redefines them. Everything that should
+     participate in the light/dark toggle reads these instead of the
+     literal --color-black/--color-white directly. A few things are
+     deliberately exempt and keep reading the literal palette vars
+     instead: the hero video section and the scroll-scrubbed SVG
+     diagrams, both explicitly meant to stay dark regardless of theme
+     (the diagrams use white/tan strokes that would disappear on a light
+     background, and the hero's video/overlay treatment wasn't part of
+     this toggle's scope). --color-tan itself never changes between
+     modes, by design. ---- */
+  --theme-bg: var(--color-black);
+  --theme-bg-raised: #111111;
+  --theme-text: var(--color-text-on-black);
+  --theme-text-muted: var(--color-text-on-black-muted);
+  --theme-border: #232323;
+  --theme-border-faint: rgba(196, 169, 139, 0.2);
+  --theme-logo-filter: none;
+  --theme-input-bg: transparent;
+  --theme-input-border: #3a3a3a;
+
   /* ---- Type ---- */
   --font-heading: "Archivo", "Arial Black", "Helvetica Neue", sans-serif;
   --font-body: "Montserrat", "Helvetica Neue", Arial, sans-serif;
@@ -69,6 +91,18 @@
 
   /* ---- Motion ---- */
   --transition: 160ms ease;
+}
+
+html[data-theme="light"] {
+  --theme-bg: var(--color-offwhite);
+  --theme-bg-raised: var(--color-white);
+  --theme-text: var(--color-text-on-white);
+  --theme-text-muted: var(--color-text-on-white-muted);
+  --theme-border: #e7e2da;
+  --theme-border-faint: rgba(196, 169, 139, 0.35);
+  --theme-logo-filter: brightness(0);
+  --theme-input-bg: var(--color-white);
+  --theme-input-border: #d8d2c6;
 }
 
 /* --------------------------------------------------------------------------
@@ -90,9 +124,10 @@ body {
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
-  color: var(--color-text-on-black);
-  background: var(--color-black);
+  color: var(--theme-text);
+  background: var(--theme-bg);
   -webkit-font-smoothing: antialiased;
+  transition: background-color 200ms ease, color 200ms ease;
 }
 
 img,
@@ -144,7 +179,7 @@ h4 { font-size: 1.125rem; letter-spacing: 0.06em; }
 
 p {
   margin: 0 0 1.25rem;
-  color: var(--color-text-on-black-muted);
+  color: var(--theme-text-muted);
 }
 
 .eyebrow {
@@ -185,22 +220,26 @@ p {
   padding: clamp(3rem, 6vw, 6rem) 0;
 }
 
-.section--dark {
-  background: var(--color-black);
-  color: var(--color-text-on-black);
+/* .section--dark and .section--offwhite both just resolve to whatever
+   the current theme's page background/text is — same thing, body
+   already provides it by inheritance. Both class names are kept since
+   HTML across the site already uses either one; neither forces a
+   section to stay one mode's colors regardless of the page theme, the
+   whole page switches uniformly. */
+.section--dark,
+.section--offwhite {
+  background: var(--theme-bg);
+  color: var(--theme-text);
 }
 .section--dark h1,
 .section--dark h2,
 .section--dark h3,
-.section--dark h4 {
-  color: var(--color-white);
-}
-.section--dark p {
-  color: var(--color-text-on-black-muted);
-}
-
-.section--offwhite {
-  background: var(--color-black);
+.section--dark h4,
+.section--offwhite h1,
+.section--offwhite h2,
+.section--offwhite h3,
+.section--offwhite h4 {
+  color: var(--theme-text);
 }
 
 .section-head {
@@ -211,6 +250,12 @@ p {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+}
+.section-head--narrow {
+  max-width: 560px;
+}
+.section-head--narrow .btn {
+  margin-top: 1.5rem;
 }
 
 .grid {
@@ -357,24 +402,16 @@ p {
 }
 
 /* Secondary / outlined buttons: border starts at 30% tan, goes to full
-   tan on hover. White text throughout now that every section is dark. */
-.btn--ghost {
-  color: var(--color-white);
+   tan on hover. Text follows the current theme (was hardcoded white,
+   which disappeared on a light background). */
+.btn--ghost,
+.btn--on-dark {
+  color: var(--theme-text);
   border-color: rgba(196, 169, 139, 0.3);
   background: transparent;
 }
 .btn--ghost:hover,
-.btn--ghost:focus-visible {
-  border-color: var(--color-tan);
-  color: var(--color-tan);
-}
-
-/* On black: white outline button */
-.btn--on-dark {
-  color: var(--color-white);
-  border-color: rgba(196, 169, 139, 0.3);
-  background: transparent;
-}
+.btn--ghost:focus-visible,
 .btn--on-dark:hover,
 .btn--on-dark:focus-visible {
   border-color: var(--color-tan);
@@ -383,6 +420,11 @@ p {
 
 .btn--block {
   width: 100%;
+}
+
+.btn--lg {
+  padding: 1.25rem 2.75rem;
+  font-size: 0.9375rem;
 }
 
 :focus-visible {
@@ -397,22 +439,25 @@ p {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--color-black);
-  border-bottom: 1px solid #1a1a1a;
+  background: var(--theme-bg);
+  border-bottom: 1px solid var(--theme-border);
   transition: background-color 300ms ease, border-color 300ms ease,
               backdrop-filter 300ms ease;
 }
 
-/* Homepage only: header starts fully transparent over the hero background
-   and fades to solid once scrolled past it. Inner pages (no video hero)
-   keep the always-solid header above. */
+/* Homepage only: header starts fully transparent over the (always-dark,
+   theme-independent) video hero, and fades to solid once scrolled past
+   it. While transparent, the logo/nav-toggle icon are pinned to white
+   regardless of theme, since they're sitting over dark footage either
+   way — see the two overrides further down. Once .is-scrolled, the
+   header becomes a normal theme-aware header like every inner page. */
 body[data-page="home"] .site-header {
   background: transparent;
   border-bottom-color: transparent;
 }
 body[data-page="home"] .site-header.is-scrolled {
-  background: var(--color-black);
-  border-bottom-color: rgba(196, 169, 139, 0.2);
+  background: var(--theme-bg);
+  border-bottom-color: var(--theme-border-faint);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
@@ -434,6 +479,12 @@ body[data-page="home"] .site-header.is-scrolled {
   height: 72px;
   width: auto;
   display: block;
+  filter: var(--theme-logo-filter);
+}
+/* Logo stays the white mark over the transparent hero state regardless
+   of theme (see .site-header note above). */
+body[data-page="home"] .site-header:not(.is-scrolled) .logo {
+  filter: none;
 }
 
 .nav-toggle {
@@ -443,18 +494,81 @@ body[data-page="home"] .site-header.is-scrolled {
   width: 42px;
   height: 42px;
   background: transparent;
-  border: 1px solid #333;
-  color: var(--color-white);
+  border: 1px solid var(--theme-border);
+  color: var(--theme-text);
   border-radius: var(--radius);
   cursor: pointer;
 }
 .nav-toggle svg { width: 20px; height: 20px; }
+body[data-page="home"] .site-header:not(.is-scrolled) .nav-toggle {
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   THEME TOGGLE
+   Two instances of the same button exist in the header markup — one
+   visible only below the desktop nav breakpoint (next to the hamburger),
+   one only at/above it (inside .header-cta, next to the CTA button) —
+   rather than fighting the header's flex/grid layout across breakpoints
+   with a single repositioned element. Both are wired up by the same
+   click handler in js/theme.js, kept small and unobtrusive next to the
+   other icon-only controls already in the header.
+   -------------------------------------------------------------------------- */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  background: transparent;
+  border: 1px solid var(--theme-border);
+  color: var(--theme-text);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.theme-toggle svg {
+  width: 17px;
+  height: 17px;
+  /* These icons are stroke-only (fill: none), so their "empty" interior
+     isn't reliably hit-testable as part of the button in every browser —
+     a real click landing inside the circle/moon shape but not exactly on
+     a stroke line can fall through instead of registering on the
+     button. Forcing the whole button to own every click avoids that. */
+  pointer-events: none;
+}
+.theme-toggle-icon--moon {
+  display: none;
+}
+html[data-theme="light"] .theme-toggle-icon--sun {
+  display: none;
+}
+html[data-theme="light"] .theme-toggle-icon--moon {
+  display: block;
+}
+body[data-page="home"] .site-header:not(.is-scrolled) .theme-toggle {
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.theme-toggle--desktop {
+  display: none;
+}
+@media (min-width: 1350px) {
+  .theme-toggle--mobile {
+    display: none;
+  }
+  .theme-toggle--desktop {
+    display: inline-flex;
+  }
+}
 
 .nav-primary {
   position: fixed;
   inset: 0 0 0 auto;
   width: min(320px, 84vw);
-  background: var(--color-black);
+  background: var(--theme-bg);
   transform: translateX(100%);
   transition: transform var(--transition);
   padding: 5.5rem 1.5rem 2rem;
@@ -471,10 +585,10 @@ body[data-page="home"] .site-header.is-scrolled {
 .nav-primary a {
   display: block;
   padding: 0.85rem 0;
-  color: var(--color-white);
+  color: var(--theme-text);
   font-weight: 600;
   font-size: 1rem;
-  border-bottom: 1px solid #1f1f1f;
+  border-bottom: 1px solid var(--theme-border);
 }
 .nav-primary a[aria-current="page"] {
   color: var(--color-tan);
@@ -599,38 +713,20 @@ body[data-page="home"] .site-header.is-scrolled {
     }
   }
   .nav-primary .nav-phone { display: none; }
-  /* Right column: CTA button on top, phone number centered beneath it,
-     both centered within the fixed 280px column. */
+  /* Right column: just the CTA button now, centered within the fixed
+     280px column. Generous padding so it reads as a deliberate element
+     rather than crowded into the corner — there's no phone block
+     underneath competing for the same space anymore. */
   .header-cta {
     grid-column: 4;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.35rem;
+    gap: 0.75rem;
   }
   .header-cta .btn {
-    padding: 0.8rem 1rem;
-    font-size: 0.7rem;
-    white-space: nowrap;
-  }
-  .header-phone {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    line-height: 1.2;
-  }
-  .header-phone .label {
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--color-tan);
-  }
-  .header-phone .number {
-    font-family: var(--font-heading);
-    font-stretch: expanded;
-    font-size: 1.15rem;
-    color: var(--color-white);
+    padding: 1rem 1.75rem;
+    font-size: 0.75rem;
     white-space: nowrap;
   }
 }
@@ -650,8 +746,8 @@ body[data-page="home"] .site-header.is-scrolled {
   align-items: center;
   gap: 8px;
   padding: 0 10px;
-  background: var(--color-black);
-  border-top: 1px solid rgba(196, 169, 139, 0.4);
+  background: var(--theme-bg);
+  border-top: 1px solid var(--theme-border-faint);
 }
 .sticky-call-bar a {
   flex: 1;
@@ -741,20 +837,6 @@ body {
      instead of through overlay darkness. */
   background: rgba(0, 0, 0, 0.62);
 }
-.hero-trust {
-  display: inline-block;
-  margin-bottom: 1.25rem;
-  padding: 0.4rem 0.85rem;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(196, 169, 139, 0.3);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-tan);
-}
 /* text-shadow is independent insurance, not decorative: pixel-sampled
    contrast against the brightest moment in the footage showed the tan
    eyebrow needs the overlay at ~74%+ and this gray paragraph at ~67%+ to
@@ -781,28 +863,55 @@ body {
 .hero-btn-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  align-items: center;
+  gap: 1.75rem;
 }
 .hero-btn-group .btn {
-  flex: 1 1 240px;
-  justify-content: center;
+  flex: 0 1 auto;
 }
 
-/* Translucent glass buttons for the hero: a visibly lighter-weight action
-   than the solid-tan header CTA, so the two never compete for the same
-   visual priority. */
-.btn--glass {
-  background: rgba(196, 169, 139, 0.18);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(196, 169, 139, 0.5);
+/* Primary hero action: white outline, transparent fill. Visibly a
+   button (not glass/translucent) so it's the one thing in the hero
+   that reads as "click me first." */
+.btn--outline-white {
+  background: transparent;
+  border-color: var(--color-white);
   color: var(--color-white);
 }
-.btn--glass:hover,
-.btn--glass:focus-visible {
-  background: rgba(196, 169, 139, 0.35);
-  color: var(--color-white);
+.btn--outline-white:hover,
+.btn--outline-white:focus-visible {
+  background: var(--color-white);
+  color: var(--color-black);
   transform: translateY(-2px);
+}
+
+/* Secondary hero action: plain text link with a sliding arrow, same
+   language as .route-card-link elsewhere on the page, deliberately
+   lighter weight than the primary button so the two don't compete. */
+.hero-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+  transition: color var(--transition);
+}
+.hero-link svg {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--transition);
+}
+.hero-link:hover,
+.hero-link:focus-visible {
+  color: var(--color-tan);
+}
+.hero-link:hover svg,
+.hero-link:focus-visible svg {
+  transform: translateX(4px);
 }
 
 /* --------------------------------------------------------------------------
@@ -823,8 +932,8 @@ body {
   flex-direction: column;
   align-items: flex-start;
   gap: 0.75rem;
-  background: var(--color-black);
-  border: 1px solid #232323;
+  background: var(--theme-bg);
+  border: 1px solid var(--theme-border);
   padding: clamp(1.75rem, 3vw, 2.5rem);
   transition: border-color var(--transition), transform var(--transition);
 }
@@ -836,10 +945,10 @@ body {
 .route-card h2 {
   font-size: clamp(1.5rem, 2vw + 1rem, 2rem);
   margin-bottom: 0;
-  color: var(--color-white);
+  color: var(--theme-text);
 }
 .route-card p {
-  color: var(--color-text-on-black-muted);
+  color: var(--theme-text-muted);
   margin-bottom: 0;
 }
 .route-card-link {
@@ -851,7 +960,7 @@ body {
   font-size: 0.8125rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--color-white);
+  color: var(--theme-text);
 }
 .route-card-link svg {
   width: 16px;
@@ -916,8 +1025,8 @@ body {
    PAGE HERO (interior pages) — simple black band with title.
    -------------------------------------------------------------------------- */
 .page-hero {
-  background: var(--color-black);
-  color: var(--color-white);
+  background: var(--theme-bg);
+  color: var(--theme-text);
   padding: clamp(3rem, 8vw, 6rem) 0 clamp(2.5rem, 5vw, 4rem);
 }
 /* Wider than the default .container so the hero content has more room to
@@ -928,22 +1037,36 @@ body {
 .page-hero .eyebrow { color: var(--color-tan); }
 .page-hero p {
   max-width: 75ch;
-  color: var(--color-text-on-black-muted);
+  color: var(--theme-text-muted);
   font-size: 1.25rem;
 }
 .page-hero .btn { margin-top: 0.5rem; }
 
+/* About page only: this hero has no button and short copy, so the
+   shared .page-hero padding left the "Why We Exist" section peeking in
+   above the fold on first load. Filling the viewport and centering the
+   content fixes that without touching the shared rule every other
+   page's hero relies on. */
+.page-hero--about {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+}
+
 /* --------------------------------------------------------------------------
    CARDS
    -------------------------------------------------------------------------- */
-.card {
-  background: var(--color-black);
-  color: var(--color-white);
-  border: 1px solid #232323;
+.card,
+.card--dark {
+  background: var(--theme-bg);
+  color: var(--theme-text);
+  border: 1px solid var(--theme-border);
   padding: 1.75rem;
 }
-.card p {
-  color: var(--color-text-on-black-muted);
+.card p,
+.card--dark p {
+  color: var(--theme-text-muted);
 }
 .card h3 {
   font-size: 1.0625rem;
@@ -953,13 +1076,6 @@ body {
   height: 2px;
   margin-bottom: 1rem;
 }
-
-.card--dark {
-  background: var(--color-black);
-  color: var(--color-white);
-  border: 1px solid #232323;
-}
-.card--dark p { color: var(--color-text-on-black-muted); }
 
 /* --------------------------------------------------------------------------
    SERVICE AREA LIST
@@ -974,7 +1090,7 @@ body {
 }
 .area-list li {
   padding: 0.5rem 0;
-  border-bottom: 1px solid #232323;
+  border-bottom: 1px solid var(--theme-border);
   font-size: 0.9375rem;
   font-weight: 600;
 }
@@ -986,6 +1102,76 @@ body {
   color: var(--color-tan);
   font-weight: 700;
   margin-top: 0.15rem;
+}
+
+/* --------------------------------------------------------------------------
+   COUNTY GRID (About page service area, image-card alternative to
+   .area-list) — 1 column on phones, 2 at tablet, 3x3 on desktop. Cards
+   always carry a dark overlay + white label, independent of light/dark
+   theme, since they're photographic content sitting on top of an image.
+   -------------------------------------------------------------------------- */
+.county-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 561px) {
+  .county-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 901px) {
+  .county-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.county-card {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius);
+  transition: transform 250ms ease;
+}
+.county-card:hover {
+  transform: translateY(-4px);
+}
+.county-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.county-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  transition: background-color 250ms ease;
+}
+.county-card:hover::after {
+  background: rgba(0, 0, 0, 0.4);
+}
+.county-card-name {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+  color: var(--color-white);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+/* Required attribution for the CC BY / CC BY-SA photos in the grid (the
+   CC0 ones don't legally need it, but it's simpler to credit the set as
+   a group than track which three don't). Kept small and muted on
+   purpose — present and readable, not a visual focal point. */
+.county-grid-credit {
+  margin-top: 1rem;
+  font-size: 0.6875rem;
+  line-height: 1.6;
+  color: var(--theme-text-muted);
+}
+.county-grid-credit a {
+  color: inherit;
 }
 
 /* --------------------------------------------------------------------------
@@ -1101,6 +1287,53 @@ body {
    what hides things right before scrubbing starts, never CSS — same
    fail-safe pattern as the .reveal system in the SCROLL REVEAL block.
    -------------------------------------------------------------------------- */
+/* DIAGRAM SCROLL CUE — sits directly above a .scroll-diagram so a reader
+   knows one is coming instead of scrolling past it. Two interchangeable
+   treatments:
+
+   Option A, ".diagram-cue" (live by default): a solid full-width band,
+   always dark regardless of theme since it's priming the reader for the
+   always-dark diagram right below it, with a small tan uppercase label
+   + bouncing chevron.
+
+   Option B, add the "diagram-cue--gradient" modifier class alongside
+   the base class on the same element to swap in a soft gradient fade
+   from the page's current theme background down into black instead of
+   a hard-edged band, same label/chevron inside it either way. To make
+   B the live version everywhere, add the modifier class to all three
+   instances in specialty-roofing.html; to go back to A, remove it. */
+.diagram-cue {
+  background: var(--color-black);
+  padding: 1.5rem 0;
+  text-align: center;
+}
+.diagram-cue--gradient {
+  background: linear-gradient(to bottom, var(--theme-bg) 0%, var(--color-black) 100%);
+  padding: 3rem 0 1.5rem;
+}
+.diagram-cue span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-tan);
+}
+.diagram-cue svg {
+  width: 13px;
+  height: 13px;
+  animation: diagram-cue-bounce 1.6s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .diagram-cue svg { animation: none; }
+}
+@keyframes diagram-cue-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
 .scroll-diagram {
   position: relative;
   /* svh second: vh is a fallback for browsers that don't parse svh (the
@@ -1130,7 +1363,12 @@ body {
 }
 .scroll-diagram-stage {
   width: 100%;
-  max-width: 960px;
+  /* min() instead of a flat px cap: keeps the diagram at roughly
+     70-80% of viewport width on real desktop sizes (the ask) while
+     still topping out at a sane absolute size on ultra-wide monitors.
+     Geometry/viewBox is untouched — the SVG just scales up with its
+     wider container. */
+  max-width: min(1500px, 82vw);
   margin: 0 auto;
   padding: 2rem clamp(1rem, 4vw, 2rem);
 }
@@ -1165,13 +1403,20 @@ body {
 }
 
 .scroll-diagram-caption {
-  max-width: 640px;
-  margin: 2rem auto 0;
+  max-width: 680px;
+  margin: 2.5rem auto 0;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(196, 169, 139, 0.25);
+  border-top: 1px solid rgba(196, 169, 139, 0.3);
   text-align: center;
-  color: var(--color-text-on-black-muted);
-  font-size: 0.9375rem;
+  /* Sits outside the always-dark .scroll-diagram, on the page's own
+     (theme-aware) background, unlike the mobile label list a few rules
+     up, which lives inside the diagram and stays hardcoded white.
+     Full-strength text color + larger size on purpose: this was reading
+     as a faint footnote, and it's meant to land as the payoff line. */
+  color: var(--theme-text);
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.5;
 }
 
 /* Mobile label list — replaces in-SVG labels under 768px, where the
@@ -1207,10 +1452,21 @@ body {
   min-width: 1.4em;
 }
 
+/* Scroll-scrubbing is unreliable on a phone and most people scroll past
+   it before the payoff lands, so below 768px the diagram isn't scrubbed
+   at all: it drops out of the sticky-pin engine and renders in document
+   flow, already in its complete final state (same fail-safe default the
+   CSS uses for prefers-reduced-motion, just scoped to this breakpoint
+   too). js/diagrams.js skips initializing the scrub engine for these
+   diagrams so no JS ever un-draws them in the first place. */
 @media (max-width: 767px) {
   .scroll-diagram {
-    height: 140vh;
-    height: 140svh;
+    height: auto;
+  }
+  .scroll-diagram-sticky {
+    position: static;
+    height: auto;
+    padding: 1.5rem 0;
   }
   .scroll-diagram-stage {
     padding: 1.5rem 1rem;
@@ -1226,6 +1482,12 @@ body {
     margin: 0 auto;
     list-style: none;
     padding: 0;
+  }
+  /* No JS is toggling .is-active here (the engine never runs), so every
+     label needs to read as visible from the start, not sit in the dim
+     "not reached yet" state the scroll-driven version uses. */
+  .scroll-diagram-labels-mobile li {
+    color: var(--color-white);
   }
 }
 
@@ -1251,21 +1513,20 @@ body {
    -------------------------------------------------------------------------- */
 .material-block {
   padding: clamp(2.5rem, 5vw, 4rem) 0;
-  border-bottom: 1px solid #232323;
+  border-bottom: 1px solid var(--theme-border);
 }
 .material-block:last-child { border-bottom: 0; }
+/* Single column at every width, on purpose: the old two-column split
+   (prose left, a short stats block right) left the right column mostly
+   blank once the left column ran past a few paragraphs. Stacking the
+   stats/callout block under the prose instead uses the width that's
+   actually there and shortens the page, which was the point. */
 .material-grid {
   display: grid;
-  gap: 2.5rem;
+  gap: 2rem;
 }
 .material-grid > * {
-  min-width: 0; /* lets the fixed-width diagram scroll instead of blowing out the grid track */
-}
-@media (min-width: 900px) {
-  .material-grid {
-    grid-template-columns: 1.1fr 0.9fr;
-    align-items: start;
-  }
+  min-width: 0;
 }
 .material-meta {
   display: flex;
@@ -1273,8 +1534,8 @@ body {
   gap: 0.5rem 1.5rem;
   margin: 1.5rem 0;
   padding: 1rem 0;
-  border-top: 1px solid #232323;
-  border-bottom: 1px solid #232323;
+  border-top: 1px solid var(--theme-border);
+  border-bottom: 1px solid var(--theme-border);
 }
 .material-meta div {
   min-width: 120px;
@@ -1328,7 +1589,7 @@ body {
    WORKED EXAMPLE TABLE (Storm & Insurance — ACV/RCV example)
    -------------------------------------------------------------------------- */
 .worked-example {
-  border: 1px solid #232323;
+  border: 1px solid var(--theme-border);
 }
 .worked-example table {
   width: 100%;
@@ -1350,14 +1611,14 @@ body {
 .worked-example td {
   text-align: left;
   padding: 0.75rem 1.25rem;
-  border-bottom: 1px solid #232323;
+  border-bottom: 1px solid var(--theme-border);
 }
 .worked-example thead th {
   font-size: 0.6875rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-text-on-black-muted);
-  border-bottom: 1px solid #232323;
+  color: var(--theme-text-muted);
+  border-bottom: 1px solid var(--theme-border);
 }
 .worked-example tbody tr:last-child td {
   border-bottom: 0;
@@ -1405,7 +1666,7 @@ body {
 .glossary dd {
   margin: 0;
   font-size: 0.9375rem;
-  color: var(--color-text-on-black-muted);
+  color: var(--theme-text-muted);
 }
 
 /* --------------------------------------------------------------------------
@@ -1509,8 +1770,8 @@ body[data-page="home"] .texture-band {
 .callout {
   border-left: 3px solid var(--color-tan);
   padding: 1.25rem 1.5rem;
-  background: #111111;
-  color: var(--color-text-on-black-muted);
+  background: var(--theme-bg-raised);
+  color: var(--theme-text-muted);
   font-size: 0.9375rem;
 }
 .callout p:last-child { margin-bottom: 0; }
@@ -1518,7 +1779,7 @@ body[data-page="home"] .texture-band {
   color: var(--color-tan);
   text-decoration: underline;
 }
-.callout strong { color: var(--color-white); }
+.callout strong { color: var(--theme-text); }
 .page-hero .callout { margin: 1.5rem 0; max-width: 75ch; }
 
 /* --------------------------------------------------------------------------
@@ -1532,21 +1793,19 @@ body[data-page="home"] .texture-band {
   font-weight: 700;
   font-size: 1.0625rem;
   margin-bottom: 0.4rem;
-}
-.qa-list dt {
-  color: var(--color-white);
+  color: var(--theme-text);
 }
 .qa-list dd {
   margin: 0;
-  color: var(--color-text-on-black-muted);
+  color: var(--theme-text-muted);
 }
 
 /* --------------------------------------------------------------------------
    FORMS
    -------------------------------------------------------------------------- */
 .form-panel {
-  background: var(--color-black);
-  color: var(--color-white);
+  background: var(--theme-bg);
+  color: var(--theme-text);
   padding: clamp(2rem, 4vw, 3rem);
 }
 .form-panel .eyebrow { color: var(--color-tan); }
@@ -1557,12 +1816,20 @@ body[data-page="home"] .texture-band {
   color: var(--color-tan);
   padding-bottom: 1.25rem;
   margin-bottom: 1.5rem;
-  border-bottom: 1px solid #2a2a2a;
+  border-bottom: 1px solid var(--theme-border);
 }
 .risk-reversal p { margin: 0 0 0.4rem; }
 .risk-reversal p:last-child { margin-bottom: 0; font-weight: 700; }
-.form-panel--light .risk-reversal {
-  border-bottom-color: #e7e2da;
+/* When the reassurance follows the form instead of leading it: border
+   and spacing flip to the top edge so it still reads as a distinct
+   block, not a duplicate of the border above it. */
+.risk-reversal--after {
+  padding-bottom: 0;
+  padding-top: 1.25rem;
+  margin-bottom: 0;
+  margin-top: 1.5rem;
+  border-bottom: 0;
+  border-top: 1px solid var(--theme-border);
 }
 
 .lead-form {
@@ -1586,9 +1853,6 @@ body[data-page="home"] .texture-band {
   margin-bottom: 0.5rem;
   color: var(--color-tan);
 }
-.form-panel--light .field label {
-  color: var(--color-tan-dim);
-}
 
 .field input,
 .field select,
@@ -1597,17 +1861,10 @@ body[data-page="home"] .texture-band {
   font-family: var(--font-body);
   font-size: 1rem;
   padding: 0.85rem 1rem;
-  background: transparent;
-  border: 1.5px solid #3a3a3a;
-  color: var(--color-white);
+  background: var(--theme-input-bg);
+  border: 1.5px solid var(--theme-input-border);
+  color: var(--theme-text);
   border-radius: var(--radius);
-}
-.form-panel--light .field input,
-.form-panel--light .field select,
-.form-panel--light .field textarea {
-  border-color: #d8d2c6;
-  color: var(--color-black);
-  background: var(--color-white);
 }
 .field input:focus-visible,
 .field select:focus-visible,
@@ -1626,19 +1883,13 @@ body[data-page="home"] .texture-band {
 
 .field-note {
   font-size: 0.75rem;
-  color: var(--color-text-on-black-muted);
-}
-.form-panel--light .field-note {
-  color: var(--color-text-on-white-muted);
+  color: var(--theme-text-muted);
 }
 
 .form-legal {
   font-size: 0.75rem;
-  color: var(--color-text-on-black-muted);
+  color: var(--theme-text-muted);
   margin-top: 0.25rem;
-}
-.form-panel--light .form-legal {
-  color: var(--color-text-on-white-muted);
 }
 
 .hp-field {
@@ -1659,7 +1910,8 @@ body[data-page="home"] .texture-band {
 }
 .contact-info {
   padding: clamp(2rem, 4vw, 3rem);
-  background: var(--color-black);
+  background: var(--theme-bg);
+  color: var(--theme-text);
 }
 .contact-info dl {
   display: grid;
@@ -1692,8 +1944,8 @@ body[data-page="home"] .texture-band {
   min-height: 70svh;
   display: flex;
   align-items: center;
-  background: var(--color-black);
-  color: var(--color-white);
+  background: var(--theme-bg);
+  color: var(--theme-text);
 }
 .thanks .container { max-width: 720px; text-align: center; }
 .thanks .rule--center { margin-top: 1.5rem; margin-bottom: 1.5rem; }
@@ -1702,8 +1954,8 @@ body[data-page="home"] .texture-band {
    FOOTER
    -------------------------------------------------------------------------- */
 .site-footer {
-  background: var(--color-black);
-  color: var(--color-text-on-black-muted);
+  background: var(--theme-bg);
+  color: var(--theme-text-muted);
   padding: 3rem 0 6.5rem; /* extra bottom padding clears mobile call bar */
 }
 @media (min-width: 1350px) {
@@ -1723,7 +1975,7 @@ body[data-page="home"] .texture-band {
   font-size: 0.875rem;
 }
 .footer-col h4 {
-  color: var(--color-white);
+  color: var(--theme-text);
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   margin-bottom: 1rem;
@@ -1740,7 +1992,7 @@ body[data-page="home"] .texture-band {
   color: var(--color-tan);
 }
 .footer-bottom {
-  border-top: 1px solid #1f1f1f;
+  border-top: 1px solid var(--theme-border);
   padding-top: 1.5rem;
   display: flex;
   flex-wrap: wrap;

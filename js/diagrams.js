@@ -16,7 +16,12 @@
   "use strict";
 
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reducedMotion) return;
+  // Below 768px (see css/style.css's matching breakpoint) the diagrams
+  // drop out of the sticky-scrub engine entirely and render in their
+  // complete default state instead — scroll-scrubbing is unreliable on
+  // a phone and most people scroll past before the payoff lands.
+  var isMobile = window.matchMedia("(max-width: 767px)").matches;
+  if (reducedMotion || isMobile) return;
   if (!("IntersectionObserver" in window)) return;
 
   function easeOutCubic(t) {

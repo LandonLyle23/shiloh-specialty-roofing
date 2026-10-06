@@ -2,6 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>
+(function(){
+  try {
+    var stored = localStorage.getItem('theme');
+    var theme = (stored === 'light' || stored === 'dark') ? stored : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About Shiloh Specialty Roofing | Dawsonville, GA</title>
 <meta name="description" content="Shiloh Specialty Roofing LLC installs cedar, slate, standing seam metal, tile, and asphalt roofing on high-end homes across North Georgia, and handles storm and insurance restoration.">
@@ -43,6 +54,11 @@
         <img src="/assets/logo-white.png" alt="Shiloh Specialty Roofing" class="logo">
       </a>
 
+    <button class="theme-toggle theme-toggle--mobile" type="button" aria-label="Toggle light and dark mode" data-theme-toggle>
+      <svg class="theme-toggle-icon theme-toggle-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      <svg class="theme-toggle-icon theme-toggle-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
@@ -63,11 +79,11 @@
 
     <div class="header-divider" aria-hidden="true"></div>
     <div class="header-cta">
+      <button class="theme-toggle theme-toggle--desktop" type="button" aria-label="Toggle light and dark mode" data-theme-toggle>
+        <svg class="theme-toggle-icon theme-toggle-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="theme-toggle-icon theme-toggle-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
       <a href="#contact" class="btn btn--tan">Get My Free Roof Inspection</a>
-      <div class="header-phone">
-        <span class="label">Call now</span>
-        <a class="number" data-phone-link data-phone-text href="tel:">[PHONE]</a>
-      </div>
     </div>
   </div>
 </header>
@@ -87,7 +103,7 @@
 
 <main id="main">
 
-  <div class="page-hero bg-roofline">
+  <div class="page-hero page-hero--about bg-roofline">
     <div class="container">
       <span class="eyebrow">About</span>
       <h1>A family business. Thirty years on North Georgia roofs.</h1>
@@ -157,6 +173,10 @@
         <span class="eyebrow">Service Area</span>
         <h2>Based in Dawsonville. We travel for the right job.</h2>
       </div>
+      <!-- Plain-text version, kept for an easy revert: delete the
+           .county-grid block below and remove this comment wrapper to
+           restore it. -->
+      <!--
       <ul class="area-list">
         <li>Dawson County</li>
         <li>Lumpkin County</li>
@@ -168,6 +188,46 @@
         <li>Gwinnett County</li>
         <li>Fulton County</li>
       </ul>
+      -->
+      <div class="county-grid">
+        <div class="county-card">
+          <img src="assets/counties/dawson.jpg" alt="Dawson County, GA" loading="lazy">
+          <span class="county-card-name">Dawson County</span>
+        </div>
+        <div class="county-card">
+          <img src="assets/counties/lumpkin.jpg" alt="Lumpkin County, GA" loading="lazy">
+          <span class="county-card-name">Lumpkin County</span>
+        </div>
+        <div class="county-card">
+          <img src="assets/counties/white.jpg" alt="White County, GA" loading="lazy">
+          <span class="county-card-name">White County</span>
+        </div>
+        <div class="county-card">
+          <img src="assets/counties/hall.jpg" alt="Hall County, GA" loading="lazy">
+          <span class="county-card-name">Hall County</span>
+        </div>
+        <div class="county-card">
+          <img src="assets/counties/forsyth.jpg" alt="Forsyth County, GA" loading="lazy">
+          <span class="county-card-name">Forsyth County</span>
+        </div>
+        <div class="county-card">
+          <img src="assets/counties/pickens.jpg" alt="Pickens County, GA" loading="lazy">
+          <span class="county-card-name">Pickens County</span>
+        </div>
+        <div class="county-card">
+          <img src="assets/counties/cherokee.jpg" alt="Cherokee County, GA" loading="lazy">
+          <span class="county-card-name">Cherokee County</span>
+        </div>
+        <div class="county-card">
+          <img src="assets/counties/gwinnett.jpg" alt="Gwinnett County, GA" loading="lazy">
+          <span class="county-card-name">Gwinnett County</span>
+        </div>
+        <div class="county-card">
+          <img src="assets/counties/fulton.jpg" alt="Fulton County, GA" loading="lazy">
+          <span class="county-card-name">Fulton County</span>
+        </div>
+      </div>
+      <p class="county-grid-credit">Location photos via Wikimedia Commons: Dahlonega (Gwringle, CC BY-SA 3.0), Gainesville (ATLJonJon, CC BY 4.0), Canton (Akhenaton06, CC BY-SA 3.0), Lawrenceville (DeKalb, CC BY-SA 3.0), Atlanta (AtlChampion, CC BY-SA 4.0). Remaining photos public domain (CC0).</p>
       <div class="section-head section-head--center mb-0" style="margin-top: 2.5rem;">
         <p>Cedar, slate, copper, and standing seam are not local work. Crews who install them correctly are rare enough that we go where the roof is, in Georgia or out of state. If your home is outside North Georgia and the material is right, reach out anyway.</p>
       </div>
@@ -189,12 +249,12 @@
             <p>We respond to every inspection request within one business day.</p>
           </div>
           <!-- FORM ENDPOINT: this form posts to Netlify Forms (data-netlify,
-               name="lead", and the matching hidden form-name input below).
+               name="about", and the matching hidden form-name input below).
                To use a different provider instead, change the action="" URL
                and remove the netlify-specific attributes/hidden field. -->
-          <form class="lead-form" name="lead" method="POST" action="thank-you.html" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="lead">
-            <input type="hidden" name="source-page" value="About">
+          <form class="lead-form" name="about" method="POST" action="thank-you.html" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="about">
+            <input type="hidden" name="source" value="about">
             <p class="hp-field">
               <label>Don't fill this out if you're human: <input name="bot-field"></label>
             </p>
@@ -275,6 +335,7 @@
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
 <script src="js/config.js"></script>
 <script src="js/main.js"></script>
+<script src="js/theme.js"></script>
 <script src="js/motion.js"></script>
 </body>
 </html>

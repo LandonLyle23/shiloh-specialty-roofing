@@ -38,6 +38,14 @@
 
 # Netlify Forms: no build step is required for the forms on this site to
 # work. Netlify scans the deployed HTML for <form data-netlify="true"> at
-# deploy time and wires up submissions automatically. All five lead forms
-# share name="lead" so submissions land in one place in the Netlify UI,
-# with a hidden "source-page" field identifying which page they came from.
+# deploy time and wires up submissions automatically. Each of the seven
+# lead forms has its own distinct name (home, specialty, storm,
+# storm-guide, asphalt, about, contact) so they group as separate forms
+# in the Netlify UI, each carrying a matching hidden "source" field with
+# the same value for quick identification inside the notification email.
+#
+# IMPORTANT: as of the last check, this site's processing_settings has
+# ignore_html_forms set to true, which disables Netlify Forms detection
+# entirely regardless of how correct this markup is. That has to be
+# turned off in Site settings -> Forms (or via the API) before any of
+# these forms will actually submit through Netlify.
