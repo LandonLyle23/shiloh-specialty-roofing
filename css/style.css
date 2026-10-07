@@ -62,14 +62,14 @@
      match the current site exactly); the [data-theme="light"] block
      below is the only place that redefines them. Everything that should
      participate in the light/dark toggle reads these instead of the
-     literal --color-black/--color-white directly. A few things are
-     deliberately exempt and keep reading the literal palette vars
-     instead: the hero video section and the scroll-scrubbed SVG
-     diagrams, both explicitly meant to stay dark regardless of theme
-     (the diagrams use white/tan strokes that would disappear on a light
-     background, and the hero's video/overlay treatment wasn't part of
-     this toggle's scope). --color-tan itself never changes between
-     modes, by design. ---- */
+     literal --color-black/--color-white directly. The hero video
+     section is the one deliberate exemption left: it's dark video
+     footage regardless of theme, so its own overlay/text treatment
+     reads the literal palette vars directly rather than these. The
+     scroll-scrubbed SVG diagrams USED to be exempt too (hardcoded
+     black box, white/tan strokes) — they're now theme-aware via the
+     separate --diagram-* vars below instead, because a black box
+     sitting on a light page read as broken, not as a design choice. */
   --theme-bg: var(--color-black);
   --theme-bg-raised: #111111;
   --theme-text: var(--color-text-on-black);
@@ -79,6 +79,22 @@
   --theme-logo-filter: none;
   --theme-input-bg: transparent;
   --theme-input-border: #3a3a3a;
+
+  /* ---- Diagram-specific semantic colors (scroll-scrubbed SVG diagrams
+     on the Specialty Roofing page). Background is transparent in both
+     themes on purpose — the diagram sits directly on the page instead
+     of in a box. Stroke/fill share one "ink" value per theme (solid
+     silhouette shapes, not a fill-blends-with-bg cutaway look).
+     --diagram-accent is NOT literal brand tan in light mode: plain tan
+     (#c4a98b) measures ~2:1 against the light page background, which
+     fails the 4.5:1 text/3:1 graphical-object contrast bar by a wide
+     margin, so light mode gets a darkened tan/brown that clears 4.5:1
+     instead while still reading as "the tan accent." ---- */
+  --diagram-bg: transparent;
+  --diagram-stroke: var(--color-white);
+  --diagram-fill: var(--color-white);
+  --diagram-accent: var(--color-tan);
+  --diagram-muted: var(--color-text-on-black-muted);
 
   /* ---- Type ---- */
   --font-heading: "Archivo", "Arial Black", "Helvetica Neue", sans-serif;
@@ -103,6 +119,12 @@ html[data-theme="light"] {
   --theme-logo-filter: brightness(0);
   --theme-input-bg: var(--color-white);
   --theme-input-border: #d8d2c6;
+
+  --diagram-bg: transparent;
+  --diagram-stroke: var(--color-text-on-white);
+  --diagram-fill: var(--color-text-on-white);
+  --diagram-accent: #7a6650; /* darkened tan: 4.98:1 on the offwhite page bg, vs ~2:1 for plain tan */
+  --diagram-muted: var(--color-text-on-white-muted);
 }
 
 /* --------------------------------------------------------------------------
@@ -169,11 +191,16 @@ h4 { font-size: 1.125rem; letter-spacing: 0.06em; }
 /* Section headings (h2/h3) are fluid via clamp() above, but the vw
    component can still push them past a comfortable size on narrow
    phones with long heading copy. Hard cap at roughly 28px under 480px
-   so nothing runs six-plus lines. h1 is left alone — it's the one-per-
-   page hero display type, handled separately. */
+   so nothing runs six-plus lines. h1 gets the same treatment below,
+   scoped per hero type since .page-hero's longest copy (About's 57
+   characters) needs a smaller cap than .hero-full's single, shorter
+   homepage headline to both stay at or under 3 lines at 390px. */
 @media (max-width: 480px) {
   h2, h3 {
     font-size: 1.75rem;
+  }
+  .page-hero h1 {
+    font-size: 1.25rem;
   }
 }
 
@@ -363,6 +390,18 @@ p {
   transition: background 200ms ease, color 200ms ease, border-color 200ms ease,
               transform 200ms ease, filter 200ms ease;
   white-space: nowrap;
+  /* Safety net, not the primary fix (see .btn--lg below for that): a
+     long label in a narrow flex/grid parent can still end up wider than
+     the viewport with nowrap text and no cap. max-width keeps it inside
+     whatever container it's in; the ≤479px query below lets it wrap as
+     a last resort rather than push the page into horizontal scroll. */
+  max-width: 100%;
+}
+@media (max-width: 479px) {
+  .btn {
+    white-space: normal;
+    text-align: center;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .btn {
@@ -426,6 +465,18 @@ p {
   padding: 1.25rem 2.75rem;
   font-size: 0.9375rem;
 }
+@media (max-width: 479px) {
+  /* The full-size horizontal padding plus this button's longest label
+     ("Get My Free Roof Inspection") on one nowrap line is wider than a
+     390px viewport's available content width — this was the actual
+     source of the site's horizontal-scroll bug, not a generic overflow
+     guard. Dropping to the base .btn's padding at this width keeps it
+     on one line within a 390px viewport while staying visually larger
+     than a normal button via the bumped font-size, still. */
+  .btn--lg {
+    padding: 1.1rem 1.75rem;
+  }
+}
 
 :focus-visible {
   outline: 2px solid var(--color-tan);
@@ -441,25 +492,54 @@ p {
   z-index: 100;
   background: var(--theme-bg);
   border-bottom: 1px solid var(--theme-border);
-  transition: background-color 300ms ease, border-color 300ms ease,
-              backdrop-filter 300ms ease;
+  transition: background-color 200ms ease, border-color 200ms ease,
+              backdrop-filter 200ms ease;
 }
 
-/* Homepage only: header starts fully transparent over the (always-dark,
-   theme-independent) video hero, and fades to solid once scrolled past
-   it. While transparent, the logo/nav-toggle icon are pinned to white
-   regardless of theme, since they're sitting over dark footage either
-   way — see the two overrides further down. Once .is-scrolled, the
-   header becomes a normal theme-aware header like every inner page. */
-body[data-page="home"] .site-header {
+/* Any page with a full-bleed media hero (.hero-full — currently just the
+   homepage's video) starts with the header floating transparent over
+   that media, and fades to solid once an IntersectionObserver in
+   js/main.js reports the hero has scrolled out of view (see
+   initHeroHeaderObserver — deliberately NOT a scrollY pixel threshold,
+   which drifts across viewport heights).
+
+   While transparent, the logo/nav links/icon buttons are pinned to
+   white UNCONDITIONALLY — not theme-aware — because they're sitting
+   over dark video footage regardless of which theme is active. This is
+   the fix for light mode's header text going dark-on-dark over the
+   hero. Once .is-scrolled, every one of these overrides stops applying
+   and the header becomes a normal theme-aware header like every inner
+   page section. */
+body.has-media-hero .site-header {
   background: transparent;
   border-bottom-color: transparent;
 }
-body[data-page="home"] .site-header.is-scrolled {
+body.has-media-hero .site-header.is-scrolled {
   background: var(--theme-bg);
   border-bottom-color: var(--theme-border-faint);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+}
+/* Top-down scrim behind the transparent header's own content, independent
+   of the hero's own full-section overlay (.hero-full::before) — belt and
+   suspenders specifically for the header text, so it still holds up even
+   on a hero whose own overlay is lighter. Fades out together with the
+   rest of the transparent state once scrolled. */
+body.has-media-hero .site-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  z-index: -1;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55), transparent);
+  opacity: 1;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+}
+body.has-media-hero .site-header.is-scrolled::before {
+  opacity: 0;
 }
 
 .header-inner {
@@ -480,10 +560,11 @@ body[data-page="home"] .site-header.is-scrolled {
   width: auto;
   display: block;
   filter: var(--theme-logo-filter);
+  transition: filter 200ms ease;
 }
 /* Logo stays the white mark over the transparent hero state regardless
    of theme (see .site-header note above). */
-body[data-page="home"] .site-header:not(.is-scrolled) .logo {
+body.has-media-hero .site-header:not(.is-scrolled) .logo {
   filter: none;
 }
 
@@ -491,16 +572,17 @@ body[data-page="home"] .site-header:not(.is-scrolled) .logo {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   background: transparent;
   border: 1px solid var(--theme-border);
   color: var(--theme-text);
   border-radius: var(--radius);
   cursor: pointer;
+  transition: color 200ms ease, border-color 200ms ease;
 }
 .nav-toggle svg { width: 20px; height: 20px; }
-body[data-page="home"] .site-header:not(.is-scrolled) .nav-toggle {
+body.has-media-hero .site-header:not(.is-scrolled) .nav-toggle {
   color: var(--color-white);
   border-color: rgba(255, 255, 255, 0.3);
 }
@@ -519,14 +601,15 @@ body[data-page="home"] .site-header:not(.is-scrolled) .nav-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   flex-shrink: 0;
   background: transparent;
   border: 1px solid var(--theme-border);
   color: var(--theme-text);
   border-radius: var(--radius);
   cursor: pointer;
+  transition: color 200ms ease, border-color 200ms ease;
 }
 .theme-toggle svg {
   width: 17px;
@@ -547,7 +630,7 @@ html[data-theme="light"] .theme-toggle-icon--sun {
 html[data-theme="light"] .theme-toggle-icon--moon {
   display: block;
 }
-body[data-page="home"] .site-header:not(.is-scrolled) .theme-toggle {
+body.has-media-hero .site-header:not(.is-scrolled) .theme-toggle {
   color: var(--color-white);
   border-color: rgba(255, 255, 255, 0.3);
 }
@@ -589,12 +672,22 @@ body[data-page="home"] .site-header:not(.is-scrolled) .theme-toggle {
   font-weight: 600;
   font-size: 1rem;
   border-bottom: 1px solid var(--theme-border);
+  transition: color 200ms ease;
 }
 .nav-primary a[aria-current="page"] {
   color: var(--color-tan);
 }
 .nav-primary .nav-phone {
   margin-top: 1.5rem;
+}
+/* Desktop nav links (.nav-primary goes inline at 1350px+, see below) sit
+   directly over the transparent hero at the top of the page, so they get
+   the same unconditional white pin as the logo/icon buttons above. The
+   current-page link keeps its tan accent either way — tan already reads
+   fine on dark video (see .hero-full .eyebrow) and losing the "you are
+   here" indicator isn't worth it for one link. */
+body.has-media-hero .site-header:not(.is-scrolled) .nav-primary a:not([aria-current="page"]) {
+  color: var(--color-white);
 }
 
 .header-cta {
@@ -741,37 +834,52 @@ body[data-page="home"] .site-header:not(.is-scrolled) .theme-toggle {
   right: 0;
   bottom: 0;
   z-index: 99;
-  height: 60px;
   display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0 10px;
-  background: var(--theme-bg);
-  border-top: 1px solid var(--theme-border-faint);
+  /* Literal black/white/tan rather than the theme-aware vars used
+     everywhere else on purpose: this is bottom-anchored system-level
+     chrome (like the fixed call bar pattern on most phones' own native
+     UI), not page content, so it stays one fixed, high-contrast
+     treatment in both themes instead of flipping with the toggle. */
+  background: var(--color-black);
+  border-top: 2px solid var(--color-tan);
+  /* Pads the safe area (iPhone home-indicator strip) without shrinking
+     the actual 60px-tall tappable button row above it. */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  transition: transform 250ms ease;
+}
+/* Toggled by js/main.js (IntersectionObserver on #contact) once the
+   contact form itself is on screen — the bar's own "Free Inspection"
+   button just scrolls to that same form, so once it's visible the bar
+   is redundant and sits in front of the thing it was pointing at. */
+.sticky-call-bar.is-hidden {
+  transform: translateY(100%);
 }
 .sticky-call-bar a {
   flex: 1;
-  height: 44px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--color-black);
-  background: var(--color-tan);
-  border-radius: var(--radius);
+  color: var(--color-white);
+  white-space: nowrap;
+}
+.sticky-call-bar a:first-child {
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
 }
 .sticky-call-bar svg {
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 body {
-  padding-bottom: 60px; /* clears the sticky call bar on mobile */
+  padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px)); /* clears the sticky call bar on mobile */
 }
-@media (min-width: 1350px) {
+@media (min-width: 768px) {
   .sticky-call-bar { display: none; }
   body { padding-bottom: 0; }
 }
@@ -818,6 +926,19 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* Starts invisible so .hero-full's own poster background (same image,
+     painted beneath this regardless of z-index — see note on that rule)
+     is what actually renders first/is LCP-eligible, with the video
+     crossfading in on top of it once js/main.js confirms playback is
+     actually happening (the "canplay" event, gated behind a successful
+     play().catch()). If autoplay is blocked entirely (Low Power Mode,
+     Data Saver) this class never gets added and the poster just stays,
+     looking intentional rather than like a stuck/broken video. */
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+.hero-video.is-playing {
+  opacity: 1;
 }
 @media (max-width: 767px) {
   .hero-video {
@@ -899,6 +1020,11 @@ body {
   color: var(--color-white);
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
   transition: color var(--transition);
+  /* Visual text stays small by design; this padding only grows the
+     tappable area toward the 44px minimum without changing how the
+     link looks. */
+  padding: 0.75rem 0;
+  margin: -0.75rem 0;
 }
 .hero-link svg {
   width: 16px;
@@ -1303,12 +1429,12 @@ body {
    B the live version everywhere, add the modifier class to all three
    instances in specialty-roofing.html; to go back to A, remove it. */
 .diagram-cue {
-  background: var(--color-black);
+  background: var(--theme-bg-raised);
   padding: 1.5rem 0;
   text-align: center;
 }
 .diagram-cue--gradient {
-  background: linear-gradient(to bottom, var(--theme-bg) 0%, var(--color-black) 100%);
+  background: linear-gradient(to bottom, var(--theme-bg) 0%, var(--theme-bg-raised) 100%);
   padding: 3rem 0 1.5rem;
 }
 .diagram-cue span {
@@ -1319,7 +1445,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-tan);
+  color: var(--diagram-accent);
 }
 .diagram-cue svg {
   width: 13px;
@@ -1349,7 +1475,7 @@ body {
      toolbar live, the same instability this is trying to remove.) */
   height: 200vh;
   height: 200svh;
-  background: var(--color-black);
+  background: var(--diagram-bg);
 }
 .scroll-diagram-sticky {
   position: sticky;
@@ -1382,22 +1508,22 @@ body {
   font-family: var(--font-body);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  fill: var(--color-tan);
+  fill: var(--diagram-accent);
 }
-.sd-draw { fill: none; stroke: var(--color-white); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
-.sd-draw-thin { fill: none; stroke: var(--color-tan); stroke-width: 1; }
-.sd-draw-accent { fill: none; stroke: var(--color-tan); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
-.sd-fill { fill: var(--color-black); stroke: var(--color-white); stroke-width: 2; stroke-linejoin: round; }
-.sd-fill-accent { fill: var(--color-tan); stroke: var(--color-tan); stroke-width: 1; stroke-linejoin: round; }
-.sd-dim { fill: none; stroke: var(--color-tan); stroke-width: 1; opacity: 0.7; }
-.sd-leader { fill: none; stroke: var(--color-tan); stroke-width: 1; stroke-dasharray: 2 3; opacity: 0.8; }
+.sd-draw { fill: none; stroke: var(--diagram-stroke); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.sd-draw-thin { fill: none; stroke: var(--diagram-accent); stroke-width: 1; }
+.sd-draw-accent { fill: none; stroke: var(--diagram-accent); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.sd-fill { fill: var(--diagram-fill); stroke: var(--diagram-stroke); stroke-width: 2; stroke-linejoin: round; }
+.sd-fill-accent { fill: var(--diagram-accent); stroke: var(--diagram-accent); stroke-width: 1; stroke-linejoin: round; }
+.sd-dim { fill: none; stroke: var(--diagram-accent); stroke-width: 1; opacity: 0.7; }
+.sd-leader { fill: none; stroke: var(--diagram-accent); stroke-width: 1; stroke-dasharray: 2 3; opacity: 0.8; }
 .sd-label { font-size: 11px; font-weight: 700; }
-.sd-label-sm { font-size: 9.5px; font-weight: 500; letter-spacing: 0.04em; fill: var(--color-text-on-black-muted); }
+.sd-label-sm { font-size: 9.5px; font-weight: 500; letter-spacing: 0.04em; fill: var(--diagram-muted); }
 .sd-num {
   font-family: var(--font-heading);
   font-stretch: expanded;
   font-size: 13px;
-  fill: var(--color-tan);
+  fill: var(--diagram-accent);
   text-transform: none;
   letter-spacing: 0;
 }
@@ -1408,11 +1534,10 @@ body {
   padding-top: 1.5rem;
   border-top: 1px solid rgba(196, 169, 139, 0.3);
   text-align: center;
-  /* Sits outside the always-dark .scroll-diagram, on the page's own
-     (theme-aware) background, unlike the mobile label list a few rules
-     up, which lives inside the diagram and stays hardcoded white.
-     Full-strength text color + larger size on purpose: this was reading
-     as a faint footnote, and it's meant to land as the payoff line. */
+  /* Sits outside .scroll-diagram, on the page's own theme-aware
+     background. Full-strength text color + larger size on purpose:
+     this was reading as a faint footnote, and it's meant to land as
+     the payoff line. */
   color: var(--theme-text);
   font-size: 1.125rem;
   font-weight: 500;
@@ -1423,7 +1548,10 @@ body {
    diagram itself is scaled down and inline SVG text would be illegible.
    JS toggles .is-active per item in lockstep with the same step that
    drives that layer's draw-in, so the reading order still matches the
-   diagram's build order. */
+   diagram's build order. Now that .scroll-diagram's own background is
+   transparent (see --diagram-bg), this list sits directly on the page's
+   theme background too, so its colors read from the same --diagram-*
+   vars as the SVG content it stands in for, not a hardcoded white. */
 .scroll-diagram-labels-mobile {
   display: none;
 }
@@ -1436,14 +1564,16 @@ body {
   font-size: 0.75rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(201, 201, 201, 0.35);
-  transition: color 300ms ease;
+  color: var(--diagram-muted);
+  opacity: 0.6;
+  transition: color 300ms ease, opacity 300ms ease;
 }
 .scroll-diagram-labels-mobile li.is-active {
-  color: var(--color-white);
+  color: var(--diagram-stroke);
+  opacity: 1;
 }
 .scroll-diagram-labels-mobile li span.sd-li-num {
-  color: var(--color-tan);
+  color: var(--diagram-accent);
   font-family: var(--font-heading);
   font-stretch: expanded;
   font-size: 0.875rem;
@@ -1487,7 +1617,8 @@ body {
      label needs to read as visible from the start, not sit in the dim
      "not reached yet" state the scroll-driven version uses. */
   .scroll-diagram-labels-mobile li {
-    color: var(--color-white);
+    color: var(--diagram-stroke);
+    opacity: 1;
   }
 }
 
@@ -1504,7 +1635,8 @@ body {
     padding: 3rem 0;
   }
   .scroll-diagram-labels-mobile li {
-    color: var(--color-white);
+    color: var(--diagram-stroke);
+    opacity: 1;
   }
 }
 
@@ -1985,7 +2117,14 @@ body[data-page="home"] .texture-band {
   gap: 0.65rem;
 }
 .footer-col a {
+  display: block;
   font-size: 0.875rem;
+  /* Padding expands the tappable area toward 44px; negative margin
+     keeps the visible text position and the list's overall rhythm
+     matching what it looked like before (.footer-col ul already sets
+     its own gap between items). */
+  padding: 0.75rem 0;
+  margin: -0.75rem 0;
 }
 .footer-col a:hover,
 .footer-col a:focus-visible {
@@ -2019,7 +2158,11 @@ body[data-page="home"] .texture-band {
     font-size: 17px;
   }
   .hero-full h1 {
-    font-size: 2.75rem; /* 44px, dominant but within the 40-46px mobile range */
+    /* Was a flat 44px ("dominant but within the 40-46px range"), which
+       wrapped this headline to 5 lines on a 390px phone. 27px is the
+       largest size that still holds the line at 3 wraps or fewer for
+       this copy — found by testing, not computed from a formula. */
+    font-size: 1.6875rem;
   }
   .btn {
     font-size: 0.9375rem;

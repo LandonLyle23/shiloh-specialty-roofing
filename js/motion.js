@@ -82,6 +82,14 @@
 
   function initReveal() {
     if (reducedMotion || !hasIO) return;
+    // Mobile gets content in its finished, fully-visible state immediately
+    // rather than fading/sliding in per section on scroll — same call as
+    // the diagram scrub engine and the texture-band parallax just below,
+    // and safe for the same reason: .reveal/.reveal-child's un-classed
+    // default is already fully visible (see the comment on that rule), so
+    // returning here before any class gets added just leaves everything
+    // as plain, static, already-rendered content.
+    if (window.innerWidth < 768) return;
 
     var raw = document.querySelectorAll(
       "main > section, main > div.section, main > div.page-hero, main .material-block"

@@ -57,29 +57,120 @@
     if (el) el.textContent = new Date().getFullYear();
   }
 
-  /* Homepage header starts transparent over the hero; this just flips a
-     class once scrolled past it so the CSS transition can fade it solid.
-     Harmless on inner pages, where the header is solid regardless. */
-  function initHeaderScroll() {
+  /* Any page with a .hero-full media hero starts the header transparent
+     over it (see body.has-media-hero rules in style.css), fading to
+     solid once the hero scrolls out of view. This watches the hero
+     itself via IntersectionObserver rather than a window.scrollY pixel
+     threshold — a fixed pixel number drifts across viewport heights
+     (a short hero on a tall phone clears it almost immediately; a tall
+     hero on a short laptop screen never does), where "is the hero still
+     on screen" does not. A no-op on every inner page: those have no
+     .hero-full, so this returns immediately and the header just stays
+     solid/theme-aware like it always has. */
+  function initHeroHeaderObserver() {
     var header = document.querySelector(".site-header");
-    if (!header) return;
+    var hero = document.querySelector(".hero-full");
+    if (!header || !hero || !("IntersectionObserver" in window)) return;
 
-    function onScroll() {
-      if (window.scrollY > 100) {
-        header.classList.add("is-scrolled");
-      } else {
-        header.classList.remove("is-scrolled");
-      }
+    var observer;
+
+    function observe() {
+      if (observer) observer.disconnect();
+      // rootMargin shrinks the observed viewport by the header's own
+      // height, so "intersecting" means "visible below the sticky
+      // header," not just "visible somewhere on screen" — otherwise a
+      // sliver of hero still peeking out from under the header would
+      // read as not-scrolled-past.
+      var headerHeight = header.offsetHeight;
+      observer = new IntersectionObserver(
+        function (entries) {
+          var entry = entries[0];
+          header.classList.toggle("is-scrolled", !entry.isIntersecting);
+        },
+        { rootMargin: "-" + headerHeight + "px 0px 0px 0px", threshold: 0 }
+      );
+      observer.observe(hero);
     }
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
+    observe();
+
+    // Header height changes across the 1350px breakpoint (and on
+    // orientation change), so the rootMargin needs to be recomputed
+    // rather than captured once at load.
+    var resizeTimer;
+    window.addEventListener(
+      "resize",
+      function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(observe, 150);
+      },
+      { passive: true }
+    );
+  }
+
+  /* Hero video hardening. The HTML autoplay attribute is left in place
+     (some browsers/crawlers only read markup), but actual playback is
+     driven from here so a blocked or rejected autoplay (iOS Low Power
+     Mode, Android Data Saver, or just a browser being strict about it)
+     fails silently instead of leaving a stuck first frame — the poster
+     (both .hero-full's own CSS background and <video poster>) is always
+     underneath and stays the fallback, not a broken-looking gap. */
+  function initHeroVideo() {
+    var video = document.querySelector(".hero-video");
+    if (!video) return;
+
+    var reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (reducedMotion) {
+      // Autoplay may have already fired in the moment between parse and
+      // this script running; stop it immediately rather than letting it
+      // run for however long the video's first few frames take to load.
+      video.pause();
+      return;
+    }
+
+    video.addEventListener("canplay", function () {
+      video.classList.add("is-playing");
+    });
+
+    if (video.paused) {
+      var playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(function () {
+          // Autoplay refused: leave the poster showing, do nothing else.
+        });
+      }
+    }
+  }
+
+  /* Hides the mobile sticky call bar once the contact form itself
+     scrolls into view — its "Free Inspection" button exists to get the
+     visitor to this exact form, so once they're already looking at it
+     the bar is just sitting in front of what it was pointing at.
+     No-ops cleanly on pages without a #contact section (e.g.
+     thank-you.html), where the bar has no reason to ever hide. */
+  function initStickyBarAutoHide() {
+    var bar = document.querySelector(".sticky-call-bar");
+    var contact = document.getElementById("contact");
+    if (!bar || !contact || !("IntersectionObserver" in window)) return;
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        var entry = entries[0];
+        bar.classList.toggle("is-hidden", entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(contact);
   }
 
   document.addEventListener("DOMContentLoaded", function () {
     populatePhones();
     initMobileNav();
     setFooterYear();
-    initHeaderScroll();
+    initHeroHeaderObserver();
+    initHeroVideo();
+    initStickyBarAutoHide();
   });
 })();
