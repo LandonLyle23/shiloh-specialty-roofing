@@ -37,19 +37,63 @@
   function initMobileNav() {
     var toggle = document.querySelector(".nav-toggle");
     var nav = document.getElementById("primary-nav");
+    var overlay = document.querySelector("[data-nav-overlay]");
     if (!toggle || !nav) return;
 
+    var lockedScrollY = 0;
+
+    /* position:fixed + a negative top offset, not plain overflow:hidden
+       on body: overflow:hidden alone doesn't reliably stop background
+       touch-scroll on iOS Safari, which is the one platform this fix is
+       actually for. window.scrollTo below puts the page back exactly
+       where it was once the fixed positioning is removed. */
+    function lockBodyScroll() {
+      lockedScrollY = window.scrollY;
+      document.body.style.position = "fixed";
+      document.body.style.top = "-" + lockedScrollY + "px";
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+    }
+
+    function unlockBodyScroll() {
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      window.scrollTo(0, lockedScrollY);
+    }
+
+    function openDrawer() {
+      nav.classList.add("is-open");
+      if (overlay) overlay.classList.add("is-open");
+      toggle.setAttribute("aria-expanded", "true");
+      lockBodyScroll();
+    }
+
+    function closeDrawer() {
+      nav.classList.remove("is-open");
+      if (overlay) overlay.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+      unlockBodyScroll();
+    }
+
     toggle.addEventListener("click", function () {
-      var isOpen = nav.classList.toggle("is-open");
-      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      if (nav.classList.contains("is-open")) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
     });
 
     nav.addEventListener("click", function (e) {
       if (e.target.tagName === "A") {
-        nav.classList.remove("is-open");
-        toggle.setAttribute("aria-expanded", "false");
+        closeDrawer();
       }
     });
+
+    if (overlay) {
+      overlay.addEventListener("click", closeDrawer);
+    }
   }
 
   function setFooterYear() {
