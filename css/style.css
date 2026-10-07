@@ -2139,6 +2139,14 @@ body[data-page="home"] .texture-band {
   justify-content: space-between;
   font-size: 0.75rem;
 }
+.footer-bottom a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.footer-bottom a:hover,
+.footer-bottom a:focus-visible {
+  color: var(--color-tan);
+}
 .footer-legal-note {
   max-width: 70ch;
   font-size: 0.75rem;

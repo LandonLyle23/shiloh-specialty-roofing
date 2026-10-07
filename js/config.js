@@ -49,6 +49,19 @@ window.SHILOH_CONFIG = {
   /* Business email for on-page mailto links. */
   email: "info@shilohspecialtyroofing.com",
 
+  /* ====================================================================
+     GOOGLE ANALYTICS 4 — single place to set this. js/analytics.js reads
+     it on every page; nothing else needs to change once a real ID exists.
+
+     *** PLACEHOLDER — NOT A REAL ID YET ***
+     Replace "G-XXXXXXXXXX" with the real GA4 Measurement ID (Admin >
+     Data Streams > [your stream] > Measurement ID, format G-XXXXXXXXXX).
+     Until it's replaced, js/analytics.js detects this placeholder and
+     skips loading gtag.js entirely rather than sending test traffic to
+     a nonexistent property.
+     ==================================================================== */
+  ga4MeasurementId: "G-XXXXXXXXXX",
+
   /* Where forms submit. Netlify Forms works with no backend once the site
      is deployed on Netlify (see netlify.toml and the form's data-netlify
      attribute in each page). To use a different endpoint instead, change
