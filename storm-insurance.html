@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <script>
 (function(){
+  // "preload" suspends transitions on the nav drawer/overlay (see the
+  // html.preload rules in css/style.css) for exactly one frame after
+  // load, so the browser's first style calculation can't animate a
+  // visible "settling" into the closed state on initial paint.
+  document.documentElement.classList.add('preload');
   try {
     var stored = localStorage.getItem('theme');
     var theme = (stored === 'light' || stored === 'dark') ? stored : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -11,6 +16,11 @@
   } catch (e) {
     document.documentElement.setAttribute('data-theme', 'light');
   }
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      document.documentElement.classList.remove('preload');
+    });
+  });
 })();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -89,6 +99,8 @@
     </div>
   </div>
 </header>
+
+<div class="nav-overlay" data-nav-overlay></div>
 
 <div class="sticky-call-bar">
   <a data-phone-link href="tel:+17702351146">

@@ -581,7 +581,16 @@ body.has-media-hero .site-header:not(.is-scrolled) .logo {
   cursor: pointer;
   transition: color 200ms ease, border-color 200ms ease;
 }
-.nav-toggle svg { width: 20px; height: 20px; }
+.nav-toggle svg {
+  width: 20px;
+  height: 20px;
+  /* Same fix as .theme-toggle svg: a stroke-only icon's "empty" interior
+     isn't reliably hit-testable as part of the button, so a real tap
+     landing inside the hamburger lines instead of exactly on a stroke
+     can fall through instead of opening the drawer. Found while
+     verifying the drawer open/close behavior for this fix. */
+  pointer-events: none;
+}
 body.has-media-hero .site-header:not(.is-scrolled) .nav-toggle {
   color: var(--color-white);
   border-color: rgba(255, 255, 255, 0.3);
@@ -650,15 +659,35 @@ body.has-media-hero .site-header:not(.is-scrolled) .theme-toggle {
 .nav-primary {
   position: fixed;
   inset: 0 0 0 auto;
+  top: 0;
+  height: 100dvh;
   width: min(320px, 84vw);
   background: var(--theme-bg);
+  /* visibility:hidden alongside the transform, not display:none: the
+     transition needs a real "from" state to animate out of, and
+     visibility transitions are delayed to the end of the transition by
+     the browser (see the visibility entry in the transition property
+     below), so it still blocks interaction/a11y focus while closed
+     without fighting the slide animation. */
+  visibility: hidden;
   transform: translateX(100%);
-  transition: transform var(--transition);
-  padding: 5.5rem 1.5rem 2rem;
+  transition: transform var(--transition), visibility 0s linear var(--transition);
+  padding: 5.5rem 1.5rem calc(2rem + env(safe-area-inset-bottom, 0px));
   overflow-y: auto;
+  z-index: 101;
 }
 .nav-primary.is-open {
+  visibility: visible;
   transform: translateX(0);
+  transition: transform var(--transition);
+}
+/* First-paint guard (see the blocking inline script in <head> on every
+   page): transitions are suspended for exactly one frame after load so
+   the browser's initial style calculation can't animate a visible
+   "settling" into the closed state — it just paints closed. */
+html.preload .nav-primary,
+html.preload .nav-overlay {
+  transition: none !important;
 }
 .nav-primary ul {
   display: flex;
@@ -677,17 +706,69 @@ body.has-media-hero .site-header:not(.is-scrolled) .theme-toggle {
 .nav-primary a[aria-current="page"] {
   color: var(--color-tan);
 }
+/* Plain brand tan measures ~2:1 against the light theme's background at
+   this font-size/weight — nowhere near the 4.5:1 floor for real body
+   text (as opposed to the decorative/large-text uses elsewhere on the
+   site where plain tan is fine). Dark mode keeps literal tan: it clears
+   9:1+ against black. Same darkened value already used for diagram
+   text on a light background, for the same reason. */
+html[data-theme="light"] .nav-primary a[aria-current="page"] {
+  color: #7a6650;
+}
 .nav-primary .nav-phone {
   margin-top: 1.5rem;
+}
+/* The drawer's own phone button: border matches text color exactly (a
+   plain monochrome outline) rather than the sitewide .btn--on-dark
+   translucent-tan border, so it reads as explicitly dark-on-light or
+   white-on-dark per the theme rather than a tan-tinted outline. Scoped
+   to the drawer specifically — .btn--on-dark elsewhere is unchanged. */
+.nav-primary .nav-phone .btn {
+  color: var(--theme-text);
+  border-color: var(--theme-text);
 }
 /* Desktop nav links (.nav-primary goes inline at 1350px+, see below) sit
    directly over the transparent hero at the top of the page, so they get
    the same unconditional white pin as the logo/icon buttons above. The
    current-page link keeps its tan accent either way — tan already reads
    fine on dark video (see .hero-full .eyebrow) and losing the "you are
-   here" indicator isn't worth it for one link. */
-body.has-media-hero .site-header:not(.is-scrolled) .nav-primary a:not([aria-current="page"]) {
-  color: var(--color-white);
+   here" indicator isn't worth it for one link. Scoped to the same
+   1350px+ breakpoint where .nav-primary is actually this inline layout
+   — unscoped, this selector also matched the <1350px slide-out drawer
+   (same element, different layout) and forced its links white
+   regardless of theme, which was the light-mode "invisible text" bug. */
+@media (min-width: 1350px) {
+  body.has-media-hero .site-header:not(.is-scrolled) .nav-primary a:not([aria-current="page"]) {
+    color: var(--color-white);
+  }
+  /* The drawer/overlay only exist below this breakpoint (the nav-toggle
+     that opens them is display:none at 1350px+ — see further down), so
+     there's nothing to pin open here regardless of .is-open. */
+}
+
+/* Scrim behind the drawer: without it, the page content to the left of
+   the panel stays fully readable, so the hero/page content and the
+   drawer read as two overlapping pages rather than one panel over a
+   dimmed background. Always literal black regardless of theme — it's
+   dimming whatever page is behind it, not a themed surface itself. */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition), visibility 0s linear var(--transition);
+}
+.nav-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--transition);
+}
+@media (min-width: 1350px) {
+  .nav-overlay {
+    display: none;
+  }
 }
 
 .header-cta {
