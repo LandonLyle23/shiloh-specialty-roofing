@@ -680,14 +680,24 @@ body.has-media-hero .site-header:not(.is-scrolled) .theme-toggle {
 .nav-primary .nav-phone {
   margin-top: 1.5rem;
 }
+.nav-primary .nav-phone .btn {
+  color: var(--theme-text);
+  border-color: var(--theme-text);
+}
 /* Desktop nav links (.nav-primary goes inline at 1350px+, see below) sit
    directly over the transparent hero at the top of the page, so they get
    the same unconditional white pin as the logo/icon buttons above. The
    current-page link keeps its tan accent either way — tan already reads
    fine on dark video (see .hero-full .eyebrow) and losing the "you are
-   here" indicator isn't worth it for one link. */
-body.has-media-hero .site-header:not(.is-scrolled) .nav-primary a:not([aria-current="page"]) {
-  color: var(--color-white);
+   here" indicator isn't worth it for one link. Scoped to the same
+   1350px+ breakpoint where .nav-primary is actually this inline layout
+   — unscoped, this selector also matches the <1350px slide-out drawer
+   (same element, different layout) and forces its links white
+   regardless of theme. */
+@media (min-width: 1350px) {
+  body.has-media-hero .site-header:not(.is-scrolled) .nav-primary a:not([aria-current="page"]) {
+    color: var(--color-white);
+  }
 }
 
 .header-cta {
