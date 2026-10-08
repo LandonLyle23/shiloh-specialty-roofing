@@ -106,6 +106,15 @@
     }
     if (!targets.length) return;
 
+    function reveal(section) {
+      section.classList.remove("is-pending");
+      section.classList.add("is-visible");
+      getStaggerChildren(section).forEach(function (child) {
+        child.classList.remove("is-pending");
+        child.classList.add("is-visible");
+      });
+    }
+
     targets.forEach(function (section) {
       section.classList.add("reveal", "is-pending");
       var kids = getStaggerChildren(section);
@@ -113,6 +122,16 @@
         child.classList.add("reveal-child", "is-pending");
         child.style.transitionDelay = (i * 80) + "ms";
       });
+      // Failsafe: if the observer below never fires for this section (a
+      // browser/extension quirk, a tab backgrounded at load, anything
+      // that stops IntersectionObserver from reporting an already-visible
+      // element), is-pending would otherwise leave it at opacity:0
+      // forever with no recovery path. This guarantees it settles visible
+      // either way — the normal observer path almost always wins this
+      // race by a wide margin, so it's a backstop, not the common case.
+      setTimeout(function () {
+        if (section.classList.contains("is-pending")) reveal(section);
+      }, 2000);
     });
 
     var observer = new IntersectionObserver(
@@ -120,12 +139,7 @@
         entries.forEach(function (entry) {
           if (!entry.isIntersecting) return;
           var section = entry.target;
-          section.classList.remove("is-pending");
-          section.classList.add("is-visible");
-          getStaggerChildren(section).forEach(function (child) {
-            child.classList.remove("is-pending");
-            child.classList.add("is-visible");
-          });
+          reveal(section);
           obs.unobserve(section);
         });
       },
