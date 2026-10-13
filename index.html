@@ -43,14 +43,6 @@
 <meta name="twitter:image" content="https://shilohspecialtyroofing.com/assets/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 
-<!-- openingHoursSpecification is deliberately omitted: there are no real
-     posted business hours anywhere on the site yet (see the
-     "[PLACEHOLDER: business hours]" field on contact.html) to source
-     this from. Google surfaces openingHoursSpecification directly to
-     searchers (open/closed status, hour chips), so a fabricated value
-     here would be actively wrong on a live, indexed page, not just an
-     inert placeholder like the GA4 ID. Add this field once real hours
-     exist; schema validates fine without it in the meantime. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -73,6 +65,20 @@
     "postalCode": "30534",
     "addressCountry": "US"
   },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "08:00",
+      "closes": "15:00"
+    }
+  ],
   "areaServed": [
     { "@type": "AdministrativeArea", "name": "Dawson County, GA" },
     { "@type": "AdministrativeArea", "name": "Lumpkin County, GA" },
