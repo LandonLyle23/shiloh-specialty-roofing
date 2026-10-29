@@ -2,13 +2,15 @@
 
 Every change merged to main (and so published to shilohspecialtyroofing.com) gets an entry here: date, what changed, why.
 
-## 2026-10-29 (Google Analytics)
+## 2026-10-29
+
+**About page split into Legacy and Our Team.**
+- The page now opens with "Built Higher." and two cards, Legacy and Our Team, that jump to each section. The biography section is now titled Legacy; family names are subheadings under it.
+- Why: owner asked for two distinct sections at the top of one About page.
 
 **Turned on Google Analytics (G-DY5LH0MGPF).**
 - Every page now reports visits. Tapping any phone number records a phone_call_click event; reaching the Thank You page after a form submission records a generate_lead event.
 - Why: owner created the Analytics property so calls and leads can be measured.
-
-## 2026-10-29
 
 **Privacy page: removed "We do not use advertising or retargeting cookies."**
 - Why: the Google Analytics setup also contacts Google's advertising server (Google signals), so the sentence was not accurate.

@@ -114,23 +114,44 @@
          <img src="assets/team/FILE.jpg" alt="NAME, ROLE" loading="lazy">
        keeping the same wrapper class. -->
 
-  <!-- SECTION 1: BIOGRAPHY -->
-  <section class="page-hero page-hero--about bg-roofline" aria-labelledby="story-title">
+  <!-- PAGE INTRO: title plus two jump cards, one per section below. -->
+  <section class="page-hero page-hero--about bg-roofline" aria-labelledby="about-title">
     <div class="container">
-      <span class="eyebrow">Our Story</span>
-      <h1 id="story-title">Four Generations. One Standard.</h1>
+      <span class="eyebrow">About Shiloh</span>
+      <h1 id="about-title">Built Higher.</h1>
+      <nav class="route-grid about-jump" aria-label="About sections">
+        <a class="route-card route-card--compact" href="#legacy">
+          <span class="eyebrow">Legacy</span>
+          <h2>Four generations on north Georgia roofs.</h2>
+          <span class="route-card-link">Read Our Story
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+        <a class="route-card route-card--compact" href="#team">
+          <span class="eyebrow">Our Team</span>
+          <h2>The people who will be on your roof.</h2>
+          <span class="route-card-link">Meet the Team
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
+      </nav>
     </div>
   </section>
 
-  <section class="section" aria-label="Four generations of the family">
+  <!-- SECTION 1: LEGACY -->
+  <section class="section about-anchor" id="legacy" aria-labelledby="story-title">
     <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Legacy</span>
+        <h2 id="story-title">Four Generations. One Standard.</h2>
+      </div>
       <ol class="generations">
 
         <li class="generation">
           <div class="generation-photo"><div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div></div>
           <div class="generation-body">
             <span class="eyebrow">First Generation</span>
-            <h2>Great Grandfather</h2>
+            <h3>Great Grandfather</h3>
             <p class="placeholder-copy">Story coming soon.</p>
           </div>
         </li>
@@ -139,7 +160,7 @@
           <div class="generation-photo"><div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div></div>
           <div class="generation-body">
             <span class="eyebrow">Second Generation</span>
-            <h2>Grandfather</h2>
+            <h3>Grandfather</h3>
             <p class="placeholder-copy">Story coming soon.</p>
           </div>
         </li>
@@ -148,7 +169,7 @@
           <div class="generation-photo"><div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div></div>
           <div class="generation-body">
             <span class="eyebrow">Third Generation</span>
-            <h2>Uncle Mark</h2>
+            <h3>Uncle Mark</h3>
             <p class="placeholder-copy">Story coming soon.</p>
           </div>
         </li>
@@ -157,7 +178,7 @@
           <div class="generation-photo"><div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div></div>
           <div class="generation-body">
             <span class="eyebrow">Fourth Generation</span>
-            <h2>Landon</h2>
+            <h3>Landon</h3>
             <p class="placeholder-copy">Story coming soon.</p>
           </div>
         </li>
@@ -168,7 +189,7 @@
 
   <!-- SECTION 2: OUR TEAM. One .team-card per person; copy a card to add
        someone, delete one to remove. -->
-  <section class="section section--offwhite" aria-labelledby="team-title">
+  <section class="section section--offwhite about-anchor" id="team" aria-labelledby="team-title">
     <div class="container">
       <div class="section-head section-head--center">
         <h2 id="team-title">Our Team</h2>
