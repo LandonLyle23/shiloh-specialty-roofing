@@ -4,6 +4,10 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 
 ## 2026-10-29
 
+**"More than fifty years" now reads "fifty years".**
+- Home page, Who We Are section.
+- Why: owner confirmed the number is exactly 50.
+
 **Restructured the About page: four generations biography, Our Team cards, Request an Estimate button.**
 - "Four Generations. One Standard." with four blocks in order (first through fourth generation: great grandfather, grandfather, Mark, owner), then an Our Team section with one card per person (photo, name, role, one line), then a Request an Estimate button to the Contact page.
 - Copy and photos are "coming soon" placeholders until the owner sends the exact text and photos.
