@@ -12,6 +12,9 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 - Every page now reports visits. Tapping any phone number records a phone_call_click event; reaching the Thank You page after a form submission records a generate_lead event.
 - Why: owner created the Analytics property so calls and leads can be measured.
 
+**Privacy page: removed "We do not use advertising or retargeting cookies."**
+- Why: the Google Analytics setup also contacts Google's advertising server (Google signals), so the sentence was not accurate.
+
 **About page: family names in the biography.**
 - Third generation heading is now "Uncle Mark"; fourth generation is now "Landon". Great Grandfather and Grandfather stay as titles until their names arrive.
 - Why: owner sent the family order and names.
