@@ -4,6 +4,10 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 
 ## 2026-10-29
 
+**"More than fifty years" now reads "fifty years".**
+- Home page, Who We Are section.
+- Why: owner confirmed the number is exactly 50.
+
 **Fixed sideways scrolling on phones; closed mobile menu now fully hidden.**
 - Every page was 690px wide on a 375px phone because the closed menu drawer sat just off screen, so visitors could drag the page sideways. The page now clips anything wider than the screen, and the closed menu is hidden from keyboard and screen reader users too.
 - Why: found during the live mobile check after the 50 years change; it made the site feel broken on phones.
