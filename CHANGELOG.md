@@ -4,6 +4,10 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 
 ## 2026-10-29
 
+**About page: family names in the biography.**
+- Third generation heading is now "Uncle Mark"; fourth generation is now "Landon". Great Grandfather and Grandfather stay as titles until their names arrive.
+- Why: owner sent the family order and names.
+
 **"More than fifty years" now reads "fifty years".**
 - Home page, Who We Are section.
 - Why: owner confirmed the number is exactly 50.
