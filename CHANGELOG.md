@@ -4,6 +4,10 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 
 ## 2026-10-29
 
+**About page: full family names in Legacy.**
+- Headings now read Snook Samples, Danny Samples, Mark Samples and Landon Lyle, under the First through Fourth Generation labels.
+- Why: owner sent the full names.
+
 **About page split into Legacy and Our Team.**
 - The page now opens with "Built Higher." and two cards, Legacy and Our Team, that jump to each section. The biography section is now titled Legacy; family names are subheadings under it.
 - Why: owner asked for two distinct sections at the top of one About page.
