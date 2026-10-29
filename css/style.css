@@ -1191,16 +1191,12 @@ body {
 }
 .page-hero .btn { margin-top: 0.5rem; }
 
-/* About page only: this hero has no button and short copy, so the
-   shared .page-hero padding left the "Why We Exist" section peeking in
-   above the fold on first load. Filling the viewport and centering the
-   content fixes that without touching the shared rule every other
-   page's hero relies on. */
+/* About page only: the hero now just titles the biography directly
+   below it, so it keeps the shared padding instead of filling the
+   viewport. A full screen title would push the first generation block,
+   the actual content, below the fold on a phone. */
 .page-hero--about {
-  min-height: 100vh;
-  min-height: 100svh;
-  display: flex;
-  align-items: center;
+  padding-bottom: 0;
 }
 
 /* --------------------------------------------------------------------------
@@ -2237,6 +2233,102 @@ body[data-page="home"] .texture-band {
   .contact-info dt {
     font-size: 0.75rem;
   }
+}
+
+/* --------------------------------------------------------------------------
+   ABOUT: GENERATIONS + TEAM
+   Biography blocks (photo beside text from 720px up, stacked below) and
+   one card per team member. .photo-slot is the shared stand in until real
+   photos arrive; swap it for an <img> with the same wrapper and the
+   sizing below still applies.
+   -------------------------------------------------------------------------- */
+.generations {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+}
+.generation {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+}
+.generation h2 {
+  margin-bottom: 0.75rem;
+}
+.generation-photo {
+  max-width: 240px;
+}
+.generation-body p {
+  color: var(--theme-text-muted);
+  max-width: 65ch;
+}
+@media (min-width: 720px) {
+  .generation {
+    grid-template-columns: minmax(220px, 2fr) 3fr;
+    gap: 3rem;
+  }
+  .generation-photo { max-width: none; }
+}
+
+.photo-slot,
+.generation-photo img,
+.team-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+.photo-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed var(--theme-border-faint);
+  color: var(--theme-text-muted);
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.team-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2rem;
+}
+@media (min-width: 560px) {
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 960px) {
+  .team-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.team-card {
+  border: 1px solid var(--theme-border);
+  padding: 1.25rem;
+}
+.team-card .photo-slot,
+.team-card img {
+  margin-bottom: 1.25rem;
+  aspect-ratio: 1 / 1;
+}
+.team-card h3 {
+  font-size: 1.0625rem;
+  margin-bottom: 0.25rem;
+}
+.team-role {
+  color: var(--color-tan);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.team-card p:last-child {
+  color: var(--theme-text-muted);
+  margin-bottom: 0;
 }
 
 /* --------------------------------------------------------------------------
