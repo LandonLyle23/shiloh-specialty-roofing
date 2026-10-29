@@ -4,6 +4,10 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 
 ## 2026-10-29
 
+**About page: corrected spelling to "Snooks Samples".**
+- First generation heading fixed from "Snook".
+- Why: owner correction.
+
 **About page: full family names in Legacy.**
 - Headings now read Snook Samples, Danny Samples, Mark Samples and Landon Lyle, under the First through Fourth Generation labels.
 - Why: owner sent the full names.
