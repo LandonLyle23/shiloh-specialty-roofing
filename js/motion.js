@@ -5,7 +5,7 @@
    fully skippable:
      1. Lenis smooth scroll
      2. Scroll-reveal on major sections (IntersectionObserver)
-     3. Count-up number ("Thirty years" in the Family Owned section)
+     3. Count-up number ("Fifty years" in the Family Owned section)
      4. Parallax on full-bleed texture bands (desktop only, >=768px)
 
    Every feature checks prefers-reduced-motion independently and no-ops if
@@ -139,7 +139,7 @@
 
   /* ------------------------------------------------------------------------
      3. COUNT-UP NUMBER
-     Looks for [data-count-to] (the "Thirty" in the Family Owned heading).
+     Looks for [data-count-to] (the "Fifty" in the Family Owned heading).
      Counts 0 -> target once, ease-out, ~1.2s, then leaves the numeral in
      place permanently — the surrounding sentence text is untouched since
      only this one word is wrapped.
