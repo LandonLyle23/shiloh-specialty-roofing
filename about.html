@@ -83,7 +83,7 @@
         <svg class="theme-toggle-icon theme-toggle-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
         <svg class="theme-toggle-icon theme-toggle-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
-      <a href="#contact" class="btn btn--tan">Get My Free Roof Inspection</a>
+      <a href="contact.html" class="btn btn--tan">Get My Free Roof Inspection</a>
     </div>
   </div>
 </header>
@@ -93,7 +93,7 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     <span>Call Now</span>
   </a>
-  <a href="#contact">
+  <a href="contact.html">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg>
     <span>Free Inspection</span>
   </a>
@@ -101,193 +101,106 @@
 
 <main id="main">
 
-  <div class="page-hero page-hero--about bg-roofline">
-    <div class="container">
-      <span class="eyebrow">About</span>
-      <h1>A family business. Thirty years on North Georgia roofs.</h1>
-      <p>Shiloh Specialty Roofing is family owned and family run. Three decades in the specialty materials most roofers will not touch.</p>
-    </div>
-  </div>
+  <!-- ABOUT PAGE STRUCTURE (owner approved Oct 29, 2026): two sections,
+       then one estimate button.
+         1. Biography, "Four Generations. One Standard.", four blocks in
+            this order: great grandfather, grandfather, Mark, owner.
+         2. Our Team, one card per person: photo, name, role, one line.
+       *** PLACEHOLDER COPY AND PHOTOS — DO NOT GO LIVE WITH ANY [BRACKETED]
+       TEXT VISIBLE. *** Every [BRACKETED] string below is waiting on the
+       owner's exact copy. Paste it in verbatim; do not rewrite it.
+       Photo slots: swap each .photo-slot div for
+         <img src="assets/team/FILE.jpg" alt="NAME, ROLE" loading="lazy">
+       keeping the same wrapper class. -->
 
-  <!-- IMAGE SLOT: once photography exists, a banner image can sit here,
-       target ratio ~21:9, a close detail shot of a finished specialty roof. -->
-
-  <section class="section">
+  <!-- SECTION 1: BIOGRAPHY -->
+  <section class="page-hero page-hero--about bg-roofline" aria-labelledby="story-title">
     <div class="container">
-      <div class="grid grid--2" style="align-items: start;">
-        <div class="section-head mb-0">
-          <span class="eyebrow">Why We Exist</span>
-          <h2>Most roofers can't install these materials. We can.</h2>
-        </div>
-        <div>
-          <p>Cedar, slate, standing seam metal, copper, and tile are not asphalt with a different surface. They fail in specific ways when they're installed by crews who work in them once a year, and the failures don't show up for a decade.</p>
-          <p>North Georgia has plenty of roofing companies built to run crews fast and move to the next job. That model works fine for a standard asphalt reroof. It falls apart on specialty materials, where the difference between a 15 year roof and a 50 year roof is entirely in details a fast-moving crew doesn't have time to get right.</p>
-          <p>Thirty years in these materials is the whole difference, and it's the only thing we do.</p>
-        </div>
-      </div>
+      <span class="eyebrow">Our Story</span>
+      <h1 id="story-title">Four Generations. One Standard.</h1>
     </div>
   </section>
 
+  <section class="section" aria-label="Four generations of the family">
+    <div class="container">
+      <ol class="generations">
+
+        <li class="generation">
+          <div class="generation-photo"><div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div></div>
+          <div class="generation-body">
+            <span class="eyebrow">[GENERATION LABEL: great grandfather]</span>
+            <h2>[NAME]</h2>
+            <p>[BIOGRAPHY COPY: great grandfather]</p>
+          </div>
+        </li>
+
+        <li class="generation">
+          <div class="generation-photo"><div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div></div>
+          <div class="generation-body">
+            <span class="eyebrow">[GENERATION LABEL: grandfather]</span>
+            <h2>[NAME]</h2>
+            <p>[BIOGRAPHY COPY: grandfather]</p>
+          </div>
+        </li>
+
+        <li class="generation">
+          <div class="generation-photo"><div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div></div>
+          <div class="generation-body">
+            <span class="eyebrow">[GENERATION LABEL: Mark]</span>
+            <h2>Mark [LAST NAME]</h2>
+            <p>[BIOGRAPHY COPY: Mark]</p>
+          </div>
+        </li>
+
+        <li class="generation">
+          <div class="generation-photo"><div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div></div>
+          <div class="generation-body">
+            <span class="eyebrow">[GENERATION LABEL: owner]</span>
+            <h2>[NAME]</h2>
+            <p>[BIOGRAPHY COPY: owner]</p>
+          </div>
+        </li>
+
+      </ol>
+    </div>
+  </section>
+
+  <!-- SECTION 2: OUR TEAM. One .team-card per person; copy a card to add
+       someone, delete one to remove. -->
+  <section class="section section--offwhite" aria-labelledby="team-title">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <h2 id="team-title">Our Team</h2>
+      </div>
+      <ul class="team-grid">
+        <li class="team-card">
+          <div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div>
+          <h3>[NAME]</h3>
+          <p class="team-role">[ROLE]</p>
+          <p>[ONE LINE]</p>
+        </li>
+        <li class="team-card">
+          <div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div>
+          <h3>[NAME]</h3>
+          <p class="team-role">[ROLE]</p>
+          <p>[ONE LINE]</p>
+        </li>
+        <li class="team-card">
+          <div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div>
+          <h3>[NAME]</h3>
+          <p class="team-role">[ROLE]</p>
+          <p>[ONE LINE]</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CLOSING CALL TO ACTION. Points at the Contact page form, since this
+       page no longer carries its own form. -->
   <section class="section section--dark bg-roofline">
     <div class="container">
-      <div class="section-head section-head--center">
-        <span class="eyebrow">Family Owned</span>
-        <h2>The Family Part Is Not Marketing</h2>
-        <p>A lot of companies say family owned because it tests well. For us it is just accurate. This business was built on work our family has been doing in North Georgia for more than thirty years, and the reputation attached to that name is the only thing we actually have to protect.</p>
-        <p>That shows up in small ways. We do not take jobs we are not equipped to do correctly. We do not disappear after the check clears. And when something goes wrong, which occasionally it does on any roof, you are calling the owner, not a service department.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--offwhite">
-    <div class="container">
-      <div class="section-head section-head--center">
-        <span class="eyebrow">How We Work</span>
-        <h2>What that looks like on your project</h2>
-      </div>
-      <div class="grid grid--3">
-        <div class="card">
-          <hr class="rule">
-          <h3>We document everything</h3>
-          <p>Every inspection is photographed and written up in detail, for our own estimate and for your insurance carrier if it's a storm claim.</p>
-        </div>
-        <div class="card">
-          <hr class="rule">
-          <h3>We install to spec</h3>
-          <p>Manufacturer nailing patterns, correct exposure, real flashing details. Not a faster pattern that technically holds but underperforms or voids the warranty.</p>
-        </div>
-        <div class="card">
-          <hr class="rule">
-          <h3>Insured on every job</h3>
-          <p>Every project is fully insured before a single shingle comes off. Ask any contractor for proof of coverage. If they hesitate, that's your answer.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="service-area">
-    <div class="container">
-      <div class="section-head section-head--center">
-        <span class="eyebrow">Service Area</span>
-        <h2>Based in Dawsonville. We travel for the right job.</h2>
-      </div>
-      <!-- Plain-text version, kept for an easy revert: delete the
-           .county-grid block below and remove this comment wrapper to
-           restore it. -->
-      <!--
-      <ul class="area-list">
-        <li>Dawson County</li>
-        <li>Lumpkin County</li>
-        <li>White County</li>
-        <li>Hall County</li>
-        <li>Forsyth County</li>
-        <li>Pickens County</li>
-        <li>Cherokee County</li>
-        <li>Gwinnett County</li>
-        <li>Fulton County</li>
-      </ul>
-      -->
-      <div class="county-grid">
-        <div class="county-card">
-          <img src="assets/counties/dawson.jpg" alt="Dawson County, GA" loading="lazy">
-          <span class="county-card-name">Dawson County</span>
-        </div>
-        <div class="county-card">
-          <img src="assets/counties/lumpkin.jpg" alt="Lumpkin County, GA" loading="lazy">
-          <span class="county-card-name">Lumpkin County</span>
-        </div>
-        <div class="county-card">
-          <img src="assets/counties/white.jpg" alt="White County, GA" loading="lazy">
-          <span class="county-card-name">White County</span>
-        </div>
-        <div class="county-card">
-          <img src="assets/counties/hall.jpg" alt="Hall County, GA" loading="lazy">
-          <span class="county-card-name">Hall County</span>
-        </div>
-        <div class="county-card">
-          <img src="assets/counties/forsyth.jpg" alt="Forsyth County, GA" loading="lazy">
-          <span class="county-card-name">Forsyth County</span>
-        </div>
-        <div class="county-card">
-          <img src="assets/counties/pickens.jpg" alt="Pickens County, GA" loading="lazy">
-          <span class="county-card-name">Pickens County</span>
-        </div>
-        <div class="county-card">
-          <img src="assets/counties/cherokee.jpg" alt="Cherokee County, GA" loading="lazy">
-          <span class="county-card-name">Cherokee County</span>
-        </div>
-        <div class="county-card">
-          <img src="assets/counties/gwinnett.jpg" alt="Gwinnett County, GA" loading="lazy">
-          <span class="county-card-name">Gwinnett County</span>
-        </div>
-        <div class="county-card">
-          <img src="assets/counties/fulton.jpg" alt="Fulton County, GA" loading="lazy">
-          <span class="county-card-name">Fulton County</span>
-        </div>
-      </div>
-      <p class="county-grid-credit">Location photos via Wikimedia Commons: Dahlonega (Gwringle, CC BY-SA 3.0), Gainesville (ATLJonJon, CC BY 4.0), Canton (Akhenaton06, CC BY-SA 3.0), Lawrenceville (DeKalb, CC BY-SA 3.0), Atlanta (AtlChampion, CC BY-SA 4.0). Remaining photos public domain (CC0).</p>
-      <div class="section-head section-head--center mb-0" style="margin-top: 2.5rem;">
-        <p>Cedar, slate, copper, and standing seam are not local work. Crews who install them correctly are rare enough that we go where the roof is, in Georgia or out of state. If your home is outside North Georgia and the material is right, reach out anyway.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT FORM -->
-  <section class="section section--dark bg-roofline" id="contact">
-    <div class="container">
-      <div class="grid grid--2" style="align-items: center;">
-        <div>
-          <span class="eyebrow">Get My Free Roof Inspection</span>
-          <h2>Tell us about your roof.</h2>
-          <p>Fill this out and we'll follow up to schedule a look at your home.</p>
-        </div>
-        <div class="form-panel">
-          <div class="risk-reversal">
-            <p>No pressure, no obligation, no salesman in your living room. We inspect, we document, we send you the report. What you do next is up to you.</p>
-            <p>We respond to every inspection request within one business day.</p>
-          </div>
-          <!-- FORM ENDPOINT: this form posts to Netlify Forms (data-netlify,
-               name="about", and the matching hidden form-name input below).
-               To use a different provider instead, change the action="" URL
-               and remove the netlify-specific attributes/hidden field. -->
-          <form class="lead-form" name="about" method="POST" action="thank-you.html" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="about">
-            <input type="hidden" name="source" value="about">
-            <p class="hp-field">
-              <label>Don't fill this out if you're human: <input name="bot-field"></label>
-            </p>
-            <div class="form-row form-row--2">
-              <div class="field">
-                <label for="ab-name">Name</label>
-                <input type="text" id="ab-name" name="name" autocomplete="name" required>
-              </div>
-              <div class="field">
-                <label for="ab-phone">Phone</label>
-                <input type="tel" inputmode="tel" id="ab-phone" name="phone" autocomplete="tel" required>
-              </div>
-            </div>
-            <div class="field">
-              <label for="ab-email">Email</label>
-              <input type="email" inputmode="email" id="ab-email" name="email" autocomplete="email" required>
-            </div>
-            <div class="field">
-              <label for="ab-interest">What are you looking for?</label>
-              <select id="ab-interest" name="interest" required>
-                <option value="">Select one</option>
-                <option>Cedar shake roof</option>
-                <option>Standing seam metal roof</option>
-                <option>Slate roof</option>
-                <option>Copper roof or flashing</option>
-                <option>Tile roof</option>
-                <option>Asphalt shingle replacement</option>
-                <option>Storm / insurance claim</option>
-                <option>Not sure yet</option>
-              </select>
-            </div>
-            <button type="submit" class="btn btn--tan btn--block">Send It</button>
-            <p class="form-legal">By submitting, you agree to be contacted about your project by phone, text, or email.</p>
-          </form>
-        </div>
+      <div class="section-head section-head--center section-head--narrow mb-0">
+        <a href="contact.html" class="btn btn--tan btn--lg">Request an Estimate</a>
       </div>
     </div>
   </section>
