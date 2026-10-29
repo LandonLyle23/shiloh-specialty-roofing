@@ -53,14 +53,13 @@ window.SHILOH_CONFIG = {
      GOOGLE ANALYTICS 4 — single place to set this. js/analytics.js reads
      it on every page; nothing else needs to change once a real ID exists.
 
-     *** PLACEHOLDER — NOT A REAL ID YET ***
-     Replace "G-XXXXXXXXXX" with the real GA4 Measurement ID (Admin >
-     Data Streams > [your stream] > Measurement ID, format G-XXXXXXXXXX).
-     Until it's replaced, js/analytics.js detects this placeholder and
-     skips loading gtag.js entirely rather than sending test traffic to
-     a nonexistent property.
+     Real ID for the shilohspecialtyroofing.com web stream (set Oct 29,
+     2026). Note the character after "H" is a zero, not the letter O.
+     Found in GA: Admin > Data Streams > Website > Measurement ID.
+     Setting this back to "G-XXXXXXXXXX" turns tracking off entirely:
+     js/analytics.js skips loading gtag.js for that placeholder.
      ==================================================================== */
-  ga4MeasurementId: "G-XXXXXXXXXX",
+  ga4MeasurementId: "G-DY5LH0MGPF",
 
   /* Where forms submit. Netlify Forms works with no backend once the site
      is deployed on Netlify (see netlify.toml and the form's data-netlify
