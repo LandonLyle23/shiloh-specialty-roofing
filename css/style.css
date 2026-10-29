@@ -1195,8 +1195,37 @@ body {
    below it, so it keeps the shared padding instead of filling the
    viewport. A full screen title would push the first generation block,
    the actual content, below the fold on a phone. */
-.page-hero--about {
-  padding-bottom: 0;
+.page-hero--about h1 {
+  margin-bottom: 2rem;
+}
+
+/* About page jump cards (Legacy / Our Team). Reuse .route-card, but
+   compact: on phones the home page version is a 280px photo tile, which
+   stacked twice here would push the actual content two screens down. */
+@media (max-width: 719px) {
+  .route-card--compact {
+    min-height: 0;
+    padding: 1.5rem;
+    border: 1px solid var(--theme-border);
+    background-color: var(--theme-bg);
+    background-image: none;
+    color: var(--theme-text);
+  }
+  .route-card--compact::before {
+    content: none;
+  }
+  .route-card--compact h2 {
+    font-size: 1.25rem;
+  }
+  .route-card--compact h2,
+  .route-card--compact .route-card-link {
+    color: var(--theme-text);
+  }
+}
+
+/* Jump targets land below the sticky header instead of under it. */
+.about-anchor {
+  scroll-margin-top: 6rem;
 }
 
 /* --------------------------------------------------------------------------
@@ -2254,7 +2283,8 @@ body[data-page="home"] .texture-band {
   gap: 1.5rem;
   align-items: center;
 }
-.generation h2 {
+.generation h3 {
+  font-size: clamp(1.5rem, 2vw + 1rem, 2.25rem);
   margin-bottom: 0.75rem;
 }
 .generation-photo {
