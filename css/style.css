@@ -139,6 +139,12 @@ html[data-theme="light"] {
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  /* The closed mobile nav drawer (.nav-primary) is parked just off the
+     right edge with a transform, which on its own made the page 690px
+     wide on a 375px phone and let visitors drag it sideways. Clipping
+     here stops anything horizontal from widening the page; "clip" (not
+     "hidden") keeps position: sticky on the header working. */
+  overflow-x: clip;
 }
 
 body {
@@ -653,12 +659,18 @@ body.has-media-hero .site-header:not(.is-scrolled) .theme-toggle {
   width: min(320px, 84vw);
   background: var(--theme-bg);
   transform: translateX(100%);
-  transition: transform var(--transition);
+  /* Hidden while closed so its links can't be reached by keyboard or
+     screen reader when nobody can see them. Visibility flips after the
+     slide out finishes, and instantly on open. */
+  visibility: hidden;
+  transition: transform var(--transition), visibility 0s linear 160ms;
   padding: 5.5rem 1.5rem 2rem;
   overflow-y: auto;
 }
 .nav-primary.is-open {
   transform: translateX(0);
+  visibility: visible;
+  transition: transform var(--transition), visibility 0s;
 }
 .nav-primary ul {
   display: flex;
@@ -762,6 +774,7 @@ body.has-media-hero .site-header:not(.is-scrolled) .theme-toggle {
     grid-column: 2;
     width: auto;
     transform: none;
+    visibility: visible;
     background: transparent;
     padding: 0;
     overflow: visible;
