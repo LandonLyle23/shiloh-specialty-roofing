@@ -8,6 +8,12 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 - Home page, Who We Are section.
 - Why: owner confirmed the number is exactly 50.
 
+**Restructured the About page: four generations biography, Our Team cards, Request an Estimate button.**
+- "Four Generations. One Standard." with four blocks in order (first through fourth generation: great grandfather, grandfather, Mark, owner), then an Our Team section with one card per person (photo, name, role, one line), then a Request an Estimate button to the Contact page.
+- Copy and photos are "coming soon" placeholders until the owner sends the exact text and photos.
+- Removed the "Insured on every job" claim (not yet confirmed in writing) and the page's own form; the header and phone bar buttons now go to the Contact page form.
+- Why: owner requested the new About structure and asked for it live with placeholders.
+
 **Fixed sideways scrolling on phones; closed mobile menu now fully hidden.**
 - Every page was 690px wide on a 375px phone because the closed menu drawer sat just off screen, so visitors could drag the page sideways. The page now clips anything wider than the screen, and the closed menu is hidden from keyboard and screen reader users too.
 - Why: found during the live mobile check after the 50 years change; it made the site feel broken on phones.
