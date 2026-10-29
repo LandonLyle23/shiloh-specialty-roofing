@@ -4,6 +4,10 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 
 ## 2026-10-29
 
+**About page: four Our Team cards.**
+- Added a fourth placeholder card; cards now sit two across on tablets and four across on wide screens.
+- Why: owner confirmed four team members to start.
+
 **About page: corrected spelling to "Snooks Samples".**
 - First generation heading fixed from "Snook".
 - Why: owner correction.
