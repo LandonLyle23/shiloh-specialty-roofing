@@ -2,6 +2,12 @@
 
 Every change merged to main (and so published to shilohspecialtyroofing.com) gets an entry here: date, what changed, why.
 
+## 2026-10-29 (Google Analytics)
+
+**Turned on Google Analytics (G-DY5LH0MGPF).**
+- Every page now reports visits. Tapping any phone number records a phone_call_click event; reaching the Thank You page after a form submission records a generate_lead event.
+- Why: owner created the Analytics property so calls and leads can be measured.
+
 ## 2026-10-29
 
 **"More than fifty years" now reads "fifty years".**
