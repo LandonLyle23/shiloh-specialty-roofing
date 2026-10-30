@@ -4,9 +4,9 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 
 ## 2026-10-30
 
-**About page: four Our Team cards, first three named.**
-- Cards now read Landon Lyle (Founder & CEO), Mark Samples (Roofing Advisor), Brandi Miller (Operations Advisor); the fourth stays a placeholder. Photos and one line bios still coming soon. Cards sit two across on tablets and four across on wide screens.
-- Why: owner confirmed four team members to start and sent names and roles.
+**About page: Our Team now has five named cards.**
+- Landon Lyle (Founder & CEO), Mark Samples (Roofing Advisor), Brandi Miller (Operations Advisor), Melissa Samples (Office Manager), Amy Lyle (Chief Prayer Officer). Photos and one line bios still coming soon. Cards sit two across on tablets and three across on wide screens.
+- Why: owner sent the team names and roles.
 
 ## 2026-10-29
 

@@ -2333,7 +2333,7 @@ body[data-page="home"] .texture-band {
   .team-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (min-width: 960px) {
-  .team-grid { grid-template-columns: repeat(4, 1fr); }
+  .team-grid { grid-template-columns: repeat(3, 1fr); }
 }
 .team-card {
   border: 1px solid var(--theme-border);
