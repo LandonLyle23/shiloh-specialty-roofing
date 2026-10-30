@@ -2345,6 +2345,8 @@ body[data-page="home"] .texture-band {
   margin-bottom: 1.25rem;
   aspect-ratio: 1 / 1;
 }
+/* Portraits put the face in the upper part of the frame; crop from there. */
+.team-card img { object-position: 50% 25%; }
 .team-card h3 {
   font-size: 1.0625rem;
   margin-bottom: 0.25rem;
