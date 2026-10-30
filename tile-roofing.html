@@ -14,7 +14,6 @@
 })();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex">
 <title>Tile Roofing | Shiloh Specialty Roofing</title>
 <meta name="description" content="Tile roofing from Shiloh Specialty Roofing in Dawsonville, GA.">
 <link rel="canonical" href="https://shilohspecialtyroofing.com/tile-roofing">
@@ -70,13 +69,21 @@
              its dropdown (click, tap, or keyboard; see initNavDropdowns in
              main.js). Pages waiting on owner content stay out of the menu
              and the sitemap until approved:
-               Specialty Roofing: Standing Seam Metal (standing-seam-metal-roofing.html),
-                 Cedar (cedar-roofing.html), Slate (slate-roofing.html), Tile (tile-roofing.html).
-                 To add them, give this li the same .nav-has-sub structure as Asphalt Roofing.
                Asphalt Roofing: Replacement (asphalt-roof-replacement.html),
-                 Repairs (asphalt-roof-repair.html). Menu order: Replacement, Repairs, Inspections. -->
+                 Repairs (asphalt-roof-repair.html), Storm and Restoration
+                 (storm-restoration.html). Menu order: Replacement, Repairs,
+                 Storm and Restoration, Inspections. -->
         <li><a href="index.html">Home</a></li>
-        <li><a href="specialty-roofing.html">Specialty Roofing</a></li>
+        <li class="nav-has-sub">
+          <a href="specialty-roofing.html">Specialty Roofing</a>
+          <button class="nav-sub-toggle" type="button" aria-expanded="false" aria-controls="nav-sub-specialty" aria-label="Specialty Roofing pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <ul class="nav-sub" id="nav-sub-specialty">
+            <li><a href="cedar-roofing.html">Cedar</a></li>
+            <li><a href="standing-seam-metal-roofing.html">Standing Seam</a></li>
+            <li><a href="slate-roofing.html">Slate</a></li>
+            <li><a href="tile-roofing.html" aria-current="page">Tile</a></li>
+          </ul>
+        </li>
         <li class="nav-has-sub">
           <a href="asphalt-roofing.html">Asphalt Roofing</a>
           <button class="nav-sub-toggle" type="button" aria-expanded="false" aria-controls="nav-sub-asphalt" aria-label="Asphalt Roofing pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -122,14 +129,11 @@
 
 <main id="main">
 
-  <!-- PLACEHOLDER PAGE (created Oct 30, 2026). Kept out of the menu and
-       sitemap.xml, and marked noindex above, until the owner sends the
-       content and photos and approves the page.
-       *** PLACEHOLDER CONTENT AND PHOTOS: the owner will provide them. ***
-       Paste the owner's copy verbatim; do not write marketing copy or add
-       facts. Swap the .photo-slot for <img src="assets/..." alt="...">.
-       When approved: delete the robots noindex meta, add the page to the
-       menu (see the comment in the nav), and add it to sitemap.xml. -->
+  <!-- MATERIAL PAGE (Oct 30, 2026). The section below moved here verbatim
+       from the Specialty Roofing page. Approved for the menu and sitemap.
+       *** PHOTO PLACEHOLDER: owner will provide project photos; add them
+       here as <img src="assets/..." alt="..."> and do not use stock photos
+       or other companies' work. *** -->
 
   <section class="page-hero bg-roofline" aria-labelledby="page-title">
     <div class="container">
@@ -138,14 +142,34 @@
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="placeholder-page">
-        <div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div>
-        <p class="placeholder-copy">Content coming soon.</p>
+  <div class="container">
+
+    <!-- TILE -->
+    <section class="material-block" id="tile" aria-labelledby="tile-heading">
+      <div class="material-grid">
+        <div>
+          <span class="eyebrow">Clay &amp; Concrete Tile</span>
+          <h2 id="tile-heading">Tile: the underlayment is doing more work than the tile is</h2>
+          <p>Clay tile is fired through, so its color is permanent, there's no coating to wear off. Concrete tile costs less but carries its color in a surface coating that fades over decades. Both are heavy, both routinely exceed 50 years, and both need the same structural check slate does.</p>
+          <p>What surprises most homeowners: tile isn't a sealed waterproof membrane, it's closer to a rain screen. It sheds the bulk of the water, but wind-driven rain gets underneath, and the underlayment beneath the tile is doing the actual waterproofing. A 50-year tile roof over cheap 15# felt fails at 15 to 20 years while the tile on top still looks brand new, meaning a full tear-off just to replace what's underneath it.</p>
+          <h3>What drives cost</h3>
+          <p>Structural verification, underlayment quality (self-adhered or high-grade synthetic vs. felt), battens vs. direct-to-deck mounting, and the complexity of hip and ridge detailing.</p>
+          <h3>What goes wrong</h3>
+          <p>Underlayment cut to hit a price point. Broken tiles from foot traffic left unrepaired. Ridge and hip tiles set in mortar or foam alone instead of mechanically fastened, so they work loose over time.</p>
+          <h3>How to tell good work from bad</h3>
+          <p>Ask what underlayment is specified, by product name, not just "underlayment included." Consistent tile alignment and coursing. Ridge and hip tiles mechanically fastened, not just bedded.</p>
+        </div>
+        <div>
+          <div class="material-meta">
+            <div><span class="label">Lifespan</span><span class="value">50+ yrs (tile itself)</span></div>
+            <div><span class="label">Biggest cost driver</span><span class="value">Underlayment grade + structure</span></div>
+            <div><span class="label">Common failure</span><span class="value">Underlayment fails long before the tile</span></div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+  </div>
 
   <!-- CLOSING CALL TO ACTION: the Contact page form. -->
   <section class="section section--dark bg-roofline">

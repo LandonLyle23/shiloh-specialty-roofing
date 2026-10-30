@@ -14,7 +14,6 @@
 })();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex">
 <title>Cedar Roofing | Shiloh Specialty Roofing</title>
 <meta name="description" content="Cedar roofing from Shiloh Specialty Roofing in Dawsonville, GA.">
 <link rel="canonical" href="https://shilohspecialtyroofing.com/cedar-roofing">
@@ -70,13 +69,21 @@
              its dropdown (click, tap, or keyboard; see initNavDropdowns in
              main.js). Pages waiting on owner content stay out of the menu
              and the sitemap until approved:
-               Specialty Roofing: Standing Seam Metal (standing-seam-metal-roofing.html),
-                 Cedar (cedar-roofing.html), Slate (slate-roofing.html), Tile (tile-roofing.html).
-                 To add them, give this li the same .nav-has-sub structure as Asphalt Roofing.
                Asphalt Roofing: Replacement (asphalt-roof-replacement.html),
-                 Repairs (asphalt-roof-repair.html). Menu order: Replacement, Repairs, Inspections. -->
+                 Repairs (asphalt-roof-repair.html), Storm and Restoration
+                 (storm-restoration.html). Menu order: Replacement, Repairs,
+                 Storm and Restoration, Inspections. -->
         <li><a href="index.html">Home</a></li>
-        <li><a href="specialty-roofing.html">Specialty Roofing</a></li>
+        <li class="nav-has-sub">
+          <a href="specialty-roofing.html">Specialty Roofing</a>
+          <button class="nav-sub-toggle" type="button" aria-expanded="false" aria-controls="nav-sub-specialty" aria-label="Specialty Roofing pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <ul class="nav-sub" id="nav-sub-specialty">
+            <li><a href="cedar-roofing.html" aria-current="page">Cedar</a></li>
+            <li><a href="standing-seam-metal-roofing.html">Standing Seam</a></li>
+            <li><a href="slate-roofing.html">Slate</a></li>
+            <li><a href="tile-roofing.html">Tile</a></li>
+          </ul>
+        </li>
         <li class="nav-has-sub">
           <a href="asphalt-roofing.html">Asphalt Roofing</a>
           <button class="nav-sub-toggle" type="button" aria-expanded="false" aria-controls="nav-sub-asphalt" aria-label="Asphalt Roofing pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -122,14 +129,11 @@
 
 <main id="main">
 
-  <!-- PLACEHOLDER PAGE (created Oct 30, 2026). Kept out of the menu and
-       sitemap.xml, and marked noindex above, until the owner sends the
-       content and photos and approves the page.
-       *** PLACEHOLDER CONTENT AND PHOTOS: the owner will provide them. ***
-       Paste the owner's copy verbatim; do not write marketing copy or add
-       facts. Swap the .photo-slot for <img src="assets/..." alt="...">.
-       When approved: delete the robots noindex meta, add the page to the
-       menu (see the comment in the nav), and add it to sitemap.xml. -->
+  <!-- MATERIAL PAGE (Oct 30, 2026). The section below moved here verbatim
+       from the Specialty Roofing page. Approved for the menu and sitemap.
+       *** PHOTO PLACEHOLDER: owner will provide project photos; add them
+       here as <img src="assets/..." alt="..."> and do not use stock photos
+       or other companies' work. *** -->
 
   <section class="page-hero bg-roofline" aria-labelledby="page-title">
     <div class="container">
@@ -138,14 +142,113 @@
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="placeholder-page">
-        <div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div>
-        <p class="placeholder-copy">Content coming soon.</p>
+  <div class="container">
+
+    <!-- CEDAR SHAKE -->
+    <section class="material-block" id="cedar" aria-labelledby="cedar-heading">
+      <div class="material-grid">
+        <div>
+          <span class="eyebrow">Cedar Shake</span>
+          <h2 id="cedar-heading">Cedar shake grades, and why airflow matters more than the wood.</h2>
+          <p>Cedar shake is graded before it reaches a roof. <strong>Grade #1 (Blue Label)</strong> is 100% clear heartwood, edge grain, tapersawn or hand-split, the grade specified for anything meant to last. Lower grades allow sapwood and flat grain, which cup, split, and rot years earlier. Ask for the grade by name, not just "cedar shake." Hand-split and taper-sawn are both legitimate; the choice is aesthetic, not a quality shortcut, as long as the grade is right.</p>
+          <p>Most cedar failures in North Georgia's humidity are airflow failures, not wood failures. Cedar has to dry on <em>both</em> faces between rain events. Nailed straight to solid decking with no gap, the underside never dries and shakes rot from below in half their rated life while looking fine from the ground. Correct installation uses skip sheathing or a cedar breather system so air moves under every course.</p>
+          <h3>What goes wrong</h3>
+          <p>Beyond missing ventilation: exposure stretched past spec to cut material use, dropping coverage from three layers to two; nails driven too high or low instead of concealed by the course above; no felt interlayment, letting wind-driven rain wick sideways under the shakes.</p>
+          <h3>How to tell good work from bad</h3>
+          <p>Straight courses, consistent exposure. Joints staggered at least 1.5" from the course above and below. A visible gap or breather mat under the shakes, not shakes laid flat on solid decking. Valleys and walls flashed per spec, not caulked.</p>
+        </div>
+        <div>
+          <div class="material-meta">
+            <div><span class="label">Lifespan</span><span class="value">25 to 40 yrs</span></div>
+            <div><span class="label">Biggest cost driver</span><span class="value">Grade + ventilation</span></div>
+            <div><span class="label">Common failure</span><span class="value">Rot from below</span></div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+
+      <!-- DIAGRAM 2: CEDAR COURSING — scroll-scrubbed, see js/diagrams.js.
+           Full material-block width, below the two-column grid above, so
+           the 140-200vh sticky-scroll container isn't squeezed into the
+           narrow meta column next to body text. Cutaway cross-section
+           through the slope (same pitch/visual language as Diagram 1),
+           not a face-on view, so the three-layer overlap is actually
+           visible rather than asserted. -->
+      <div class="section-head section-head--center reveal-exempt">
+        <span class="eyebrow">Three Layers Thick</span>
+        <h3 id="cedar-diagram-heading">Why a cedar roof is three layers thick.</h3>
+      </div>
+
+      <div class="diagram-cue reveal-exempt">
+        <span>Scroll to see the coursing
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </span>
+      </div>
+
+      <div class="scroll-diagram reveal-exempt" data-diagram="cedar" aria-label="Why a cedar roof is three layers thick, scroll-driven diagram">
+            <div class="scroll-diagram-sticky">
+              <div class="scroll-diagram-stage">
+                <svg class="sd-svg" viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cedar shake coursing shown in cutaway cross-section: three shake courses laid in profile through a roof slope at roughly 20 degrees, each overlapping the one before it, with a vertical cut line through one point on the slope revealing three distinct shake bodies stacked there.">
+                  <!-- No <title> element: it renders as a native hover
+                       tooltip in browsers. aria-label above is the
+                       accessible name instead. -->
+
+                  <g transform="translate(-37,0)">
+
+                  <!-- 1: Course one -->
+                  <g class="sd-step">
+                    <path class="sd-fill sd-fade" d="M80,230 L300,141 L300,127 L80,216 Z"/>
+                    <line class="sd-leader sd-fade" x1="300" y1="134" x2="505" y2="145"/>
+                    <text class="sd-label sd-fade" x="509" y="149">1. COURSE ONE</text>
+                  </g>
+
+                  <!-- 2: Course two, offset up-slope by one exposure -->
+                  <g class="sd-step">
+                    <path class="sd-fill sd-fade" d="M170,180 L390,91 L390,77 L170,166 Z"/>
+                    <line class="sd-leader sd-fade" x1="390" y1="84" x2="505" y2="65"/>
+                    <text class="sd-label sd-fade" x="509" y="69">2. COURSE TWO</text>
+                  </g>
+
+                  <!-- 3: Course three, offset a second exposure up-slope. Felt
+                       interlayment called out here, directly in the section
+                       with its own short leader, clear of the measure line. -->
+                  <g class="sd-step">
+                    <path class="sd-fill sd-fade" d="M260,129 L480,40 L480,26 L260,115 Z"/>
+                    <line class="sd-draw-thin sd-fade" x1="276" y1="135" x2="284" y2="135"/>
+                    <line class="sd-leader sd-fade" x1="276" y1="135" x2="235" y2="105"/>
+                    <text class="sd-label-sm sd-fade" x="150" y="101">FELT INTERLAYMENT</text>
+                    <line class="sd-leader sd-fade" x1="480" y1="33" x2="505" y2="30"/>
+                    <text class="sd-label sd-fade" x="509" y="34">3. COURSE THREE</text>
+                  </g>
+
+                  <!-- 4: Vertical cut at one point on the slope, three shake
+                       bodies stacked there, the payoff of the animation. -->
+                  <g class="sd-step">
+                    <line class="sd-draw" x1="280" y1="149" x2="280" y2="107"/>
+                    <line class="sd-draw-thin" x1="274" y1="149" x2="286" y2="149"/>
+                    <line class="sd-draw-thin" x1="274" y1="121" x2="286" y2="121"/>
+                    <line class="sd-draw-thin" x1="274" y1="107" x2="286" y2="107"/>
+                    <line class="sd-leader sd-fade" x1="280" y1="128" x2="505" y2="100"/>
+                    <text class="sd-label sd-fade" x="509" y="97">3 LAYERS THICK</text>
+                    <text class="sd-label-sm sd-fade" x="509" y="111">At this point on the slope</text>
+                  </g>
+
+                  </g>
+                </svg>
+                <ol class="scroll-diagram-labels-mobile">
+                  <li data-at="0.02"><span class="sd-li-num">1</span> Course one</li>
+                  <li data-at="0.27"><span class="sd-li-num">2</span> Course two, joints staggered</li>
+                  <li data-at="0.52"><span class="sd-li-num">3</span> Course three, felt interlayment</li>
+                  <li data-at="0.77"><span class="sd-li-num">4</span> Three layers thick at any point</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+      <p class="scroll-diagram-caption reveal-exempt">Exposure is about a third of shake length, so any point on the slope sits under three overlapping courses.</p>
+    </section>
+
+    <div class="texture-band texture-band--cedar"><div class="texture-band-inner"></div></div>
+
+  </div>
 
   <!-- CLOSING CALL TO ACTION: the Contact page form. -->
   <section class="section section--dark bg-roofline">
@@ -202,5 +305,6 @@
 <script src="js/main.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/motion.js"></script>
+<script src="js/diagrams.js"></script>
 </body>
 </html>

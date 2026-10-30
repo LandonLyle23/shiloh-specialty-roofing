@@ -2446,6 +2446,26 @@ body[data-page="home"] .texture-band {
   margin-bottom: 0;
 }
 
+/* Specialty overview: one linked card per material page. */
+.material-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  color: var(--theme-text);
+  transition: border-color var(--transition);
+}
+.material-card h3 {
+  margin: 0;
+  flex: 1;
+}
+.material-card:hover,
+.material-card:focus-visible {
+  border-color: var(--color-tan);
+}
+.material-card .route-card-link {
+  color: var(--color-tan);
+}
+
 /* Placeholder pages waiting on owner content: one photo slot and a
    line of placeholder copy, kept to a readable width. */
 .placeholder-page {
