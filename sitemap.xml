@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Every live page. Pages waiting on owner content (standing seam metal,
+     cedar, slate, tile, asphalt roof replacement, asphalt roof repair) stay
+     out until the owner approves them. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://shilohspecialtyroofing.com/</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -19,8 +22,8 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://shilohspecialtyroofing.com/storm-insurance.html</loc>
-    <lastmod>2026-10-07</lastmod>
+    <loc>https://shilohspecialtyroofing.com/roof-inspections</loc>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -37,14 +40,14 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://shilohspecialtyroofing.com/contact.html</loc>
+    <loc>https://shilohspecialtyroofing.com/contact</loc>
     <lastmod>2026-10-07</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://shilohspecialtyroofing.com/privacy.html</loc>
-    <lastmod>2026-10-07</lastmod>
+    <loc>https://shilohspecialtyroofing.com/privacy</loc>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>

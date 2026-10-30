@@ -65,19 +65,32 @@
 
     <nav class="nav-primary" id="primary-nav" aria-label="Primary">
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <!-- Each tab links to its overview page; the chevron button opens
+             its dropdown (click, tap, or keyboard; see initNavDropdowns in
+             main.js). Pages waiting on owner content stay out of the menu
+             and the sitemap until approved:
+               Specialty Roofing: Standing Seam Metal (standing-seam-metal-roofing.html),
+                 Cedar (cedar-roofing.html), Slate (slate-roofing.html), Tile (tile-roofing.html).
+                 To add them, give this li the same .nav-has-sub structure as Asphalt Roofing.
+               Asphalt Roofing: Replacement (asphalt-roof-replacement.html),
+                 Repairs (asphalt-roof-repair.html). Menu order: Replacement, Repairs, Inspections. -->
         <li><a href="specialty-roofing.html">Specialty Roofing</a></li>
-        <li><a href="asphalt-roofing.html">Asphalt Roofing</a></li>
-        <li><a href="storm-insurance.html">Storm &amp; Insurance</a></li>
         <li class="nav-has-sub">
-          <button class="nav-sub-toggle" type="button" aria-expanded="false" aria-controls="nav-sub-about">About<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <span class="nav-sub-label">About</span>
+          <a href="asphalt-roofing.html">Asphalt Roofing</a>
+          <button class="nav-sub-toggle" type="button" aria-expanded="false" aria-controls="nav-sub-asphalt" aria-label="Asphalt Roofing pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <ul class="nav-sub" id="nav-sub-asphalt">
+            <li><a href="roof-inspections.html">Inspections</a></li>
+          </ul>
+        </li>
+        <li class="nav-has-sub">
+          <a href="our-story.html">About</a>
+          <button class="nav-sub-toggle" type="button" aria-expanded="false" aria-controls="nav-sub-about" aria-label="About pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
           <ul class="nav-sub" id="nav-sub-about">
             <li><a href="our-story.html">Our Story</a></li>
             <li><a href="our-team.html" aria-current="page">Our Team</a></li>
           </ul>
         </li>
-        <li><a href="contact.html">Contact</a></li>
+        <li class="nav-cta"><a href="contact.html" class="btn btn--tan">Request an Estimate</a></li>
       </ul>
       <div class="nav-phone">
         <a class="btn btn--on-dark btn--block" data-phone-link data-phone-text href="tel:+17702351146">(770) 235-1146</a>
@@ -90,7 +103,6 @@
         <svg class="theme-toggle-icon theme-toggle-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
         <svg class="theme-toggle-icon theme-toggle-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
-      <a href="contact.html" class="btn btn--tan">Get My Free Roof Inspection</a>
     </div>
   </div>
 </header>
@@ -186,7 +198,7 @@
         <ul>
           <li><a href="specialty-roofing.html">Specialty Roofing</a></li>
           <li><a href="asphalt-roofing.html">Asphalt Roofing</a></li>
-          <li><a href="storm-insurance.html">Storm &amp; Insurance</a></li>
+          <li><a href="roof-inspections.html">Roof Inspections</a></li>
           <li><a href="our-story.html">Our Story</a></li>
           <li><a href="our-team.html">Our Team</a></li>
           <li><a href="contact.html">Contact</a></li>

@@ -52,9 +52,11 @@
     });
   }
 
-  /* Desktop About dropdown. Click or Enter on "About" toggles it; Escape
-     or a click anywhere else closes it. In the mobile drawer the button
-     is hidden and both pages are always listed, so this does nothing. */
+  /* Nav dropdowns (Asphalt Roofing, About). The tab link goes to its
+     overview page; the chevron button beside it opens the list. Click,
+     tap, Enter, or Space toggles it; Escape, tabbing away, or a click
+     anywhere else closes it. Same behavior in the desktop bar and the
+     mobile drawer (where the list expands in place). */
   function initNavDropdowns() {
     var items = document.querySelectorAll(".nav-has-sub");
     if (!items.length) return;
