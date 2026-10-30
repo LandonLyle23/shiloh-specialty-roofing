@@ -5,7 +5,7 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 ## 2026-10-30
 
 **Top navigation rebuilt with dropdowns; Storm & Insurance folded into Roof Inspections.**
-- Menu is now Specialty Roofing, Asphalt Roofing (Inspections), About (Our Story, Our Team), and a Request an Estimate button. Each tab opens its overview page; the arrow beside it opens the dropdown by click, tap, or keyboard. On phones each tab expands in place. Home and Contact left the menu (the logo goes home; Request an Estimate goes to Contact).
+- Menu is now Home, Specialty Roofing, Asphalt Roofing (Inspections), About (Our Story, Our Team), and a Request an Estimate button. Each tab opens its overview page; the arrow beside it opens the dropdown by click, tap, or keyboard. On phones each tab expands in place. Contact left the menu (Request an Estimate goes to the Contact page); Home stays first.
 - New placeholder pages for Standing Seam Metal, Cedar, Slate, Tile, Asphalt Roof Replacement and Asphalt Roof Repairs, each with its own title, H1 and estimate button. They stay out of the menu and site map, and are hidden from search engines, until the owner sends content and approves them.
 - New Roof Inspections page (/roof-inspections) carries over the storm page's wind and hail text and inspection steps, with all claim, coverage and deductible wording removed. The storm page and its PDF guide form are gone; /storm-insurance redirects to Roof Inspections. The home page storm card now points there too.
 - Site map lists every live page with clean URLs.
