@@ -689,6 +689,26 @@ body.has-media-hero .site-header:not(.is-scrolled) .theme-toggle {
 .nav-primary a[aria-current="page"] {
   color: var(--color-tan);
 }
+/* About submenu. In the drawer, "About" is a plain label with Our Story
+   and Our Team always listed under it, indented. The toggle button is
+   desktop only (see the 1350px+ block). */
+.nav-sub-toggle {
+  display: none;
+}
+.nav-sub-label {
+  display: block;
+  padding: 0.85rem 0 0.35rem;
+  color: var(--theme-text-muted);
+  font-weight: 600;
+  font-size: 1rem;
+}
+.nav-primary .nav-sub {
+  gap: 0;
+  padding-left: 1rem;
+}
+.nav-primary .nav-sub a {
+  padding: 0.6rem 0;
+}
 .nav-primary .nav-phone {
   margin-top: 1.5rem;
 }
@@ -707,7 +727,8 @@ body.has-media-hero .site-header:not(.is-scrolled) .theme-toggle {
    (same element, different layout) and forces its links white
    regardless of theme. */
 @media (min-width: 1350px) {
-  body.has-media-hero .site-header:not(.is-scrolled) .nav-primary a:not([aria-current="page"]) {
+  body.has-media-hero .site-header:not(.is-scrolled) .nav-primary > ul > li > a:not([aria-current="page"]),
+  body.has-media-hero .site-header:not(.is-scrolled) .nav-has-sub:not(:has([aria-current="page"])) > .nav-sub-toggle {
     color: var(--color-white);
   }
 }
@@ -829,6 +850,75 @@ body.has-media-hero .site-header:not(.is-scrolled) .theme-toggle {
     }
   }
   .nav-primary .nav-phone { display: none; }
+  /* About dropdown: opens on hover, or on click/Enter of the About button
+     (main.js toggles .is-open and aria-expanded; Escape closes it). */
+  .nav-sub-label { display: none; }
+  .nav-has-sub {
+    position: relative;
+  }
+  .nav-sub-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.25rem 0;
+    background: none;
+    border: 0;
+    color: var(--theme-text);
+    font: inherit;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color 200ms ease;
+  }
+  .nav-sub-toggle svg {
+    width: 0.75rem;
+    height: 0.75rem;
+    transition: transform var(--transition);
+  }
+  .nav-sub-toggle:hover,
+  .nav-sub-toggle:focus-visible,
+  .nav-has-sub:has([aria-current="page"]) > .nav-sub-toggle {
+    color: var(--color-tan);
+  }
+  .nav-has-sub.is-open .nav-sub-toggle svg {
+    transform: rotate(180deg);
+  }
+  .nav-primary .nav-sub {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    min-width: 10rem;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--theme-bg);
+    border: 1px solid var(--theme-border);
+    border-radius: var(--radius);
+    z-index: 10;
+  }
+  /* Invisible bridge over the gap so the menu stays open as the pointer
+     moves down from "About" into it. */
+  .nav-primary .nav-sub::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -0.5rem;
+    height: 0.5rem;
+  }
+  .nav-has-sub:hover .nav-sub,
+  .nav-has-sub.is-open .nav-sub {
+    display: flex;
+  }
+  .nav-primary .nav-sub a {
+    padding: 0.6rem 0;
+  }
   /* Right column: just the CTA button now, centered within the fixed
      280px column. Generous padding so it reads as a deliberate element
      rather than crowded into the corner — there's no phone block
@@ -1190,43 +1280,6 @@ body {
   font-size: 1.25rem;
 }
 .page-hero .btn { margin-top: 0.5rem; }
-
-/* About page only: the hero now just titles the biography directly
-   below it, so it keeps the shared padding instead of filling the
-   viewport. A full screen title would push the first generation block,
-   the actual content, below the fold on a phone. */
-.page-hero--about h1 {
-  margin-bottom: 2rem;
-}
-
-/* About page jump cards (Legacy / Our Team). Reuse .route-card, but
-   compact: on phones the home page version is a 280px photo tile, which
-   stacked twice here would push the actual content two screens down. */
-@media (max-width: 719px) {
-  .route-card--compact {
-    min-height: 0;
-    padding: 1.5rem;
-    border: 1px solid var(--theme-border);
-    background-color: var(--theme-bg);
-    background-image: none;
-    color: var(--theme-text);
-  }
-  .route-card--compact::before {
-    content: none;
-  }
-  .route-card--compact h2 {
-    font-size: 1.25rem;
-  }
-  .route-card--compact h2,
-  .route-card--compact .route-card-link {
-    color: var(--theme-text);
-  }
-}
-
-/* Jump targets land below the sticky header instead of under it. */
-.about-anchor {
-  scroll-margin-top: 6rem;
-}
 
 /* --------------------------------------------------------------------------
    CARDS

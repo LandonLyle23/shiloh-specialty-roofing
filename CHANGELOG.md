@@ -4,6 +4,12 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 
 ## 2026-10-30
 
+**About split into two pages: Our Story and Our Team.**
+- Our Story (/our-story) has the four generation biography; Our Team (/our-team) has the team cards. Each has its own title and H1, no repeated copy, and ends with a Request an Estimate button.
+- The top menu's About is now a dropdown with Our Story then Our Team; in the phone menu both are listed under About. Footers link to both pages.
+- /about and /about.html now redirect to /our-story, and both new pages are in the site map.
+- Why: owner asked for separate Story and Team pages.
+
 **About page: team and family photos.**
 - Snooks Samples (First Generation block), Danny Samples (Second Generation block), Landon Lyle (Our Team card and Fourth Generation block), Mark Samples (Our Team card and Third Generation block), Brandi Miller, Melissa Samples and Amy Lyle (Our Team cards). Every team and family block now has a photo; they keep their frame shape on every screen size.
 - Why: owner sent the photos.

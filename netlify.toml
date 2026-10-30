@@ -29,6 +29,17 @@
   to = "/asphalt-roofing"
   status = 301
 
+# About was split into Our Story and Our Team (Oct 30, 2026). Old About
+# links, bookmarked or linked from elsewhere, land on Our Story.
+[[redirects]]
+  from = "/about"
+  to = "/our-story"
+  status = 301
+[[redirects]]
+  from = "/about.html"
+  to = "/our-story"
+  status = 301
+
 [[headers]]
   for = "/*"
   [headers.values]

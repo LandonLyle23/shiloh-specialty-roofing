@@ -25,8 +25,14 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://shilohspecialtyroofing.com/about.html</loc>
-    <lastmod>2026-10-07</lastmod>
+    <loc>https://shilohspecialtyroofing.com/our-story</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://shilohspecialtyroofing.com/our-team</loc>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

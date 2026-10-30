@@ -14,9 +14,9 @@
 })();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Shiloh Specialty Roofing | Dawsonville, GA</title>
-<meta name="description" content="Shiloh Specialty Roofing installs cedar, slate, metal, tile, and asphalt roofing across North Georgia, plus storm and insurance restoration.">
-<link rel="canonical" href="https://shilohspecialtyroofing.com/about.html">
+<title>Our Team | Shiloh Specialty Roofing</title>
+<meta name="description" content="Meet the Shiloh Specialty Roofing team in Dawsonville, GA: Landon Lyle, Mark Samples, Brandi Miller, Melissa Samples and Amy Lyle.">
+<link rel="canonical" href="https://shilohspecialtyroofing.com/our-team">
 <link rel="icon" href="assets/logo/favicon.png" type="image/png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180.png">
@@ -27,9 +27,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,125,700;0,125,800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="About Shiloh Specialty Roofing">
-<meta property="og:description" content="A specialty roofing contractor for high-end homes across North Georgia, cedar, slate, metal, tile, asphalt, and storm restoration.">
-<meta property="og:url" content="https://shilohspecialtyroofing.com/about.html">
+<meta property="og:title" content="Our Team | Shiloh Specialty Roofing">
+<meta property="og:description" content="The people behind Shiloh Specialty Roofing in Dawsonville, GA.">
+<meta property="og:url" content="https://shilohspecialtyroofing.com/our-team">
 <meta property="og:image" content="https://shilohspecialtyroofing.com/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -40,7 +40,7 @@
 {
   "@context": "https://schema.org",
   "@type": "AboutPage",
-  "url": "https://shilohspecialtyroofing.com/about.html",
+  "url": "https://shilohspecialtyroofing.com/our-team",
   "about": { "@id": "https://shilohspecialtyroofing.com/#business" }
 }
 </script>
@@ -69,7 +69,14 @@
         <li><a href="specialty-roofing.html">Specialty Roofing</a></li>
         <li><a href="asphalt-roofing.html">Asphalt Roofing</a></li>
         <li><a href="storm-insurance.html">Storm &amp; Insurance</a></li>
-        <li><a href="about.html" aria-current="page">About</a></li>
+        <li class="nav-has-sub">
+          <button class="nav-sub-toggle" type="button" aria-expanded="false" aria-controls="nav-sub-about">About<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <span class="nav-sub-label">About</span>
+          <ul class="nav-sub" id="nav-sub-about">
+            <li><a href="our-story.html">Our Story</a></li>
+            <li><a href="our-team.html" aria-current="page">Our Team</a></li>
+          </ul>
+        </li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
       <div class="nav-phone">
@@ -101,99 +108,23 @@
 
 <main id="main">
 
-  <!-- ABOUT PAGE STRUCTURE (owner approved Oct 29, 2026): two sections,
-       then one estimate button.
-         1. Biography, "Four Generations. One Standard.", four blocks in
-            this order: great grandfather, grandfather, Mark, owner.
-         2. Our Team, one card per person: photo, name, role, one line.
-       *** PLACEHOLDER COPY AND PHOTOS (live by owner request, Oct 29, 2026). ***
-       Every class="placeholder-copy" line, every "Team Member" / "Role coming
-       soon" card, and every .photo-slot are waiting on
-       the owner's exact copy. Paste it in verbatim; do not rewrite it.
-       Photo slots: swap each .photo-slot div for
-         <img src="assets/team/FILE.jpg" alt="NAME, ROLE" loading="lazy">
-       keeping the same wrapper class. -->
+  <!-- OUR TEAM PAGE (owner approved Oct 30, 2026): one card per person
+       (photo, name, role, one line), then one estimate button. The family
+       biography lives on our-story.html; do not repeat copy between the two
+       pages. Copy a .team-card to add someone, delete one to remove.
+       *** PLACEHOLDER COPY (live by owner request, Oct 29, 2026). ***
+       Every class="placeholder-copy" line is waiting on the owner's exact
+       one line bio. Paste it in verbatim; do not rewrite it. -->
 
-  <!-- PAGE INTRO: title plus two jump cards, one per section below. -->
-  <section class="page-hero page-hero--about bg-roofline" aria-labelledby="about-title">
+  <section class="page-hero bg-roofline" aria-labelledby="page-title">
     <div class="container">
       <span class="eyebrow">About Shiloh</span>
-      <h1 id="about-title">Built Higher.</h1>
-      <nav class="route-grid about-jump" aria-label="About sections">
-        <a class="route-card route-card--compact" href="#legacy">
-          <span class="eyebrow">Legacy</span>
-          <h2>Four generations on north Georgia roofs.</h2>
-          <span class="route-card-link">Read Our Story
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span>
-        </a>
-        <a class="route-card route-card--compact" href="#team">
-          <span class="eyebrow">Our Team</span>
-          <h2>The people who will be on your roof.</h2>
-          <span class="route-card-link">Meet the Team
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span>
-        </a>
-      </nav>
+      <h1 id="page-title">Our Team</h1>
     </div>
   </section>
 
-  <!-- SECTION 1: LEGACY -->
-  <section class="section about-anchor" id="legacy" aria-labelledby="story-title">
+  <section class="section section--offwhite" aria-label="Team members">
     <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Legacy</span>
-        <h2 id="story-title">Four Generations. One Standard.</h2>
-      </div>
-      <ol class="generations">
-
-        <li class="generation">
-          <div class="generation-photo"><img src="assets/team/snooks-samples.webp" alt="Snooks Samples" width="1206" height="1603" loading="lazy" decoding="async"></div>
-          <div class="generation-body">
-            <span class="eyebrow">First Generation</span>
-            <h3>Snooks Samples</h3>
-            <p class="placeholder-copy">Story coming soon.</p>
-          </div>
-        </li>
-
-        <li class="generation">
-          <div class="generation-photo"><img src="assets/team/danny-samples.webp" alt="Danny Samples" width="1206" height="1523" loading="lazy" decoding="async"></div>
-          <div class="generation-body">
-            <span class="eyebrow">Second Generation</span>
-            <h3>Danny Samples</h3>
-            <p class="placeholder-copy">Story coming soon.</p>
-          </div>
-        </li>
-
-        <li class="generation">
-          <div class="generation-photo"><img src="assets/team/mark-samples.webp" alt="Mark Samples" width="724" height="1221" loading="lazy" decoding="async"></div>
-          <div class="generation-body">
-            <span class="eyebrow">Third Generation</span>
-            <h3>Mark Samples</h3>
-            <p class="placeholder-copy">Story coming soon.</p>
-          </div>
-        </li>
-
-        <li class="generation">
-          <div class="generation-photo"><img src="assets/team/landon-lyle.jpg" alt="Landon Lyle" width="1000" height="1331" loading="lazy" decoding="async"></div>
-          <div class="generation-body">
-            <span class="eyebrow">Fourth Generation</span>
-            <h3>Landon Lyle</h3>
-            <p class="placeholder-copy">Story coming soon.</p>
-          </div>
-        </li>
-
-      </ol>
-    </div>
-  </section>
-
-  <!-- SECTION 2: OUR TEAM. One .team-card per person; copy a card to add
-       someone, delete one to remove. -->
-  <section class="section section--offwhite about-anchor" id="team" aria-labelledby="team-title">
-    <div class="container">
-      <div class="section-head section-head--center">
-        <h2 id="team-title">Our Team</h2>
-      </div>
       <ul class="team-grid">
         <li class="team-card">
           <img src="assets/team/landon-lyle.jpg" alt="Landon Lyle" width="1000" height="1331" loading="lazy" decoding="async">
@@ -256,7 +187,8 @@
           <li><a href="specialty-roofing.html">Specialty Roofing</a></li>
           <li><a href="asphalt-roofing.html">Asphalt Roofing</a></li>
           <li><a href="storm-insurance.html">Storm &amp; Insurance</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="our-story.html">Our Story</a></li>
+          <li><a href="our-team.html">Our Team</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
