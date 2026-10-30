@@ -2,11 +2,13 @@
 
 Every change merged to main (and so published to shilohspecialtyroofing.com) gets an entry here: date, what changed, why.
 
-## 2026-10-29
+## 2026-10-30
 
-**About page: four Our Team cards.**
-- Added a fourth placeholder card; cards now sit two across on tablets and four across on wide screens.
-- Why: owner confirmed four team members to start.
+**About page: four Our Team cards, first three named.**
+- Cards now read Landon Lyle (Founder & CEO), Mark Samples (Roofing Advisor), Brandi Miller (Operations Advisor); the fourth stays a placeholder. Photos and one line bios still coming soon. Cards sit two across on tablets and four across on wide screens.
+- Why: owner confirmed four team members to start and sent names and roles.
+
+## 2026-10-29
 
 **About page: corrected spelling to "Snooks Samples".**
 - First generation heading fixed from "Snook".
