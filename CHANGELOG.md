@@ -5,7 +5,7 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 ## 2026-10-30
 
 **About page: team and family photos.**
-- Snooks Samples (First Generation block), Danny Samples (Second Generation block), Landon Lyle (Our Team card and Fourth Generation block), Mark Samples (Our Team card and Third Generation block), Brandi Miller (Our Team card) and Melissa Samples (Our Team card). Photos keep their frame shape on every screen size.
+- Snooks Samples (First Generation block), Danny Samples (Second Generation block), Landon Lyle (Our Team card and Fourth Generation block), Mark Samples (Our Team card and Third Generation block), Brandi Miller, Melissa Samples and Amy Lyle (Our Team cards). Every team and family block now has a photo; they keep their frame shape on every screen size.
 - Why: owner sent the photos.
 
 **About page: Our Team now has five named cards.**
