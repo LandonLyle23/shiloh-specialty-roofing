@@ -4,6 +4,12 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 
 ## 2026-10-31
 
+**Roof Inspections and Storm and Restoration: more content, no line art.**
+- Roof Inspections now carries the free inspection section (from the home page), what we check (from the Asphalt process), and the no pressure note with the one business day response time (from the former storm page).
+- Storm and Restoration gains the wind and hail damage paragraph (moved from Roof Inspections), the material lead time line (from the former storm page), and a line under each step (from the former Inspections list).
+- The roofline line art behind the title and the closing button was removed on both pages.
+- All added text is existing published site copy; nothing new was written. Why: owner asked for more content and no pictures on these two pages.
+
 **Storm and Restoration page filled in from the owner's answers.**
 - Storm damage handled (wind, hail, fallen trees, leaks), same day emergency tarping, materials restored (asphalt, cedar, slate, standing seam metal, tile), and four steps: come out, inspect, estimate, install. No photos yet.
 - The owner's "work with insurance" step was left out: the site may not say or imply Shiloh handles a claim (Georgia licenses public adjusting). Attorney review before publishing.
