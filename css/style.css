@@ -2423,21 +2423,26 @@ body[data-page="home"] .texture-band {
   text-transform: uppercase;
 }
 
+/* Team cards: one per row on phones, two on tablets, three on desktop,
+   with a short last row centered rather than left hanging. Flex instead
+   of grid so that centering works for any number of people. */
 .team-grid {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
 }
+.team-grid > li {
+  flex: 0 0 100%;
+}
 @media (min-width: 560px) {
-  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid > li { flex-basis: calc((100% - 2rem) / 2); }
 }
 @media (min-width: 960px) {
-  .team-grid { grid-template-columns: repeat(3, 1fr); }
-}
-@media (min-width: 1200px) {
-  .team-grid { grid-template-columns: repeat(5, 1fr); }
+  .team-grid > li { flex-basis: calc((100% - 4rem) / 3); }
 }
 .team-card {
   border: 1px solid var(--theme-border);
