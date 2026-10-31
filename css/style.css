@@ -842,15 +842,16 @@ body.has-media-hero .site-header:not(.is-scrolled) .theme-toggle {
     align-items: stretch;
     gap: 0.4rem;
   }
-  /* Three tabs and the estimate button, grouped to the right next to
-     the theme toggle. The dropdown lists (.nav-sub) reset this below. */
+  /* Tabs and the estimate button, grouped to the right next to the
+     theme toggle. Spacing tightens a little on narrower desktops so all
+     six items fit at 1350px. The dropdown lists (.nav-sub) reset this below. */
   .nav-primary > ul {
     width: 100%;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-end;
     align-items: center;
-    gap: 2.5rem;
+    gap: clamp(1.5rem, 2.2vw, 2.5rem);
   }
   .nav-primary a {
     position: relative;

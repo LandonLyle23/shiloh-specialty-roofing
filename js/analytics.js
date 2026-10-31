@@ -34,6 +34,14 @@
   gtag("js", new Date());
   gtag("config", id);
 
+  /* Google Ads conversions ride on the same gtag.js. Off until all three
+     values in SHILOH_CONFIG.googleAds are real (none contain "XXXX"). */
+  var ads = cfg.googleAds || {};
+  var adsOn = [ads.conversionId, ads.leadLabel, ads.callLabel].every(function (v) {
+    return v && v.indexOf("XXXX") === -1;
+  });
+  if (adsOn) gtag("config", ads.conversionId);
+
   var loader = document.createElement("script");
   loader.async = true;
   loader.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
@@ -44,6 +52,9 @@
       event_category: "lead_form",
       event_label: "thank_you_page_view"
     });
+    if (adsOn) {
+      gtag("event", "conversion", { send_to: ads.conversionId + "/" + ads.leadLabel });
+    }
   }
 
   document.addEventListener("click", function (e) {
@@ -53,5 +64,12 @@
       event_category: "contact",
       event_label: link.getAttribute("href")
     });
+    if (adsOn) {
+      // Beacon transport so the hit survives the phone app taking over.
+      gtag("event", "conversion", {
+        send_to: ads.conversionId + "/" + ads.callLabel,
+        transport_type: "beacon"
+      });
+    }
   });
 })();
