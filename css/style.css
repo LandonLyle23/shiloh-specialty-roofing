@@ -1051,10 +1051,7 @@ body {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  /* This is the loading-state poster AND the permanent mobile background
-     (.hero-video is display:none below 768px, so this shows through
-     directly — no separate mobile-specific markup needed). */
-  background: var(--color-black) url("../assets/hero-poster.jpg") center / cover no-repeat;
+  background: var(--color-black);
   /* Pulled up by exactly the sticky header's height so the hero's own
      background sits behind the transparent header instead of there being
      a gap above it. Padding-top adds that same amount back so the actual
@@ -1070,11 +1067,37 @@ body {
     padding-top: calc(96px + clamp(5rem, 9vw, 7.5rem));
   }
 }
-/* Sits on top of .hero-full's own poster background but behind the ::before
-   gradient (z-index:-1 below still paints over it, since a parent's own
-   background always paints under any child regardless of negative
-   z-index). Hidden entirely below 768px so mobile never requests the file
-   and the section's poster background shows through directly instead. */
+/* Poster layer, bottom of the stack: the LCP image (preloaded per screen
+   size in index.html) and what shows before the video starts. Phones get
+   the vertical crop that matches their video. If autoplay is refused (Low
+   Power Mode, Data Saver), main.js adds .is-still and the poster zooms in
+   slowly so the hero still has motion; reduced motion keeps it still. */
+.hero-poster {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background: var(--color-black) url("../assets/hero-poster.jpg") center / cover no-repeat;
+}
+@media (max-width: 767px) {
+  .hero-poster {
+    background-image: url("../assets/hero-poster-mobile.jpg");
+  }
+}
+.hero-full.is-still .hero-poster {
+  animation: hero-poster-zoom 24s ease-in-out infinite alternate;
+}
+@keyframes hero-poster-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-full.is-still .hero-poster {
+    animation: none;
+  }
+}
+/* Video sits above the poster and below the ::before overlay. It starts
+   invisible and fades in only once it is actually playing, so a blocked
+   or slow video never covers the poster with a black or frozen frame. */
 .hero-video {
   position: absolute;
   inset: 0;
@@ -1082,24 +1105,11 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Starts invisible so .hero-full's own poster background (same image,
-     painted beneath this regardless of z-index — see note on that rule)
-     is what actually renders first/is LCP-eligible, with the video
-     crossfading in on top of it once js/main.js confirms playback is
-     actually happening (the "canplay" event, gated behind a successful
-     play().catch()). If autoplay is blocked entirely (Low Power Mode,
-     Data Saver) this class never gets added and the poster just stays,
-     looking intentional rather than like a stuck/broken video. */
   opacity: 0;
   transition: opacity 500ms ease;
 }
 .hero-video.is-playing {
   opacity: 1;
-}
-@media (max-width: 767px) {
-  .hero-video {
-    display: none;
-  }
 }
 .hero-full::before {
   content: "";

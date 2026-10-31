@@ -153,32 +153,52 @@
      fails silently instead of leaving a stuck first frame — the poster
      (both .hero-full's own CSS background and <video poster>) is always
      underneath and stays the fallback, not a broken-looking gap. */
+  /* Home hero video. The markup has no sources, so nothing downloads until
+     this picks one: a 6 second vertical cut (WebM, then MP4) for phones,
+     the full 16:9 clip for wider screens. Reduced motion and Data Saver
+     get no video at all, just the poster. If autoplay is refused (iOS Low
+     Power Mode, for one), .is-still turns on the poster's slow zoom. */
   function initHeroVideo() {
     var video = document.querySelector(".hero-video");
     if (!video) return;
+    var hero = video.closest(".hero-full");
 
-    var reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (reducedMotion) {
-      // Autoplay may have already fired in the moment between parse and
-      // this script running; stop it immediately rather than letting it
-      // run for however long the video's first few frames take to load.
-      video.pause();
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    function showStill() {
+      if (hero) hero.classList.add("is-still");
+    }
+
+    var conn = navigator.connection;
+    if (conn && conn.saveData) {
+      showStill();
       return;
     }
 
-    video.addEventListener("canplay", function () {
-      video.classList.add("is-playing");
+    var mobile = window.matchMedia("(max-width: 767px)").matches;
+    var sources = mobile
+      ? [
+          [video.getAttribute("data-src-mobile-webm"), "video/webm"],
+          [video.getAttribute("data-src-mobile-mp4"), "video/mp4"]
+        ]
+      : [[video.getAttribute("data-src-desktop"), "video/mp4"]];
+    video.poster = video.getAttribute(mobile ? "data-poster-mobile" : "data-poster-desktop");
+    sources.forEach(function (s) {
+      var el = document.createElement("source");
+      el.src = s[0];
+      el.type = s[1];
+      video.appendChild(el);
     });
 
-    if (video.paused) {
-      var playPromise = video.play();
-      if (playPromise && typeof playPromise.catch === "function") {
-        playPromise.catch(function () {
-          // Autoplay refused: leave the poster showing, do nothing else.
-        });
-      }
+    video.addEventListener("playing", function () {
+      video.classList.add("is-playing");
+      if (hero) hero.classList.remove("is-still");
+    });
+
+    video.load();
+    var playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch(showStill);
     }
   }
 
