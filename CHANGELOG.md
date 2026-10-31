@@ -4,6 +4,12 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 
 ## 2026-11-01
 
+**Contact back in the menu; "How did you hear about us?" on every form.**
+- Contact returns to the top menu, just before the Request an Estimate button, on every page. Menu spacing tightens slightly on narrower desktops so all six items fit.
+- All four forms (home, contact, specialty, asphalt) gain an optional "How did you hear about us?" dropdown: Google search, Google Maps, Facebook or Instagram, Friend, family, or neighbor, Saw our work or a yard sign, Past customer, Other. The answer appears in the lead email.
+- Privacy page now lists how you heard about us among the information collected.
+- Why: owner asked for the contact link back and approved the referral question from the original brief.
+
 **Readable lead email subjects; storm option renamed.**
 - Every form (home, contact, specialty, asphalt) now carries a hidden subject field, "New website lead: %{formName}", which Netlify fills in and which overrides the broken "New {{ source }} lead" subject set in the Netlify notification settings on Oct 6.
 - The home and contact dropdown option "Storm damage" is now "Storm damage inspection".
