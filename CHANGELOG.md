@@ -4,6 +4,11 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 
 ## 2026-10-31
 
+**Storm and Restoration page filled in from the owner's answers.**
+- Storm damage handled (wind, hail, fallen trees, leaks), same day emergency tarping, materials restored (asphalt, cedar, slate, standing seam metal, tile), and four steps: come out, inspect, estimate, install. No photos yet.
+- The owner's "work with insurance" step was left out: the site may not say or imply Shiloh handles a claim (Georgia licenses public adjusting). Attorney review before publishing.
+- Why: owner supplied the content.
+
 **New mobile hero image (phones only).**
 - The phone poster and autoplay fallback is now the strongest frame of the hero video (17.5 seconds: the full house, pool and tree canopy), cropped 608 by 1080 with the house centered. WebP 49 KB, with a 71 KB JPG fallback for browsers without WebP. Desktop is unchanged.
 - Phones get a slightly darker overlay (0.66 instead of 0.62) so the intro paragraph passes 4.5:1 contrast over the brightest part of the image (measured 4.9:1).
