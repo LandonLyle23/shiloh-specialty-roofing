@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>
+(function(){
+  try {
+    var stored = localStorage.getItem('theme');
+    var theme = (stored === 'light' || stored === 'dark') ? stored : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cedar Roofing | Shiloh Specialty Roofing</title>
+<meta name="description" content="Cedar roofing from Shiloh Specialty Roofing in Dawsonville, GA.">
+<link rel="canonical" href="https://shilohspecialtyroofing.com/cedar-roofing">
+<link rel="icon" href="assets/logo/favicon.png" type="image/png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512.png">
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,125,700;0,125,800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cedar Roofing | Shiloh Specialty Roofing">
+<meta property="og:description" content="Cedar roofing from Shiloh Specialty Roofing in Dawsonville, GA.">
+<meta property="og:url" content="https://shilohspecialtyroofing.com/cedar-roofing">
+<meta property="og:image" content="https://shilohspecialtyroofing.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://shilohspecialtyroofing.com/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "url": "https://shilohspecialtyroofing.com/cedar-roofing",
+  "about": { "@id": "https://shilohspecialtyroofing.com/#business" }
+}
+</script>
+</head>
+<body data-page="default">
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="container container--wide header-inner">
+    <a href="/" class="logo-link">
+        <img src="/assets/logo-white.png" alt="Shiloh Specialty Roofing" class="logo">
+      </a>
+
+    <button class="theme-toggle theme-toggle--mobile" type="button" aria-label="Toggle light and dark mode" data-theme-toggle>
+      <svg class="theme-toggle-icon theme-toggle-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      <svg class="theme-toggle-icon theme-toggle-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+
+    <nav class="nav-primary" id="primary-nav" aria-label="Primary">
+      <ul>
+        <!-- Each tab links to its overview page; the chevron button opens
+             its dropdown (click, tap, or keyboard; see initNavDropdowns in
+             main.js). Pages waiting on owner content stay out of the menu
+             and the sitemap until approved:
+               Asphalt Roofing: Replacement (asphalt-roof-replacement.html),
+                 Repairs (asphalt-roof-repair.html), Storm and Restoration
+                 (storm-restoration.html). Menu order: Replacement, Repairs,
+                 Storm and Restoration, Inspections. -->
+        <li><a href="index.html">Home</a></li>
+        <li class="nav-has-sub">
+          <a href="specialty-roofing.html">Specialty Roofing</a>
+          <button class="nav-sub-toggle" type="button" aria-expanded="false" aria-controls="nav-sub-specialty" aria-label="Specialty Roofing pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <ul class="nav-sub" id="nav-sub-specialty">
+            <li><a href="cedar-roofing.html" aria-current="page">Cedar</a></li>
+            <li><a href="standing-seam-metal-roofing.html">Standing Seam</a></li>
+            <li><a href="slate-roofing.html">Slate</a></li>
+            <li><a href="tile-roofing.html">Tile</a></li>
+          </ul>
+        </li>
+        <li class="nav-has-sub">
+          <a href="asphalt-roofing.html">Asphalt Roofing</a>
+          <button class="nav-sub-toggle" type="button" aria-expanded="false" aria-controls="nav-sub-asphalt" aria-label="Asphalt Roofing pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <ul class="nav-sub" id="nav-sub-asphalt">
+            <li><a href="roof-inspections.html">Inspections</a></li>
+          </ul>
+        </li>
+        <li class="nav-has-sub">
+          <a href="our-story.html">About</a>
+          <button class="nav-sub-toggle" type="button" aria-expanded="false" aria-controls="nav-sub-about" aria-label="About pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <ul class="nav-sub" id="nav-sub-about">
+            <li><a href="our-story.html">Our Story</a></li>
+            <li><a href="our-team.html">Our Team</a></li>
+          </ul>
+        </li>
+        <li class="nav-cta"><a href="contact.html" class="btn btn--tan">Request an Estimate</a></li>
+      </ul>
+      <div class="nav-phone">
+        <a class="btn btn--on-dark btn--block" data-phone-link data-phone-text href="tel:+17702351146">(770) 235-1146</a>
+      </div>
+    </nav>
+
+    <div class="header-divider" aria-hidden="true"></div>
+    <div class="header-cta">
+      <button class="theme-toggle theme-toggle--desktop" type="button" aria-label="Toggle light and dark mode" data-theme-toggle>
+        <svg class="theme-toggle-icon theme-toggle-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="theme-toggle-icon theme-toggle-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="sticky-call-bar">
+  <a data-phone-link href="tel:+17702351146">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    <span>Call Now</span>
+  </a>
+  <a href="contact.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z"/></svg>
+    <span>Free Inspection</span>
+  </a>
+</div>
+
+<main id="main">
+
+  <!-- MATERIAL PAGE (Oct 30, 2026). The section below moved here verbatim
+       from the Specialty Roofing page. Approved for the menu and sitemap.
+       *** PHOTO PLACEHOLDER: owner will provide project photos; add them
+       here as <img src="assets/..." alt="..."> and do not use stock photos
+       or other companies' work. *** -->
+
+  <section class="page-hero bg-roofline" aria-labelledby="page-title">
+    <div class="container">
+      <span class="eyebrow">Specialty Roofing</span>
+      <h1 id="page-title">Cedar Roofing</h1>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- CEDAR SHAKE -->
+    <section class="material-block" id="cedar" aria-labelledby="cedar-heading">
+      <div class="material-grid">
+        <div>
+          <span class="eyebrow">Cedar Shake</span>
+          <h2 id="cedar-heading">Cedar shake grades, and why airflow matters more than the wood.</h2>
+          <p>Cedar shake is graded before it reaches a roof. <strong>Grade #1 (Blue Label)</strong> is 100% clear heartwood, edge grain, tapersawn or hand-split, the grade specified for anything meant to last. Lower grades allow sapwood and flat grain, which cup, split, and rot years earlier. Ask for the grade by name, not just "cedar shake." Hand-split and taper-sawn are both legitimate; the choice is aesthetic, not a quality shortcut, as long as the grade is right.</p>
+          <p>Most cedar failures in North Georgia's humidity are airflow failures, not wood failures. Cedar has to dry on <em>both</em> faces between rain events. Nailed straight to solid decking with no gap, the underside never dries and shakes rot from below in half their rated life while looking fine from the ground. Correct installation uses skip sheathing or a cedar breather system so air moves under every course.</p>
+          <h3>What goes wrong</h3>
+          <p>Beyond missing ventilation: exposure stretched past spec to cut material use, dropping coverage from three layers to two; nails driven too high or low instead of concealed by the course above; no felt interlayment, letting wind-driven rain wick sideways under the shakes.</p>
+          <h3>How to tell good work from bad</h3>
+          <p>Straight courses, consistent exposure. Joints staggered at least 1.5" from the course above and below. A visible gap or breather mat under the shakes, not shakes laid flat on solid decking. Valleys and walls flashed per spec, not caulked.</p>
+        </div>
+        <div>
+          <div class="material-meta">
+            <div><span class="label">Lifespan</span><span class="value">25 to 40 yrs</span></div>
+            <div><span class="label">Biggest cost driver</span><span class="value">Grade + ventilation</span></div>
+            <div><span class="label">Common failure</span><span class="value">Rot from below</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIAGRAM 2: CEDAR COURSING — scroll-scrubbed, see js/diagrams.js.
+           Full material-block width, below the two-column grid above, so
+           the 140-200vh sticky-scroll container isn't squeezed into the
+           narrow meta column next to body text. Cutaway cross-section
+           through the slope (same pitch/visual language as Diagram 1),
+           not a face-on view, so the three-layer overlap is actually
+           visible rather than asserted. -->
+      <div class="section-head section-head--center reveal-exempt">
+        <span class="eyebrow">Three Layers Thick</span>
+        <h3 id="cedar-diagram-heading">Why a cedar roof is three layers thick.</h3>
+      </div>
+
+      <div class="diagram-cue reveal-exempt">
+        <span>Scroll to see the coursing
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </span>
+      </div>
+
+      <div class="scroll-diagram reveal-exempt" data-diagram="cedar" aria-label="Why a cedar roof is three layers thick, scroll-driven diagram">
+            <div class="scroll-diagram-sticky">
+              <div class="scroll-diagram-stage">
+                <svg class="sd-svg" viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cedar shake coursing shown in cutaway cross-section: three shake courses laid in profile through a roof slope at roughly 20 degrees, each overlapping the one before it, with a vertical cut line through one point on the slope revealing three distinct shake bodies stacked there.">
+                  <!-- No <title> element: it renders as a native hover
+                       tooltip in browsers. aria-label above is the
+                       accessible name instead. -->
+
+                  <g transform="translate(-37,0)">
+
+                  <!-- 1: Course one -->
+                  <g class="sd-step">
+                    <path class="sd-fill sd-fade" d="M80,230 L300,141 L300,127 L80,216 Z"/>
+                    <line class="sd-leader sd-fade" x1="300" y1="134" x2="505" y2="145"/>
+                    <text class="sd-label sd-fade" x="509" y="149">1. COURSE ONE</text>
+                  </g>
+
+                  <!-- 2: Course two, offset up-slope by one exposure -->
+                  <g class="sd-step">
+                    <path class="sd-fill sd-fade" d="M170,180 L390,91 L390,77 L170,166 Z"/>
+                    <line class="sd-leader sd-fade" x1="390" y1="84" x2="505" y2="65"/>
+                    <text class="sd-label sd-fade" x="509" y="69">2. COURSE TWO</text>
+                  </g>
+
+                  <!-- 3: Course three, offset a second exposure up-slope. Felt
+                       interlayment called out here, directly in the section
+                       with its own short leader, clear of the measure line. -->
+                  <g class="sd-step">
+                    <path class="sd-fill sd-fade" d="M260,129 L480,40 L480,26 L260,115 Z"/>
+                    <line class="sd-draw-thin sd-fade" x1="276" y1="135" x2="284" y2="135"/>
+                    <line class="sd-leader sd-fade" x1="276" y1="135" x2="235" y2="105"/>
+                    <text class="sd-label-sm sd-fade" x="150" y="101">FELT INTERLAYMENT</text>
+                    <line class="sd-leader sd-fade" x1="480" y1="33" x2="505" y2="30"/>
+                    <text class="sd-label sd-fade" x="509" y="34">3. COURSE THREE</text>
+                  </g>
+
+                  <!-- 4: Vertical cut at one point on the slope, three shake
+                       bodies stacked there, the payoff of the animation. -->
+                  <g class="sd-step">
+                    <line class="sd-draw" x1="280" y1="149" x2="280" y2="107"/>
+                    <line class="sd-draw-thin" x1="274" y1="149" x2="286" y2="149"/>
+                    <line class="sd-draw-thin" x1="274" y1="121" x2="286" y2="121"/>
+                    <line class="sd-draw-thin" x1="274" y1="107" x2="286" y2="107"/>
+                    <line class="sd-leader sd-fade" x1="280" y1="128" x2="505" y2="100"/>
+                    <text class="sd-label sd-fade" x="509" y="97">3 LAYERS THICK</text>
+                    <text class="sd-label-sm sd-fade" x="509" y="111">At this point on the slope</text>
+                  </g>
+
+                  </g>
+                </svg>
+                <ol class="scroll-diagram-labels-mobile">
+                  <li data-at="0.02"><span class="sd-li-num">1</span> Course one</li>
+                  <li data-at="0.27"><span class="sd-li-num">2</span> Course two, joints staggered</li>
+                  <li data-at="0.52"><span class="sd-li-num">3</span> Course three, felt interlayment</li>
+                  <li data-at="0.77"><span class="sd-li-num">4</span> Three layers thick at any point</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+      <p class="scroll-diagram-caption reveal-exempt">Exposure is about a third of shake length, so any point on the slope sits under three overlapping courses.</p>
+    </section>
+
+    <div class="texture-band texture-band--cedar"><div class="texture-band-inner"></div></div>
+
+  </div>
+
+  <!-- CLOSING CALL TO ACTION: the Contact page form. -->
+  <section class="section section--dark bg-roofline">
+    <div class="container">
+      <div class="section-head section-head--center section-head--narrow mb-0">
+        <a href="contact.html" class="btn btn--tan btn--lg">Request an Estimate</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo-link">
+        <img src="/assets/logo-white.png" alt="Shiloh Specialty Roofing" class="logo">
+      </a>
+        <p>Family owned and family run. Specialty roofing and storm restoration for exceptional homes across North Georgia. Cedar, slate, metal, tile, and asphalt, installed by people who have been doing this for fifty years.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="specialty-roofing.html">Specialty Roofing</a></li>
+          <li><a href="asphalt-roofing.html">Asphalt Roofing</a></li>
+          <li><a href="roof-inspections.html">Roof Inspections</a></li>
+          <li><a href="our-story.html">Our Story</a></li>
+          <li><a href="our-team.html">Our Team</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a data-phone-link data-phone-text href="tel:+17702351146">(770) 235-1146</a></li>
+          <li><a data-email-link data-email-text href="mailto:info@shilohspecialtyroofing.com">info@shilohspecialtyroofing.com</a></li>
+          <li>2490 Kelly Bridge Rd, Dawsonville, GA 30534</li>
+          <li>Serving Dawson, Lumpkin, White, Hall, Forsyth, Pickens, Cherokee, Gwinnett &amp; Fulton Counties</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year">2026</span> Shiloh Specialty Roofing LLC. All rights reserved.</p>
+      <p><a href="privacy.html">Privacy Policy</a></p>
+    </div>
+    <p class="footer-legal-note">Shiloh Specialty Roofing LLC is a roofing contractor. We are not public adjusters and do not negotiate insurance claims on a homeowner's behalf. Questions about what your policy covers should be directed to your insurance carrier or agent.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/analytics.js"></script>
+<script src="js/main.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/motion.js"></script>
+<script src="js/diagrams.js"></script>
+</body>
+</html>

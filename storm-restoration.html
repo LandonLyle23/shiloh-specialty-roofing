@@ -14,9 +14,10 @@
 })();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Shiloh Specialty Roofing | Dawsonville, GA</title>
-<meta name="description" content="Shiloh Specialty Roofing installs cedar, slate, metal, tile, and asphalt roofing across North Georgia, plus storm and insurance restoration.">
-<link rel="canonical" href="https://shilohspecialtyroofing.com/about.html">
+<meta name="robots" content="noindex">
+<title>Storm and Restoration | Shiloh Specialty Roofing</title>
+<meta name="description" content="Storm and restoration roofing from Shiloh Specialty Roofing in Dawsonville, GA.">
+<link rel="canonical" href="https://shilohspecialtyroofing.com/storm-restoration">
 <link rel="icon" href="assets/logo/favicon.png" type="image/png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180.png">
@@ -27,9 +28,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,125,700;0,125,800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="About Shiloh Specialty Roofing">
-<meta property="og:description" content="A specialty roofing contractor for high-end homes across North Georgia, cedar, slate, metal, tile, asphalt, and storm restoration.">
-<meta property="og:url" content="https://shilohspecialtyroofing.com/about.html">
+<meta property="og:title" content="Storm and Restoration | Shiloh Specialty Roofing">
+<meta property="og:description" content="Storm and restoration roofing from Shiloh Specialty Roofing in Dawsonville, GA.">
+<meta property="og:url" content="https://shilohspecialtyroofing.com/storm-restoration">
 <meta property="og:image" content="https://shilohspecialtyroofing.com/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -39,8 +40,8 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "AboutPage",
-  "url": "https://shilohspecialtyroofing.com/about.html",
+  "@type": "WebPage",
+  "url": "https://shilohspecialtyroofing.com/storm-restoration",
   "about": { "@id": "https://shilohspecialtyroofing.com/#business" }
 }
 </script>
@@ -65,12 +66,41 @@
 
     <nav class="nav-primary" id="primary-nav" aria-label="Primary">
       <ul>
+        <!-- Each tab links to its overview page; the chevron button opens
+             its dropdown (click, tap, or keyboard; see initNavDropdowns in
+             main.js). Pages waiting on owner content stay out of the menu
+             and the sitemap until approved:
+               Asphalt Roofing: Replacement (asphalt-roof-replacement.html),
+                 Repairs (asphalt-roof-repair.html), Storm and Restoration
+                 (storm-restoration.html). Menu order: Replacement, Repairs,
+                 Storm and Restoration, Inspections. -->
         <li><a href="index.html">Home</a></li>
-        <li><a href="specialty-roofing.html">Specialty Roofing</a></li>
-        <li><a href="asphalt-roofing.html">Asphalt Roofing</a></li>
-        <li><a href="storm-insurance.html">Storm &amp; Insurance</a></li>
-        <li><a href="about.html" aria-current="page">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li class="nav-has-sub">
+          <a href="specialty-roofing.html">Specialty Roofing</a>
+          <button class="nav-sub-toggle" type="button" aria-expanded="false" aria-controls="nav-sub-specialty" aria-label="Specialty Roofing pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <ul class="nav-sub" id="nav-sub-specialty">
+            <li><a href="cedar-roofing.html">Cedar</a></li>
+            <li><a href="standing-seam-metal-roofing.html">Standing Seam</a></li>
+            <li><a href="slate-roofing.html">Slate</a></li>
+            <li><a href="tile-roofing.html">Tile</a></li>
+          </ul>
+        </li>
+        <li class="nav-has-sub">
+          <a href="asphalt-roofing.html">Asphalt Roofing</a>
+          <button class="nav-sub-toggle" type="button" aria-expanded="false" aria-controls="nav-sub-asphalt" aria-label="Asphalt Roofing pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <ul class="nav-sub" id="nav-sub-asphalt">
+            <li><a href="roof-inspections.html">Inspections</a></li>
+          </ul>
+        </li>
+        <li class="nav-has-sub">
+          <a href="our-story.html">About</a>
+          <button class="nav-sub-toggle" type="button" aria-expanded="false" aria-controls="nav-sub-about" aria-label="About pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <ul class="nav-sub" id="nav-sub-about">
+            <li><a href="our-story.html">Our Story</a></li>
+            <li><a href="our-team.html">Our Team</a></li>
+          </ul>
+        </li>
+        <li class="nav-cta"><a href="contact.html" class="btn btn--tan">Request an Estimate</a></li>
       </ul>
       <div class="nav-phone">
         <a class="btn btn--on-dark btn--block" data-phone-link data-phone-text href="tel:+17702351146">(770) 235-1146</a>
@@ -83,7 +113,6 @@
         <svg class="theme-toggle-icon theme-toggle-icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
         <svg class="theme-toggle-icon theme-toggle-icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
-      <a href="contact.html" class="btn btn--tan">Get My Free Roof Inspection</a>
     </div>
   </div>
 </header>
@@ -101,136 +130,34 @@
 
 <main id="main">
 
-  <!-- ABOUT PAGE STRUCTURE (owner approved Oct 29, 2026): two sections,
-       then one estimate button.
-         1. Biography, "Four Generations. One Standard.", four blocks in
-            this order: great grandfather, grandfather, Mark, owner.
-         2. Our Team, one card per person: photo, name, role, one line.
-       *** PLACEHOLDER COPY AND PHOTOS (live by owner request, Oct 29, 2026). ***
-       Every class="placeholder-copy" line, every "Team Member" / "Role coming
-       soon" card, and every .photo-slot are waiting on
-       the owner's exact copy. Paste it in verbatim; do not rewrite it.
-       Photo slots: swap each .photo-slot div for
-         <img src="assets/team/FILE.jpg" alt="NAME, ROLE" loading="lazy">
-       keeping the same wrapper class. -->
+  <!-- PLACEHOLDER PAGE (created Oct 30, 2026). Kept out of the menu and
+       sitemap.xml, and marked noindex above, until the owner sends the
+       content and photos and approves the page.
+       *** PLACEHOLDER CONTENT AND PHOTOS: the owner will provide them. ***
+       Paste the owner's copy verbatim; do not write marketing copy or add
+       facts. Never mention claims, policy coverage, or deductibles,
+       or imply Shiloh handles insurance: Georgia licenses public adjusting.
+       Attorney review before this page goes live. Swap the .photo-slot for <img src="assets/..." alt="...">.
+       When approved: delete the robots noindex meta, add the page to the
+       menu (see the comment in the nav), and add it to sitemap.xml. -->
 
-  <!-- PAGE INTRO: title plus two jump cards, one per section below. -->
-  <section class="page-hero page-hero--about bg-roofline" aria-labelledby="about-title">
+  <section class="page-hero bg-roofline" aria-labelledby="page-title">
     <div class="container">
-      <span class="eyebrow">About Shiloh</span>
-      <h1 id="about-title">Built Higher.</h1>
-      <nav class="route-grid about-jump" aria-label="About sections">
-        <a class="route-card route-card--compact" href="#legacy">
-          <span class="eyebrow">Legacy</span>
-          <h2>Four generations on north Georgia roofs.</h2>
-          <span class="route-card-link">Read Our Story
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span>
-        </a>
-        <a class="route-card route-card--compact" href="#team">
-          <span class="eyebrow">Our Team</span>
-          <h2>The people who will be on your roof.</h2>
-          <span class="route-card-link">Meet the Team
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span>
-        </a>
-      </nav>
+      <span class="eyebrow">Asphalt Roofing</span>
+      <h1 id="page-title">Storm and Restoration</h1>
     </div>
   </section>
 
-  <!-- SECTION 1: LEGACY -->
-  <section class="section about-anchor" id="legacy" aria-labelledby="story-title">
+  <section class="section">
     <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Legacy</span>
-        <h2 id="story-title">Four Generations. One Standard.</h2>
+      <div class="placeholder-page">
+        <div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div>
+        <p class="placeholder-copy">Content coming soon.</p>
       </div>
-      <ol class="generations">
-
-        <li class="generation">
-          <div class="generation-photo"><div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div></div>
-          <div class="generation-body">
-            <span class="eyebrow">First Generation</span>
-            <h3>Snooks Samples</h3>
-            <p class="placeholder-copy">Story coming soon.</p>
-          </div>
-        </li>
-
-        <li class="generation">
-          <div class="generation-photo"><div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div></div>
-          <div class="generation-body">
-            <span class="eyebrow">Second Generation</span>
-            <h3>Danny Samples</h3>
-            <p class="placeholder-copy">Story coming soon.</p>
-          </div>
-        </li>
-
-        <li class="generation">
-          <div class="generation-photo"><div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div></div>
-          <div class="generation-body">
-            <span class="eyebrow">Third Generation</span>
-            <h3>Mark Samples</h3>
-            <p class="placeholder-copy">Story coming soon.</p>
-          </div>
-        </li>
-
-        <li class="generation">
-          <div class="generation-photo"><div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div></div>
-          <div class="generation-body">
-            <span class="eyebrow">Fourth Generation</span>
-            <h3>Landon Lyle</h3>
-            <p class="placeholder-copy">Story coming soon.</p>
-          </div>
-        </li>
-
-      </ol>
     </div>
   </section>
 
-  <!-- SECTION 2: OUR TEAM. One .team-card per person; copy a card to add
-       someone, delete one to remove. -->
-  <section class="section section--offwhite about-anchor" id="team" aria-labelledby="team-title">
-    <div class="container">
-      <div class="section-head section-head--center">
-        <h2 id="team-title">Our Team</h2>
-      </div>
-      <ul class="team-grid">
-        <li class="team-card">
-          <div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div>
-          <h3>Landon Lyle</h3>
-          <p class="team-role">Founder &amp; CEO</p>
-          <p class="placeholder-copy">Profile coming soon.</p>
-        </li>
-        <li class="team-card">
-          <div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div>
-          <h3>Mark Samples</h3>
-          <p class="team-role">Roofing Advisor</p>
-          <p class="placeholder-copy">Profile coming soon.</p>
-        </li>
-        <li class="team-card">
-          <div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div>
-          <h3>Brandi Miller</h3>
-          <p class="team-role">Operations Advisor</p>
-          <p class="placeholder-copy">Profile coming soon.</p>
-        </li>
-        <li class="team-card">
-          <div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div>
-          <h3>Melissa Samples</h3>
-          <p class="team-role">Office Manager</p>
-          <p class="placeholder-copy">Profile coming soon.</p>
-        </li>
-        <li class="team-card">
-          <div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div>
-          <h3>Amy Lyle</h3>
-          <p class="team-role">Chief Prayer Officer</p>
-          <p class="placeholder-copy">Profile coming soon.</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- CLOSING CALL TO ACTION. Points at the Contact page form, since this
-       page no longer carries its own form. -->
+  <!-- CLOSING CALL TO ACTION: the Contact page form. -->
   <section class="section section--dark bg-roofline">
     <div class="container">
       <div class="section-head section-head--center section-head--narrow mb-0">
@@ -255,8 +182,9 @@
         <ul>
           <li><a href="specialty-roofing.html">Specialty Roofing</a></li>
           <li><a href="asphalt-roofing.html">Asphalt Roofing</a></li>
-          <li><a href="storm-insurance.html">Storm &amp; Insurance</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="roof-inspections.html">Roof Inspections</a></li>
+          <li><a href="our-story.html">Our Story</a></li>
+          <li><a href="our-team.html">Our Team</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>

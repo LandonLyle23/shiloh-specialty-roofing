@@ -4,6 +4,28 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 
 ## 2026-10-30
 
+**Specialty Roofing dropdown: Cedar, Standing Seam, Slate, Tile; Storm and Restoration placeholder.**
+- The cedar, standing seam metal, slate and tile sections moved word for word from the Specialty Roofing page onto their own pages, which are now in the menu and the site map. The Specialty page keeps its intro, the assembly diagram, Copper and TPO, plus a card linking to each material page.
+- New Storm and Restoration placeholder page under Asphalt Roofing, kept out of the menu and site map and hidden from search engines until the owner sends content and approves it.
+- Why: owner asked for a tab per specialty material and a Storm and Restoration item.
+
+**Top navigation rebuilt with dropdowns; Storm & Insurance folded into Roof Inspections.**
+- Menu is now Home, Specialty Roofing (Cedar, Standing Seam, Slate, Tile), Asphalt Roofing (Inspections), About (Our Story, Our Team), and a Request an Estimate button. Each tab opens its overview page; the arrow beside it opens the dropdown by click, tap, or keyboard. On phones each tab expands in place. Contact left the menu (Request an Estimate goes to the Contact page); Home stays first.
+- New placeholder pages for Asphalt Roof Replacement and Asphalt Roof Repairs, each with its own title, H1 and estimate button. They stay out of the menu and site map, and are hidden from search engines, until the owner sends content and approves them.
+- New Roof Inspections page (/roof-inspections) carries over the storm page's wind and hail text and inspection steps, with all claim, coverage and deductible wording removed. The storm page and its PDF guide form are gone; /storm-insurance redirects to Roof Inspections. The home page storm card now points there too.
+- Site map lists every live page with clean URLs.
+- Why: owner asked for dropdown navigation and to fold storm content into Asphalt as Inspections.
+
+**About split into two pages: Our Story and Our Team.**
+- Our Story (/our-story) has the four generation biography; Our Team (/our-team) has the team cards. Each has its own title and H1, no repeated copy, and ends with a Request an Estimate button.
+- The top menu's About is now a dropdown with Our Story then Our Team; in the phone menu both are listed under About. Footers link to both pages.
+- /about and /about.html now redirect to /our-story, and both new pages are in the site map.
+- Why: owner asked for separate Story and Team pages.
+
+**About page: team and family photos.**
+- Snooks Samples (First Generation block), Danny Samples (Second Generation block), Landon Lyle (Our Team card and Fourth Generation block), Mark Samples (Our Team card and Third Generation block), Brandi Miller, Melissa Samples and Amy Lyle (Our Team cards). Every team and family block now has a photo; they keep their frame shape on every screen size.
+- Why: owner sent the photos.
+
 **About page: Our Team now has five named cards.**
 - Landon Lyle (Founder & CEO), Mark Samples (Roofing Advisor), Brandi Miller (Operations Advisor), Melissa Samples (Office Manager), Amy Lyle (Chief Prayer Officer). Photos and one line bios still coming soon. Cards sit two across on tablets and three across on wide screens.
 - Why: owner sent the team names and roles.

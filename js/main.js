@@ -52,6 +52,44 @@
     });
   }
 
+  /* Nav dropdowns (Asphalt Roofing, About). The tab link goes to its
+     overview page; the chevron button beside it opens the list. Click,
+     tap, Enter, or Space toggles it; Escape, tabbing away, or a click
+     anywhere else closes it. Same behavior in the desktop bar and the
+     mobile drawer (where the list expands in place). */
+  function initNavDropdowns() {
+    var items = document.querySelectorAll(".nav-has-sub");
+    if (!items.length) return;
+
+    function close(item) {
+      item.classList.remove("is-open");
+      item.querySelector(".nav-sub-toggle").setAttribute("aria-expanded", "false");
+    }
+
+    Array.prototype.forEach.call(items, function (item) {
+      var button = item.querySelector(".nav-sub-toggle");
+      button.addEventListener("click", function () {
+        var isOpen = item.classList.toggle("is-open");
+        button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
+      item.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && item.classList.contains("is-open")) {
+          close(item);
+          button.focus();
+        }
+      });
+      item.addEventListener("focusout", function (e) {
+        if (!item.contains(e.relatedTarget)) close(item);
+      });
+    });
+
+    document.addEventListener("click", function (e) {
+      Array.prototype.forEach.call(items, function (item) {
+        if (!item.contains(e.target)) close(item);
+      });
+    });
+  }
+
   function setFooterYear() {
     var el = document.getElementById("year");
     if (el) el.textContent = new Date().getFullYear();
@@ -168,6 +206,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     populatePhones();
     initMobileNav();
+    initNavDropdowns();
     setFooterYear();
     initHeroHeaderObserver();
     initHeroVideo();

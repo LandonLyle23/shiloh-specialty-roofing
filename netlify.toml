@@ -29,6 +29,28 @@
   to = "/asphalt-roofing"
   status = 301
 
+# Storm & Insurance was folded into Asphalt Roofing as Roof Inspections
+# (Oct 30, 2026). Old storm links land on the Inspections page.
+[[redirects]]
+  from = "/storm-insurance"
+  to = "/roof-inspections"
+  status = 301
+[[redirects]]
+  from = "/storm-insurance.html"
+  to = "/roof-inspections"
+  status = 301
+
+# About was split into Our Story and Our Team (Oct 30, 2026). Old About
+# links, bookmarked or linked from elsewhere, land on Our Story.
+[[redirects]]
+  from = "/about"
+  to = "/our-story"
+  status = 301
+[[redirects]]
+  from = "/about.html"
+  to = "/our-story"
+  status = 301
+
 [[headers]]
   for = "/*"
   [headers.values]
@@ -36,16 +58,8 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
-# Netlify Forms: no build step is required for the forms on this site to
-# work. Netlify scans the deployed HTML for <form data-netlify="true"> at
-# deploy time and wires up submissions automatically. Each of the seven
-# lead forms has its own distinct name (home, specialty, storm,
-# storm-guide, asphalt, about, contact) so they group as separate forms
-# in the Netlify UI, each carrying a matching hidden "source" field with
-# the same value for quick identification inside the notification email.
-#
-# IMPORTANT: as of the last check, this site's processing_settings has
-# ignore_html_forms set to true, which disables Netlify Forms detection
-# entirely regardless of how correct this markup is. That has to be
-# turned off in Site settings -> Forms (or via the API) before any of
-# these forms will actually submit through Netlify.
+# Netlify Forms: no build step is required. Netlify scans the deployed HTML
+# for <form data-netlify="true"> at deploy time and wires up submissions
+# automatically. Each lead form has its own name (home, specialty, asphalt,
+# contact) so they group separately in the Netlify UI, each with a matching
+# hidden "source" field for quick identification in the notification email.

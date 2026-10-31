@@ -689,6 +689,61 @@ body.has-media-hero .site-header:not(.is-scrolled) .theme-toggle {
 .nav-primary a[aria-current="page"] {
   color: var(--color-tan);
 }
+/* Dropdown tabs (Asphalt Roofing, About). The tab itself links to its
+   overview page; the chevron button beside it opens the list of pages
+   under it (main.js initNavDropdowns: click, tap, Enter or Space, and
+   Escape to close). In the drawer each tab expands in place. */
+.nav-has-sub {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+.nav-sub-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--theme-border);
+  color: var(--theme-text);
+  cursor: pointer;
+}
+.nav-sub-toggle svg {
+  width: 1rem;
+  height: 1rem;
+  transition: transform var(--transition);
+}
+.nav-has-sub.is-open > .nav-sub-toggle svg {
+  transform: rotate(180deg);
+}
+.nav-primary .nav-sub {
+  grid-column: 1 / -1;
+  display: none;
+  gap: 0;
+  padding-left: 1rem;
+}
+.nav-has-sub.is-open > .nav-sub {
+  display: flex;
+}
+.nav-primary .nav-sub a {
+  padding: 0.6rem 0;
+  font-weight: 500;
+}
+/* Request an Estimate: a real button, not a text link. */
+.nav-primary .nav-cta {
+  margin-top: 1rem;
+}
+.nav-primary .nav-cta .btn {
+  display: flex;
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--color-tan);
+  color: var(--color-black);
+}
+.nav-primary .nav-cta .btn:hover,
+.nav-primary .nav-cta .btn:focus-visible {
+  color: var(--color-tan);
+}
 .nav-primary .nav-phone {
   margin-top: 1.5rem;
 }
@@ -707,7 +762,9 @@ body.has-media-hero .site-header:not(.is-scrolled) .theme-toggle {
    (same element, different layout) and forces its links white
    regardless of theme. */
 @media (min-width: 1350px) {
-  body.has-media-hero .site-header:not(.is-scrolled) .nav-primary a:not([aria-current="page"]) {
+  body.has-media-hero .site-header:not(.is-scrolled) .nav-primary > ul > li > a:not(.btn):not([aria-current="page"]),
+  body.has-media-hero .site-header:not(.is-scrolled) .nav-has-sub:not(:has([aria-current="page"])) > a,
+  body.has-media-hero .site-header:not(.is-scrolled) .nav-has-sub:not(:has([aria-current="page"])) > .nav-sub-toggle {
     color: var(--color-white);
   }
 }
@@ -742,14 +799,15 @@ body.has-media-hero .site-header:not(.is-scrolled) .theme-toggle {
 @media (min-width: 1350px) {
   .nav-toggle { display: none; }
 
-  /* Fixed three-column grid instead of flex: the outer columns are a
-     constant 280px regardless of CTA/button text length, so the center
-     nav column is always the same width and never shifts between pages.
+  /* Grid instead of flex: logo column is a constant 280px, the nav fills
+     the middle, then the divider and the theme toggle (plus Back Home on
+     the thank you page). The nav is identical on every page, so it never
+     shifts between pages.
      This overrides .container/.container--wide's own max-width/padding
      for this element specifically (same specificity, declared later). */
   .header-inner {
     display: grid;
-    grid-template-columns: 280px 1fr 40px 280px;
+    grid-template-columns: 280px 1fr 40px auto;
     align-items: center;
     max-width: 1440px;
     margin: 0 auto;
@@ -783,14 +841,15 @@ body.has-media-hero .site-header:not(.is-scrolled) .theme-toggle {
     align-items: stretch;
     gap: 0.4rem;
   }
-  /* Links spread evenly across the full column width (equal gaps, not a
-     centered cluster) rather than a fixed inter-item gap. */
-  .nav-primary ul {
+  /* Three tabs and the estimate button, grouped to the right next to
+     the theme toggle. The dropdown lists (.nav-sub) reset this below. */
+  .nav-primary > ul {
     width: 100%;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-between;
-    gap: 0;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2.5rem;
   }
   .nav-primary a {
     position: relative;
@@ -829,10 +888,69 @@ body.has-media-hero .site-header:not(.is-scrolled) .theme-toggle {
     }
   }
   .nav-primary .nav-phone { display: none; }
-  /* Right column: just the CTA button now, centered within the fixed
-     280px column. Generous padding so it reads as a deliberate element
-     rather than crowded into the corner — there's no phone block
-     underneath competing for the same space anymore. */
+  /* Dropdown tabs: chevron sits beside the tab link; the list drops
+     below. Opens on click, tap, or keyboard, and on hover as a bonus. */
+  .nav-has-sub {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+  }
+  .nav-sub-toggle {
+    width: auto;
+    padding: 0.25rem;
+    border-bottom: 0;
+    transition: color 200ms ease;
+  }
+  .nav-sub-toggle svg {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+  .nav-sub-toggle:hover,
+  .nav-sub-toggle:focus-visible,
+  .nav-has-sub:has([aria-current="page"]) > a,
+  .nav-has-sub:has([aria-current="page"]) > .nav-sub-toggle {
+    color: var(--color-tan);
+  }
+  .nav-primary .nav-sub {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: auto;
+    min-width: 11rem;
+    flex-direction: column;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--theme-bg);
+    border: 1px solid var(--theme-border);
+    border-radius: var(--radius);
+    z-index: 10;
+  }
+  /* Invisible bridge over the gap so a hover stays open while the
+     pointer moves down into the list. */
+  .nav-primary .nav-sub::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -0.5rem;
+    height: 0.5rem;
+  }
+  .nav-has-sub:hover > .nav-sub {
+    display: flex;
+  }
+  .nav-primary .nav-cta {
+    margin-top: 0;
+  }
+  .nav-primary .nav-cta .btn {
+    padding: 0.85rem 1.4rem;
+    font-size: 0.6875rem;
+  }
+  .nav-primary .nav-cta .btn::after {
+    content: none;
+  }
+  /* Right column: the theme toggle. Request an Estimate lives in the nav
+     itself now; only the thank you page adds a Back Home button here. */
   .header-cta {
     grid-column: 4;
     display: flex;
@@ -1190,43 +1308,6 @@ body {
   font-size: 1.25rem;
 }
 .page-hero .btn { margin-top: 0.5rem; }
-
-/* About page only: the hero now just titles the biography directly
-   below it, so it keeps the shared padding instead of filling the
-   viewport. A full screen title would push the first generation block,
-   the actual content, below the fold on a phone. */
-.page-hero--about h1 {
-  margin-bottom: 2rem;
-}
-
-/* About page jump cards (Legacy / Our Team). Reuse .route-card, but
-   compact: on phones the home page version is a 280px photo tile, which
-   stacked twice here would push the actual content two screens down. */
-@media (max-width: 719px) {
-  .route-card--compact {
-    min-height: 0;
-    padding: 1.5rem;
-    border: 1px solid var(--theme-border);
-    background-color: var(--theme-bg);
-    background-image: none;
-    color: var(--theme-text);
-  }
-  .route-card--compact::before {
-    content: none;
-  }
-  .route-card--compact h2 {
-    font-size: 1.25rem;
-  }
-  .route-card--compact h2,
-  .route-card--compact .route-card-link {
-    color: var(--theme-text);
-  }
-}
-
-/* Jump targets land below the sticky header instead of under it. */
-.about-anchor {
-  scroll-margin-top: 6rem;
-}
 
 /* --------------------------------------------------------------------------
    CARDS
@@ -2307,6 +2388,7 @@ body[data-page="home"] .texture-band {
 .team-card img {
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   border-radius: var(--radius);
@@ -2344,6 +2426,9 @@ body[data-page="home"] .texture-band {
   margin-bottom: 1.25rem;
   aspect-ratio: 1 / 1;
 }
+/* Portraits put the face in the upper part of the frame; crop from there. */
+.generation-photo img,
+.team-card img { object-position: 50% 25%; }
 .team-card h3 {
   font-size: 1.0625rem;
   margin-bottom: 0.25rem;
@@ -2359,6 +2444,37 @@ body[data-page="home"] .texture-band {
 .team-card p:last-child {
   color: var(--theme-text-muted);
   margin-bottom: 0;
+}
+
+/* Specialty overview: one linked card per material page. */
+.material-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  color: var(--theme-text);
+  transition: border-color var(--transition);
+}
+.material-card h3 {
+  margin: 0;
+  flex: 1;
+}
+.material-card:hover,
+.material-card:focus-visible {
+  border-color: var(--color-tan);
+}
+.material-card .route-card-link {
+  color: var(--color-tan);
+}
+
+/* Placeholder pages waiting on owner content: one photo slot and a
+   line of placeholder copy, kept to a readable width. */
+.placeholder-page {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 22rem;
+}
+.measure {
+  max-width: 65ch;
 }
 
 /* --------------------------------------------------------------------------
