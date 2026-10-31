@@ -2423,18 +2423,26 @@ body[data-page="home"] .texture-band {
   text-transform: uppercase;
 }
 
+/* Team cards: one per row on phones, two on tablets, three on desktop,
+   with a short last row centered rather than left hanging. Flex instead
+   of grid so that centering works for any number of people. */
 .team-grid {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
 }
+.team-grid > li {
+  flex: 0 0 100%;
+}
 @media (min-width: 560px) {
-  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid > li { flex-basis: calc((100% - 2rem) / 2); }
 }
 @media (min-width: 960px) {
-  .team-grid { grid-template-columns: repeat(4, 1fr); }
+  .team-grid > li { flex-basis: calc((100% - 4rem) / 3); }
 }
 .team-card {
   border: 1px solid var(--theme-border);
@@ -2463,6 +2471,39 @@ body[data-page="home"] .texture-band {
 .team-card p:last-child {
   color: var(--theme-text-muted);
   margin-bottom: 0;
+}
+/* Founder card: same size as the rest, set apart only by a tan border.
+   His bio opens in place from the "Read Landon's story" link. */
+.team-card--founder {
+  border-color: var(--color-tan);
+}
+.team-bio summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-tan);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  list-style: none;
+}
+.team-bio summary::-webkit-details-marker {
+  display: none;
+}
+.team-bio summary::after {
+  content: "+";
+  font-size: 1rem;
+  line-height: 1;
+}
+.team-bio[open] summary::after {
+  content: "\2212";
+}
+.team-bio p {
+  margin-top: 0.75rem;
+  color: var(--theme-text-muted);
+  font-size: 0.9375rem;
 }
 
 /* Our Story, Why Shiloh: text beside a portrait photo on wider screens,
@@ -2493,10 +2534,6 @@ body[data-page="home"] .texture-band {
   }
   .why-shiloh-photo {
     max-width: none;
-  }
-  /* Founder block: photo on the left, narrower than the text. */
-  .team-feature {
-    grid-template-columns: 2fr 3fr;
   }
 }
 

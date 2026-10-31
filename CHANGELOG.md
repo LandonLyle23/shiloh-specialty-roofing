@@ -4,6 +4,10 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 
 ## 2026-10-31
 
+**Our Team: Landon as the first card, Founder & CEO.**
+- The large founder block is replaced by a regular team card, first in the row, the same size as the others, with a tan border and a "Read Landon's story" link that opens his bio in place. Cards now run three across on desktop with the last row centered, so every photo is about twice as large as before.
+- Why: owner wants to be first and slightly set apart, not bigger than everyone, and asked for bigger photos for all.
+
 **Asphalt Roofing dropdown: Replacement, Storm and Restoration, Inspections; Repairs page removed.**
 - Replacement and Storm and Restoration are now in the menu and site map and open to search engines, still showing "Content coming soon" until the owner sends content. The Repairs placeholder page was deleted.
 - Why: owner does not offer repairs and asked for the remaining pages to go live.
