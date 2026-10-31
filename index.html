@@ -28,7 +28,7 @@
      parses, which is what actually determines LCP timing here, not the
      video file itself (that's preload="metadata", deliberately not
      eagerly fetched). -->
-<link rel="preload" as="image" href="assets/hero-poster-mobile.jpg" media="(max-width: 767px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/hero-poster-mobile.webp" type="image/webp" media="(max-width: 767px)" fetchpriority="high">
 <link rel="preload" as="image" href="assets/hero-poster.jpg" media="(min-width: 768px)" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -195,7 +195,9 @@
        css/style.css .hero-full / .hero-poster / .hero-video for layering. -->
   <section class="hero-full">
     <!-- Poster layer: the LCP image, and the fallback (slow CSS zoom) when
-         autoplay is blocked. Video sources are chosen by js/main.js
+         autoplay is blocked. Phones use the MOBILE HERO PHOTO SLOT
+         (assets/hero-poster-mobile.webp + .jpg; see css/style.css).
+         Video sources are chosen by js/main.js
          initHeroVideo: a 6 second vertical cut for phones, the full clip for
          desktop, nothing at all under prefers-reduced-motion. -->
     <div class="hero-poster" aria-hidden="true"></div>
@@ -204,7 +206,7 @@
       data-src-mobile-webm="assets/hero-roof-mobile.webm"
       data-src-mobile-mp4="assets/hero-roof-mobile.mp4"
       data-poster-desktop="assets/hero-poster.jpg"
-      data-poster-mobile="assets/hero-poster-mobile.jpg"></video>
+      data-poster-mobile="assets/hero-poster-mobile.webp"></video>
     <div class="container">
       <span class="eyebrow">Specialty Roofing</span>
       <h1>The roof should be the best part of the house.</h1>

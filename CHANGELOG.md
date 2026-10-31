@@ -4,6 +4,12 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 
 ## 2026-10-31
 
+**New mobile hero image (phones only).**
+- The phone poster and autoplay fallback is now the strongest frame of the hero video (17.5 seconds: the full house, pool and tree canopy), cropped 608 by 1080 with the house centered. WebP 49 KB, with a 71 KB JPG fallback for browsers without WebP. Desktop is unchanged.
+- Phones get a slightly darker overlay (0.66 instead of 0.62) so the intro paragraph passes 4.5:1 contrast over the brightest part of the image (measured 4.9:1).
+- File slot for the owner's own vertical photo: replace assets/hero-poster-mobile.webp and assets/hero-poster-mobile.jpg, keeping the names.
+- Why: owner asked for a stronger vertical mobile hero image.
+
 **Our Team: Landon as the first card, Founder & CEO.**
 - The large founder block is replaced by a regular team card, first in the row, the same size as the others, with a tan border and a "Read Landon's story" link that opens his bio in place. Cards now run three across on desktop with the last row centered, so every photo is about twice as large as before.
 - Why: owner wants to be first and slightly set apart, not bigger than everyone, and asked for bigger photos for all.

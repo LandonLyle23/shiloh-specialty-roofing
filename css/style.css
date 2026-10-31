@@ -1078,9 +1078,21 @@ body {
   z-index: -3;
   background: var(--color-black) url("../assets/hero-poster.jpg") center / cover no-repeat;
 }
+/* MOBILE HERO PHOTO SLOT (phones only, under 768px):
+     assets/hero-poster-mobile.webp  (served first)
+     assets/hero-poster-mobile.jpg   (fallback)
+   Currently the 17.5s frame of the hero video, cropped 608x1080 around the
+   house. To use your own vertical roof photo, replace BOTH files and keep
+   these exact names: portrait 9:16 (1080x1920 is ideal), main subject in
+   the middle, each file under about 150 KB. No code change needed. The
+   first declaration is the fallback for browsers without image-set(). */
 @media (max-width: 767px) {
   .hero-poster {
     background-image: url("../assets/hero-poster-mobile.jpg");
+    background-image: image-set(
+      url("../assets/hero-poster-mobile.webp") type("image/webp"),
+      url("../assets/hero-poster-mobile.jpg") type("image/jpeg")
+    );
   }
 }
 .hero-full.is-still .hero-poster {
@@ -1123,6 +1135,15 @@ body {
      and can sit lighter while those two stay legible through the shadow
      instead of through overlay darkness. */
   background: rgba(0, 0, 0, 0.62);
+}
+/* Phones: a touch darker. Measured against the brightest part of the
+   mobile poster (the pool, behind the intro paragraph), 0.62 left the
+   light gray paragraph at 4.3:1; 0.66 brings it to 4.9:1, above the
+   4.5:1 WCAG AA minimum. Desktop keeps 0.62. */
+@media (max-width: 767px) {
+  .hero-full::before {
+    background: rgba(0, 0, 0, 0.66);
+  }
 }
 /* text-shadow is independent insurance, not decorative: pixel-sampled
    contrast against the brightest moment in the footage showed the tan
