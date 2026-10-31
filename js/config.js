@@ -61,6 +61,24 @@ window.SHILOH_CONFIG = {
      ==================================================================== */
   ga4MeasurementId: "G-DY5LH0MGPF",
 
+  /* ====================================================================
+     GOOGLE ADS CONVERSIONS — *** PLACEHOLDERS, owner to supply ***
+     In Google Ads: Goals > Conversions > New conversion action > Website.
+     Make two actions ("Website lead form" and "Phone number tap"), choose
+     "Use Google tag", and copy the send_to value each one shows, which
+     looks like AW-123456789/AbCdEfGhIjK. The part before the slash goes in
+     conversionId (same for both); the part after it is that action's
+     label. While any of these is still a placeholder, js/analytics.js
+     sends nothing to Google Ads.
+       leadLabel: fires on the thank you page, after any form submission.
+       callLabel: fires on every tap or click of a tel: phone link.
+     ==================================================================== */
+  googleAds: {
+    conversionId: "AW-XXXXXXXXXX",
+    leadLabel: "XXXXXXXXXXX",
+    callLabel: "XXXXXXXXXXX"
+  },
+
   /* Where forms submit. Netlify Forms works with no backend once the site
      is deployed on Netlify (see netlify.toml and the form's data-netlify
      attribute in each page). To use a different endpoint instead, change
