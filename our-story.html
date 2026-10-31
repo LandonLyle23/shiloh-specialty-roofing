@@ -67,8 +67,9 @@
       <ul>
         <!-- Each tab links to its overview page; the chevron button opens
              its dropdown (click, tap, or keyboard; see initNavDropdowns in
-             main.js). Asphalt Roofing order: Replacement, Storm and
-             Restoration, Inspections. -->
+             main.js). Asphalt Roofing order: Replacement (the Asphalt
+             Roofing page itself, which is the replacement page), Storm
+             and Restoration, Inspections. -->
         <li><a href="index.html">Home</a></li>
         <li class="nav-has-sub">
           <a href="specialty-roofing.html">Specialty Roofing</a>
@@ -84,7 +85,7 @@
           <a href="asphalt-roofing.html">Asphalt Roofing</a>
           <button class="nav-sub-toggle" type="button" aria-expanded="false" aria-controls="nav-sub-asphalt" aria-label="Asphalt Roofing pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
           <ul class="nav-sub" id="nav-sub-asphalt">
-            <li><a href="asphalt-roof-replacement.html">Replacement</a></li>
+            <li><a href="asphalt-roofing.html">Replacement</a></li>
             <li><a href="storm-restoration.html">Storm and Restoration</a></li>
             <li><a href="roof-inspections.html">Inspections</a></li>
           </ul>
@@ -145,10 +146,8 @@
 
   <!-- WHY SHILOH (owner copy, Oct 31, 2026): text is the owner's, word for
        word; do not edit it.
-       *** PHOTO PLACEHOLDER: owner will provide the photo of Deborah on the
-       treehouse deck. Replace the .photo-slot div with:
-         <img src="assets/story/deborah-samples-shiloh.jpg" alt="Deborah Samples at Shiloh, the treehouse Danny built for her." width="..." height="..." loading="lazy" decoding="async">
-       *** -->
+       Photo: Deborah on the treehouse deck (owner supplied, Oct 31, 2026),
+       shown uncropped so the cedar shake roof Danny built stays in frame. -->
   <section class="section" aria-labelledby="why-title">
     <div class="container">
       <div class="why-shiloh">
@@ -162,7 +161,10 @@
           <p class="mb-0">Amy has always believed the Lord restores what has been lost. Part of that restoration is keeping roofing in the family, in the hands of her son and her brother. That is why the company carries the name. Every roof we build carries it too.</p>
         </div>
         <div class="why-shiloh-photo">
-          <div class="photo-slot" role="img" aria-label="Photo coming soon">Photo coming soon</div>
+          <picture>
+            <source srcset="assets/story/deborah-samples-shiloh.webp" type="image/webp">
+            <img src="assets/story/deborah-samples-shiloh.jpg" alt="Deborah Samples at Shiloh, the treehouse Danny built for her." width="720" height="540" loading="lazy" decoding="async">
+          </picture>
         </div>
       </div>
     </div>
