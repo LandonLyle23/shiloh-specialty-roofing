@@ -28,7 +28,8 @@
      parses, which is what actually determines LCP timing here, not the
      video file itself (that's preload="metadata", deliberately not
      eagerly fetched). -->
-<link rel="preload" as="image" href="assets/hero-poster.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="assets/hero-poster-mobile.jpg" media="(max-width: 767px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/hero-poster.jpg" media="(min-width: 768px)" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,125,700;0,125,800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -53,7 +54,7 @@
   "telephone": "+17702351146",
   "email": "info@shilohspecialtyroofing.com",
   "slogan": "Built Higher.",
-  "description": "Specialty roofing contractor installing cedar shake, slate, standing seam metal, tile, and asphalt roofing on high-end residential homes, with storm and insurance restoration services, serving Dawsonville and North Georgia.",
+  "description": "Specialty roofing contractor installing cedar shake, slate, standing seam metal, tile, and asphalt roofing on high end residential homes, with storm restoration services, serving Dawsonville and North Georgia.",
   "logo": "https://shilohspecialtyroofing.com/assets/logo-white.png",
   "image": "https://shilohspecialtyroofing.com/assets/og-image.png",
   "priceRange": "$$-$$$$",
@@ -100,7 +101,7 @@
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Slate Roofing" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tile Roofing" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Asphalt Shingle Roof Replacement" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Storm and Insurance Restoration" } }
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Storm Restoration" } }
     ]
   },
   "sameAs": []
@@ -140,8 +141,8 @@
           <a href="specialty-roofing.html">Specialty Roofing</a>
           <button class="nav-sub-toggle" type="button" aria-expanded="false" aria-controls="nav-sub-specialty" aria-label="Specialty Roofing pages"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
           <ul class="nav-sub" id="nav-sub-specialty">
+            <li><a href="standing-seam-metal-roofing.html">Standing Seam Metal</a></li>
             <li><a href="cedar-roofing.html">Cedar</a></li>
-            <li><a href="standing-seam-metal-roofing.html">Standing Seam</a></li>
             <li><a href="slate-roofing.html">Slate</a></li>
             <li><a href="tile-roofing.html">Tile</a></li>
           </ul>
@@ -192,15 +193,20 @@
 
 <main id="main">
 
-  <!-- HERO — full-width. Background video with assets/hero-poster.jpg as
-       both the loading-state poster and the permanent CSS background on
-       .hero-full (shows through automatically below 768px, where
-       .hero-video is display:none and never requested). See css/style.css
-       .hero-full / .hero-video for the overlay + layering notes. -->
+  <!-- HERO: full width background video over a poster layer. See
+       css/style.css .hero-full / .hero-poster / .hero-video for layering. -->
   <section class="hero-full">
-    <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="assets/hero-poster.jpg">
-      <source src="assets/hero-roof.mp4" type="video/mp4">
-    </video>
+    <!-- Poster layer: the LCP image, and the fallback (slow CSS zoom) when
+         autoplay is blocked. Video sources are chosen by js/main.js
+         initHeroVideo: a 6 second vertical cut for phones, the full clip for
+         desktop, nothing at all under prefers-reduced-motion. -->
+    <div class="hero-poster" aria-hidden="true"></div>
+    <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="metadata" disablepictureinpicture aria-hidden="true" tabindex="-1"
+      data-src-desktop="assets/hero-roof.mp4"
+      data-src-mobile-webm="assets/hero-roof-mobile.webm"
+      data-src-mobile-mp4="assets/hero-roof-mobile.mp4"
+      data-poster-desktop="assets/hero-poster.jpg"
+      data-poster-mobile="assets/hero-poster-mobile.jpg"></video>
     <div class="container">
       <span class="eyebrow">Specialty Roofing</span>
       <h1>The roof should be the best part of the house.</h1>
@@ -249,7 +255,7 @@
         </div>
         <div>
           <p>We are a family company by choice. The same people who quote your roof are the people who inspect it, run the job, and answer the phone when you have a question two years later. No rotating crew of strangers, and no salesman who disappears the day the contract is signed.</p>
-          <p class="mb-0">Fifty years in cedar, slate, asphalt, standing seam metal, copper, and tile. We did not learn these materials on a job. We grew up in them.</p>
+          <p class="mb-0">Fifty years in cedar, slate, asphalt, standing seam metal, and tile. We did not learn these materials on a job. We grew up in them.</p>
         </div>
       </div>
     </div>
@@ -262,7 +268,7 @@
       <div class="section-head section-head--center section-head--narrow mb-0">
         <span class="eyebrow">The Free Inspection</span>
         <h2>We'll document your roof whether you hire us or not.</h2>
-        <p>A full inspection, slope by slope, with dated photographs of anything we find. You get the report to keep. Use it for an insurance claim or put it in a drawer. There is no charge and no obligation.</p>
+        <p>A full inspection, slope by slope, with dated photographs of anything we find. You get the report to keep. There is no charge and no obligation.</p>
         <a href="#contact" class="btn btn--tan btn--lg">Get My Free Roof Inspection</a>
       </div>
     </div>
@@ -350,7 +356,7 @@
       </div>
       <p class="county-grid-credit">Location photos via Wikimedia Commons: Dahlonega (Gwringle, CC BY-SA 3.0), Gainesville (ATLJonJon, CC BY 4.0), Canton (Akhenaton06, CC BY-SA 3.0), Lawrenceville (DeKalb, CC BY-SA 3.0), Atlanta (AtlChampion, CC BY-SA 4.0). Remaining photos public domain (CC0).</p>
       <div class="section-head section-head--center mb-0" style="margin-top: 2.5rem;">
-        <p>Cedar, slate, copper, and standing seam are not local work. Crews who install them correctly are rare enough that we go where the roof is, in Georgia or out of state. If your home is outside North Georgia and the material is right, reach out anyway.</p>
+        <p>Cedar, slate, and standing seam are not local work. Crews who install them correctly are rare enough that we go where the roof is, in Georgia or out of state. If your home is outside North Georgia and the material is right, reach out anyway.</p>
       </div>
     </div>
   </section>
@@ -400,7 +406,7 @@
                 <option>Slate roof</option>
                 <option>Tile roof</option>
                 <option>Asphalt shingle replacement</option>
-                <option>Storm / insurance claim</option>
+                <option>Storm damage</option>
                 <option>Not sure yet</option>
               </select>
             </div>
@@ -452,7 +458,6 @@
       <p>&copy; <span id="year">2026</span> Shiloh Specialty Roofing LLC. All rights reserved.</p>
       <p><a href="privacy.html">Privacy Policy</a></p>
     </div>
-    <p class="footer-legal-note">Shiloh Specialty Roofing LLC is a roofing contractor. We are not public adjusters and do not negotiate insurance claims on a homeowner's behalf. Questions about what your policy covers should be directed to your insurance carrier or agent.</p>
   </div>
 </footer>
 

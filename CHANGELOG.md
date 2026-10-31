@@ -4,6 +4,16 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 
 ## 2026-10-31
 
+**Home video plays on phones; Why Shiloh and founder bio; copper and all insurance wording removed.**
+- Home hero video: phones were hidden from the video by CSS yet still downloaded the full 13 MB desktop file. Phones now get a 6 second vertical cut (WebM 234 KB or MP4 350 KB) with a 49 KB vertical poster; desktop keeps the original. If autoplay is blocked the poster zooms in slowly; reduced motion and Data Saver get a still poster and no video. Mobile page weight in Lighthouse: about 12.8 MB before, 1.5 MB after.
+- Our Story: new Why Shiloh section in the owner's words, with a photo slot (alt text ready) for Deborah on the treehouse deck.
+- Our Team: Landon's founder bio in the owner's words; Mark, Brandi, Melissa and Amy stay as name, role and photo cards until their bios arrive.
+- Specialty menu and overview cards now run Standing Seam Metal, Cedar, Slate, Tile.
+- Copper removed everywhere: the Copper section, list mentions, the form option, and search engine details. Sentences on the Slate and Standing Seam pages that used copper as an example were trimmed.
+- Insurance wording removed everywhere: the footer public adjuster note, the home page claim line, the "Storm / insurance claim" form option (now "Storm damage"), and search engine details.
+- Removed "fully insured" from the Asphalt page's search and social descriptions; not yet confirmed in writing.
+- Why: owner's Oct 31 change list.
+
 **Phone number in the desktop header; no more requests for missing images.**
 - (770) 235-1146 now sits in the desktop header next to the theme toggle, tap or click to call. Phones keep the Call Now bar.
 - Pages no longer ask for texture photos that were never added (two to four missing files per page). The bands and cards look the same as before: solid black until real photos are supplied. The Monument Extended font was already switched off, so nothing changed there.

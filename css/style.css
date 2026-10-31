@@ -1051,10 +1051,7 @@ body {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  /* This is the loading-state poster AND the permanent mobile background
-     (.hero-video is display:none below 768px, so this shows through
-     directly — no separate mobile-specific markup needed). */
-  background: var(--color-black) url("../assets/hero-poster.jpg") center / cover no-repeat;
+  background: var(--color-black);
   /* Pulled up by exactly the sticky header's height so the hero's own
      background sits behind the transparent header instead of there being
      a gap above it. Padding-top adds that same amount back so the actual
@@ -1070,11 +1067,37 @@ body {
     padding-top: calc(96px + clamp(5rem, 9vw, 7.5rem));
   }
 }
-/* Sits on top of .hero-full's own poster background but behind the ::before
-   gradient (z-index:-1 below still paints over it, since a parent's own
-   background always paints under any child regardless of negative
-   z-index). Hidden entirely below 768px so mobile never requests the file
-   and the section's poster background shows through directly instead. */
+/* Poster layer, bottom of the stack: the LCP image (preloaded per screen
+   size in index.html) and what shows before the video starts. Phones get
+   the vertical crop that matches their video. If autoplay is refused (Low
+   Power Mode, Data Saver), main.js adds .is-still and the poster zooms in
+   slowly so the hero still has motion; reduced motion keeps it still. */
+.hero-poster {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background: var(--color-black) url("../assets/hero-poster.jpg") center / cover no-repeat;
+}
+@media (max-width: 767px) {
+  .hero-poster {
+    background-image: url("../assets/hero-poster-mobile.jpg");
+  }
+}
+.hero-full.is-still .hero-poster {
+  animation: hero-poster-zoom 24s ease-in-out infinite alternate;
+}
+@keyframes hero-poster-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-full.is-still .hero-poster {
+    animation: none;
+  }
+}
+/* Video sits above the poster and below the ::before overlay. It starts
+   invisible and fades in only once it is actually playing, so a blocked
+   or slow video never covers the poster with a black or frozen frame. */
 .hero-video {
   position: absolute;
   inset: 0;
@@ -1082,24 +1105,11 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Starts invisible so .hero-full's own poster background (same image,
-     painted beneath this regardless of z-index — see note on that rule)
-     is what actually renders first/is LCP-eligible, with the video
-     crossfading in on top of it once js/main.js confirms playback is
-     actually happening (the "canplay" event, gated behind a successful
-     play().catch()). If autoplay is blocked entirely (Low Power Mode,
-     Data Saver) this class never gets added and the poster just stays,
-     looking intentional rather than like a stuck/broken video. */
   opacity: 0;
   transition: opacity 500ms ease;
 }
 .hero-video.is-playing {
   opacity: 1;
-}
-@media (max-width: 767px) {
-  .hero-video {
-    display: none;
-  }
 }
 .hero-full::before {
   content: "";
@@ -1977,7 +1987,7 @@ body {
 
 /* --------------------------------------------------------------------------
    FULL-BLEED TEXTURE BAND
-   Material macro photo (cedar grain, slate, copper patina, standing seam
+   Material macro photo (cedar grain, slate, standing seam
    metal) used as a rhythm break between major sections. Solid black is
    the placeholder until real files land in assets/textures/ (see the
    IMAGE SLOTS note below the base rules). Once a
@@ -2028,7 +2038,7 @@ body {
    stock or another company's work), add them to assets/textures/ and
    restore one rule per material, e.g.
      .texture-band--cedar .texture-band-inner { background-image: url("../assets/textures/cedar-grain.jpg"); }
-   for --cedar, --slate, --copper and --metal. */
+   for --cedar, --slate and --metal. */
 
 /* Homepage only: thinner accent strip rather than a full band. The
    Specialty Roofing page keeps the taller size, where the bands double
@@ -2293,11 +2303,6 @@ body[data-page="home"] .texture-band {
 .footer-bottom a:focus-visible {
   color: var(--color-tan);
 }
-.footer-legal-note {
-  max-width: 70ch;
-  font-size: 0.75rem;
-  line-height: 1.6;
-}
 
 /* --------------------------------------------------------------------------
    MOBILE TYPOGRAPHY
@@ -2349,9 +2354,6 @@ body[data-page="home"] .texture-band {
     font-size: 0.9375rem;
   }
   .footer-bottom {
-    font-size: 0.9375rem;
-  }
-  .footer-legal-note {
     font-size: 0.9375rem;
   }
   .worked-example thead th {
@@ -2432,7 +2434,7 @@ body[data-page="home"] .texture-band {
   .team-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (min-width: 960px) {
-  .team-grid { grid-template-columns: repeat(3, 1fr); }
+  .team-grid { grid-template-columns: repeat(4, 1fr); }
 }
 .team-card {
   border: 1px solid var(--theme-border);
@@ -2461,6 +2463,41 @@ body[data-page="home"] .texture-band {
 .team-card p:last-child {
   color: var(--theme-text-muted);
   margin-bottom: 0;
+}
+
+/* Our Story, Why Shiloh: text beside a portrait photo on wider screens,
+   photo below the text on phones. */
+.why-shiloh {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+.why-shiloh-body {
+  max-width: 65ch;
+}
+.why-shiloh-photo {
+  max-width: 360px;
+}
+.why-shiloh-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+@media (min-width: 900px) {
+  .why-shiloh {
+    grid-template-columns: 3fr 2fr;
+    gap: 4rem;
+  }
+  .why-shiloh-photo {
+    max-width: none;
+  }
+  /* Founder block: photo on the left, narrower than the text. */
+  .team-feature {
+    grid-template-columns: 2fr 3fr;
+  }
 }
 
 /* Specialty overview: one linked card per material page. */
