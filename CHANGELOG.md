@@ -9,6 +9,11 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 - The owner's "work with insurance" step was left out: the site may not say or imply Shiloh handles a claim (Georgia licenses public adjusting). Attorney review before publishing.
 - Why: owner supplied the content.
 
+**Replacement now opens the Asphalt Roofing page; Deborah's photo on Our Story.**
+- The Asphalt Roofing page already is the replacement page (process, warranties, estimate form), so the Replacement menu item now opens it. The empty Replacement placeholder was deleted; /asphalt-roof-replacement redirects to /asphalt-roofing and left the site map.
+- Why Shiloh now shows the owner's photo of Deborah on the treehouse deck (WebP 94 KB, JPG fallback 114 KB), uncropped so the cedar shake roof Danny built stays in frame, with the owner's alt text.
+- Why: owner chose to point Replacement at Asphalt Roofing, and sent the photo.
+
 **New mobile hero image (phones only).**
 - The phone poster and autoplay fallback is now the strongest frame of the hero video (17.5 seconds: the full house, pool and tree canopy), cropped 608 by 1080 with the house centered. WebP 49 KB, with a 71 KB JPG fallback for browsers without WebP. Desktop is unchanged.
 - Phones get a slightly darker overlay (0.66 instead of 0.62) so the intro paragraph passes 4.5:1 contrast over the brightest part of the image (measured 4.9:1).
