@@ -2434,7 +2434,7 @@ body[data-page="home"] .texture-band {
   .team-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (min-width: 960px) {
-  .team-grid { grid-template-columns: repeat(3, 1fr); }
+  .team-grid { grid-template-columns: repeat(4, 1fr); }
 }
 .team-card {
   border: 1px solid var(--theme-border);
@@ -2463,6 +2463,41 @@ body[data-page="home"] .texture-band {
 .team-card p:last-child {
   color: var(--theme-text-muted);
   margin-bottom: 0;
+}
+
+/* Our Story, Why Shiloh: text beside a portrait photo on wider screens,
+   photo below the text on phones. */
+.why-shiloh {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+.why-shiloh-body {
+  max-width: 65ch;
+}
+.why-shiloh-photo {
+  max-width: 360px;
+}
+.why-shiloh-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+@media (min-width: 900px) {
+  .why-shiloh {
+    grid-template-columns: 3fr 2fr;
+    gap: 4rem;
+  }
+  .why-shiloh-photo {
+    max-width: none;
+  }
+  /* Founder block: photo on the left, narrower than the text. */
+  .team-feature {
+    grid-template-columns: 2fr 3fr;
+  }
 }
 
 /* Specialty overview: one linked card per material page. */
