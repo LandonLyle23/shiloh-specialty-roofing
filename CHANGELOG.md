@@ -2,6 +2,13 @@
 
 Every change merged to main (and so published to shilohspecialtyroofing.com) gets an entry here: date, what changed, why.
 
+## 2026-10-31
+
+**Phone number in the desktop header; no more requests for missing images.**
+- (770) 235-1146 now sits in the desktop header next to the theme toggle, tap or click to call. Phones keep the Call Now bar.
+- Pages no longer ask for texture photos that were never added (two to four missing files per page). The bands and cards look the same as before: solid black until real photos are supplied. The Monument Extended font was already switched off, so nothing changed there.
+- Why: owner approved both fixes; missing files slow every page load.
+
 ## 2026-10-30
 
 **Specialty Roofing dropdown: Cedar, Standing Seam, Slate, Tile; Storm and Restoration placeholder.**

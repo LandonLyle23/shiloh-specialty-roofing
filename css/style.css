@@ -764,7 +764,8 @@ body.has-media-hero .site-header:not(.is-scrolled) .theme-toggle {
 @media (min-width: 1350px) {
   body.has-media-hero .site-header:not(.is-scrolled) .nav-primary > ul > li > a:not(.btn):not([aria-current="page"]),
   body.has-media-hero .site-header:not(.is-scrolled) .nav-has-sub:not(:has([aria-current="page"])) > a,
-  body.has-media-hero .site-header:not(.is-scrolled) .nav-has-sub:not(:has([aria-current="page"])) > .nav-sub-toggle {
+  body.has-media-hero .site-header:not(.is-scrolled) .nav-has-sub:not(:has([aria-current="page"])) > .nav-sub-toggle,
+  body.has-media-hero .site-header:not(.is-scrolled) .header-phone {
     color: var(--color-white);
   }
 }
@@ -949,7 +950,7 @@ body.has-media-hero .site-header:not(.is-scrolled) .theme-toggle {
   .nav-primary .nav-cta .btn::after {
     content: none;
   }
-  /* Right column: the theme toggle. Request an Estimate lives in the nav
+  /* Right column: the phone number and the theme toggle. Request an Estimate lives in the nav
      itself now; only the thank you page adds a Back Home button here. */
   .header-cta {
     grid-column: 4;
@@ -962,6 +963,20 @@ body.has-media-hero .site-header:not(.is-scrolled) .theme-toggle {
     padding: 1rem 1.75rem;
     font-size: 0.75rem;
     white-space: nowrap;
+  }
+  /* Tap to call number, desktop header only (phones have the sticky
+     Call Now bar). */
+  .header-phone {
+    color: var(--theme-text);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    transition: color 200ms ease;
+  }
+  .header-phone:hover,
+  .header-phone:focus-visible {
+    color: var(--color-tan);
   }
 }
 
@@ -1241,9 +1256,8 @@ body {
 
 /* On mobile the cards carry a material photo instead of sitting on white,
    so they read as substantial, not like a list item. Desktop keeps the
-   light bordered-card treatment above. Photo falls back to solid black
-   plus the roofline vector (same graceful-degradation pattern as
-   .texture-band) until a real file lands in assets/textures/. */
+   light bordered-card treatment above. Until a real photo exists the card
+   shows solid black plus the roofline vector (same as .texture-band). */
 @media (max-width: 719px) {
   .route-card {
     position: relative;
@@ -1280,11 +1294,12 @@ body {
   .route-card-link {
     color: var(--color-white);
   }
-  .route-card--specialty {
-    --route-card-img: url("../assets/textures/cedar-shake-02.jpg");
-  }
-  .route-card--storm {
-    --route-card-img: url("../assets/textures/metal-sky-01.jpg");
+  /* IMAGE SLOT: no material photos exist yet, so no file is requested;
+     the card shows the dark overlay on black. To add one, set e.g.
+       .route-card--specialty { --route-card-img: url("../assets/textures/FILE.jpg"); }
+     with an owner supplied photo. */
+  .route-card {
+    --route-card-img: none;
   }
 }
 
@@ -1964,8 +1979,8 @@ body {
    FULL-BLEED TEXTURE BAND
    Material macro photo (cedar grain, slate, copper patina, standing seam
    metal) used as a rhythm break between major sections. Solid black is
-   the placeholder until real files land in assets/textures/ — see the
-   filenames referenced by the .texture-band--* modifiers below. Once a
+   the placeholder until real files land in assets/textures/ (see the
+   IMAGE SLOTS note below the base rules). Once a
    real file exists it's painted on .texture-band-inner, a layer taller
    than its own container so js/motion.js can translateY it slightly
    slower than scroll (parallax) without ever exposing an edge. Disabled
@@ -2008,10 +2023,12 @@ body {
   inset: 0;
   background: rgba(0, 0, 0, 0.55);
 }
-.texture-band--cedar .texture-band-inner { background-image: url("../assets/textures/cedar-grain.jpg"); }
-.texture-band--slate .texture-band-inner { background-image: url("../assets/textures/slate.jpg"); }
-.texture-band--copper .texture-band-inner { background-image: url("../assets/textures/copper-patina.jpg"); }
-.texture-band--metal .texture-band-inner { background-image: url("../assets/textures/standing-seam-metal.jpg"); }
+/* IMAGE SLOTS: no texture photos exist yet, so no file is requested and
+   the band stays solid black. When the owner supplies real photos (never
+   stock or another company's work), add them to assets/textures/ and
+   restore one rule per material, e.g.
+     .texture-band--cedar .texture-band-inner { background-image: url("../assets/textures/cedar-grain.jpg"); }
+   for --cedar, --slate, --copper and --metal. */
 
 /* Homepage only: thinner accent strip rather than a full band. The
    Specialty Roofing page keeps the taller size, where the bands double
