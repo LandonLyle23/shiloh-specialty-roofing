@@ -4,6 +4,11 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 
 ## 2026-10-31
 
+**Storm and Restoration page filled in from the owner's answers.**
+- Storm damage handled (wind, hail, fallen trees, leaks), same day emergency tarping, materials restored (asphalt, cedar, slate, standing seam metal, tile), and four steps: come out, inspect, estimate, install. No photos yet.
+- The owner's "work with insurance" step was left out: the site may not say or imply Shiloh handles a claim (Georgia licenses public adjusting). Attorney review before publishing.
+- Why: owner supplied the content.
+
 **Replacement now opens the Asphalt Roofing page; Deborah's photo on Our Story.**
 - The Asphalt Roofing page already is the replacement page (process, warranties, estimate form), so the Replacement menu item now opens it. The empty Replacement placeholder was deleted; /asphalt-roof-replacement redirects to /asphalt-roofing and left the site map.
 - Why Shiloh now shows the owner's photo of Deborah on the treehouse deck (WebP 94 KB, JPG fallback 114 KB), uncropped so the cedar shake roof Danny built stays in frame, with the owner's alt text.
