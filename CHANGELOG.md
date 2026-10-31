@@ -2,6 +2,13 @@
 
 Every change merged to main (and so published to shilohspecialtyroofing.com) gets an entry here: date, what changed, why.
 
+## 2026-11-01
+
+**Readable lead email subjects; storm option renamed.**
+- Every form (home, contact, specialty, asphalt) now carries a hidden subject field, "New website lead: %{formName}", which Netlify fills in and which overrides the broken "New {{ source }} lead" subject set in the Netlify notification settings on Oct 6.
+- The home and contact dropdown option "Storm damage" is now "Storm damage inspection".
+- Why: owner's Nov 1 fix list. Lead emails arrived with an unfilled template subject.
+
 ## 2026-10-31
 
 **Roof Inspections and Storm and Restoration: more content, no line art.**

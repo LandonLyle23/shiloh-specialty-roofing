@@ -175,6 +175,7 @@
         <form class="lead-form" name="contact" method="POST" action="thank-you.html" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="contact">
           <input type="hidden" name="source" value="contact">
+          <input type="hidden" name="subject" data-remove-prefix value="New website lead: %{formName}">
           <p class="hp-field">
             <label>Don't fill this out if you're human: <input name="bot-field"></label>
           </p>
@@ -201,7 +202,7 @@
               <option>Slate roof</option>
                   <option>Tile roof</option>
               <option>Asphalt shingle replacement</option>
-              <option>Storm damage</option>
+              <option>Storm damage inspection</option>
               <option>Not sure yet</option>
             </select>
           </div>
