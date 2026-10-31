@@ -1987,7 +1987,7 @@ body {
 
 /* --------------------------------------------------------------------------
    FULL-BLEED TEXTURE BAND
-   Material macro photo (cedar grain, slate, copper patina, standing seam
+   Material macro photo (cedar grain, slate, standing seam
    metal) used as a rhythm break between major sections. Solid black is
    the placeholder until real files land in assets/textures/ (see the
    IMAGE SLOTS note below the base rules). Once a
@@ -2038,7 +2038,7 @@ body {
    stock or another company's work), add them to assets/textures/ and
    restore one rule per material, e.g.
      .texture-band--cedar .texture-band-inner { background-image: url("../assets/textures/cedar-grain.jpg"); }
-   for --cedar, --slate, --copper and --metal. */
+   for --cedar, --slate and --metal. */
 
 /* Homepage only: thinner accent strip rather than a full band. The
    Specialty Roofing page keeps the taller size, where the bands double
@@ -2303,11 +2303,6 @@ body[data-page="home"] .texture-band {
 .footer-bottom a:focus-visible {
   color: var(--color-tan);
 }
-.footer-legal-note {
-  max-width: 70ch;
-  font-size: 0.75rem;
-  line-height: 1.6;
-}
 
 /* --------------------------------------------------------------------------
    MOBILE TYPOGRAPHY
@@ -2359,9 +2354,6 @@ body[data-page="home"] .texture-band {
     font-size: 0.9375rem;
   }
   .footer-bottom {
-    font-size: 0.9375rem;
-  }
-  .footer-legal-note {
     font-size: 0.9375rem;
   }
   .worked-example thead th {
