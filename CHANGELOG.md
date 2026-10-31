@@ -4,6 +4,10 @@ Every change merged to main (and so published to shilohspecialtyroofing.com) get
 
 ## 2026-10-31
 
+**Asphalt Roofing dropdown: Replacement, Storm and Restoration, Inspections; Repairs page removed.**
+- Replacement and Storm and Restoration are now in the menu and site map and open to search engines, still showing "Content coming soon" until the owner sends content. The Repairs placeholder page was deleted.
+- Why: owner does not offer repairs and asked for the remaining pages to go live.
+
 **Home video plays on phones; Why Shiloh and founder bio; copper and all insurance wording removed.**
 - Home hero video: phones were hidden from the video by CSS yet still downloaded the full 13 MB desktop file. Phones now get a 6 second vertical cut (WebM 234 KB or MP4 350 KB) with a 49 KB vertical poster; desktop keeps the original. If autoplay is blocked the poster zooms in slowly; reduced motion and Data Saver get a still poster and no video. Mobile page weight in Lighthouse: about 12.8 MB before, 1.5 MB after.
 - Our Story: new Why Shiloh section in the owner's words, with a photo slot (alt text ready) for Deborah on the treehouse deck.
