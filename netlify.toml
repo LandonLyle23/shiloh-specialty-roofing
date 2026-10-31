@@ -40,6 +40,17 @@
   to = "/roof-inspections"
   status = 301
 
+# The Replacement placeholder was folded into Asphalt Roofing, which is the
+# replacement page (Oct 31, 2026).
+[[redirects]]
+  from = "/asphalt-roof-replacement"
+  to = "/asphalt-roofing"
+  status = 301
+[[redirects]]
+  from = "/asphalt-roof-replacement.html"
+  to = "/asphalt-roofing"
+  status = 301
+
 # About was split into Our Story and Our Team (Oct 30, 2026). Old About
 # links, bookmarked or linked from elsewhere, land on Our Story.
 [[redirects]]

@@ -2527,8 +2527,9 @@ body[data-page="home"] .texture-band {
   font-size: 0.9375rem;
 }
 
-/* Our Story, Why Shiloh: text beside a portrait photo on wider screens,
-   photo below the text on phones. */
+/* Our Story, Why Shiloh: text beside the photo of Deborah at Shiloh on
+   wider screens, photo below the text on phones. The photo keeps its own
+   landscape shape so the treehouse roof stays in frame. */
 .why-shiloh {
   display: grid;
   gap: 2rem;
@@ -2537,24 +2538,16 @@ body[data-page="home"] .texture-band {
 .why-shiloh-body {
   max-width: 65ch;
 }
-.why-shiloh-photo {
-  max-width: 360px;
-}
 .why-shiloh-photo img {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
   border-radius: var(--radius);
 }
 @media (min-width: 900px) {
   .why-shiloh {
     grid-template-columns: 3fr 2fr;
     gap: 4rem;
-  }
-  .why-shiloh-photo {
-    max-width: none;
   }
 }
 
